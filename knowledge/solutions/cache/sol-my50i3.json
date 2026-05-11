@@ -1,0 +1,39 @@
+{
+  "id": "sol-my50i3",
+  "folderName": "Excel Data Extraction Scripts",
+  "folderId": "01Z2AOQ5SWBKXHN4F7SRBK4JJM2NTDV243",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:10.784Z",
+  "lastAnalyzed": "2026-03-02T19:43:10.784Z",
+  "analysisDepth": "error",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "HOW TO.docx",
+      "size": 30681,
+      "type": "document"
+    },
+    {
+      "name": "Office Scripts for Excel Data Extraction Demo.mp4",
+      "size": 83317242,
+      "type": "other"
+    },
+    {
+      "name": "Retail_Inventory_Forecasting_Copilot_Agent_Solution_Document - Copy.docx",
+      "size": 47120,
+      "type": "document"
+    },
+    {
+      "name": "workbook_to_json.osts",
+      "size": 2460,
+      "type": "other"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": "No solution .zip file found in folder"
+}

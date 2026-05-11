@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "connectorId": "shared_commondataserviceforapps",
+    "displayName": "Microsoft Dataverse",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "AssociateEntities": {
+      "displayName": "Relate rows",
+      "method": "POST",
+      "description": "This action allows you to link a row in one Microsoft Dataverse table to another if the tables have a one-to-many or many-to-many relationship. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateRecord": {
+      "displayName": "Add a new row",
+      "method": "POST",
+      "description": "This action allows you to add a new row in the selected Microsoft Dataverse table. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteRecord": {
+      "displayName": "Delete a row",
+      "method": "POST",
+      "description": "This action allows you to delete a row from a Microsoft Dataverse table. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DisassociateEntities": {
+      "displayName": "Unrelate rows",
+      "method": "POST",
+      "description": "This action allows you to remove the link between a row in one Microsoft Dataverse table to another if the tables have a one-to-many or many-to-many relationship. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ExecuteChangeset": {
+      "displayName": "Perform a changeset request",
+      "method": "POST",
+      "description": "This action allows you to perform a group of Microsoft Dataverse connector operations as a single transaction. If one of the operations fails, all the successful actions are rolled back. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetEntityFileImageFieldContent": {
+      "displayName": "Download a file or an image",
+      "method": "POST",
+      "description": "This action allows you to download a file or an image content from a Microsoft Dataverse table. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetItemCodeless": {
+      "displayName": "Get a row by ID",
+      "method": "POST",
+      "description": "This action allows you to get the row that matches an ID in a Microsoft Dataverse table. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetRelevantRows": {
+      "displayName": "Search rows",
+      "method": "POST",
+      "description": "This action allows you to search a Microsoft Dataverse environment using Relevance Search, and returns the rows that match the search term most closely. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListRecords": {
+      "displayName": "List rows",
+      "method": "POST",
+      "description": "This action allows you to list the rows in a Microsoft Dataverse table that match the selected options. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PerformBoundAction": {
+      "displayName": "Perform a bound action",
+      "method": "POST",
+      "description": "This action allows you to perform Microsoft Dataverse actions associated with a selected table.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PerformUnboundAction": {
+      "displayName": "Perform an unbound action",
+      "method": "POST",
+      "description": "This action allows you to perform Microsoft Dataverse actions available in the environment that are not associated with any table.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateEntityFileImageFieldContent": {
+      "displayName": "Upload a file or an image",
+      "method": "POST",
+      "description": "This action allows you to upload a file or an image content to a Microsoft Dataverse table with a compatible column type. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateRecord": {
+      "displayName": "Update a row",
+      "method": "POST",
+      "description": "This action allows you to modify any selected row in a Microsoft Dataverse table, or adds a new row if it doesn�t exist. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "BusinessEventsTrigger": {
+      "displayName": "When an action is performed",
+      "method": "POST",
+      "description": "Triggers when a Microsoft Dataverse action has completed.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "SubscribeWebhookTrigger": {
+      "displayName": "When a row is added, modified or deleted",
+      "method": "POST",
+      "description": "This trigger allows you to start a flow when a row is added, modified or deleted in a Microsoft Dataverse table, such that it matches the selected options. This connector was formerly known as Common Data Service (legacy) and replaces the Dynamics 365 connector.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

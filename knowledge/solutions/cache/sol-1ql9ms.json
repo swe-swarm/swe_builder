@@ -1,0 +1,35 @@
+{
+  "id": "sol-1ql9ms",
+  "folderName": "Production Performance Agent",
+  "folderId": "01Z2AOQ5WMLTNVYWPZZ5D2TQZJL4LRYVOY",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:44:16.514Z",
+  "lastAnalyzed": "2026-03-02T19:44:16.516Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 1,
+    "publisherName": "Crf93c6",
+    "uniqueName": "ProductionPerformanceAgent",
+    "version": "1.0.0.6",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "Production Performance Agent - Manfacturing (1).pptx",
+      "size": 35120034,
+      "type": "presentation"
+    },
+    {
+      "name": "ProductionPerformanceAgent_1_0_0_6_managed.zip",
+      "size": 153738,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

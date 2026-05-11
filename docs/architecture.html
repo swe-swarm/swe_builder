@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture — SWE_BUILDER</title>
+  <meta name="description" content="System architecture for SWE_BUILDER: hybrid build stack, SWE-Swarms orchestration, knowledge layers, and the end-to-end data flow." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/architecture.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Diagrams</div>
+          <ul class="sidebar-nav">
+            <li><a href="#system">System</a></li>
+            <li><a href="#hybrid-stack">Hybrid stack</a></li>
+            <li><a href="#swe-swarms">SWE-Swarms</a></li>
+            <li><a href="#canvas-auth">Canvas authentication</a></li>
+            <li><a href="#identity-flow">Identity-bound flow</a></li>
+            <li><a href="#secure-boundary">Secure boundary model</a></li>
+            <li><a href="#data-flow">Data flow</a></li>
+            <li><a href="#yaml-pipeline">YAML pipeline</a></li>
+            <li><a href="#eval-loop">Eval loop</a></li>
+            <li><a href="#multi-agent">Multi-agent</a></li>
+            <li><a href="#knowledge">Knowledge layers</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>Architecture</h1>
+        <p class="lede">
+          SWE_BUILDER is a multi-process workstation app: a FastAPI backend, a React + Vite
+          dashboard, and a Node-pty WebSocket terminal that hosts Claude Code as the operator.
+          Underneath, a hybrid stack chooses the right tool for each step against Microsoft Copilot
+          Studio.
+        </p>
+
+        <h2 id="system">System overview</h2>
+        <div class="mermaid">
+flowchart TB
+  User([Operator]) --&gt; Dashboard
+  subgraph Dashboard ["Dashboard (React + Vite)"]
+    UI[Brief Editor / Project View]
+    Term[Embedded Terminal xterm.js]
+  end
+  Dashboard --&gt;|HTTP| API[FastAPI backend]
+  Dashboard --&gt;|WebSocket| PTY[Node-pty PTY server]
+  PTY --&gt; Claude[Claude Code]
+  API --&gt; FS[(Build-Guides/*.json)]
+  Claude --&gt; FS
+  Claude --&gt; Skills[13 Workflow Skills]
+  Skills --&gt; Teammates[7 SWE-Swarms]
+  Skills --&gt; Stack[Hybrid Build Stack]
+  Stack --&gt; MCS[(Microsoft Copilot Studio)]
+        </div>
+
+        <h2 id="hybrid-stack">Hybrid build stack</h2>
+        <p>
+          Five layers, ordered by reliability. The build chooses the highest layer that can perform
+          the operation. Playwright is reserved for last-resort UI-only steps.
+        </p>
+
+        <div class="mermaid">
+flowchart LR
+  subgraph L1 ["1. PAC CLI"]
+    P1[Publish, status, list, solution ALM]
+  end
+  subgraph L2 ["2. Dataverse API"]
+    P2[Instructions, knowledge upload, settings]
+  end
+  subgraph L3 ["3. Code Editor YAML"]
+    P3[Topics, adaptive cards, branching]
+  end
+  subgraph L4 ["4. Direct Line API"]
+    P4[Eval and testing]
+  end
+  subgraph L5 ["5. Playwright MCP"]
+    P5[Agent creation, model selection, tools, OAuth]
+  end
+  L1 --&gt; MCS[(Microsoft Copilot Studio)]
+  L2 --&gt; MCS
+  L3 --&gt; MCS
+  L4 --&gt; MCS
+  L5 --&gt; MCS
+        </div>
+
+        <table>
+          <thead>
+            <tr><th>Layer</th><th>Use for</th><th>Why preferred</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>PAC CLI</td><td>Lifecycle ops</td><td>Stable, scriptable, Microsoft-supported</td></tr>
+            <tr><td>Dataverse API</td><td>Configuration</td><td>Direct, no UI scraping, idempotent</td></tr>
+            <tr><td>Code Editor YAML</td><td>Topic authoring</td><td>Bypasses topic GUI bugs, schema-validatable</td></tr>
+            <tr><td>Direct Line</td><td>Testing</td><td>No browser required, parallel-safe</td></tr>
+            <tr><td>Playwright</td><td>UI-only ops</td><td>Last resort. Every interaction is fragile.</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="swe-swarms">SWE-Swarms</h2>
+        <p>
+          You speak to the lead orchestrator. The lead delegates to seven specialist swarms,
+          each with its own context window. Swarms challenge each other through the shared
+          <code>brief.json</code> schema. The lead executes only validated artifacts against
+          the hybrid stack. See the <a href="swarms.html">SWE-Swarms page</a> for the full
+          coordination model.
+        </p>
+
+        <div class="mermaid">
+flowchart TB
+  Lead[Lead Orchestrator]
+  Lead --&gt; RA[Research Analyst]
+  Lead --&gt; PE[Prompt Engineer]
+  Lead --&gt; TE[Topic Engineer]
+  Lead --&gt; QA[QA Challenger]
+  Lead --&gt; FD[Flow Designer]
+  Lead --&gt; RC[Repo Health Swarm]
+  Lead --&gt; RO[Repo Optimizer]
+
+  PE &lt;-->|reviews| QA
+  TE &lt;-->|reviews| QA
+  FD &lt;-->|reviews| QA
+  TE &lt;-->|cross-checks| PE
+  RA --&gt;|feeds research| PE
+  RA --&gt;|feeds research| TE
+
+  Lead --&gt; Stack[Hybrid Stack]
+  Stack --&gt; MCS[(Copilot Studio)]
+        </div>
+
+        <h2 id="canvas-auth">Canvas authentication topology</h2>
+        <p>
+          Every UI surface in SWE_BUILDER is a canvas. All four canvases share one delegated
+          auth token containing identity (Entra OID) and person details. There is no separate
+          credential store and no service principal secret. See the
+          <a href="schema.html#canvases">schema page</a> for the full canvas-to-schema mapping.
+        </p>
+
+        <div class="mermaid">
+flowchart TB
+  U([User]) --&gt; MSAL[MSAL sign-in]
+  MSAL --&gt; T[Single delegated token: oid, name, email, tenant, env, roles]
+  T --&gt; C1[Project Dashboard]
+  T --&gt; C2[Brief Editor]
+  T --&gt; C3[Terminal]
+  T --&gt; C4[Library]
+  C1 -.read/write slice.-&gt; B[(brief.json)]
+  C2 -.read/write slice.-&gt; B
+  C3 -.read/write slice.-&gt; B
+  C4 -.read.-&gt; LIB[(library + templates)]
+  C3 -- delegated token --&gt; PAC[PAC CLI]
+  C3 -- delegated token --&gt; DV[Dataverse]
+  C3 -- delegated token --&gt; DL[Direct Line]
+        </div>
+
+        <h2 id="identity-flow">Identity-bound operation flow</h2>
+        <p>
+          The same token authenticates the canvas, the orchestrator, the swarms, and every
+          downstream MCS call. Person details flow through every operation and land in
+          <code>brief.json.buildStatus.actor</code> for the audit trail.
+        </p>
+
+        <div class="mermaid">
+sequenceDiagram
+  participant U as User
+  participant DASH as Dashboard
+  participant TERM as Terminal
+  participant CC as Claude Code lead
+  participant SW as SWE-Swarms
+  participant SCH as brief.json
+  participant DV as Dataverse / MCS
+
+  U-&gt;&gt;DASH: MSAL sign-in
+  DASH-&gt;&gt;TERM: token shared in session
+  U-&gt;&gt;TERM: /mcs-build OrderAgent
+  TERM-&gt;&gt;CC: spawn with token
+  CC-&gt;&gt;SCH: read
+  CC-&gt;&gt;SW: delegate (token in context)
+  SW-&gt;&gt;SCH: write slices
+  CC-&gt;&gt;SCH: validate
+  CC-&gt;&gt;DV: ops with delegated token
+  CC-&gt;&gt;SCH: write actor + completedSteps
+        </div>
+
+        <h2 id="secure-boundary">Secure-by-design boundary model</h2>
+        <p>
+          Each layer enforces its own validation. There is no trust inheritance. The token must
+          satisfy each layer's policy independently.
+        </p>
+
+        <div class="mermaid">
+flowchart LR
+  C[Canvas: MSAL freshness, no stored secrets] --&gt; S[Schema: JSON Schema validate, field allow lists]
+  S --&gt; A[API: OAuth scope, tenant + env match]
+  A --&gt; M[MCS: Dataverse RBAC, env maker role, DLP]
+        </div>
+
+        <h2 id="data-flow">Data flow</h2>
+        <p>
+          The <code>brief.json</code> is the single source of truth. Every phase reads from and
+          writes to it.
+        </p>
+
+        <div class="mermaid">
+flowchart LR
+  Docs[SDR Documents] --&gt; Init
+  Init --&gt; Brief[(brief.json)]
+  Context[Customer Context] --&gt; Brief
+  Brief --&gt; Research
+  Research --&gt; Brief
+  Brief --&gt; Build
+  Build --&gt; Brief
+  Build --&gt; MCS[(Copilot Studio)]
+  Brief --&gt; Eval
+  Eval --&gt; Brief
+  Brief --&gt; Fix
+  Fix --&gt; Brief
+  Brief --&gt; Report
+  Brief --&gt; Deploy
+        </div>
+
+        <h2 id="yaml-pipeline">YAML validation pipeline</h2>
+        <p>
+          Every topic YAML passes through four layers before reaching MCS. Each layer catches a
+          different class of bug.
+        </p>
+
+        <div class="mermaid">
+flowchart LR
+  Spec[Topic spec from brief] --&gt; Gen[gen-constraints.py]
+  Gen --&gt;|required fields| TE[Topic Engineer generates YAML]
+  TE --&gt; OM[om-cli validate]
+  OM --&gt;|structural OK| SG[semantic-gates.py]
+  SG --&gt;|PowerFx, refs, vars OK| DD[drift-detect.py]
+  DD --&gt;|matches brief| Paste[Lead pastes into Code Editor]
+  Paste --&gt; MCS[(Copilot Studio)]
+        </div>
+
+        <table>
+          <thead>
+            <tr><th>Layer</th><th>Tool</th><th>Catches</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pre-generation</td><td><code>gen-constraints.py</code></td><td>Required fields per node type, before generation</td></tr>
+            <tr><td>Structural</td><td><code>om-cli.exe</code></td><td>Unknown nodes, missing fields, 357 type catalog</td></tr>
+            <tr><td>Semantic</td><td><code>semantic-gates.py</code></td><td>PowerFx errors, broken cross-refs, variable flow, channel limits, connector schemas</td></tr>
+            <tr><td>Spec drift</td><td><code>drift-detect.py</code></td><td>Missing topics, extra topics, trigger and variable mismatches versus brief</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="eval-loop">Eval-driven build loop</h2>
+        <p>
+          Inside <code>/mcs-build</code>, the eval loop catches regressions before publish. Three
+          gates with bounded retries.
+        </p>
+
+        <div class="mermaid">
+flowchart TB
+  Build[Initial Build Complete] --&gt; Critical[Critical Gate]
+  Critical --&gt; CPass{Pass 100%?}
+  CPass --&gt;|No| CFix[PE/TE auto-fix]
+  CFix --&gt; Critical
+  CPass --&gt;|Yes after 3 max| HardStop[HARD STOP, escalate]
+  CPass --&gt;|Yes| Cap[Per-Capability]
+  Cap --&gt; CapPass{Pass target?}
+  CapPass --&gt;|No| CapFix[PE/TE fix]
+  CapFix --&gt; Cap
+  CapPass --&gt;|Yes after 3 max| Skip[Mark capability shipped-with-issues]
+  CapPass --&gt;|Yes| Reg[Regression Suite]
+  Reg --&gt; RPass{Pass?}
+  RPass --&gt;|No| RFix[Fix and retry]
+  RFix --&gt; Reg
+  RPass --&gt;|Yes after 2 max| Escalate[Escalate]
+  RPass --&gt;|Yes| Pub[Publish]
+        </div>
+
+        <h2 id="multi-agent">Multi-agent topology</h2>
+        <p>
+          When research scores three or more multi-agent factors, the orchestrator delegates to
+          specialist children. Children are built and evaluated first, then the orchestrator wires
+          them via child-agent connections.
+        </p>
+
+        <div class="mermaid">
+flowchart TB
+  User([User]) --&gt; Orch[Orchestrator Agent]
+  Orch --&gt; A[Sales Specialist]
+  Orch --&gt; B[Support Specialist]
+  Orch --&gt; C[Knowledge Specialist]
+  A --&gt; ToolsA[Tools A]
+  B --&gt; ToolsB[Tools B]
+  C --&gt; KB[(Knowledge sources)]
+        </div>
+
+        <p>Six factors decide single vs. multi-agent (see <code>knowledge/frameworks/architecture-scoring.md</code>):</p>
+        <ol>
+          <li>Distinct user personas with different needs</li>
+          <li>More than five tools or connectors</li>
+          <li>More than two knowledge domains</li>
+          <li>Conflicting tone or response style requirements</li>
+          <li>Independent workflows that compose later</li>
+          <li>Different security or data boundaries</li>
+        </ol>
+
+        <h2 id="knowledge">Knowledge layers</h2>
+        <p>
+          Three layers of knowledge keep the tool current and continuously improving.
+        </p>
+
+        <div class="mermaid">
+flowchart LR
+  subgraph Cache [Cache - auto-refresh]
+    direction TB
+    C1[Triggers] --- C2[Models] --- C3[MCP servers] --- C4[Connectors]
+  end
+  subgraph Learnings [Learnings - user confirms]
+    L1[Connectors learned] --- L2[Topics learned] --- L3[Build methods]
+  end
+  subgraph Stable [Patterns and Frameworks]
+    S1[YAML patterns] --- S2[Playwright patterns] --- S3[Decision frameworks]
+  end
+  Session[Session start] --&gt; Cache
+  Build[After every build] --&gt; Learnings
+  Skill[Used by every skill] --&gt; Stable
+  Cache --&gt; Skill
+  Learnings --&gt; Skill
+        </div>
+
+        <table>
+          <thead><tr><th>Layer</th><th>Purpose</th><th>Refresh policy</th></tr></thead>
+          <tbody>
+            <tr><td>Cache</td><td>18 quick-reference cheat sheets of MCS capabilities</td><td>Auto at session start, tiered by build-criticality</td></tr>
+            <tr><td>Learnings</td><td>8 topic files of insights from past builds</td><td>After every build, two-tier capture (auto + user-confirmed)</td></tr>
+            <tr><td>Patterns</td><td>Stable how-to references (YAML, Playwright, Dataverse)</td><td>Manual, rarely changes</td></tr>
+            <tr><td>Frameworks</td><td>Decision rubrics (component selection, architecture scoring)</td><td>Manual, rarely changes</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="files">Project structure</h2>
+<pre><code class="language-text">swe_builder/
+  app/                     # Dashboard (FastAPI + React + node-pty terminal)
+  .claude/
+    skills/                # 13 workflow skills
+    agents/                # 7 SWE-Swarms definitions
+    rules/                 # Modular rule files
+  knowledge/
+    cache/                 # 18 capability cheat sheets
+    learnings/             # 8 topic files + index.json
+    patterns/              # YAML, Playwright, Dataverse references
+    frameworks/            # Decision frameworks
+  tools/                   # om-cli, semantic-gates, eval scoring, etc.
+  templates/               # brief.json schema
+  reference/schema/        # Full MCS YAML schema (200KB+)
+  Build-Guides/            # Per-project work (gitignored)
+  docs/                    # This GitHub Pages site
+</code></pre>
+
+        <p><a class="btn btn-primary" href="tools.html">Explore the tools</a> <a class="btn btn-secondary" href="swarms.html">Meet the swarms</a></p>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools — SWE_BUILDER</title>
+  <meta name="description" content="The validation, scoring, and automation tools that power SWE_BUILDER. om-cli, semantic-gates, drift-detect, direct-line-test, multi-model-review, and more." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/tools.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Validation</div>
+          <ul class="sidebar-nav">
+            <li><a href="#om-cli">om-cli</a></li>
+            <li><a href="#gen-constraints">gen-constraints</a></li>
+            <li><a href="#semantic-gates">semantic-gates</a></li>
+            <li><a href="#drift-detect">drift-detect</a></li>
+            <li><a href="#schema-lookup">schema-lookup</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Eval</div>
+          <ul class="sidebar-nav">
+            <li><a href="#direct-line-test">direct-line-test</a></li>
+            <li><a href="#eval-scoring">eval-scoring</a></li>
+            <li><a href="#multi-model-review">multi-model-review</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Lifecycle</div>
+          <ul class="sidebar-nav">
+            <li><a href="#replicate-agent">replicate-agent</a></li>
+            <li><a href="#solution-library">solution-library</a></li>
+            <li><a href="#upstream-check">upstream-check</a></li>
+            <li><a href="#flow-composer">flow-composer</a></li>
+            <li><a href="#mcs-lsp">mcs-lsp</a></li>
+            <li><a href="#dataverse-helper">dataverse-helper</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">OSS layers</div>
+          <ul class="sidebar-nav">
+            <li><a href="#oss-library">Library</a></li>
+            <li><a href="#oss-templates">Templates</a></li>
+            <li><a href="#oss-framework">Framework</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>Tools</h1>
+        <p class="lede">
+          Standalone CLI tools that power SWE_BUILDER. They live in <code>tools/</code> and are
+          invoked by skills as needed. Each one does one thing well and writes structured output
+          that the next layer consumes.
+        </p>
+
+        <h2 id="validation">Validation pipeline</h2>
+        <p>Four tools, four layers. Run them in order before pasting topic YAML into Copilot Studio.</p>
+
+        <article class="tool" id="om-cli">
+          <h3>om-cli (ObjectModel CLI)</h3>
+          <p><strong>What it does</strong>: Full YAML validation against the official MCS authoring schema. Knows 357 concrete types and 433 kind values. Catches unknown nodes and missing required fields with line-level error reporting.</p>
+          <p><strong>Built on</strong>: .NET 10 + Microsoft Bot Framework Composer ObjectModel. Auto-updates from upstream via the pre-push git hook.</p>
+<pre><code class="language-powershell"># Validate a topic
+.\tools\om-cli\om-cli.exe validate Build-Guides\MyAgent\agents\name\topics\OrderStatus.yaml
+
+# Search the schema
+.\tools\om-cli\om-cli.exe search "AdaptiveCard"
+
+# Show field hierarchy for a type
+.\tools\om-cli\om-cli.exe hierarchy Microsoft.AdaptiveDialog
+</code></pre>
+        </article>
+
+        <article class="tool" id="gen-constraints">
+          <h3>gen-constraints.py</h3>
+          <p><strong>What it does</strong>: Pre-generation constraint extraction. Queries om-cli for required fields per node type and emits structured JSON the Topic Engineer uses to generate correct YAML on the first try.</p>
+<pre><code class="language-bash">python tools/gen-constraints.py Microsoft.AdaptiveDialog Microsoft.OnIntent
+</code></pre>
+        </article>
+
+        <article class="tool" id="semantic-gates">
+          <h3>semantic-gates.py</h3>
+          <p><strong>What it does</strong>: Five semantic validation gates beyond structural checks.</p>
+          <ol>
+            <li><strong>PowerFx gate</strong>: Validates expressions against the official catalog (<code>tools/powerfx-catalog.json</code>).</li>
+            <li><strong>Cross-reference gate</strong>: Confirms every <code>topic:Name</code>, <code>variable:X</code>, and <code>tool:Y</code> reference resolves.</li>
+            <li><strong>Variable flow gate</strong>: Catches reads-before-writes and orphaned writes.</li>
+            <li><strong>Channel compatibility gate</strong>: Flags unsupported card features per channel.</li>
+            <li><strong>Connector schema gate</strong>: Verifies action inputs match the connector's declared schema.</li>
+          </ol>
+<pre><code class="language-bash">python tools/semantic-gates.py topics/OrderStatus.yaml --brief Build-Guides/MyAgent/agents/name/brief.json
+</code></pre>
+        </article>
+
+        <article class="tool" id="drift-detect">
+          <h3>drift-detect.py</h3>
+          <p><strong>What it does</strong>: Compares brief specs vs. built YAML. Flags missing topics, extra topics, trigger phrase mismatches, and variable drift between the source of truth and the actual artifact.</p>
+<pre><code class="language-bash">python tools/drift-detect.py Build-Guides/MyAgent/agents/name/brief.json
+</code></pre>
+        </article>
+
+        <article class="tool" id="schema-lookup">
+          <h3>schema-lookup.py (legacy fallback)</h3>
+          <p><strong>What it does</strong>: Kind-value validation. Lighter-weight than om-cli, used when .NET 10 is not available. Confirms a kind value exists in the schema (433 values).</p>
+<pre><code class="language-bash">python tools/schema-lookup.py Microsoft.AdaptiveDialog
+</code></pre>
+        </article>
+
+        <h2 id="eval-tools">Evaluation tools</h2>
+
+        <article class="tool" id="direct-line-test">
+          <h3>direct-line-test.js</h3>
+          <p><strong>What it does</strong>: Direct Line API test runner. Auto-fetches tokens via the Token Endpoint, retries with backoff, 60s timeout per turn, structured partial results on failure.</p>
+<pre><code class="language-bash">node tools/direct-line-test.js --brief Build-Guides/MyAgent/agents/name/brief.json --set critical
+</code></pre>
+        </article>
+
+        <article class="tool" id="eval-scoring">
+          <h3>eval-scoring.js</h3>
+          <p><strong>What it does</strong>: Standalone eval scoring engine. Decoupled from the test runner so any transcript can be re-scored against any rubric. Supports semantic similarity, exact match, regex, contains, must-not-contain, latency threshold, and intent classification.</p>
+<pre><code class="language-bash">node tools/eval-scoring.js --transcript run.json --rubric brief.json
+</code></pre>
+        </article>
+
+        <article class="tool" id="multi-model-review">
+          <h3>multi-model-review.js</h3>
+          <p><strong>What it does</strong>: Optional second-opinion GPT review via the GitHub Copilot API. Used for instructions, topics, briefs, and flows. Automatically invoked in <code>/mcs-build</code> (review-instructions, review-topics) and <code>/mcs-report</code>. Exits silently if not configured. Never blocks the build.</p>
+<pre><code class="language-bash">gh auth login
+node tools/multi-model-review.js --target instructions --file brief.json
+</code></pre>
+        </article>
+
+        <h2 id="lifecycle-tools">Lifecycle tools</h2>
+
+        <article class="tool" id="replicate-agent">
+          <h3>replicate-agent.js</h3>
+          <p><strong>What it does</strong>: Clone an agent's full configuration from one environment to another. Used by <code>/mcs-deploy</code> in agent mode for fast dev to test promotion.</p>
+        </article>
+
+        <article class="tool" id="solution-library">
+          <h3>solution-library.js</h3>
+          <p><strong>What it does</strong>: Browse, download, analyze, and upload to the team SharePoint solution library. 30 solutions are pre-cached locally with an index.</p>
+        </article>
+
+        <article class="tool" id="upstream-check">
+          <h3>upstream-check.js</h3>
+          <p><strong>What it does</strong>: Detect drift against tracked upstream repos (configured in <code>knowledge/upstream-repos.json</code>). Surfaces breaking changes in MS Learn samples and the official ObjectModel.</p>
+        </article>
+
+        <article class="tool" id="flow-composer">
+          <h3>flow-composer.js (lib)</h3>
+          <p><strong>What it does</strong>: Assembles Power Automate flow JSON from templates. Used by <code>flow-manager.js</code> as the composition step in the spec-to-JSON-to-create pipeline.</p>
+        </article>
+
+        <article class="tool" id="mcs-lsp">
+          <h3>mcs-lsp.js</h3>
+          <p><strong>What it does</strong>: Language Server Protocol client for workspace pull and push. Lets Copilot Studio's authoring service validate YAML in-line during editing.</p>
+        </article>
+
+        <article class="tool" id="dataverse-helper">
+          <h3>dataverse-helper.ps1</h3>
+          <p><strong>What it does</strong>: PowerShell Dataverse Web API helper. Wraps token acquisition and HTTP calls for instructions update, knowledge upload, and security settings.</p>
+        </article>
+
+        <h2 id="git-hooks">Git hooks</h2>
+        <p>Two hooks live in <code>tools/git-hooks/</code> and are installed by <code>start.js</code>:</p>
+        <ul>
+          <li><strong>pre-commit</strong>: Core file protection. Blocks commits that touch protected paths without explicit override.</li>
+          <li><strong>pre-push</strong>: Auto-updates om-cli from the upstream ObjectModel source.</li>
+        </ul>
+
+        <h2 id="oss-shareable">Open-source shareable layers</h2>
+        <p>
+          The tools above are the operational surface. Beneath them sit three open-source
+          layers that make the system shareable: the <strong>library</strong> (instances),
+          the <strong>templates</strong> (scaffolds), and the <strong>framework</strong>
+          (architecture). All three are coordinated through the same
+          <a href="schema.html">canonical schema</a> and the same identity-bound auth token.
+        </p>
+
+        <h3 id="oss-library">Library: shareable schema instances</h3>
+        <p>
+          The solution library is a community of <code>brief.json</code> instances, each one
+          a complete agent design. Browse, fork, or contribute. The library turns
+          schema-first into something social.
+        </p>
+        <ul>
+          <li>30+ cached snapshots in <code>knowledge/solutions/</code></li>
+          <li>Each entry: <code>brief.json</code>, <code>topics/</code>, <code>evals.csv</code></li>
+          <li>Searchable by industry, capability, integration pattern</li>
+          <li>Browse via <code>tools/solution-library.js</code> (CLI) or the Library canvas</li>
+          <li>Upload to team SharePoint with one command</li>
+        </ul>
+
+        <h3 id="oss-templates">Templates: schema scaffolds</h3>
+        <p>
+          The <code>templates/</code> directory holds the canonical schema and the starter
+          scaffolds. New projects begin from a template. Templates are versioned alongside
+          the schema and pass validation on day one.
+        </p>
+<pre><code class="language-text">templates/
+  brief.json                # Canonical schema scaffold (the contract)
+  topics/                   # Reusable topic YAML scaffolds
+  evals/                    # Eval set scaffolds (5 default sets)
+  flows/                    # Power Automate flow scaffolds
+</code></pre>
+        <ul>
+          <li>JSON Schema lives at <code>templates/brief.json</code></li>
+          <li>Forkable, MIT licensed</li>
+          <li>Validators in <code>tools/</code> (<code>om-cli</code>, <code>gen-constraints.py</code>, <code>semantic-gates.py</code>)</li>
+          <li>Compatible with any standard JSON Schema validator</li>
+        </ul>
+
+        <h3 id="oss-framework">Framework: the assembled stack</h3>
+        <p>
+          The framework is the assembled stack: schema + canvases + swarms + lead orchestrator
+          + hybrid execution layer. Every layer is independently swappable. Treat it as a
+          reference implementation for schema-first, identity-bound agent tooling.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Layer</th><th>Component</th><th>Replaceable with</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Schema</td><td><code>templates/brief.json</code></td><td>Any JSON Schema</td></tr>
+            <tr><td>Canvas</td><td>React + Vite SPA (4 canvases)</td><td>Any framework that consumes schema slices</td></tr>
+            <tr><td>Swarms</td><td>Claude Code sub-agents</td><td>AutoGen, Semantic Kernel, custom orchestrators</td></tr>
+            <tr><td>Orchestrator</td><td>Claude Code lead</td><td>Any model with tool calling and file access</td></tr>
+            <tr><td>Execution</td><td>PAC + Dataverse + Direct Line + Playwright</td><td>Any MCS automation surface</td></tr>
+            <tr><td>Identity</td><td>MSAL + Entra ID</td><td>Any OIDC provider issuing delegated tokens</td></tr>
+          </tbody>
+        </table>
+
+        <p>
+          <a class="btn btn-primary" href="schema.html">Read the schema-first architecture</a>
+          <a class="btn btn-secondary" href="cli.html">CLI command reference</a>
+          <a class="btn btn-secondary" href="knowledge.html">Knowledge layers</a>
+        </p>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

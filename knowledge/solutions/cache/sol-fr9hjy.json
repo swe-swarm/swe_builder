@@ -1,0 +1,29 @@
+{
+  "id": "sol-fr9hjy",
+  "folderName": "Case Records Information Triage Agent",
+  "folderId": "01Z2AOQ5TTLXMWGQZHRJBZKIQE367UDDCD",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:28.603Z",
+  "lastAnalyzed": "2026-03-02T19:42:28.603Z",
+  "analysisDepth": "error",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "RASU Agent Slide_v2.pptx",
+      "size": 58535592,
+      "type": "presentation"
+    },
+    {
+      "name": "RASU Project.mp4",
+      "size": 33442011,
+      "type": "other"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": "No solution .zip file found in folder"
+}

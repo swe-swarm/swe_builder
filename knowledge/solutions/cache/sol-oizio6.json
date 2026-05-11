@@ -1,0 +1,24 @@
+{
+  "id": "sol-oizio6",
+  "folderName": "MCP Frontier Agent",
+  "folderId": "01Z2AOQ5RMDEYIYLEVLBD23TM63NFQQORU",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:50.333Z",
+  "lastAnalyzed": "2026-03-02T19:43:50.333Z",
+  "analysisDepth": "error",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "MCP Frontier Agent Demo Video.mp4",
+      "size": 117738873,
+      "type": "other"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": "No solution .zip file found in folder"
+}

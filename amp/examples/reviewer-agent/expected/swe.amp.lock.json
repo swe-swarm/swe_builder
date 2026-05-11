@@ -1,0 +1,8 @@
+{
+  "ampVersion": "1.0",
+  "frameworkVersion": "1.0.0",
+  "sdkProtocolVersion": 3,
+  "generatedAt": "2026-04-30T03:04:29.825Z",
+  "sourceManifest": "../swe.amp.yaml",
+  "language": "typescript"
+}

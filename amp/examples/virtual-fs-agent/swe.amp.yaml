@@ -1,0 +1,53 @@
+ampVersion: "1.0"
+agent:
+  name: virtual-fs-agent
+  displayName: Virtual FS Agent
+  version: "0.1.0"
+  description: Python AMP agent with memory notes, memory session filesystem, and MCP wiring.
+  language: python
+runtime:
+  copilotSdk:
+    transport: stdio
+    logLevel: warning
+  streaming: true
+extensions:
+  tools:
+    - name: note_write
+      description: Write a note to the in-memory store.
+      paramsSchema:
+        type: object
+        required: [key, value]
+        properties:
+          key:
+            type: string
+          value:
+            type: string
+      stub:
+        kind: memoryWrite
+    - name: note_read
+      description: Read a note from the in-memory store.
+      paramsSchema:
+        type: object
+        required: [key]
+        properties:
+          key:
+            type: string
+      stub:
+        kind: memoryRead
+    - name: note_list
+      description: List all notes in the in-memory store.
+      paramsSchema:
+        type: object
+        properties: {}
+      stub:
+        kind: memoryList
+  mcpServers:
+    - name: filesystem
+      type: stdio
+      enabled: true
+      command: npx
+      args: ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+  sessionFs:
+    provider: memory
+  permissions:
+    mode: approveAll

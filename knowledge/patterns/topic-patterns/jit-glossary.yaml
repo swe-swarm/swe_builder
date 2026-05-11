@@ -1,0 +1,59 @@
+# Pattern: JIT Glossary Loading
+# Trigger: OnActivity (type: Message) — fires on ALL channels including M365 Copilot
+# Shows: Load customer-specific acronyms from SharePoint CSV into Global.Glossary
+#         on first message only, using IsBlank() guard. Knowledge source has
+#         triggerCondition: false so it is never auto-searched.
+# Why OnActivity: OnConversationStart does NOT fire on M365 Copilot or embedded surfaces.
+# Prerequisite: SharePoint knowledge source configured with triggerCondition: false,
+#               pointing to a .txt file in CSV format (ACRONYM,Definition rows).
+# Agent instructions: Reference {Global.Glossary} ONCE to avoid token multiplication.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  type: Message
+  condition: =IsBlank(Global.Glossary)
+  actions:
+    # Step 1: Search the glossary knowledge source (triggerCondition: =false means
+    # it is only queried explicitly, never by the orchestrator's auto-search)
+    - kind: SearchAndSummarizeContent
+      id: searchGlossary_REPLACE1
+      autoSend: false
+      variable: Topic.GlossaryResult
+      userInput: ='*'
+      responseCaptureType: FullResponse
+      applyModelKnowledgeSetting: false
+      knowledgeSources:
+        kind: SearchSpecificKnowledgeSources
+        knowledgeSources:
+          - "{{AGENT_SCHEMA_NAME}}.knowledge.glossary"
+
+    # Step 2: Store in Global variable (persists across topics for this conversation)
+    - kind: SetVariable
+      id: setGlossary_REPLACE2
+      variable: Global.Glossary
+      value: =Topic.GlossaryResult
+
+# --- Knowledge source YAML (separate file in knowledge/ folder) ---
+# kind: KnowledgeSourceConfiguration
+# source:
+#   kind: SharePointSearchSource
+#   site: https://{{TENANT}}.sharepoint.com/sites/{{SITE}}
+# triggerCondition: false
+#
+# The .txt file on SharePoint should be CSV format:
+# ACRONYM,Definition
+# SLA,Service Level Agreement
+# OKR,Objective and Key Result
+# BAU,Business As Usual
+
+# --- Agent instructions reference ---
+# Add ONE reference in the Guidance section of agent instructions:
+#
+#   ## Acronym Glossary
+#   When the user uses acronyms, check {Global.Glossary} for definitions.
+#   Always expand acronyms on first use in your response.
+#
+# Do NOT repeat {Global.Glossary} multiple times — each reference
+# expands the full CSV into the prompt, multiplying token cost.

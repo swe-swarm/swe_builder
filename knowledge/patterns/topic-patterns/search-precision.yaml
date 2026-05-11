@@ -1,0 +1,67 @@
+# Pattern: Knowledge Search — Precision/Verbatim (No AI Summary)
+# Trigger: OnRecognizedIntent or any trigger
+# Shows: SearchKnowledgeSources returns raw search results WITHOUT AI summarization.
+#         Use for verbatim/exact content — insurance policies, HR documents, legal text,
+#         compliance references — where AI summarization could lose critical details.
+# Key difference: SearchKnowledgeSources (raw) vs SearchAndSummarizeContent (AI summary)
+# CRITICAL: Always use CreateSearchQuery before SearchKnowledgeSources.
+# See also: faq-knowledge.yaml (fallback), search-direct-response.yaml (controlled display),
+#           search-orchestrator.yaml (orchestrator pattern)
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    # Step 1: Generate an optimized search query from user's input
+    - kind: CreateSearchQuery
+      id: createSearchQuery_REPLACE1
+      userInput: =System.Activity.Text
+      result: Topic.SearchQuery
+
+    # Step 2: Search knowledge sources — NO AI summarization (raw results)
+    - kind: SearchKnowledgeSources
+      id: searchKnowledge_REPLACE2
+      userInput: =Topic.SearchQuery.SearchQuery
+      result: Topic.RawResults
+      knowledgeSources:
+        kind: SearchSpecificKnowledgeSources
+        knowledgeSources:
+          - "{{SCHEMA_NAME}}.knowledge.{{KNOWLEDGE_SOURCE_NAME}}"
+
+    # Step 3: Send raw results to the user
+    - kind: ConditionGroup
+      id: conditionGroup_REPLACE3
+      conditions:
+        - id: conditionItem_REPLACE4
+          condition: =!IsBlank(Topic.RawResults)
+          actions:
+            - kind: SendActivity
+              id: sendActivity_REPLACE5
+              activity: "{Topic.RawResults}"
+      elseActions:
+        - kind: SendActivity
+          id: sendNoResults_REPLACE6
+          activity: "No matching documents found. {{FALLBACK_MESSAGE}}"
+
+# --- When to use Precision vs Summary ---
+# SearchAndSummarizeContent (Pattern 1/2/3): Uses AI to summarize search results into
+#   a coherent response. Good for most Q&A scenarios.
+# SearchKnowledgeSources (this pattern): Returns raw, unsummarized results. Use when:
+#   - Summarization could lose important details (legal, compliance, policy)
+#   - You need to process the raw data yourself (e.g., extract specific fields)
+#   - You want verbatim quotes from source documents
+#   - Accuracy of exact wording matters more than readability
+
+# --- SearchKnowledgeSources Properties ---
+# userInput — the search query expression (use CreateSearchQuery result)
+# result — variable where raw search results are stored
+# knowledgeSources — restrict to specific sources (omit to search all)
+# webBrowsing — if true, also searches the web via Bing
+# fileSearchDataSource — controls file search behavior
+# historyType — controls conversation history inclusion

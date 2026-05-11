@@ -1,0 +1,35 @@
+{
+  "id": "sol-8gr8qw",
+  "folderName": "Inventory Forecasting Agent",
+  "folderId": "01Z2AOQ5T3FFIBDSMBYJAKLA7HZKVVAIE6",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:23.274Z",
+  "lastAnalyzed": "2026-03-02T19:43:23.276Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "Crf93c6",
+    "uniqueName": "InventoryForecastingAgent",
+    "version": "1.0.0.8",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "Inventory Forecasting  Agent - Retail (1).pptx",
+      "size": 35198996,
+      "type": "presentation"
+    },
+    {
+      "name": "InventoryForecastingAgent_1_0_0_8.zip",
+      "size": 137161,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

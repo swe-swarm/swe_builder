@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "name": "Dataverse Event Trigger",
+    "description": "Dataverse SubscribeWebhookTrigger for row added, modified, or deleted events. Use for flows that react to Dataverse table changes.",
+    "category": "trigger",
+    "placeholders": {
+      "{{TABLE_NAME}}": "Dataverse table logical name (e.g. accounts, contacts, incidents)",
+      "{{CHANGE_TYPE}}": "Change type: Addition, Modification, Deletion",
+      "{{SCOPE}}": "Trigger scope: Organization, BusinessUnit, ParentChildBusinessUnit, User",
+      "{{SELECT_COLUMNS}}": "Comma-separated column names to monitor for changes (optional, Modification only)",
+      "{{FILTER_EXPRESSION}}": "OData filter expression (optional, e.g. statecode eq 0)",
+      "{{CONN_REF_LOGICAL}}": "Connection reference logical name for Dataverse connector"
+    },
+    "requires": ["shared_commondataserviceforapps"]
+  },
+  "fragment": {
+    "triggers": {
+      "When_a_row_is_added_modified_or_deleted": {
+        "type": "OpenApiConnectionWebhook",
+        "inputs": {
+          "host": {
+            "connectionName": "shared_commondataserviceforapps",
+            "operationId": "SubscribeWebhookTrigger",
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+          },
+          "parameters": {
+            "subscriptionRequest/message": 3,
+            "subscriptionRequest/entityname": "{{TABLE_NAME}}",
+            "subscriptionRequest/scope": 4,
+            "subscriptionRequest/filteringattributes": "{{SELECT_COLUMNS}}",
+            "subscriptionRequest/filterexpression": "{{FILTER_EXPRESSION}}"
+          },
+          "authentication": "@parameters('$authentication')"
+        }
+      }
+    },
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "{{CONN_REF_LOGICAL}}"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    }
+  },
+  "_notes": {
+    "message_codes": "1 = Addition, 2 = Deletion, 3 = Modification, 4 = Addition+Modification, 5 = Addition+Deletion, 6 = Modification+Deletion, 7 = All",
+    "scope_codes": "1 = User, 2 = BusinessUnit, 3 = ParentChildBusinessUnit, 4 = Organization",
+    "filtering_attributes": "For Modification, specify columns to avoid triggers on every field change. Empty = all columns.",
+    "body_access": "Access row data via @triggerOutputs()?['body']. Primary key via @triggerOutputs()?['body/primaryId'].",
+    "webhook_vs_polling": "Dataverse uses webhook (near real-time), not polling. No polling interval concerns."
+  }
+}

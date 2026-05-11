@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "name": "Scope Try/Catch Pattern",
+    "description": "Try scope containing main logic, Catch scope that runs only when Try fails or times out. The standard error handling pattern for Power Automate flows.",
+    "category": "control",
+    "placeholders": {
+      "{{TRY_ACTION_NAME}}": "Name of the main action inside Try scope",
+      "{{ERROR_ACTION_NAME}}": "Name of the error handling action inside Catch scope"
+    },
+    "requires": []
+  },
+  "fragment": {
+    "Try": {
+      "runAfter": {},
+      "type": "Scope",
+      "actions": {
+        "{{TRY_ACTION_NAME}}": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "Main logic goes here"
+        }
+      }
+    },
+    "Catch": {
+      "runAfter": {
+        "Try": ["Failed", "TimedOut"]
+      },
+      "type": "Scope",
+      "actions": {
+        "{{ERROR_ACTION_NAME}}": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "Error: @{result('Try')}"
+        }
+      }
+    },
+    "Finally": {
+      "runAfter": {
+        "Try": ["Succeeded", "Failed", "TimedOut", "Skipped"],
+        "Catch": ["Succeeded", "Failed", "TimedOut", "Skipped"]
+      },
+      "type": "Scope",
+      "actions": {
+        "Cleanup": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "Cleanup logic (always runs)"
+        }
+      }
+    }
+  },
+  "_notes": {
+    "runAfter_statuses": "Catch uses [\"Failed\", \"TimedOut\"] to fire only on errors. Finally uses all 4 statuses to always run.",
+    "result_function": "Use result('ScopeName') inside Catch to access error details from the failed scope.",
+    "nesting": "Scopes can be nested. Inner scope failures bubble to outer scope unless caught."
+  }
+}

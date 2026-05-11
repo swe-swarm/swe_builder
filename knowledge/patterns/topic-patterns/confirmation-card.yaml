@@ -1,0 +1,135 @@
+# Pattern: Confirmation Card (Review Before Action)
+# Trigger: Used mid-topic after collecting data
+# Shows: Summary of collected data → Confirm or Edit → proceed with action
+# Common in: order placement, booking, profile updates, ticket submission
+#
+# Schema: 1.5 (cross-channel safe)
+# Actions: Action.Submit only
+# Channels: Teams, Web Chat, M365 Copilot, Omnichannel
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    # Steps 1-N: Collect data (questions, forms, API lookups)
+    # ... (your data collection steps here)
+
+    # Confirmation step: Show summary and ask to confirm
+    - kind: Question
+      id: confirmAction
+      interruptionPolicy:
+        allowInterruption: false
+      variable: init:Topic.confirmation
+      prompt:
+        text: "Please review the details below:"
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "TextBlock",
+                    text: "Please Confirm",
+                    weight: "Bolder",
+                    size: "Large"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "Review the details below before proceeding:",
+                    wrap: true,
+                    isSubtle: true
+                  },
+                  {
+                    type: "FactSet",
+                    facts: [
+                      { title: "{{FIELD_1_LABEL}}", value: Topic.field1 },
+                      { title: "{{FIELD_2_LABEL}}", value: Topic.field2 },
+                      { title: "{{FIELD_3_LABEL}}", value: Topic.field3 },
+                      { title: "{{FIELD_4_LABEL}}", value: Topic.field4 }
+                    ]
+                  },
+                  {
+                    type: "Input.Toggle",
+                    id: "confirmed",
+                    title: "I confirm the above details are correct",
+                    value: "false",
+                    valueOn: "true",
+                    valueOff: "false"
+                  }
+                ],
+                actions: [
+                  {
+                    type: "Action.Submit",
+                    title: "Confirm & Submit",
+                    style: "positive"
+                  },
+                  {
+                    type: "Action.Submit",
+                    title: "Cancel",
+                    data: { confirmed: "cancel" }
+                  }
+                ]
+              }
+      entity: StringPrebuiltEntity
+
+    # Route: confirmed vs cancelled
+    - kind: ConditionGroup
+      id: routeConfirmation
+      conditions:
+        - id: confirmed
+          condition: =Topic.confirmation.confirmed = "true"
+          actions:
+            - kind: SendMessage
+              id: sendConfirmed
+              message: "Confirmed. Processing your request..."
+            # Execute the action (connector, flow, HTTP, etc.)
+
+        - id: cancelled
+          condition: =Topic.confirmation.confirmed = "cancel" || Topic.confirmation.confirmed = "false"
+          actions:
+            - kind: SendMessage
+              id: sendCancelled
+              message: "Cancelled. No changes were made. Would you like to start over?"
+
+# --- Variant: With editable fields ---
+# Instead of just confirm/cancel, let user edit inline:
+#
+#   {
+#     type: "Input.Text",
+#     id: "field1",
+#     label: "{{FIELD_1_LABEL}}",
+#     value: "pre-filled from Topic.field1"
+#   },
+#   {
+#     type: "Input.Text",
+#     id: "field2",
+#     label: "{{FIELD_2_LABEL}}",
+#     value: "pre-filled from Topic.field2"
+#   }
+#
+# With PowerFx binding, pre-fill from variables:
+#   value: Topic.field1
+
+# --- Variant: With cost/total summary ---
+# Add a Container with accent style at the bottom:
+#
+#   {
+#     type: "Container",
+#     style: "accent",
+#     items: [{
+#       type: "ColumnSet",
+#       columns: [
+#         { type: "Column", width: "stretch", items: [{ type: "TextBlock", text: "Total", weight: "Bolder" }] },
+#         { type: "Column", width: "auto", items: [{ type: "TextBlock", text: Topic.totalAmount, weight: "Bolder", color: "Good" }] }
+#       ]
+#     }]
+#   }

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "bm-001",
+      "file": "build-methods.md",
+      "title": "PAC CLI create requires undocumented template YAML",
+      "date": "2026-02-18",
+      "confirmed": 1,
+      "lastConfirmed": "2026-02-18",
+      "tags": ["pac-cli", "playwright", "agent-creation", "template"],
+      "status": "active",
+      "projects": ["builder-pm"]
+    },
+    {
+      "id": "tt-001",
+      "file": "topics-triggers.md",
+      "title": "Question entity must use flat string format",
+      "date": "2026-02-19",
+      "confirmed": 1,
+      "lastConfirmed": "2026-02-19",
+      "tags": ["yaml", "question", "entity", "validation"],
+      "status": "active",
+      "projects": []
+    },
+    {
+      "id": "bm-002",
+      "file": "build-methods.md",
+      "title": "Dataverse POST for new botcomponents skips MCS orchestration",
+      "date": "2026-02-20",
+      "confirmed": 1,
+      "lastConfirmed": "2026-02-20",
+      "tags": ["dataverse", "botcomponent", "topic-creation", "instructions", "playwright", "code-editor"],
+      "status": "active",
+      "projects": ["cdw"]
+    },
+    {
+      "id": "bm-003",
+      "file": "build-methods.md",
+      "title": "PAC CLI extract-template crashes on complex agents",
+      "date": "2026-02-20",
+      "confirmed": 1,
+      "lastConfirmed": "2026-02-20",
+      "tags": ["pac-cli", "extract-template", "crash", "agent-creation"],
+      "status": "active",
+      "projects": ["cdw"]
+    },
+    {
+      "id": "bm-004",
+      "file": "build-methods.md",
+      "title": "PAC CLI publish (MSI) crashes — MCP copilot_publish is reliable fallback",
+      "date": "2026-02-20",
+      "confirmed": 1,
+      "lastConfirmed": "2026-02-20",
+      "tags": ["pac-cli", "publish", "mcp", "crash", "workaround"],
+      "status": "active",
+      "projects": ["cdw"]
+    },
+    {
+      "id": "in-001",
+      "file": "instructions.md",
+      "title": "Hardcoded URLs and tool listing in instructions produce weak agents",
+      "date": "2026-02-20",
+      "confirmed": 1,
+      "lastConfirmed": "2026-02-20",
+      "tags": ["instructions", "urls", "anti-pattern", "follow-up", "audience", "three-part-structure", "boundaries"],
+      "status": "active",
+      "projects": ["cdw"]
+    }
+  ]
+}

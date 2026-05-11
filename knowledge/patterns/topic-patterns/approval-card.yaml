@@ -1,0 +1,142 @@
+# Pattern: Approval Card (Approve / Reject with Reason)
+# Trigger: OnRecognizedIntent
+# Shows: Present item for approval → collect decision + optional reason → route
+# Common in: leave requests, expense approvals, document reviews, change requests
+#
+# Schema: 1.5 (cross-channel safe)
+# Actions: Action.Submit only (no Action.Execute)
+# Channels: Teams, Web Chat, M365 Copilot, Omnichannel
+# WhatsApp: Falls back to text — use suggestedActions instead
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    # Step 1: Fetch the item to approve (e.g., from connector or HTTP)
+    - kind: SetVariable
+      id: setRequestDetails
+      variable: init:Topic.requestTitle
+      value: ="{{REQUEST_TITLE}}"
+
+    # Step 2: Present approval card
+    - kind: Question
+      id: collectApproval
+      interruptionPolicy:
+        allowInterruption: false
+      variable: init:Topic.approvalData
+      prompt:
+        text: "Please review and approve or reject:"
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "TextBlock",
+                    text: "Approval Required",
+                    weight: "Bolder",
+                    size: "Large"
+                  },
+                  {
+                    type: "FactSet",
+                    facts: [
+                      { title: "Request", value: Topic.requestTitle },
+                      { title: "Submitted by", value: "{{SUBMITTER_NAME}}" },
+                      { title: "Date", value: "{{SUBMISSION_DATE}}" },
+                      { title: "Amount", value: "{{AMOUNT}}" }
+                    ]
+                  },
+                  {
+                    type: "Input.ChoiceSet",
+                    id: "decision",
+                    label: "Decision",
+                    isRequired: true,
+                    errorMessage: "Please select Approve or Reject",
+                    choices: [
+                      { title: "Approve", value: "approve" },
+                      { title: "Reject", value: "reject" }
+                    ],
+                    style: "expanded"
+                  },
+                  {
+                    type: "Input.Text",
+                    id: "reason",
+                    label: "Comments (required if rejecting)",
+                    placeholder: "Enter reason or comments...",
+                    isMultiline: true
+                  }
+                ],
+                actions: [
+                  {
+                    type: "Action.Submit",
+                    title: "Submit Decision"
+                  }
+                ]
+              }
+      entity: StringPrebuiltEntity
+
+    # Step 3: Route based on decision
+    - kind: ConditionGroup
+      id: routeDecision
+      conditions:
+        - id: approved
+          condition: =Topic.approvalData.decision = "approve"
+          actions:
+            - kind: SendMessage
+              id: sendApproved
+              message: "Request approved. Processing now..."
+            # Add connector/flow action here to update the source system
+
+        - id: rejected
+          condition: =Topic.approvalData.decision = "reject"
+          actions:
+            - kind: SendMessage
+              id: sendRejected
+              message: |-
+                Request rejected.
+                **Reason:** {Topic.approvalData.reason}
+            # Add connector/flow action here to notify requester
+
+# --- Variant: Inline approve/reject buttons (no dropdown) ---
+# Use two Action.Submit with different data payloads:
+#
+#   actions: [
+#     {
+#       type: "Action.Submit",
+#       title: "✅ Approve",
+#       style: "positive",
+#       data: { decision: "approve" }
+#     },
+#     {
+#       type: "Action.Submit",
+#       title: "❌ Reject",
+#       style: "destructive",
+#       data: { decision: "reject" }
+#     }
+#   ]
+#
+# Note: With this variant, you lose the "reason" field.
+# To keep reasons, add Input.Text to body and use the dropdown pattern above.
+
+# --- Variant: With urgency indicator ---
+# Add a colored container at the top:
+#
+#   {
+#     type: "Container",
+#     style: "attention",
+#     items: [{
+#       type: "TextBlock",
+#       text: "⚠️ HIGH PRIORITY — Response needed by EOD",
+#       color: "Attention",
+#       weight: "Bolder"
+#     }]
+#   }

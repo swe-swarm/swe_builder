@@ -1,0 +1,58 @@
+# Pattern: Authentication Flow (Sign-In)
+# Trigger: OnSignIn (fires when authentication is required)
+# Shows: Handle sign-in prompts with reason detection and OAuthInput.
+# When to use: Agent requires user authentication (SSO, OAuth, Azure AD).
+# System variables:
+#   System.SignInReason — why the sign-in was triggered
+#     SignInReason.SignInRequired — user is not yet authenticated
+# Note: Authentication must be configured in Copilot Studio Settings > Authentication.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnSignIn
+  id: main
+  actions:
+    # Step 1: Check if sign-in is actually required
+    - kind: ConditionGroup
+      id: checkSignInReason_REPLACE1
+      conditions:
+        - id: isRequired_REPLACE2
+          condition: =System.SignInReason = SignInReason.SignInRequired
+          actions:
+            - kind: SendActivity
+              id: explainSignIn_REPLACE3
+              activity: "Hello! To help you, I'll need you to sign in first."
+
+    # Step 2: Prompt for authentication
+    - kind: OAuthInput
+      id: oauthPrompt_REPLACE4
+      title: Sign In
+      text: "To continue, please sign in with your organizational account."
+
+# --- Key properties ---
+# OnSignIn: fires when the agent detects authentication is needed
+# System.SignInReason: tells you WHY sign-in was triggered
+# OAuthInput: renders the sign-in card/button to the user
+
+# --- Prerequisites ---
+# 1. Authentication must be enabled in Copilot Studio:
+#    Settings > Authentication > Manual (Azure AD)
+# 2. An Azure AD app registration with proper redirect URIs
+# 3. The connection must be configured in the agent's Settings > Connections
+# 4. For SSO: configure SSO in Azure AD app and Copilot Studio
+
+# --- Post-authentication ---
+# After successful sign-in, the user's auth token is available via:
+#   System.User.AccessToken — for downstream connector calls
+#   System.User.DisplayName — user's display name
+#   System.User.Email — user's email
+# These are populated automatically by the platform.
+
+# --- Design notes ---
+# 1. The SendActivity before OAuthInput is optional but improves UX
+#    (tells user why they need to sign in)
+# 2. SignInReason.SignInRequired handles the initial auth case
+# 3. The OAuthInput renders differently per channel:
+#    - Web: sign-in button card
+#    - Teams: SSO popup or consent prompt
+#    - M365 Copilot: integrated auth flow

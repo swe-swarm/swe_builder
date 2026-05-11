@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "name": "ForEach Loop",
+    "description": "Iterate over an array with @items() reference. Runs in parallel by default; set operationOptions to 'Sequential' for ordered processing. Max 5,000 items per loop (100 in express mode).",
+    "category": "control",
+    "placeholders": {
+      "{{LOOP_NAME}}": "Display name for the loop step",
+      "{{ITEMS_EXPRESSION}}": "Expression returning array (e.g. @body('Get_Items')?['value'])",
+      "{{ITEM_ACTION_NAME}}": "Name of the action inside the loop"
+    },
+    "requires": []
+  },
+  "fragment": {
+    "{{LOOP_NAME}}": {
+      "runAfter": {},
+      "type": "Foreach",
+      "foreach": "{{ITEMS_EXPRESSION}}",
+      "actions": {
+        "{{ITEM_ACTION_NAME}}": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@items('{{LOOP_NAME}}')"
+        }
+      }
+    }
+  },
+  "_notes": {
+    "parallel_vs_sequential": "Default is parallel (up to 20 concurrent). Add \"operationOptions\": \"Sequential\" to force ordered execution.",
+    "item_reference": "Inside the loop, use @items('LoopName') to access the current item.",
+    "max_items": "Default limit: 5,000 items. Express mode: 100 items. Set 'runtimeConfiguration.concurrency.repetitions' to control parallelism.",
+    "nested_loops": "Supported but deeply nested loops hurt performance. Prefer flattening with Compose or Select actions."
+  }
+}

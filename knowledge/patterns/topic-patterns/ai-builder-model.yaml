@@ -1,0 +1,87 @@
+# Pattern: AI Builder Model Invocation
+# Trigger: OnRecognizedIntent
+# Shows: Collect input -> Invoke AI Builder model -> Process prediction -> Display result
+# Use for document processing, text classification, entity extraction via AI Builder
+#
+# NOTE: om-cli validate reports a false positive on InvokeAIBuilderModelAction.
+# The ObjectModel schema only has InvokeAIBuilderModelTaskAction (TaskAction hierarchy),
+# but MCS classic topics use InvokeAIBuilderModelAction (DialogAction hierarchy).
+# This kind is valid in the MCS code editor — ignore the om-cli diagnostic for this node.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    # Step 1: Collect input for the model
+    - kind: Question
+      id: askInput
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.modelInput
+      prompt: "{{INPUT_PROMPT}}"
+      entity: StringPrebuiltEntity
+
+    # Step 2: Invoke AI Builder model
+    # CRITICAL: aIModelId goes AFTER input/output sections
+    # Input bindings use = prefix, output bindings do NOT
+    - kind: InvokeAIBuilderModelAction
+      id: invokeModel
+      input:
+        binding:
+          "{{INPUT_FIELD_NAME}}": =Topic.modelInput
+      output:
+        binding:
+          "{{OUTPUT_FIELD_NAME}}": Topic.modelResult
+      aIModelId: "{{AI_MODEL_GUID}}"
+
+    # Step 3: Check result and respond
+    - kind: ConditionGroup
+      id: checkResult
+      conditions:
+        - id: hasResult
+          condition: =!IsBlank(Topic.modelResult)
+          actions:
+            - kind: SendMessage
+              id: showResult
+              message: |-
+                Here's what the model found:
+
+                {Topic.modelResult}
+
+      elseActions:
+        - kind: SendMessage
+          id: noResult
+          message: I wasn't able to process that. Please try again with different input.
+
+# --- Multi-input model example ---
+# For models requiring multiple input fields:
+#
+# - kind: InvokeAIBuilderModelAction
+#   id: invokeMultiInput
+#   input:
+#     binding:
+#       document_content: =Topic.document
+#       extraction_schema: =Topic.schema
+#       language: =Topic.language
+#   output:
+#     binding:
+#       predictionOutput: Topic.prediction
+#       confidence: Topic.confidence
+#   aIModelId: ba733cc8-4cc6-4e8b-979c-32d9b187a567
+#
+# BINDING RULES:
+#   - input binding values: =Topic.varName (WITH = prefix)
+#   - output binding values: Topic.varName (NO = prefix)
+#   - Use plain "binding:" — no "kind:" property inside
+#   - aIModelId is a GUID from the AI Builder model details page
+
+# --- AdaptiveCardPrompt alternative ---
+# If you need to collect structured data before model invocation,
+# use AdaptiveCardPrompt (see form-collect.yaml pattern) then pass
+# the collected fields to InvokeAIBuilderModelAction input bindings.

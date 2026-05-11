@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "name": "Generic Connector Action Template",
+    "description": "Template for any OpenApiConnection action. Fill in connector, operationId, and parameters. Includes all optional fields documented.",
+    "category": "action",
+    "placeholders": {
+      "{{ACTION_NAME}}": "Display name for the action",
+      "{{CONNECTOR}}": "Connector API name (e.g. shared_office365, shared_sharepointonline)",
+      "{{OPERATION_ID}}": "Operation ID from connector metadata",
+      "{{CONN_REF_LOGICAL}}": "Connection reference logical name from Dataverse"
+    },
+    "requires": ["{{CONNECTOR}}"]
+  },
+  "fragment": {
+    "{{ACTION_NAME}}": {
+      "runAfter": {},
+      "type": "OpenApiConnection",
+      "inputs": {
+        "host": {
+          "connectionName": "{{CONNECTOR}}",
+          "operationId": "{{OPERATION_ID}}",
+          "apiId": "/providers/Microsoft.PowerApps/apis/{{CONNECTOR}}"
+        },
+        "parameters": {},
+        "authentication": "@parameters('$authentication')",
+        "retryPolicy": {
+          "type": "exponential",
+          "count": 3,
+          "interval": "PT10S",
+          "minimumInterval": "PT5S",
+          "maximumInterval": "PT1M"
+        }
+      },
+      "metadata": {
+        "operationMetadataId": "{{OPERATION_METADATA_ID}}"
+      }
+    }
+  },
+  "_notes": {
+    "retry_policy": "Optional. Types: none, fixed, exponential. Remove retryPolicy block if not needed.",
+    "parameters": "Key-value pairs specific to the operation. Check connector docs for required params.",
+    "common_connectors": {
+      "shared_office365": "Outlook — send email, get events, manage contacts",
+      "shared_sharepointonline": "SharePoint — CRUD list items, get files",
+      "shared_commondataserviceforapps": "Dataverse — CRUD rows, run actions",
+      "shared_teams": "Teams — post messages, get channels",
+      "shared_microsoftcopilotstudio": "MCS — ExecuteCopilot",
+      "shared_excelonlinebusiness": "Excel Online — read/write worksheets"
+    },
+    "timeout": "Add \"timeout\": \"PT30S\" to inputs to set action-level timeout (ISO 8601 duration)."
+  }
+}

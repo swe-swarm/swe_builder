@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills — SWE_BUILDER</title>
+  <meta name="description" content="All 13 workflow skills in SWE_BUILDER: init, context, research, build, eval, fix, deploy, report, retro, refresh, library, bug, suggest." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/skills.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Workflow</div>
+          <ul class="sidebar-nav">
+            <li><a href="#mcs-init">mcs-init</a></li>
+            <li><a href="#mcs-context">mcs-context</a></li>
+            <li><a href="#mcs-research">mcs-research</a></li>
+            <li><a href="#mcs-build">mcs-build</a></li>
+            <li><a href="#mcs-eval">mcs-eval</a></li>
+            <li><a href="#mcs-fix">mcs-fix</a></li>
+            <li><a href="#mcs-deploy">mcs-deploy</a></li>
+            <li><a href="#mcs-report">mcs-report</a></li>
+            <li><a href="#mcs-retro">mcs-retro</a></li>
+            <li><a href="#mcs-refresh">mcs-refresh</a></li>
+            <li><a href="#mcs-library">mcs-library</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Utility</div>
+          <ul class="sidebar-nav">
+            <li><a href="#bug">bug</a></li>
+            <li><a href="#suggest">suggest</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>Skills</h1>
+        <p class="lede">
+          Skills are slash-invokable workflows. Eleven drive the agent build lifecycle. Two are
+          utilities for filing bugs and feature suggestions to Azure DevOps.
+        </p>
+
+        <h2 id="workflow-skills">Workflow skills (11)</h2>
+
+        <article class="skill" id="mcs-init">
+          <h3><code>/mcs-init</code> <span class="badge badge-blue">Init</span></h3>
+          <p>Create the project folder structure and a starter <code>brief.json</code>. Detects existing SDR documents in the folder and converts <code>.docx</code> to <code>.md</code> via pandoc.</p>
+<pre><code class="language-bash">/mcs-init MyAgent
+</code></pre>
+          <p><strong>Reads</strong>: project name. <strong>Writes</strong>: <code>Build-Guides/MyAgent/{docs,agents}/</code> and starter brief. <strong>Swarms</strong>: none.</p>
+        </article>
+
+        <article class="skill" id="mcs-context">
+          <h3><code>/mcs-context</code> <span class="badge badge-blue">Context</span></h3>
+          <p>Pull all M365 history about a customer via WorkIQ MCP. Searches emails, meetings, documents, Teams chats, and people. Pre-fills 60 to 80 percent of research.</p>
+<pre><code class="language-bash">/mcs-context Contoso
+</code></pre>
+          <p><strong>Reads</strong>: customer name. <strong>Writes</strong>: <code>customer-context.md</code> and <code>customer-interactions.csv</code>. <strong>Prerequisite</strong>: WorkIQ CLI authenticated.</p>
+        </article>
+
+        <article class="skill" id="mcs-research">
+          <h3><code>/mcs-research</code> <span class="badge badge-blue">Research</span></h3>
+          <p>Read project documents, identify agents, research MCS components, design architecture, enrich brief with eval sets. Smart at both project and agent levels (Phase 0 detects new docs, brief edits, and manually created agents).</p>
+<pre><code class="language-bash">/mcs-research MyAgent
+/mcs-research MyAgent agent-name
+</code></pre>
+          <p><strong>Reads</strong>: <code>docs/</code>, <code>customer-context.md</code>, <code>knowledge/cache/</code>, <code>knowledge/learnings/</code>. <strong>Writes</strong>: enriched <code>brief.json</code>, <code>evals.csv</code>. <strong>Swarms</strong>: Research Analyst (on demand), Prompt Engineer, Topic Engineer, QA Challenger.</p>
+        </article>
+
+        <article class="skill" id="mcs-build">
+          <h3><code>/mcs-build</code> <span class="badge badge-blue">Build</span></h3>
+          <p>Construct and publish the agent in Copilot Studio using the hybrid stack. Includes account/environment gate, find-or-create logic, step-level checkpoints for resume, MVP filtering, eval-driven loop (critical gate, per-capability iteration, regression suite), and a QA validation gate before report.</p>
+<pre><code class="language-bash">/mcs-build MyAgent agent-name
+</code></pre>
+          <p><strong>Reads</strong>: <code>brief.json</code>. <strong>Writes</strong>: <code>brief.json.buildStatus</code>, MCS agent. <strong>Swarms</strong>: Topic Engineer, QA Challenger (plus Research Analyst and Prompt Engineer on demand).</p>
+        </article>
+
+        <article class="skill" id="mcs-eval">
+          <h3><code>/mcs-eval</code> <span class="badge badge-green">Quality</span></h3>
+          <p>Run eval sets via Direct Line API (preferred), Playwright Test Chat (fallback), or Native MCS Eval (async). Per-set pass logic. Writes per-test results to brief for dashboard display.</p>
+<pre><code class="language-bash">/mcs-eval MyAgent agent-name
+/mcs-eval MyAgent agent-name --set critical,functional
+/mcs-eval MyAgent agent-name --native
+</code></pre>
+          <p><strong>Reads</strong>: <code>brief.json</code> evalSets. <strong>Writes</strong>: <code>brief.json.evalSets[].tests[].lastResult</code>, <code>evals-results.json</code>. <strong>Swarms</strong>: QA Challenger.</p>
+        </article>
+
+        <article class="skill" id="mcs-fix">
+          <h3><code>/mcs-fix</code> <span class="badge badge-amber">Repair</span></h3>
+          <p>Post-deployment fix loop. QA Challenger classifies failures into root causes, then PE and TE patch in parallel and re-evaluate. For initial build iteration, use <code>/mcs-build</code> (which has its own internal fix loop).</p>
+<pre><code class="language-bash">/mcs-fix MyAgent agent-name
+</code></pre>
+          <p><strong>Reads</strong>: <code>brief.json</code> (failing eval tests). <strong>Writes</strong>: <code>brief.json</code> (instructions, topics, fix history), MCS agent updates. <strong>Swarms</strong>: QA Challenger, Prompt Engineer, Topic Engineer.</p>
+        </article>
+
+        <article class="skill" id="mcs-deploy">
+          <h3><code>/mcs-deploy</code> <span class="badge badge-purple">Deploy</span></h3>
+          <p>Promote agent dev to prod. Two modes: agent-level (fast, replicate-agent.js) and solution-level (PAC CLI export and import, ALM-ready). Includes pre-deploy validation, connection mapping, and post-deploy smoke test.</p>
+<pre><code class="language-bash">/mcs-deploy MyAgent agent-name
+</code></pre>
+          <p><strong>Reads</strong>: <code>brief.json</code>. <strong>Writes</strong>: <code>deployment-report.md</code>. <strong>Swarms</strong>: none.</p>
+        </article>
+
+        <article class="skill" id="mcs-report">
+          <h3><code>/mcs-report</code> <span class="badge badge-purple">Report</span></h3>
+          <p>Generate customer-shareable reports from <code>brief.json</code>. Four report types for different audiences. Optional GPT review via the multi-model reviewer for second-opinion quality scoring.</p>
+<pre><code class="language-bash">/mcs-report MyAgent agent-name --type brief
+/mcs-report MyAgent agent-name --type build
+/mcs-report MyAgent agent-name --type customer
+/mcs-report MyAgent agent-name --type deployment
+</code></pre>
+          <p><strong>Reads</strong>: <code>brief.json</code>. <strong>Writes</strong>: <code>{type}-report.md</code>.</p>
+        </article>
+
+        <article class="skill" id="mcs-retro">
+          <h3><code>/mcs-retro</code> <span class="badge badge-cyan">Retro</span></h3>
+          <p>Post-session retrospective. Captures learnings into the knowledge index with Tier 1 (auto) and Tier 2 (user-confirmed) classification. Syncs upstream changes from tracked repos.</p>
+<pre><code class="language-bash">/mcs-retro MyAgent agent-name
+</code></pre>
+          <p><strong>Reads</strong>: session events, <code>knowledge/learnings/index.json</code>. <strong>Writes</strong>: learnings topic files, updated index.</p>
+        </article>
+
+        <article class="skill" id="mcs-refresh">
+          <h3><code>/mcs-refresh</code> <span class="badge badge-cyan">Knowledge</span></h3>
+          <p>Refresh one or all knowledge cache files with live research from MS Learn, web search, and MCS UI snapshots. Use to keep inventories current.</p>
+<pre><code class="language-bash">/mcs-refresh                      # all
+/mcs-refresh triggers              # one file
+/mcs-refresh --tier 1              # tier-1 (build-critical) only
+</code></pre>
+          <p><strong>Reads</strong>: <code>knowledge/cache/</code>. <strong>Writes</strong>: refreshed cache files with new <code>last_verified</code>.</p>
+        </article>
+
+        <article class="skill" id="mcs-library">
+          <h3><code>/mcs-library</code> <span class="badge badge-cyan">Library</span></h3>
+          <p>Browse, search, analyze, and contribute to the team's SharePoint solution library. Uses SWE-Swarms for intelligent tagging and pattern extraction.</p>
+<pre><code class="language-bash">/mcs-library list
+/mcs-library search "knowledge agent"
+/mcs-library upload MyAgent agent-name
+</code></pre>
+        </article>
+
+        <h2 id="utility">Utility skills (2)</h2>
+
+        <article class="skill" id="bug">
+          <h3><code>/bug</code> <span class="badge badge-red">ADO</span></h3>
+          <p>Conversational bug filing. Gathers details, previews, then creates a GitHub issue in <code>swe-swarm/swe_builder</code> via <code>gh issue create</code>. Auto-enriches with project, agent, page, build status, and eval score from the dashboard context.</p>
+        </article>
+
+        <article class="skill" id="suggest">
+          <h3><code>/suggest</code> <span class="badge badge-green">ADO</span></h3>
+          <p>Conversational feature suggestion. Same dialog flow as <code>/bug</code>. Creates an ADO Feature work item.</p>
+        </article>
+
+        <p><a class="btn btn-primary" href="cli.html">See all CLI commands</a> <a class="btn btn-secondary" href="swarms.html">Meet the SWE-Swarms</a></p>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

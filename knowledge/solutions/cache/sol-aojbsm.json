@@ -1,0 +1,35 @@
+{
+  "id": "sol-aojbsm",
+  "folderName": "Legal Contract Analysis for Retail Companies",
+  "folderId": "01Z2AOQ5VTZ7IQHCDOXRF2PGRINT4PX7DI",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:30.495Z",
+  "lastAnalyzed": "2026-03-02T19:43:30.497Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "RimaReyes",
+    "uniqueName": "Legal4Retail",
+    "version": "1.0.0.1",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "Legal4Retail_1_0_0_1.zip",
+      "size": 49520,
+      "type": "solution"
+    },
+    {
+      "name": "Legal4Retail_Build_Guide.docx",
+      "size": 68250,
+      "type": "document"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

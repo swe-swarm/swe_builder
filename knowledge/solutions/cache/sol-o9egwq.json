@@ -1,0 +1,35 @@
+{
+  "id": "sol-o9egwq",
+  "folderName": "Merchant Insights Agent",
+  "folderId": "01Z2AOQ5QK6GE4I6QOXNCKN5RQO6VTN3C4",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:55.140Z",
+  "lastAnalyzed": "2026-03-02T19:43:55.143Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "DefaultPublisherexecutivetrackdev",
+    "uniqueName": "MerchantInsightsAgent",
+    "version": "1.0.0.1",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "Merchant Insights Assistant Demo.mp4",
+      "size": 24300305,
+      "type": "other"
+    },
+    {
+      "name": "MerchantInsightsAgent_1_0_0_1.zip",
+      "size": 37933,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

@@ -1,0 +1,40 @@
+{
+  "id": "sol-swuj8s",
+  "folderName": "Calendar Event Scheduler",
+  "folderId": "01Z2AOQ5UQZDZEXTB26FD2JRZRSBIPAVOQ",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:27.687Z",
+  "lastAnalyzed": "2026-03-02T19:42:27.689Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "Event",
+    "uniqueName": "EventsScheduler",
+    "version": "1.0.0.5",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "EventsScheduler_1_0_0_5.zip",
+      "size": 103551,
+      "type": "solution"
+    },
+    {
+      "name": "ExecEventProject  v4.mp4",
+      "size": 33197015,
+      "type": "other"
+    },
+    {
+      "name": "Novartis - Envisioning - Event Assistant Agent.pptx",
+      "size": 81902080,
+      "type": "presentation"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

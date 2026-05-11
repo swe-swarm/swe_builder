@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schema-First Architecture — SWE_BUILDER</title>
+  <meta name="description" content="The brief.json schema is the contract. Identity is the perimeter. Four canvases share one delegated auth token, all coordinated through one open-source shareable schema. Secure by design." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/schema.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/typescript.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Schema-first</div>
+          <ul class="sidebar-nav">
+            <li><a href="#contract">The contract</a></li>
+            <li><a href="#brief-shape">brief.json shape</a></li>
+            <li><a href="#evolution">Schema evolution</a></li>
+            <li><a href="#validation">Validation gates</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Identity</div>
+          <ul class="sidebar-nav">
+            <li><a href="#auth-token">Single auth token</a></li>
+            <li><a href="#token-flow">Token flow</a></li>
+            <li><a href="#canvases">Four canvases</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Secure by design</div>
+          <ul class="sidebar-nav">
+            <li><a href="#secure-boundaries">Boundary model</a></li>
+            <li><a href="#zero-secrets">Zero stored secrets</a></li>
+            <li><a href="#revocation">Single-point revocation</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Open-source patterns</div>
+          <ul class="sidebar-nav">
+            <li><a href="#oss-shareable">Shareable schemas</a></li>
+            <li><a href="#library">Library</a></li>
+            <li><a href="#templates">Templates</a></li>
+            <li><a href="#framework">Framework</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>Schema-First, Identity-Bound</h1>
+        <p class="lede">
+          Schema is the contract. Identity is the perimeter. SWE_BUILDER is designed entirely
+          around one canonical schema (<code>brief.json</code>) and one delegated identity token.
+          Every canvas, every swarm, and every Microsoft Copilot Studio operation reads and writes
+          through this single coordinated surface. There are no out-of-band channels. There are no
+          stored service principal secrets.
+        </p>
+
+        <div class="callout callout-info">
+          <strong>NOTE:</strong> This page documents how the system holds together. If you remember one
+          thing: the schema is the only contract that swarms and canvases share, and the auth
+          token is the only credential that crosses canvas boundaries. Both are designed to be
+          shareable as open-source patterns.
+        </div>
+
+        <h2 id="contract">The contract: brief.json</h2>
+        <p>
+          <code>brief.json</code> is the single source of truth for an agent. It contains the
+          intent, the design, the integrations, the eval suite, and the build state. Everything
+          flows from it. Nothing operates without it.
+        </p>
+        <ul>
+          <li><strong>Source-of-truth invariant</strong>: if it is not in <code>brief.json</code>, it does not exist for the build pipeline.</li>
+          <li><strong>Validation invariant</strong>: every read and every write passes through JSON Schema validation. Garbage cannot enter the system.</li>
+          <li><strong>Versioning invariant</strong>: schema is semver. Backward-compatible evolution only. Breaking changes ship a migration script.</li>
+          <li><strong>Open invariant</strong>: schema lives at <code>templates/brief.json</code> in the repo. Public, forkable, MIT licensed.</li>
+        </ul>
+
+        <h2 id="brief-shape">brief.json top-level shape</h2>
+<pre><code class="language-json">{
+  "schemaVersion": "1.0.0",
+  "projectId": "contoso-orders",
+  "agentId": "order-status-agent",
+  "persona": {
+    "displayName": "Order Status Assistant",
+    "description": "Helps customers check order status, returns, and shipping.",
+    "tone": "friendly, concise, action-oriented"
+  },
+  "architecture": {
+    "mode": "single",
+    "scoringFactors": { /* objective scoring inputs */ }
+  },
+  "instructions": "...",
+  "capabilities": [ { "id": "...", "phase": "mvp", "tools": [...] } ],
+  "integrations": [ { "type": "mcp", "id": "ContosoOrders" } ],
+  "knowledge": [ { "type": "sharepoint", "url": "...", "phase": "mvp" } ],
+  "conversations": {
+    "topics": [ { "id": "OrderStatus", "yamlPath": "topics/order-status.yaml" } ],
+    "cards": []
+  },
+  "flows": [],
+  "evalConfig": {
+    "targetPassRate": 0.7,
+    "maxIterationsPerCapability": 3,
+    "maxRegressionRounds": 2
+  },
+  "evalSets": [
+    { "id": "critical", "tests": [ { "id": "...", "input": "...", "expected": "...", "lastResult": null } ] }
+  ],
+  "buildStatus": {
+    "account": "user@contoso.com",
+    "accountId": "<oid>",
+    "environment": "Contoso Dev",
+    "environmentId": "<envId>",
+    "mcsAgentId": "<botId>",
+    "completedSteps": [],
+    "qaVerdict": null
+  },
+  "notes": { "openQuestions": [], "fixHistory": [] }
+}
+</code></pre>
+
+        <h2 id="canvases">Four canvases, one schema</h2>
+        <p>
+          Every UI surface in SWE_BUILDER is a canvas. Each canvas is a different view onto the
+          same canonical schema. They never copy data, they never serialize across the network in
+          alternate formats, and they never bypass validation. They render slices of
+          <code>brief.json</code> and write slices back.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Canvas</th><th>Reads</th><th>Writes</th><th>UI surface</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Project Dashboard</td><td>project list, readiness, eval scores</td><td>project metadata</td><td><code>app/frontend/src/pages/Index.tsx</code></td></tr>
+            <tr><td>Brief Editor</td><td>full brief.json sections</td><td>every editable field</td><td><code>app/frontend/src/pages/BriefEditor.tsx</code></td></tr>
+            <tr><td>Terminal</td><td>buildStatus, completedSteps</td><td>buildStatus updates via Claude Code</td><td><code>app/terminal-server.js</code> + xterm.js</td></tr>
+            <tr><td>Library</td><td>solution index, templates</td><td>downloads to local templates/</td><td><code>app/frontend/src/pages/Library.tsx</code></td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="canvas-topology">Canvas authentication topology</h2>
+        <div class="mermaid">
+flowchart TB
+  subgraph User[Authenticated user]
+    U[User identity Entra OID]
+  end
+  subgraph Token[Single delegated token]
+    T[Auth token: oid, name, email, tenant, env, roles]
+  end
+  subgraph Canvases[Four canvases share one token]
+    C1[Project Dashboard]
+    C2[Brief Editor]
+    C3[Terminal]
+    C4[Library]
+  end
+  subgraph Schema[Canonical schema layer]
+    B[(brief.json)]
+    LIB[(solution-library/)]
+    TPL[(templates/)]
+  end
+  subgraph Swarms[SWE-Swarms]
+    SW[7 specialist swarms]
+  end
+  subgraph MCS[Microsoft Copilot Studio]
+    PAC[PAC CLI]
+    DV[Dataverse]
+    DL[Direct Line]
+  end
+  U --> T
+  T --> C1
+  T --> C2
+  T --> C3
+  T --> C4
+  C1 -.read/write slice.-> B
+  C2 -.read/write slice.-> B
+  C3 -.read/write slice.-> B
+  C4 -.read.-> LIB
+  C4 -.read.-> TPL
+  B <--> SW
+  C3 -- delegated token --> PAC
+  C3 -- delegated token --> DV
+  C3 -- delegated token --> DL
+        </div>
+        <p>
+          The token never leaves the user's session. It is delegated, scoped to MCS and
+          Dataverse only, and short-lived. Every canvas refresh forces a token refresh through
+          MSAL. There is no shared service principal, no API key, and no secret stored on disk.
+        </p>
+
+        <h2 id="auth-token">The single auth token</h2>
+        <p>
+          One delegated token authenticates the user across every canvas and every downstream
+          execution layer. It carries person details with it, so swarms and tools always know
+          who is acting and on whose behalf.
+        </p>
+<pre><code class="language-json">{
+  "tokenType": "Bearer",
+  "issuer": "https://login.microsoftonline.com/{tenantId}/v2.0",
+  "audience": [
+    "https://api.powerplatform.com",
+    "https://service.powerapps.com",
+    "https://directline.botframework.com"
+  ],
+  "claims": {
+    "oid": "<entra-object-id>",
+    "preferred_username": "user@contoso.com",
+    "name": "Person Name",
+    "tid": "<tenant-id>",
+    "roles": ["EnvironmentMaker", "SystemCustomizer"],
+    "x_environment_id": "<powerplatform-env-id>",
+    "x_environment_url": "https://contoso.crm.dynamics.com/"
+  },
+  "scopes": [
+    "https://api.powerplatform.com/.default",
+    "https://service.powerapps.com/user_impersonation"
+  ],
+  "expiresOn": "2025-12-31T18:00:00Z"
+}
+</code></pre>
+        <p>
+          Person details are first-class: the canvases display them, the swarms log them, and
+          the audit trail in <code>brief.json.buildStatus</code> records them on every step.
+        </p>
+
+        <h2 id="token-flow">Identity-bound operation flow</h2>
+        <div class="mermaid">
+sequenceDiagram
+  participant U as User
+  participant DASH as Dashboard Canvas
+  participant TERM as Terminal Canvas
+  participant CC as Claude Code (lead)
+  participant SW as SWE-Swarms
+  participant SCH as brief.json
+  participant PAC as PAC CLI
+  participant DV as Dataverse API
+  participant MCS as Copilot Studio
+
+  U-&gt;&gt;DASH: sign in (MSAL)
+  DASH-&gt;&gt;DASH: receive delegated token (oid, name, email, tenant, env, roles)
+  DASH-&gt;&gt;TERM: token shared via session storage
+  U-&gt;&gt;TERM: /mcs-build OrderAgent
+  TERM-&gt;&gt;CC: spawn with token in env
+  CC-&gt;&gt;SCH: read brief.json
+  CC-&gt;&gt;SW: delegate (token in context)
+  SW-&gt;&gt;SCH: write slices
+  CC-&gt;&gt;SCH: validate merged schema
+  CC-&gt;&gt;PAC: pac copilot list (delegated token)
+  PAC--&gt;&gt;CC: agent list scoped to env
+  CC-&gt;&gt;DV: PATCH instructions (delegated token)
+  DV--&gt;&gt;CC: 200 OK
+  CC-&gt;&gt;MCS: publish (delegated token)
+  CC-&gt;&gt;SCH: write buildStatus.actor = oid
+        </div>
+
+        <h2 id="secure-boundaries">Secure-by-design boundary model</h2>
+        <p>
+          Every layer enforces its own validation and authorization. There is no trust
+          inheritance from the canvas to MCS. The token must satisfy each layer's policy
+          independently.
+        </p>
+        <div class="mermaid">
+flowchart LR
+  subgraph C[Canvas layer]
+    direction TB
+    C1[MSAL login]
+    C2[Delegated token only]
+    C3[No secrets in localStorage]
+  end
+  subgraph S[Schema layer]
+    direction TB
+    S1[JSON Schema validate on read]
+    S2[JSON Schema validate on write]
+    S3[Field-level allow lists]
+  end
+  subgraph A[API layer]
+    direction TB
+    A1[OAuth bearer required]
+    A2[Scope check per endpoint]
+    A3[Tenant + env match check]
+  end
+  subgraph M[MCS layer]
+    direction TB
+    M1[Dataverse RBAC]
+    M2[Environment maker role]
+    M3[DLP policy enforcement]
+  end
+  C --> S
+  S --> A
+  A --> M
+        </div>
+        <table>
+          <thead>
+            <tr><th>Layer</th><th>What it validates</th><th>What it rejects</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Canvas</td><td>Token presence, MSAL freshness</td><td>Expired or missing token</td></tr>
+            <tr><td>Schema</td><td>Field types, required fields, enum values, cross-references</td><td>Unknown fields, type mismatches, broken refs</td></tr>
+            <tr><td>API</td><td>OAuth scope, tenant ID, environment ID</td><td>Wrong scope, wrong tenant, wrong env</td></tr>
+            <tr><td>MCS</td><td>Dataverse RBAC, role membership, DLP</td><td>Insufficient role, blocked connector, DLP violation</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="zero-secrets">Zero stored secrets</h2>
+        <ul>
+          <li>No service principal client secrets in <code>.env</code> or config files</li>
+          <li>No API keys for downstream connectors (delegated token only)</li>
+          <li>No persisted refresh tokens in plain text (MSAL handles cache encryption)</li>
+          <li>Token cache is per-user, per-machine, scoped by audience</li>
+          <li>Secrets that must exist (Direct Line keys for testing, optional GitHub Copilot tokens) live in OS-level credential managers, never in the repo</li>
+        </ul>
+
+        <h2 id="revocation">Single-point revocation</h2>
+        <p>
+          Revoke the user's Entra session and every canvas, every swarm context, every CLI
+          operation, and every downstream MCS call stops within the token's TTL window
+          (typically 60 minutes, often less when conditional access policies trigger).
+        </p>
+        <ul>
+          <li>One revocation in Entra propagates everywhere</li>
+          <li>No service principal to rotate independently</li>
+          <li>No long-lived API keys to hunt down</li>
+          <li>Audit trail in <code>buildStatus.actor</code> tells you exactly what the user did and when</li>
+        </ul>
+
+        <h2 id="evolution">Schema evolution</h2>
+        <p>
+          The schema evolves with discipline. Backward-compatible additions are routine.
+          Breaking changes ship a migration.
+        </p>
+        <div class="mermaid">
+flowchart LR
+  V1[brief.json v1.0.0] -->|add field, optional| V11[v1.1.0]
+  V11 -->|add field, optional| V12[v1.2.0]
+  V12 -->|deprecate field| V13[v1.3.0]
+  V13 -->|remove deprecated field| V20[v2.0.0]
+  V20 -->|migration script| MIG[scripts/migrate-1.x-to-2.0.js]
+  MIG -->|backfill defaults| OUT[Migrated brief.json]
+        </div>
+        <ul>
+          <li><strong>Additive (minor bump)</strong>: new optional field, new enum value, new section</li>
+          <li><strong>Deprecation (minor bump)</strong>: mark field as deprecated, keep it readable for one major version</li>
+          <li><strong>Breaking (major bump)</strong>: remove deprecated field, change required field, change enum semantics. Always paired with a migration script.</li>
+        </ul>
+
+        <h2 id="validation">Validation gates</h2>
+        <p>JSON Schema validation runs at five places:</p>
+        <ol>
+          <li>When the brief editor canvas saves a section</li>
+          <li>When a swarm writes its slice back</li>
+          <li>When the orchestrator merges swarm outputs</li>
+          <li>When <code>/mcs-build</code> reads the brief at the start of a build</li>
+          <li>When the build report is generated (sanity check before customer hand-off)</li>
+        </ol>
+
+        <h2 id="oss-shareable">Open-source shareable patterns</h2>
+        <p>
+          The schema and the token shape are both designed to be shareable as open-source
+          patterns. Other teams can adopt SWE_BUILDER's approach without copying the entire
+          codebase.
+        </p>
+        <div class="grid grid-3">
+          <div class="card">
+            <span class="label">OSS pattern</span>
+            <h3>Schema as contract</h3>
+            <p>
+              Fork <code>templates/brief.json</code> as a starting point. Extend with your
+              own fields. Publish your variant as a community schema. Validate with any
+              standard JSON Schema validator.
+            </p>
+          </div>
+          <div class="card">
+            <span class="label">OSS pattern</span>
+            <h3>Delegated token only</h3>
+            <p>
+              Use the same token shape. Carry person details. Never store service principal
+              secrets. The pattern works for any delegated-permission downstream API, not
+              just MCS.
+            </p>
+          </div>
+          <div class="card">
+            <span class="label">OSS pattern</span>
+            <h3>Canvas as schema slice</h3>
+            <p>
+              Build canvases that render schema slices. Generate TypeScript types from JSON
+              Schema. The UI adapts when the schema changes; you never sync types by hand.
+            </p>
+          </div>
+        </div>
+
+        <h2 id="library">Library: shareable schema instances</h2>
+        <p>
+          The <strong>solution library</strong> is a community of <code>brief.json</code>
+          instances, each one a complete agent design. Browse them in the Library canvas,
+          fork what you need, publish back what you build. The library is where schema
+          becomes social.
+        </p>
+        <ul>
+          <li>30+ cached solution snapshots in <code>knowledge/solutions/</code></li>
+          <li>Each entry: <code>brief.json</code> + <code>topics/</code> + <code>evals.csv</code></li>
+          <li>Searchable by industry, capability, integration pattern</li>
+          <li>Upload to team SharePoint via <code>tools/solution-library.js</code></li>
+        </ul>
+
+        <h2 id="templates">Templates: schema scaffolds</h2>
+        <p>
+          The <strong>templates</strong> directory holds the canonical schema and the
+          starter scaffolds. New projects begin from a template. Templates are versioned
+          alongside the schema.
+        </p>
+<pre><code class="language-text">templates/
+  brief.json                # Canonical schema scaffold (the contract)
+  topics/                   # Reusable topic YAML scaffolds
+  evals/                    # Eval set scaffolds (5 default sets)
+  flows/                    # Power Automate flow scaffolds
+</code></pre>
+        <p>
+          When you fork a template, you get a valid <code>brief.json</code> that passes
+          schema validation on day one. Everything you change must continue to pass.
+        </p>
+
+        <h2 id="framework">Framework: the assembled stack</h2>
+        <p>
+          The <strong>framework</strong> is the assembled stack: schema + canvases + swarms
+          + lead orchestrator + hybrid execution layer. It is what you get when you put
+          all the pieces together. Each piece is independently swappable.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Layer</th><th>Component</th><th>Replaceable with</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Schema</td><td>brief.json</td><td>Any JSON Schema</td></tr>
+            <tr><td>Canvas</td><td>React + Vite SPA</td><td>Any framework that consumes schema slices</td></tr>
+            <tr><td>Swarms</td><td>Claude Code sub-agents</td><td>AutoGen, Semantic Kernel, custom orchestrators</td></tr>
+            <tr><td>Orchestrator</td><td>Claude Code lead</td><td>Any model with tool calling and file access</td></tr>
+            <tr><td>Execution</td><td>PAC CLI + Dataverse + Direct Line + Playwright</td><td>Any MCS automation surface</td></tr>
+            <tr><td>Identity</td><td>MSAL + Entra ID</td><td>Any OIDC provider that issues delegated tokens</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="closing">The throughline</h2>
+        <p>
+          Schema is the contract that swarms and canvases share. Identity is the perimeter
+          that operations cross. Both are open. Both are simple. Both are auditable. The
+          system holds together because they hold together.
+        </p>
+
+        <p>
+          <a class="btn btn-primary" href="swarms.html">See how the swarms use the schema</a>
+          <a class="btn btn-secondary" href="architecture.html">View architecture diagrams</a>
+          <a class="btn btn-secondary" href="tools.html">Browse the validation tools</a>
+        </p>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

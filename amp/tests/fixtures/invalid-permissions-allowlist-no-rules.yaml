@@ -1,0 +1,10 @@
+ampVersion: "1.0"
+agent:
+  name: invalid-permissions-agent
+  language: typescript
+runtime:
+  copilotSdk:
+    transport: stdio
+extensions:
+  permissions:
+    mode: allowList

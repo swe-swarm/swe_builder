@@ -1,0 +1,54 @@
+# Pattern: Conversation Start / Greeting
+# Trigger: OnConversationStart (fires automatically when user opens chat)
+# Variants:
+#   A) Simple greeting (message only)
+#   B) Greeting with suggested actions (one-click buttons)
+#   C) Auto-redirect to another topic (no user input needed)
+# Customize: Replace {{PLACEHOLDERS}} with your values
+
+# --- Variant A: Simple greeting ---
+# kind: AdaptiveDialog
+# beginDialog:
+#   kind: OnConversationStart
+#   id: main
+#   actions:
+#     - kind: SendActivity
+#       id: sendGreeting
+#       activity:
+#         text:
+#           - "Hello! I'm {{AGENT_NAME}}, your {{AGENT_ROLE}}. How can I help?"
+
+# --- Variant B: Greeting with suggested action buttons ---
+# kind: AdaptiveDialog
+# beginDialog:
+#   kind: OnConversationStart
+#   id: main
+#   actions:
+#     - kind: SendActivity
+#       id: sendGreeting
+#       activity:
+#         text:
+#           - "Hello! I'm {{AGENT_NAME}}. What would you like to do?"
+#         suggestedActions:
+#           actions:
+#             - title: {{BUTTON_1_LABEL}}
+#               type: imBack
+#               value: {{BUTTON_1_TEXT}}
+#             - title: {{BUTTON_2_LABEL}}
+#               type: imBack
+#               value: {{BUTTON_2_TEXT}}
+
+# --- Variant C: Auto-redirect (RECOMMENDED for dashboard/checklist agents) ---
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendWelcome
+      activity:
+        text:
+          - "Welcome! Loading your dashboard..."
+    - kind: BeginDialog
+      id: autoRedirect
+      dialog: "{{TARGET_TOPIC_SCHEMA}}"

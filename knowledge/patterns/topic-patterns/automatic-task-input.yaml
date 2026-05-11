@@ -1,0 +1,106 @@
+# Pattern: AutomaticTaskInput (Generative Orchestration)
+# Trigger: OnRecognizedIntent (by agent — no trigger phrases)
+# Shows: Orchestrator auto-collects inputs instead of explicit Question nodes.
+#         Includes inputType/outputType schemas for type safety.
+# When to use: Generative orchestration agents where the orchestrator should
+#              collect required data from the user automatically.
+# When NOT to use: Classic orchestration, or when you need custom validation
+#                  logic on each input (use Question nodes instead).
+# Key rule: Topics that prepare data for an action should output DATA, not
+#           status messages, so the orchestrator can chain correctly.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    # No triggerQueries — orchestrator routes by displayName + description
+  actions:
+    # Inputs are auto-collected by the orchestrator before this topic runs.
+    # The user is prompted conversationally for each missing input.
+
+    # Processing step — use the collected inputs
+    - kind: SetVariable
+      id: computeResult
+      variable: init:Topic.result
+      value: ="{{EXPRESSION_USING_INPUTS}}"
+
+    # Output the result for orchestrator chaining
+    # Do NOT use SendActivity here if this topic feeds into an action.
+    # The orchestrator will present the result or chain it to the next action.
+
+# --- Input definitions ---
+# Inputs are declared at the dialog level, outside beginDialog.
+# shouldPromptUser: true = ask user if missing
+# shouldPromptUser: false = extract silently from context (see knowledge-routing.yaml)
+inputs:
+  - id: input1
+    kind: AutomaticTaskInput
+    displayName: "{{INPUT_1_LABEL}}"
+    description: "{{INPUT_1_DESCRIPTION}}"
+    entity: StringPrebuiltEntity
+    variable: init:Topic.input1
+    shouldPromptUser: true
+  - id: input2
+    kind: AutomaticTaskInput
+    displayName: "{{INPUT_2_LABEL}}"
+    description: "{{INPUT_2_DESCRIPTION}}"
+    entity: NumberPrebuiltEntity
+    variable: init:Topic.input2
+    shouldPromptUser: true
+
+# --- Type schemas (REQUIRED for orchestrator chaining) ---
+inputType:
+  properties:
+    input1:
+      type: String
+      description: "{{INPUT_1_DESCRIPTION}}"
+    input2:
+      type: Number
+      description: "{{INPUT_2_DESCRIPTION}}"
+outputType:
+  properties:
+    result:
+      type: String
+      description: "{{OUTPUT_DESCRIPTION}}"
+
+# --- Topic-Action Chaining Rules ---
+# 1. If this topic PREPARES DATA for an action: output the data (not a status message).
+#    The orchestrator chains the output to the next action's input.
+#    BAD:  SendActivity "Your report is ready!" (dead end — orchestrator can't chain)
+#    GOOD: Set Topic.result = the data, let orchestrator decide how to present it.
+#
+# 2. If this topic IS the final action: use SendActivity to present results directly.
+#
+# 3. inputType/outputType schemas must match the actual inputs/outputs.
+#    Missing schemas cause silent orchestration failures.
+
+# --- Example: Arithmetic sum (from MCS docs) ---
+# inputs:
+#   - id: num1
+#     kind: AutomaticTaskInput
+#     displayName: First number
+#     description: The first number to add
+#     entity: NumberPrebuiltEntity
+#     variable: init:Topic.number1
+#     shouldPromptUser: true
+#   - id: num2
+#     kind: AutomaticTaskInput
+#     displayName: Second number
+#     description: The second number to add
+#     entity: NumberPrebuiltEntity
+#     variable: init:Topic.number2
+#     shouldPromptUser: true
+# actions:
+#   - kind: SetVariable
+#     id: computeSum
+#     variable: init:Topic.result
+#     value: =Text(Topic.number1 + Topic.number2)
+# inputType:
+#   properties:
+#     number1: { type: Number, description: First number }
+#     number2: { type: Number, description: Second number }
+# outputType:
+#   properties:
+#     result: { type: String, description: The sum as text }

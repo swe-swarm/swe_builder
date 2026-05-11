@@ -1,0 +1,64 @@
+# Pattern: Escalation / Graceful Decline
+# Trigger: OnRecognizedIntent
+# Shows: Recognize out-of-scope request → decline gracefully → offer alternatives
+# Use for boundary DECLINE and REFUSE scenarios
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Escalate to Human
+    triggerQueries:
+      - talk to a person
+      - speak to someone
+      - human agent
+      - transfer me
+      - I need help from a real person
+  actions:
+    - kind: SendMessage
+      id: acknowledgeEscalation
+      message: I understand you'd like to speak with someone directly. Let me connect you.
+
+    - kind: BeginDialog
+      id: redirectToEscalate
+      dialog: crf5a_escalate
+
+# --- Decline Pattern (out of scope but polite) ---
+# kind: AdaptiveDialog
+# beginDialog:
+#   kind: OnRecognizedIntent
+#   id: main
+#   intent:
+#     displayName: Out of Scope - Decline
+#     triggerQueries:
+#       - "{{OUT_OF_SCOPE_TRIGGER_1}}"
+#       - "{{OUT_OF_SCOPE_TRIGGER_2}}"
+#   actions:
+#     - kind: SendMessage
+#       id: declinePolitely
+#       message: |-
+#         I appreciate the question, but that's outside my area of expertise.
+#
+#         I specialize in:
+#         - {{CAPABILITY_1}}
+#         - {{CAPABILITY_2}}
+#
+#         Is there anything else I can help you with in those areas?
+
+# --- Refuse Pattern (hard boundary) ---
+# kind: AdaptiveDialog
+# beginDialog:
+#   kind: OnRecognizedIntent
+#   id: main
+#   intent:
+#     displayName: Boundary - Refuse
+#     triggerQueries:
+#       - "{{FORBIDDEN_TRIGGER_1}}"
+#       - "{{FORBIDDEN_TRIGGER_2}}"
+#   actions:
+#     - kind: SendMessage
+#       id: refuseHard
+#       message: I'm not able to help with that request. Please contact {{ESCALATION_CONTACT}} for assistance.
+#     - kind: EndDialog
+#       id: endRefuse

@@ -1,0 +1,40 @@
+{
+  "id": "sol-uv9gsd",
+  "folderName": "Contract Extractor Agent",
+  "folderId": "01Z2AOQ5TW4X67ZNNYVNEIQXOGR7WX7EBK",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:46.780Z",
+  "lastAnalyzed": "2026-03-02T19:42:46.781Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "RimaReyes",
+    "uniqueName": "LegalCBADemo",
+    "version": "1.0.0.0",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "LegalCBADemo_1_0_0_0.zip",
+      "size": 56133,
+      "type": "solution"
+    },
+    {
+      "name": "Legal-CBAs-Agent-Build-How-To-Guide.docx",
+      "size": 96818,
+      "type": "document"
+    },
+    {
+      "name": "PPCC25 - Scan, Extract, Automate Large Files Meet Low-Code AI.pptx",
+      "size": 206396668,
+      "type": "presentation"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

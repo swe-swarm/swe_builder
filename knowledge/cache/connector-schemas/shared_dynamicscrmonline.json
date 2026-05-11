@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "connectorId": "shared_dynamicscrmonline",
+    "displayName": "Dynamics 365 (deprecated)",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "GetOnNewItems_V2": {
+      "displayName": "When a record is created (deprecated)",
+      "method": "POST",
+      "description": "Triggers a flow when an object is created in Dynamics 365 (with option sets exposed as strings)",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

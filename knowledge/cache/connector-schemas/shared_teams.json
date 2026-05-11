@@ -1,0 +1,389 @@
+{
+  "_meta": {
+    "connectorId": "shared_teams",
+    "displayName": "Microsoft Teams",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "AddMemberToTag": {
+      "displayName": "Add a member to a team tag",
+      "method": "POST",
+      "description": "Adds a user to a team tag",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "AddMemberToTeam": {
+      "displayName": "Add a member to a team",
+      "method": "POST",
+      "description": "Adds a member to a team in Microsoft Teams",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "AtMentionTag": {
+      "displayName": "Get an @mention token for a team tag",
+      "method": "POST",
+      "description": "Creates a token that can be inserted into a message or adaptive card sent as a user in a channel to @mention a team tag.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "AtMentionUser": {
+      "displayName": "Get an @mention token for a user",
+      "method": "POST",
+      "description": "Creates a token that can be inserted into a message or adaptive card to @mention a user.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateATeam": {
+      "displayName": "Create a team",
+      "method": "POST",
+      "description": "Creates a new team in Microsoft Teams",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateChannel": {
+      "displayName": "Create a channel",
+      "method": "POST",
+      "description": "Create a new channel within a specified team",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateChat": {
+      "displayName": "Create a chat",
+      "method": "POST",
+      "description": "Creates a one on one or group chat",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateTag": {
+      "displayName": "Create a tag for a team",
+      "method": "POST",
+      "description": "Creates a tag in a team",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateTeamsMeeting": {
+      "displayName": "Create a Teams meeting",
+      "method": "POST",
+      "description": "Create a meeting with a link at the bottom of the invite to join the meeting online on Microsoft Teams.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteTag": {
+      "displayName": "Delete a team tag",
+      "method": "POST",
+      "description": "Deletes a tag from a team",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteTagMember": {
+      "displayName": "Delete a member from a team tag",
+      "method": "POST",
+      "description": "Deletes a member from a team tag",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetAllAssociatedTeams": {
+      "displayName": "List associated teams",
+      "method": "POST",
+      "description": "Lists all the teams you are a direct member of, or are a member of a shared channel that is hosted inside the team.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetAllChannelsForTeam": {
+      "displayName": "List all channels",
+      "method": "POST",
+      "description": "Lists all the channels for a specific team, including channels that are shared with the team",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetAllTeams": {
+      "displayName": "List joined teams",
+      "method": "POST",
+      "description": "Lists all the teams in Microsoft Teams that you are a member of",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetChannel": {
+      "displayName": "Get details for a specific channel in a team",
+      "method": "POST",
+      "description": "Get the channel details",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetChannelsForGroup": {
+      "displayName": "List channels",
+      "method": "POST",
+      "description": "Lists all the channels for a specific team",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetChats": {
+      "displayName": "List chats",
+      "method": "POST",
+      "description": "Lists recent chats you are a part of",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetMessageDetails": {
+      "displayName": "Get message details",
+      "method": "POST",
+      "description": "Gets the details of a message in a chat or a channel.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetMessagesFromChannel": {
+      "displayName": "Get messages",
+      "method": "POST",
+      "description": "Gets messages from a channel in a specific team. For shared channels, the team ID must refer to the host team, which is the team that owns the shared channel.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetTagMembers": {
+      "displayName": "List the members of a team tag",
+      "method": "POST",
+      "description": "Lists the members of a team tag",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetTags": {
+      "displayName": "List all tags for a team",
+      "method": "POST",
+      "description": "Lists the team's tags",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetTeam": {
+      "displayName": "Get a team",
+      "method": "POST",
+      "description": "Gets the details for a team in Microsoft Teams.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "HttpRequest": {
+      "displayName": "Send a Microsoft Graph HTTP request",
+      "method": "POST",
+      "description": "Construct a Microsoft Graph REST API request to invoke against the Microsoft Teams endpoints. These segments are supported: 1st segment: /teams, /me, /users 2nd segment: channels, chats, installedApps, messages, pinnedMessages. Learn more: https://docs.microsoft.com/en-us/graph/use-the-api",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListMembers": {
+      "displayName": "List members",
+      "method": "POST",
+      "description": "List direct members of a group chat or a channel",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListRepliesToMessage": {
+      "displayName": "List replies of a channel message",
+      "method": "POST",
+      "description": "List replies to a message in a channel in a specific team. For shared channels, the team ID must refer to the host team, which is the team that owns the shared channel.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnGroupMembershipAdd": {
+      "displayName": "When a new team member is added",
+      "method": "POST",
+      "description": "Triggers when a member is added to the given team",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnGroupMembershipRemoval": {
+      "displayName": "When a new team member is removed",
+      "method": "POST",
+      "description": "Triggers when a member is removed from the specified team",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewChannelMessage": {
+      "displayName": "When a new channel message is added",
+      "method": "POST",
+      "description": "Triggers when a new message is posted to a channel in a team. Note that this trigger only fires when a root messages is added in the channel. Replies to an existing channel message will not result in the trigger event firing. For shared channels, the team ID must refer to the host team, which is the team that owns the shared channel.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewChannelMessageMentioningMe": {
+      "displayName": "When I am mentioned in a channel message",
+      "method": "POST",
+      "description": "Triggers when a new message that @mentions the current user is added to a channel in a team. For shared channels, the team ID must refer to the host team, which is the team that owns the shared channel.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PostCardToConversation": {
+      "displayName": "Post card in a chat or channel",
+      "method": "POST",
+      "description": "Posts a card to a chat or a channel",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PostFeedNotification": {
+      "displayName": "Post a feed notification",
+      "method": "POST",
+      "description": "Posts a notification to a user's activity feed linking to a chat or team.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PostMessageToConversation": {
+      "displayName": "Post message in a chat or channel",
+      "method": "POST",
+      "description": "Posts a message to a chat or a channel",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ReplyWithCardToConversation": {
+      "displayName": "Reply with an adaptive card in a channel",
+      "method": "POST",
+      "description": "Replies with an adaptive card to a channel's message",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ReplyWithMessageToConversation": {
+      "displayName": "Reply with a message in a channel",
+      "method": "POST",
+      "description": "Replies with a message to a channel's message",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateCardInConversation": {
+      "displayName": "Update an adaptive card in a chat or channel",
+      "method": "POST",
+      "description": "Updates an existing adaptive card",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PostCardAndWaitForResponse": {
+      "displayName": "Post adaptive card and wait for a response",
+      "method": "POST",
+      "description": "Posts an adaptive card to a chat or a channel and waits for a response from any user. This will pause the flow until any user responds.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "SubscribeUserMessageWithOptions": {
+      "displayName": "Post a choice of options as the Flow bot to a user",
+      "method": "POST",
+      "description": "Send a set of options to a Microsoft Teams user, that they must respond to before the flow will continue. This action will pause the flow until the user response to the options",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "WebhookAtMentionTrigger": {
+      "displayName": "When I'm @mentioned",
+      "method": "POST",
+      "description": "Triggers when a new message that @mentions the current user is added to a specified chat or channel.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "WebhookChatMessageTrigger": {
+      "displayName": "When a new chat message is added",
+      "method": "POST",
+      "description": "Triggers when a new message is posted in any chat the user is a part of.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "WebhookKeywordTrigger": {
+      "displayName": "When keywords are mentioned",
+      "method": "POST",
+      "description": "Triggers when a keyword is mentioned in a specified chat or channel. Does not trigger if a message is edited.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "WebhookMessageReactionTrigger": {
+      "displayName": "When someone reacted to a message in chat",
+      "method": "POST",
+      "description": "Triggers when someone reacts to a message in a specified chat or channel.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "WebhookNewMessageTrigger": {
+      "displayName": "When a new message is added to a chat or channel",
+      "method": "POST",
+      "description": "Triggers when a new message is posted in a specified chat or channel. Does not trigger if a message is edited.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

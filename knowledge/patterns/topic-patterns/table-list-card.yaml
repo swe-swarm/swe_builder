@@ -1,0 +1,159 @@
+# Pattern: Table / List Display Card
+# Trigger: OnRecognizedIntent (or mid-topic after data fetch)
+# Shows: Display tabular data or item lists from API/connector results
+# Common in: search results, order history, inventory, ticket lists
+#
+# Schema: 1.5 (Table element requires 1.5+)
+# Actions: Action.Submit for row selection, Action.OpenUrl for links
+# Channels: Teams, Web Chat, M365 Copilot, Omnichannel
+# WhatsApp: Not supported — falls back to plain text
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    # Assumes Topic.items is populated by a prior step (connector, HTTP, flow)
+
+    # Option A: Table element (v1.5+ — structured rows/columns)
+    - kind: SendMessage
+      id: sendTableCard
+      message:
+        text: "Here are the results:"
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "TextBlock",
+                    text: "{{TABLE_TITLE}}",
+                    weight: "Bolder",
+                    size: "Large"
+                  },
+                  {
+                    type: "Table",
+                    gridStyle: "accent",
+                    firstRowAsHeader: true,
+                    showGridLines: true,
+                    columns: [
+                      { width: 2 },
+                      { width: 1 },
+                      { width: 1 }
+                    ],
+                    rows: [
+                      {
+                        type: "TableRow",
+                        style: "accent",
+                        cells: [
+                          { type: "TableCell", items: [{ type: "TextBlock", text: "{{COL_1_HEADER}}", weight: "Bolder" }] },
+                          { type: "TableCell", items: [{ type: "TextBlock", text: "{{COL_2_HEADER}}", weight: "Bolder" }] },
+                          { type: "TableCell", items: [{ type: "TextBlock", text: "{{COL_3_HEADER}}", weight: "Bolder" }] }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{FOOTER_TEXT}}",
+                    size: "Small",
+                    isSubtle: true,
+                    spacing: "Medium"
+                  }
+                ]
+              }
+
+# --- Option B: Dynamic list with ForAll (PowerFx) ---
+# When Topic.items is an array of records, use ForAll to generate rows:
+#
+#   cardContent: |-
+#     ={
+#       type: "AdaptiveCard",
+#       version: "1.5",
+#       body: Concatenate(
+#         [{
+#           type: "TextBlock",
+#           text: "Search Results (" & CountRows(Topic.items) & " found)",
+#           weight: "Bolder",
+#           size: "Large"
+#         }],
+#         ForAll(
+#           FirstN(Topic.items, 5),
+#           {
+#             type: "Container",
+#             separator: true,
+#             items: [
+#               {
+#                 type: "ColumnSet",
+#                 columns: [
+#                   {
+#                     type: "Column",
+#                     width: "stretch",
+#                     items: [
+#                       { type: "TextBlock", text: ThisRecord.Title, weight: "Bolder", wrap: true },
+#                       { type: "TextBlock", text: ThisRecord.Description, wrap: true, isSubtle: true, size: "Small" }
+#                     ]
+#                   },
+#                   {
+#                     type: "Column",
+#                     width: "auto",
+#                     verticalContentAlignment: "Center",
+#                     items: [
+#                       { type: "TextBlock", text: ThisRecord.Status, color: If(ThisRecord.Status = "Active", "Good", "Attention") }
+#                     ]
+#                   }
+#                 ]
+#               }
+#             ]
+#           }
+#         )
+#       )
+#     }
+#
+# Note: FirstN() limits displayed items — cards have a ~28KB size limit on Teams.
+# For large result sets, show top 5 and add "Show more" Action.Submit.
+
+# --- Option C: Selectable list (user picks an item) ---
+# Use Question node + Input.ChoiceSet with dynamic choices:
+#
+# - kind: Question
+#   id: selectItem
+#   variable: init:Topic.selectedId
+#   prompt:
+#     text: "Select an item:"
+#     attachments:
+#       - kind: AdaptiveCardTemplate
+#         cardContent: |-
+#           ={
+#             type: "AdaptiveCard",
+#             version: "1.5",
+#             body: [
+#               {
+#                 type: "TextBlock",
+#                 text: "Select an item from the list:",
+#                 weight: "Bolder"
+#               },
+#               {
+#                 type: "Input.ChoiceSet",
+#                 id: "selectedItem",
+#                 label: "Items",
+#                 isRequired: true,
+#                 choices: ForAll(Topic.items, { title: ThisRecord.Name, value: ThisRecord.Id })
+#               }
+#             ],
+#             actions: [{ type: "Action.Submit", title: "Select" }]
+#           }
+#   entity: StringPrebuiltEntity
+
+# --- Size guidance ---
+# Teams: ~28 KB max card size. Limit to 5-10 rows in table/list.
+# For larger datasets: paginate with "Next page" Action.Submit
+# or provide a link to full results with Action.OpenUrl.

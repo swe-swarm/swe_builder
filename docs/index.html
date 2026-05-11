@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWE_BUILDER — Microsoft Copilot Studio agent build automation</title>
+  <meta name="description" content="End-to-end agent build automation for Microsoft Copilot Studio. Hybrid stack with PAC CLI, Dataverse API, Code Editor YAML, Direct Line, and Playwright. SWE-Swarms peer review and eval-driven iteration. Schema-first and secure by design." />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SWE_BUILDER — MCS agent build automation" />
+  <meta property="og:description" content="End-to-end agent build automation for Microsoft Copilot Studio. Hybrid stack with PAC CLI, Dataverse API, YAML, Direct Line, Playwright, and SWE-Swarms peer review. Schema-first, secure by design." />
+  <meta property="og:url" content="https://swe-swarm.github.io/swe_builder/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Microsoft Copilot Studio Automation</span>
+        <h1>Build production agents end-to-end with one CLI.</h1>
+        <p class="lede">
+          SWE_BUILDER automates the full Copilot Studio agent lifecycle: data intake, research,
+          architecture, build, evaluation, and an automated fix loop. A hybrid stack combines
+          PAC CLI, Dataverse API, Code Editor YAML, Direct Line, and Playwright, coordinated by
+          Claude Code with seven SWE-Swarms that peer-review every step. Designed schema-first
+          and secure by design.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="getting-started.html">Get started</a>
+          <a class="btn btn-secondary" href="architecture.html">View architecture</a>
+          <a class="btn btn-ghost" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="hero-meta">
+          <span><strong>13</strong> workflow skills</span>
+          <span><strong>7</strong> SWE-Swarms</span>
+          <span><strong>5</strong> tool layers</span>
+          <span><strong>4</strong> identity-bound canvases</span>
+          <span><strong>18</strong> capability cheat sheets</span>
+          <span><strong>357</strong> validated YAML node types</span>
+          <span><strong>MIT</strong> licensed</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="layout">
+      <main class="content">
+
+        <h2 id="what-it-is">What it is</h2>
+        <p>
+          SWE_BUILDER is a multi-process workstation app for building Microsoft Copilot Studio
+          agents at production quality. Customer documents go in. A published agent backed by an
+          eval suite and a customer-shareable build report come out. Claude Code is the operator.
+          You watch the work happen in an embedded terminal.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <span class="label">Brief-Driven</span>
+            <h3>One source of truth</h3>
+            <p>Every project has a <code>brief.json</code> that captures architecture, instructions, tools, model, knowledge, topics, and eval sets. Build, eval, fix, and reports all flow from it.</p>
+          </div>
+          <div class="card">
+            <span class="label">Eval-Verified</span>
+            <h3>Quality bar enforced</h3>
+            <p>Eval sets are generated from the spec and run through Direct Line API. Critical gate, per-capability iteration, and regression suite must pass before publish.</p>
+          </div>
+          <div class="card">
+            <span class="label">Hybrid Stack</span>
+            <h3>Right tool, right job</h3>
+            <p>PAC CLI for lifecycle, Dataverse API for config, Code Editor YAML for topics, Direct Line for tests, Playwright only for UI-only operations.</p>
+          </div>
+          <div class="card">
+            <span class="label">SWE-Swarms</span>
+            <h3>Built-in peer review</h3>
+            <p>Seven specialist swarms (research, prompt, topic, QA, repo-health, flow-designer, repo-optimizer) coordinate through the shared schema and challenge each other before any change reaches Copilot Studio.</p>
+          </div>
+          <div class="card">
+            <span class="label">Multi-Agent First</span>
+            <h3>Decompose by default</h3>
+            <p>Six-factor objective scoring of the use case decides single vs. multi-agent. Children are built first, then the orchestrator wires them.</p>
+          </div>
+          <div class="card">
+            <span class="label">Continuous Learning</span>
+            <h3>Every build improves the next</h3>
+            <p>A learnings index captures insights with confirmed counts and staleness flags. Future research consults them without overriding fresh decisions.</p>
+          </div>
+          <div class="card">
+            <span class="label">Schema-First</span>
+            <h3>brief.json is the contract</h3>
+            <p>One canonical schema. Every canvas, every swarm, and every operation reads and writes through it. JSON Schema validates at every boundary. The schema is open-source and shareable.</p>
+          </div>
+          <div class="card">
+            <span class="label">Secure by Design</span>
+            <h3>Identity-bound canvases</h3>
+            <p>Four canvases share one delegated auth token containing identity (Entra OID) and person details. No service principal secrets. Single-point revocation through Entra.</p>
+          </div>
+          <div class="card">
+            <span class="label">Open-Source Library</span>
+            <h3>Schema, templates, framework</h3>
+            <p>Library of shareable agent designs. Templates that pass validation on day one. A pluggable framework where every layer (canvas, swarm, orchestrator) is independently swappable.</p>
+          </div>
+        </div>
+
+        <h2 id="quickstart">Quickstart</h2>
+        <p>Two paths. Pick whichever matches your environment.</p>
+
+        <h3 id="option-a">Option A: <code>start.cmd</code> (Windows, zero prerequisites)</h3>
+<pre><code class="language-powershell">git clone https://github.com/swe-swarm/swe_builder
+cd swe_builder
+.\start.cmd
+</code></pre>
+        <p>
+          On first run, <code>start.cmd</code> uses winget (built into Windows 11) to install
+          Node.js, Python, Git, Claude Code, and dependencies. No admin rights required. Subsequent
+          runs detect everything is present and launch in roughly a second.
+        </p>
+
+        <h3 id="option-b">Option B: <code>npm install</code> (cross-platform)</h3>
+<pre><code class="language-bash">npm install -g swe_builder
+swe_builder start
+</code></pre>
+        <p>
+          Requires Node.js 18+ and Python 3.10+ already installed. The post-install hook builds
+          the frontend, installs Python deps, and configures environment variables.
+        </p>
+
+        <div class="callout">
+          <div class="callout-title">First-run setup</div>
+          When the embedded Claude terminal opens, Claude asks for your tenant account, Copilot Studio
+          environment, and runs <code>pac auth create</code>. Your selection persists across the
+          session in <code>tools/session-config.json</code>.
+        </div>
+
+        <h2 id="workflow-overview">Workflow overview</h2>
+        <p>
+          Six phases drive every project. Skills are invoked by name from the dashboard buttons or
+          directly from Claude Code with slash commands.
+        </p>
+
+        <ol class="steps">
+          <li>
+            <h3>Init &amp; Context</h3>
+            <p><code>/mcs-init</code> creates a project folder. Optional <code>/mcs-context CustomerName</code> uses WorkIQ MCP to pull every email, meeting, document, and Teams chat related to the customer and pre-fills 60 to 80 percent of research.</p>
+          </li>
+          <li>
+            <h3>Research</h3>
+            <p><code>/mcs-research</code> reads documents, identifies agents, researches MCS components across MS Learn, web, and the live UI, then produces a fully enriched <code>brief.json</code> with five eval sets (critical, functional, integration, conversational, regression).</p>
+          </li>
+          <li>
+            <h3>Build</h3>
+            <p><code>/mcs-build</code> uses the hybrid stack to construct each agent. An eval-driven loop inside the build runs the critical gate, per-capability iteration, and regression suite. Failures are auto-fixed by the prompt and topic engineers.</p>
+          </li>
+          <li>
+            <h3>Evaluate</h3>
+            <p><code>/mcs-eval</code> runs eval sets via Direct Line API (with a Playwright Test Chat fallback and an optional native MCS eval mode). Per-set pass rates are written back to <code>brief.json</code>.</p>
+          </li>
+          <li>
+            <h3>Fix</h3>
+            <p><code>/mcs-fix</code> handles post-deployment issues. QA Challenger classifies failures into root causes (instruction gap, boundary violation, routing failure, knowledge gap, scoring issue), then PE and TE patch in parallel.</p>
+          </li>
+          <li>
+            <h3>Deploy &amp; Report</h3>
+            <p><code>/mcs-deploy</code> replicates dev to prod (agent or solution mode). <code>/mcs-report</code> renders customer-shareable summaries (brief, build, customer, deployment).</p>
+          </li>
+        </ol>
+
+        <p>
+          <a href="workflow.html" class="btn btn-secondary">Full workflow walkthrough</a>
+        </p>
+
+        <h2 id="hybrid-stack">Hybrid build stack</h2>
+        <p>
+          Browser automation is fragile. Every step picks the most reliable layer that can do the
+          job. Playwright is reserved for operations that genuinely have no API.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Priority</th><th>Tool</th><th>Use for</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>PAC CLI</td><td>Agent lifecycle, publish, status, solution export and import</td></tr>
+            <tr><td>2</td><td>Dataverse API</td><td>Instructions, knowledge upload, security settings, agent deletion</td></tr>
+            <tr><td>3</td><td>Code Editor YAML</td><td>Topic authoring, adaptive cards, branching logic, trigger phrases</td></tr>
+            <tr><td>4</td><td>Direct Line API</td><td>Evaluation and testing (send messages, compare responses)</td></tr>
+            <tr><td>5</td><td>Playwright MCP</td><td>Agent creation, model selection, tool addition, OAuth, child agent connection</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="swe-swarms">SWE-Swarms</h2>
+        <p>
+          You speak to the lead orchestrator. Behind it, seven specialist swarms collaborate,
+          debate, and execute. The lead delegates and coordinates; swarms challenge each other
+          through the shared <code>brief.json</code> schema and produce validated artifacts; the
+          lead executes them via the hybrid stack.
+        </p>
+        <div class="grid grid-3">
+          <a class="card card-link" href="swarms.html#research-analyst">
+            <span class="label">Research</span>
+            <h3>Research Analyst</h3>
+            <p>Discovers MCS capabilities across MS Learn, web, community, and live UI. Prevents false limitation claims.</p>
+          </a>
+          <a class="card card-link" href="swarms.html#prompt-engineer">
+            <span class="label">Instructions</span>
+            <h3>Prompt Engineer</h3>
+            <p>Authors agent system prompts, custom prompts, and reviews skill files when output quality drops.</p>
+          </a>
+          <a class="card card-link" href="swarms.html#topic-engineer">
+            <span class="label">YAML</span>
+            <h3>Topic Engineer</h3>
+            <p>Generates and validates topic YAML, adaptive cards, trigger phrases, and channel-safe rendering.</p>
+          </a>
+          <a class="card card-link" href="swarms.html#qa-challenger">
+            <span class="label">Quality</span>
+            <h3>QA Challenger</h3>
+            <p>Adversarial reviewer. Tests every claim, validates cross-references, finds gaps before they hit MCS.</p>
+          </a>
+          <a class="card card-link" href="swarms.html#flow-designer">
+            <span class="label">Power Automate</span>
+            <h3>Flow Designer</h3>
+            <p>Designs Power Automate flow specifications from brief capabilities. Writes specs only, never executes.</p>
+          </a>
+          <a class="card card-link" href="swarms.html#repo-checker">
+            <span class="label">Sync</span>
+            <h3>Repo Health Swarm</h3>
+            <p>Cross-reference and sync validator. Finds broken paths, stale docs, and drift after any reorg.</p>
+          </a>
+        </div>
+
+        <h2 id="knowledge">Knowledge system</h2>
+        <p>
+          Three layers keep the tool current and improving. The cache is auto-refreshed at session
+          start. Learnings grow over time and are user-confirmed. Patterns and frameworks are stable
+          references.
+        </p>
+        <div class="stats">
+          <div class="stat"><div class="stat-value">18</div><div class="stat-label">cache files</div></div>
+          <div class="stat"><div class="stat-value">8</div><div class="stat-label">learnings topics</div></div>
+          <div class="stat"><div class="stat-value">10</div><div class="stat-label">topic templates</div></div>
+          <div class="stat"><div class="stat-value">3</div><div class="stat-label">decision frameworks</div></div>
+          <div class="stat"><div class="stat-value">15</div><div class="stat-label">eval scenarios</div></div>
+        </div>
+
+        <h2 id="validation-pipeline">YAML validation pipeline</h2>
+        <p>
+          Topic YAML passes through four validation layers before reaching Copilot Studio. Each
+          layer catches a different class of bug.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Layer</th><th>Tool</th><th>What it catches</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pre-generation</td><td><code>tools/gen-constraints.py</code></td><td>Required fields per node type, prevents errors before they happen</td></tr>
+            <tr><td>Structural</td><td><code>tools/om-cli/om-cli.exe</code></td><td>Unknown nodes, missing fields, invalid structure across 357 types</td></tr>
+            <tr><td>Semantic</td><td><code>tools/semantic-gates.py</code></td><td>PowerFx errors, cross-references, variable flow, channel compatibility, connectors</td></tr>
+            <tr><td>Spec drift</td><td><code>tools/drift-detect.py</code></td><td>Missing or extra topics, trigger and variable mismatches versus the brief</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="ready">Ready to build?</h2>
+        <p>
+          Clone, run, and let the workflow guide you through your first agent.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="getting-started.html">Read the quick start</a>
+          <a class="btn btn-secondary" href="cli.html">Browse CLI reference</a>
+        </div>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

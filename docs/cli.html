@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLI Reference — SWE_BUILDER</title>
+  <meta name="description" content="Every slash command. Every flag. Quick reference for the SWE_BUILDER command line." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/cli.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Workflow commands</div>
+          <ul class="sidebar-nav">
+            <li><a href="#mcs-init">/mcs-init</a></li>
+            <li><a href="#mcs-context">/mcs-context</a></li>
+            <li><a href="#mcs-research">/mcs-research</a></li>
+            <li><a href="#mcs-build">/mcs-build</a></li>
+            <li><a href="#mcs-eval">/mcs-eval</a></li>
+            <li><a href="#mcs-fix">/mcs-fix</a></li>
+            <li><a href="#mcs-deploy">/mcs-deploy</a></li>
+            <li><a href="#mcs-report">/mcs-report</a></li>
+            <li><a href="#mcs-retro">/mcs-retro</a></li>
+            <li><a href="#mcs-refresh">/mcs-refresh</a></li>
+            <li><a href="#mcs-library">/mcs-library</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Utilities</div>
+          <ul class="sidebar-nav">
+            <li><a href="#bug">/bug</a></li>
+            <li><a href="#suggest">/suggest</a></li>
+            <li><a href="#pac">PAC CLI</a></li>
+            <li><a href="#tool-cli">Tool CLIs</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>CLI Reference</h1>
+        <p class="lede">
+          Every slash command, every flag. Slash commands are run inside the Claude Code terminal
+          embedded in the dashboard or any standalone Claude Code session in the repo root.
+        </p>
+
+        <h2 id="conventions">Conventions</h2>
+        <ul>
+          <li><code>{projectId}</code>: Folder name under <code>Build-Guides/</code>.</li>
+          <li><code>{agentId}</code>: Folder name under <code>Build-Guides/{projectId}/agents/</code>.</li>
+          <li>Optional flags use <code>--flag value</code> format.</li>
+          <li>Commands are idempotent. Re-running picks up where a previous run left off (Phase 0 detection).</li>
+        </ul>
+
+        <h2 id="workflow-commands">Workflow commands</h2>
+
+        <article class="cmd" id="mcs-init">
+          <h3>/mcs-init</h3>
+          <p>Create a new project folder structure and template files.</p>
+<pre><code class="language-bash">/mcs-init {ProjectName}</code></pre>
+          <p><strong>Output</strong>: <code>Build-Guides/{ProjectName}/</code> with <code>docs/</code>, <code>agents/</code>, <code>brief.json</code> stub.</p>
+        </article>
+
+        <article class="cmd" id="mcs-context">
+          <h3>/mcs-context</h3>
+          <p>Pull all M365 context for a customer via WorkIQ MCP. Searches emails, meetings, documents, Teams, people. Pre-fills 60 to 80 percent of the research phase.</p>
+<pre><code class="language-bash">/mcs-context {CustomerName}</code></pre>
+          <p><strong>Output</strong>: <code>customer-context.md</code> (narrative) plus <code>customer-interactions.csv</code> (timeline).</p>
+          <p><strong>Prerequisite</strong>: WorkIQ CLI authenticated (<code>workiq ask -q "test"</code> for first-time setup).</p>
+        </article>
+
+        <article class="cmd" id="mcs-research">
+          <h3>/mcs-research</h3>
+          <p>Read all project documents, identify agents, research MCS components, and produce fully enriched <code>brief.json</code> with eval sets. Smart at both project and agent level. Phase 0 detects new docs, brief edits, and manually created agents.</p>
+<pre><code class="language-bash"># Project-level (all agents)
+/mcs-research {projectId}
+
+# Agent-level (single agent)
+/mcs-research {projectId} {agentId}
+</code></pre>
+          <p><strong>Reads</strong>: <code>docs/</code>, <code>customer-context.md</code> (if exists), <code>knowledge/cache/</code>, <code>knowledge/learnings/</code>.</p>
+          <p><strong>Writes</strong>: <code>brief.json</code> (all fields including instructions and eval sets) plus <code>evals.csv</code> (derived flat export).</p>
+        </article>
+
+        <article class="cmd" id="mcs-build">
+          <h3>/mcs-build</h3>
+          <p>Build and publish an agent in Copilot Studio using the hybrid stack. Handles find-or-create, step-level checkpoints for resume, MVP phase filtering, eval-driven iteration, and the QA validation gate.</p>
+<pre><code class="language-bash">/mcs-build {projectId} {agentId}</code></pre>
+          <p><strong>Reads</strong>: <code>brief.json</code> (the single source of truth).</p>
+          <p><strong>Writes</strong>: <code>brief.json.buildStatus</code> (with completed steps for resume).</p>
+          <p>Routes by architecture: single agent runs standalone, multi-agent builds specialists first, then the orchestrator with child connections.</p>
+        </article>
+
+        <article class="cmd" id="mcs-eval">
+          <h3>/mcs-eval</h3>
+          <p>Run eval sets and write per-test results to <code>brief.json</code>. Three-tier execution: Direct Line API, Playwright Test Chat fallback, optional Native MCS Eval (async).</p>
+<pre><code class="language-bash"># All sets
+/mcs-eval {projectId} {agentId}
+
+# Specific sets
+/mcs-eval {projectId} {agentId} --set critical,functional
+
+# Native MCS eval (async, optional)
+/mcs-eval {projectId} {agentId} --native
+
+# Check Native eval results later
+/mcs-eval {projectId} {agentId} --check-results
+</code></pre>
+          <p><strong>Output</strong>: <code>brief.json</code> evalSets[].tests[].lastResult plus <code>evals-results.json</code>.</p>
+        </article>
+
+        <article class="cmd" id="mcs-fix">
+          <h3>/mcs-fix</h3>
+          <p>Post-deployment fix. Analyze eval failures, classify root causes, apply targeted fixes (instructions, topics, evals), re-evaluate. For initial build iteration, use <code>/mcs-build</code> (which has an internal fix loop).</p>
+<pre><code class="language-bash">/mcs-fix {projectId} {agentId}</code></pre>
+          <p>Five root-cause categories: instruction gap, boundary violation, routing failure, knowledge gap (manual), scoring issue.</p>
+          <p>Max 2 fix iterations per invocation.</p>
+        </article>
+
+        <article class="cmd" id="mcs-deploy">
+          <h3>/mcs-deploy</h3>
+          <p>Deploy an agent from dev to test or prod. Two modes:</p>
+          <ul>
+            <li><strong>Agent-level</strong> (default, fast): uses <code>replicate-agent.js</code> to clone configuration directly.</li>
+            <li><strong>Solution-level</strong> (ALM-ready): uses PAC CLI export and import for full ALM lifecycle.</li>
+          </ul>
+<pre><code class="language-bash">/mcs-deploy {projectId} {agentId}</code></pre>
+        </article>
+
+        <article class="cmd" id="mcs-report">
+          <h3>/mcs-report</h3>
+          <p>Generate customer-ready reports from <code>brief.json</code> on demand without running a build.</p>
+<pre><code class="language-bash"># Brief report (design state)
+/mcs-report {projectId} {agentId} --type brief
+
+# Build report (status + deviations)
+/mcs-report {projectId} {agentId} --type build
+
+# Customer report (zero jargon)
+/mcs-report {projectId} {agentId} --type customer
+
+# Deployment report (checklists + env mapping)
+/mcs-report {projectId} {agentId} --type deployment
+</code></pre>
+        </article>
+
+        <article class="cmd" id="mcs-retro">
+          <h3>/mcs-retro</h3>
+          <p>Post-session retrospective. Captures learnings, updates the knowledge layer, syncs upstream tracked repos.</p>
+<pre><code class="language-bash">/mcs-retro</code></pre>
+        </article>
+
+        <article class="cmd" id="mcs-refresh">
+          <h3>/mcs-refresh</h3>
+          <p>Refresh one or all knowledge cache files with live research from MS Learn, web search, and MCS UI snapshots.</p>
+<pre><code class="language-bash"># Refresh everything
+/mcs-refresh
+
+# Refresh one file
+/mcs-refresh triggers
+</code></pre>
+        </article>
+
+        <article class="cmd" id="mcs-library">
+          <h3>/mcs-library</h3>
+          <p>Browse, analyze, search, and contribute to the team SharePoint solution library. Uses SWE-Swarms for intelligent tagging and pattern extraction.</p>
+<pre><code class="language-bash"># Browse
+/mcs-library list
+
+# Search
+/mcs-library search "knowledge agent"
+
+# Analyze a downloaded solution
+/mcs-library analyze {solutionId}
+
+# Upload current project
+/mcs-library upload {projectId}
+</code></pre>
+        </article>
+
+        <h2 id="utility-commands">Utility commands</h2>
+
+        <article class="cmd" id="bug">
+          <h3>/bug</h3>
+          <p>File a bug report conversationally. Gathers details, previews, creates an ADO work item via <code>az boards work-item create</code>.</p>
+<pre><code class="language-bash">/bug</code></pre>
+          <p>Auto-enriches with session context (project, agent, page, build status, eval score). Always previews before submitting.</p>
+        </article>
+
+        <article class="cmd" id="suggest">
+          <h3>/suggest</h3>
+          <p>File a feature suggestion conversationally. Same flow as <code>/bug</code> but creates a Feature work item.</p>
+<pre><code class="language-bash">/suggest</code></pre>
+        </article>
+
+        <h2 id="pac">PAC CLI quick reference</h2>
+<pre><code class="language-powershell"># List agents
+pac copilot list
+
+# Publish
+pac copilot publish --bot &lt;bot-id-or-schema-name&gt;
+
+# Status
+pac copilot status --bot-id &lt;bot-id&gt;
+
+# Extract template from existing agent
+pac copilot extract-template --bot &lt;bot-id&gt; --templateFileName output.yaml
+
+# Solution ALM
+pac solution export --name "SolutionName" --path "Solution.zip"
+pac solution import --path "Solution.zip" --publish-changes
+
+# Auth
+pac auth list
+pac auth select --index 1
+</code></pre>
+
+        <h2 id="tool-cli">Tool CLIs</h2>
+<pre><code class="language-bash"># YAML validation
+.\tools\om-cli\om-cli.exe validate path\to\topic.yaml
+
+# Constraint extraction
+python tools/gen-constraints.py Microsoft.AdaptiveDialog
+
+# Semantic gates
+python tools/semantic-gates.py topics/OrderStatus.yaml --brief brief.json
+
+# Drift detection
+python tools/drift-detect.py brief.json
+
+# Direct Line tests
+node tools/direct-line-test.js --brief brief.json --set critical
+
+# Eval scoring
+node tools/eval-scoring.js --transcript run.json --rubric brief.json
+
+# Multi-model review (optional)
+node tools/multi-model-review.js --target instructions --file brief.json
+
+# Solution library
+node tools/solution-library.js list
+
+# Upstream drift check
+node tools/upstream-check.js
+</code></pre>
+
+        <h2 id="env">Environment</h2>
+        <ul>
+          <li><strong>Working directory</strong>: Always run from the repo root.</li>
+          <li><strong>Auth profiles</strong>: PAC CLI active profile must match the brief's environment (verified during build).</li>
+          <li><strong>Browser session</strong>: Persisted profile reused by Playwright. Verified silently before every interaction.</li>
+        </ul>
+
+        <p><a class="btn btn-primary" href="getting-started.html">Get started</a> <a class="btn btn-secondary" href="workflow.html">See the full workflow</a></p>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

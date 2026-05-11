@@ -1,0 +1,569 @@
+{
+  "_meta": {
+    "connectorId": "shared_sharepointonline",
+    "displayName": "SharePoint",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "ApproveHubSiteJoin": {
+      "displayName": "Approve hub site join request",
+      "method": "POST",
+      "description": "Approve hub site join request. This will return an approval token that can be used to complete the join request using the join hub site action.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CancelHubSiteJoinApproval": {
+      "displayName": "Cancel hub site join request",
+      "method": "POST",
+      "description": "Cancel hub join request. If applicable, you should specify the same Approval Correlation Id as used in the \"Set hub site join status to pending\" action.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CheckInFile": {
+      "displayName": "Check in file",
+      "method": "POST",
+      "description": "Check in a checked out file in a document library, which makes the version of the document available to others.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CheckOutFile": {
+      "displayName": "Check out file",
+      "method": "POST",
+      "description": "Check out a file in a document library to prevent others from editing the document, and your changes from being visible until the documented is checked in.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CopyFile": {
+      "displayName": "Copy file (deprecated)",
+      "method": "POST",
+      "description": "Copies a file to a SharePoint site.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CopyFileAsync": {
+      "displayName": "Copy file",
+      "method": "POST",
+      "description": "Copies a file. Works in a similar way to the \"Copy to\" command in SharePoint libraries. Returns information about the new file after copy.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CopyFolderAsync": {
+      "displayName": "Copy folder",
+      "method": "POST",
+      "description": "Copies a folder. Works in a similar way to the \"Copy to\" command in SharePoint libraries. Returns information about the new folder after copy.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateAgreementsSolutionDocument": {
+      "displayName": "Agreements Solution - Generate document within Agreements Solution workspace",
+      "method": "POST",
+      "description": "Use this action to create documents based on modern templates in a Agreements Solution workspace. This is behind a payment wall currently in planning (either license or PayG).",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateApprovalRequest": {
+      "displayName": "Create an approval request for an item or file",
+      "method": "POST",
+      "description": "Creates an approval request for an item or file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateAttachment": {
+      "displayName": "Add attachment",
+      "method": "POST",
+      "description": "Adds a new attachment to the specified list item.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateContentAssemblyDocument": {
+      "displayName": "Generate document using Microsoft Syntex (preview)",
+      "method": "POST",
+      "description": "Use this action to create documents based on modern templates from Microsoft Syntex. This preview requires a Syntex license. Pricing is subject to change. For more info see: https://docs.microsoft.com/en-us/microsoft-365/contentunderstanding/content-assembly.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateFile": {
+      "displayName": "Create file",
+      "method": "POST",
+      "description": "Uploads a file to a SharePoint site. Make sure to pick an existing library.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateNewDocumentSet": {
+      "displayName": "Create new document set",
+      "method": "POST",
+      "description": "Creates a new document set list item.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateNewFolder": {
+      "displayName": "Create new folder",
+      "method": "POST",
+      "description": "Creates a new folder or folder path.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateSharingLink": {
+      "displayName": "Create sharing link for a file or folder",
+      "method": "POST",
+      "description": "Create sharing link for a file or folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteAttachment": {
+      "displayName": "Delete attachment",
+      "method": "POST",
+      "description": "Deletes the specified attachment.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteFile": {
+      "displayName": "Delete file",
+      "method": "POST",
+      "description": "Deletes the file specified by the file identifier.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteItem": {
+      "displayName": "Delete item",
+      "method": "POST",
+      "description": "Deletes an item from a SharePoint list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DiscardFileCheckOut": {
+      "displayName": "Discard check out",
+      "method": "POST",
+      "description": "If you check out a file and don’t make changes to it, or you make changes that you don’t want to keep, you can simply discard the checkout, rather than saving the file. If your organization tracks versions, a new version is created each time you check a file back into the library. By discarding the checkout, you can avoid making new versions when you haven’t made any changes to the file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ExtractFolderV2": {
+      "displayName": "Extract folder",
+      "method": "POST",
+      "description": "Extracts an archive file into a SharePoint folder (example: .zip).",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetAllTables": {
+      "displayName": "Get all lists and libraries",
+      "method": "POST",
+      "description": "Get all lists and libraries.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetAttachmentContent": {
+      "displayName": "Get attachment content",
+      "method": "POST",
+      "description": "Returns file contents using the file identifier. The contents can be copied somewhere else, or be used as an attachment.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileContent": {
+      "displayName": "Get file content",
+      "method": "POST",
+      "description": "Gets file contents using the file identifier. The contents can be copied somewhere else, or be used as an attachment.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileContentByPath": {
+      "displayName": "Get file content using path",
+      "method": "POST",
+      "description": "Gets file contents using the file path.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileItem": {
+      "displayName": "Get file properties",
+      "method": "POST",
+      "description": "Gets the properties saved in the columns in the library for the item specified by the item id.\r\n            You can add a \"Get file content\" step and use the \"File identifier\" property returned by this action to get to the contents of the file.\r\n            When using this with the On-Premises Data Gateway, the name of the library to connect to may need to be entered manually.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileItems": {
+      "displayName": "Get files (properties only)",
+      "method": "POST",
+      "description": "Gets the properties saved in the columns in the library for all folders and files stored in the library.\r\n            You can also filter down to the items that match a condition. An \"Apply to each\" section is usually used to work with the output from this action.\r\n            When using this with the On-Premises Data Gateway, the name of the library to connect to may need to be entered manually.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileMetadata": {
+      "displayName": "Get file metadata",
+      "method": "POST",
+      "description": "Gets information about the file such as size, etag, created date, etc. Uses a file identifier to pick the file. Use \"Get file properties\" action to get to the values stored in the columns in the library.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileMetadataByPath": {
+      "displayName": "Get file metadata using path",
+      "method": "POST",
+      "description": "Gets information about the file such as size, etag, created date, etc. Uses a file path to pick the file. Use \"Get file properties\" action to get to the values stored in the columns in the library.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFolderMetadata": {
+      "displayName": "Get folder metadata",
+      "method": "POST",
+      "description": "Gets information about the folder. Uses a file identifier to pick the folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFolderMetadataByPath": {
+      "displayName": "Get folder metadata using path",
+      "method": "POST",
+      "description": "Gets information about the folder. Uses a folder path to pick the folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetItem": {
+      "displayName": "Get item",
+      "method": "POST",
+      "description": "Gets a single item by its id from a SharePoint list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetItemAttachments": {
+      "displayName": "Get attachments",
+      "method": "POST",
+      "description": "Returns the list of attachments for the specified list item. You can add a \"Get attachment content\" step and use the \"File identifier\" property returned by this action to get to the contents of the file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetItemChanges": {
+      "displayName": "Get changes for an item or a file (properties only)",
+      "method": "POST",
+      "description": "Returns information about columns that have changed within a given time window. Note: The list must have Versioning turned on.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetItems": {
+      "displayName": "Get items",
+      "method": "POST",
+      "description": "Gets items from a SharePoint list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOnChangedItems": {
+      "displayName": "When an item or a file is modified",
+      "method": "POST",
+      "description": "Triggers when an item is modified (but not when it is created).",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOnDeletedFileItems": {
+      "displayName": "When a file is deleted",
+      "method": "POST",
+      "description": "Triggers when a file is deleted in a library. You can optionally specify a folder to watch as well. When a folder is deleted, the trigger will fire only once for the deleted folder. This can only be used by site collection admins of the site where the list is located.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOnDeletedItems": {
+      "displayName": "When an item is deleted",
+      "method": "POST",
+      "description": "Triggers when an item is deleted in a list. This can only be used by site collection admins of the site where the list is located.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOnNewFileItems": {
+      "displayName": "When a file is created (properties only)",
+      "method": "POST",
+      "description": "Triggers when an item is created in a library. Returns only the properties stored in the library columns.\r\n            You can add a \"Get file content\" step and use the \"File identifier\" property returned by this action to get to the contents of the file.\r\n            When using this with the On-Premises Data Gateway, the name of the library to connect to may need to be entered manually.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOnNewItems": {
+      "displayName": "When an item is created",
+      "method": "POST",
+      "description": "Triggers when an item is created.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOnUpdatedFileClassifiedTimes": {
+      "displayName": "When a file is classified by a Microsoft Syntex model",
+      "method": "POST",
+      "description": "Triggers a flow when Microsoft Syntex changes the classification date of any file in the library. The date changes when a document processing model classifies or extracts information.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOnUpdatedFileItems": {
+      "displayName": "When a file is created or modified (properties only)",
+      "method": "POST",
+      "description": "Triggers when an item is created, or modified in a library. Returns only the properties stored in the library columns.\r\n            You can add a \"Get file content\" step and use the \"File identifier\" property returned by this action to get to the contents of the file.\r\n            When using this with the On-Premises Data Gateway, the name of the library to connect to may need to be entered manually.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOnUpdatedItems": {
+      "displayName": "When an item is created or modified",
+      "method": "POST",
+      "description": "Triggers when an item is created, and also each time it is modified.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetTables": {
+      "displayName": "Get lists",
+      "method": "POST",
+      "description": "Gets SharePoint lists from a site.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetTableViews": {
+      "displayName": "Get list views",
+      "method": "POST",
+      "description": "Gets views from a SharePoint list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GrantAccess": {
+      "displayName": "Grant access to an item or a folder",
+      "method": "POST",
+      "description": "Grant access to an item or a folder in SharePoint to specific people.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "HttpRequest": {
+      "displayName": "Send an HTTP request to SharePoint",
+      "method": "POST",
+      "description": "Construct a SharePoint REST API to invoke. Note – This action may execute any SharePoint REST API you have access to. Please proceed with caution.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "JoinHubSite": {
+      "displayName": "Join hub site",
+      "method": "POST",
+      "description": "Join the requested site to the hub site. An Approval Token is required to complete the join successfully if that hub requires approval. If applicable, you should specify the same Approval Correlation Id as used in the \"Set hub site join status to pending\" action.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListFolder": {
+      "displayName": "List folder",
+      "method": "POST",
+      "description": "Returns files contained in a SharePoint folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListRootFolder": {
+      "displayName": "List root folder",
+      "method": "POST",
+      "description": "Returns files in the root SharePoint folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "MoveFileAsync": {
+      "displayName": "Move file",
+      "method": "POST",
+      "description": "Moves a file. Works in a similar way to the \"Move to\" command in SharePoint libraries. Returns information about the new file after move.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "MoveFolderAsync": {
+      "displayName": "Move folder",
+      "method": "POST",
+      "description": "Moves a folder. Works in a similar way to the \"Move to\" command in SharePoint libraries. Returns information about the new folder after move.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "NotifyHubSiteJoinApprovalStarted": {
+      "displayName": "Set hub site join status to pending",
+      "method": "POST",
+      "description": "Set the requested site's hub join request status to pending. The Approval Correlation Id is an optional parameter that helps SharePoint identify a particular hub join request. The requesting site can only have one pending request at a given time.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewFile": {
+      "displayName": "When a file is created in a folder (deprecated)",
+      "method": "POST",
+      "description": "Triggers when a file is created in a SharePoint folder. The trigger does not fire if a file is added/updated in a subfolder. If it is required to trigger on subfolders, multiple triggers should be created.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnUpdatedFile": {
+      "displayName": "When a file is created or modified in a folder (deprecated)",
+      "method": "POST",
+      "description": "Triggers when a file is created, and also each time it is modified in a SharePoint folder. The trigger does not fire if a file is added/updated in a subfolder. If it is required to trigger on subfolders, multiple triggers should be created.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PatchFileItem": {
+      "displayName": "Update file properties",
+      "method": "POST",
+      "description": "Updates the properties stored in columns in a library for the item specified by the item id. Use \"Update file\" action to update file contents.\r\n            When using this with the On-Premises Data Gateway, the name of the library to connect to may need to be entered manually.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PatchFileItemWithPredictedValues": {
+      "displayName": "Update file properties using AI Builder model results",
+      "method": "POST",
+      "description": "Updates the values stored in library columns for a file analyzed by the model specified by the ModelId.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PatchItem": {
+      "displayName": "Update item",
+      "method": "POST",
+      "description": "Updates an item in a SharePoint list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PostItem": {
+      "displayName": "Create item",
+      "method": "POST",
+      "description": "Creates a new item in a SharePoint list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "SearchForUser": {
+      "displayName": "Resolve person",
+      "method": "POST",
+      "description": "Returns a single matching user value so it can be assigned to a column of type person. If there are no matches, or multiple matches, this action will error out.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "SetApprovalStatus": {
+      "displayName": "Set content approval status",
+      "method": "POST",
+      "description": "Sets the content approval status for an item in a list or library that has content approval turned on. You must provide an ETag for pages and files. You can get the ETag using the Get File Metadata action. This action is only available for SharePoint Online and SharePoint 2019.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UnshareItem": {
+      "displayName": "Stop sharing an item or a file",
+      "method": "POST",
+      "description": "Delete all links giving access to an item or a file and remove all people with direct access except for owners.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateFile": {
+      "displayName": "Update file",
+      "method": "POST",
+      "description": "Updates the contents of the file specified by the file identifier.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# Pattern: Auto-Execute at Conversation Start
+# Trigger: OnConversationStart → BeginDialog redirect
+# Purpose: Automatically run a topic when conversation begins (no user input needed)
+# Usage: Replace {{TARGET_TOPIC_SCHEMA}} with the schemaName of the topic to auto-run
+#        Replace {{WELCOME_MESSAGE}} with your greeting text
+# Note: The target topic must already exist. Find its schemaName in the topic's
+#       code editor or via pac copilot extract-template.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendWelcome
+      activity:
+        text:
+          - "{{WELCOME_MESSAGE}}"
+    - kind: BeginDialog
+      id: autoRedirect
+      dialog: "{{TARGET_TOPIC_SCHEMA}}"

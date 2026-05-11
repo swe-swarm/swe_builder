@@ -1,0 +1,24 @@
+{
+  "id": "sol-ewuyd3",
+  "folderName": "M365 Copilot Meeting Insights (Feature 514)",
+  "folderId": "01Z2AOQ5QNFNR2LYGZ4JHLDYCAAJ7MAYDS",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:39.901Z",
+  "lastAnalyzed": "2026-03-02T19:43:39.903Z",
+  "analysisDepth": "deep",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "M365 Copilot Meeting Insights Agent (Feature 514).zip",
+      "size": 20334152,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

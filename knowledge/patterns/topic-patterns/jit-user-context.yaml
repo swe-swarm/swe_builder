@@ -1,0 +1,70 @@
+# Pattern: JIT User Context Loading
+# Trigger: OnActivity (type: Message) — fires on ALL channels including M365 Copilot
+# Shows: Load M365 user profile (country, department, displayName) into Global variables
+#         on first message only. Enables personalized, country/role-aware responses.
+# Why OnActivity: OnConversationStart does NOT fire on M365 Copilot or embedded surfaces.
+# Prerequisite: M365 Users connector configured with connection reference.
+#               User must be authenticated (signed in).
+# Available fields: country, department, displayName, givenName, surname, mail,
+#                   jobTitle, officeLocation, city, companyName
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  type: Message
+  condition: =IsBlank(Global.UserCountry)
+  actions:
+    # Step 1: Call M365 Users connector to get signed-in user's profile
+    - kind: InvokeConnectorAction
+      id: getProfile_REPLACE1
+      connectionReference: "{{CONNECTION_REF_OFFICE365USERS}}"
+      connectionProperties:
+        mode: Invoker
+      operationId: MyProfile_V2
+      output:
+        kind: SingleVariableOutputBinding
+        variable: init:Topic.M365Profile
+
+    # Step 2: Extract country (with fallback for blank Azure AD field)
+    - kind: SetVariable
+      id: setCountry
+      variable: Global.UserCountry
+      value: =If(IsBlank(Topic.M365Profile.country), "Unknown", Topic.M365Profile.country)
+
+    # Step 3: Extract department
+    - kind: SetVariable
+      id: setDepartment
+      variable: Global.UserDepartment
+      value: =If(IsBlank(Topic.M365Profile.department), "Unknown", Topic.M365Profile.department)
+
+    # Step 4: Extract display name
+    - kind: SetVariable
+      id: setDisplayName
+      variable: Global.UserDisplayName
+      value: =If(IsBlank(Topic.M365Profile.displayName), "User", Topic.M365Profile.displayName)
+
+# --- Variable visibility for orchestrator ---
+# Global.UserCountry should have aIVisibility: UseInAIContext
+# so the orchestrator can reason about user location.
+# Set this in the MCS UI: Variables panel > Global.UserCountry > AI visibility > Use in AI context
+#
+# Global.UserDepartment: same — UseInAIContext
+# Global.UserDisplayName: optional — only if instructions reference it
+
+# --- Agent instructions reference ---
+# In the Role section:
+#   You are {{AGENT_NAME}}, a {{ROLE}} for {Global.UserDepartment} employees.
+#
+# In the Guidance section:
+#   Tailor responses to the user's country ({Global.UserCountry}) for
+#   regulatory and policy differences.
+#
+# Short variable references like {Global.UserCountry} can appear multiple
+# times without significant token cost (unlike large glossary payloads).
+
+# --- Add more fields as needed ---
+# - kind: SetVariable
+#   id: setJobTitle
+#   variable: Global.UserJobTitle
+#   value: =If(IsBlank(Topic.M365Profile.jobTitle), "Unknown", Topic.M365Profile.jobTitle)

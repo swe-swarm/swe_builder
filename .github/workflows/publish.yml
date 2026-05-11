@@ -1,0 +1,38 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Build frontend
+        run: npm run frontend:build
+
+      - name: Verify server starts
+        run: |
+          timeout 5 node app/server.js &
+          sleep 3
+          curl -sf http://localhost:8000/api/health || exit 1
+          kill %1 2>/dev/null || true
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

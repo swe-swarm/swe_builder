@@ -1,0 +1,30 @@
+{
+  "id": "sol-wu88hj",
+  "folderName": "Data Redaction",
+  "folderId": "01Z2AOQ5UZFYD3N7GTDNAJACIW2Q2WOZCZ",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:03.235Z",
+  "lastAnalyzed": "2026-03-02T19:43:03.236Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "troytaylor",
+    "uniqueName": "PIIRedactor",
+    "version": "1.0.0.0",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "PIIRedactor_1_0_0_0.zip",
+      "size": 15617,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

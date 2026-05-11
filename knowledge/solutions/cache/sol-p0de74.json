@@ -1,0 +1,40 @@
+{
+  "id": "sol-p0de74",
+  "folderName": "Rover Agent",
+  "folderId": "01Z2AOQ5WIKCRW53KACJCITB77MAOPH4R3",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:44:41.507Z",
+  "lastAnalyzed": "2026-03-02T19:44:41.509Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "BCSolution",
+    "uniqueName": "RoverSolution",
+    "version": "1.0.0.0",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "Rover-Agent-Architecture.pdf",
+      "size": 144060,
+      "type": "pdf"
+    },
+    {
+      "name": "RoverSolution_1_0_0_0.zip",
+      "size": 129506,
+      "type": "solution"
+    },
+    {
+      "name": "Video-CAD-Rover-A2A-MultiAgent.mp4",
+      "size": 18999267,
+      "type": "other"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

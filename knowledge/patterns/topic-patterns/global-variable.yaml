@@ -1,0 +1,72 @@
+# Pattern: Global Variable Definition
+# Kind: GlobalVariableComponent (not AdaptiveDialog — separate file type)
+# File naming: <VariableName>.variable.mcs.yml
+# Shows: Define a conversation-scoped global variable accessible across all topics.
+# When to use: Store user context, JIT-loaded data, routing flags, or shared state.
+
+# --- Global Variable ---
+# # Name: {{VARIABLE_NAME}}
+# # {{DESCRIPTION}}
+# name: {{VARIABLE_NAME}}
+# scope: Conversation
+# description: "{{DESCRIPTION}}"
+# schemaName: {{AGENT_SCHEMA_NAME}}.globalvariable.{{VARIABLE_NAME}}
+# kind: GlobalVariableComponent
+# defaultValue: DEFAULT
+
+# --- Key Properties ---
+# name: display name of the variable (e.g., UserCountry, Glossary, searchCategory)
+# scope: always "Conversation" — persists for the conversation lifetime
+# schemaName: MUST be <agent-schemaName>.globalvariable.<name>
+#   Read the agent's schemaName from settings.mcs.yml
+# defaultValue: initial value — use "DEFAULT" for string type
+# aIVisibility: controls whether the orchestrator can reason about this variable
+#   UseInAIContext — orchestrator sees and uses the value (default for context vars)
+#   HideFromAIContext — orchestrator does not see the value (for internal plumbing)
+
+# --- aIVisibility Guide ---
+# UseInAIContext: Global.UserCountry, Global.UserDepartment, Global.searchCategory
+#   → orchestrator needs these for routing, personalization, or decision-making
+# HideFromAIContext: Global.HasRunInit, Global.TempBuffer
+#   → internal flags/data the orchestrator doesn't need to reason about
+
+# --- Examples ---
+
+# User country (from JIT user context):
+# # Name: UserCountry
+# # The user's country from their M365 profile, loaded JIT at conversation start.
+# name: UserCountry
+# aIVisibility: UseInAIContext
+# scope: Conversation
+# description: The user's country from their M365 profile.
+# schemaName: cr123_myAgent.globalvariable.UserCountry
+# kind: GlobalVariableComponent
+# defaultValue: DEFAULT
+
+# Glossary (from JIT glossary):
+# # Name: Glossary
+# # Customer-specific acronyms loaded JIT at the start of each conversation.
+# name: Glossary
+# scope: Conversation
+# description: Customer-specific acronyms loaded JIT.
+# schemaName: cr123_myAgent.globalvariable.Glossary
+# kind: GlobalVariableComponent
+# defaultValue: DEFAULT
+
+# Search category (from orchestrator variable):
+# # Name: searchCategory
+# # Query category set by orchestrator for knowledge routing.
+# name: searchCategory
+# aIVisibility: UseInAIContext
+# scope: Conversation
+# description: Query category for knowledge routing (HR, IT, Finance, General).
+# schemaName: cr123_myAgent.globalvariable.searchCategory
+# kind: GlobalVariableComponent
+# defaultValue: DEFAULT
+
+# --- Design Notes ---
+# 1. Topics reference as Global.VariableName (e.g., Global.UserCountry)
+# 2. Instructions reference as {Global.VariableName} for value injection
+# 3. Short values (country, category) can appear multiple times in instructions
+# 4. Large values (glossary CSV) should appear ONCE to avoid token multiplication
+# 5. Create one .variable.mcs.yml file per global variable

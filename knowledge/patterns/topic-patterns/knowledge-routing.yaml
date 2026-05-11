@@ -1,0 +1,159 @@
+# Pattern: Custom Knowledge Routing via OnKnowledgeRequested
+# Trigger: OnKnowledgeRequested (YAML-only — no UI designer)
+# Shows: Intercept UniversalSearchTool to route knowledge searches by category.
+#         Uses orchestrator-generated classification (AutomaticTaskInput with
+#         shouldPromptUser: false) to determine which knowledge source to search.
+# When to use: Agent has >25 knowledge sources (orchestrator can only auto-select 25),
+#              or you need category-based routing (HR/IT/Finance) for accuracy,
+#              or you need to bring in external data sources (SharePoint Lists, REST APIs).
+# System variables (ONLY available in OnKnowledgeRequested topics):
+#   System.SearchQuery — orchestrator's reformulated query (semantic/vector search)
+#   System.KeywordSearchQuery — keyword-extracted version (lexical/keyword search)
+#   System.SearchResults — output: write {snippet, title, url} records here
+# Prerequisites:
+#   - Knowledge sources must have triggerCondition: =false to prevent auto-search
+#   - A separate topic with AutomaticTaskInput sets Global.searchCategory
+# Note: triggerCondition on knowledge source files CANNOT dynamically reference
+#       runtime global variables — routing must be done HERE via ConditionGroup.
+
+# --- Step 0: Classification Topic (separate file) ---
+# A separate topic uses AutomaticTaskInput to classify the query and set
+# Global.searchCategory. See orchestrator-variable.yaml for the full pattern.
+# The classification reuses the orchestrator's existing LLM call — zero extra cost.
+
+# --- Step 1: OnKnowledgeRequested Routing Topic ---
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnKnowledgeRequested
+  id: main
+  actions:
+    - kind: ConditionGroup
+      id: routeByCategory
+      conditions:
+        - id: routeHR
+          condition: =Global.searchCategory = "HR"
+          actions:
+            - kind: SearchAndSummarizeContent
+              id: searchHR
+              autoSend: false
+              variable: System.SearchResults
+              userInput: =System.SearchQuery
+              knowledgeSources:
+                kind: SearchSpecificKnowledgeSources
+                knowledgeSources:
+                  - "{{SCHEMA_NAME}}.knowledge.hr-policies"
+              applyModelKnowledgeSetting: false
+
+        - id: routeIT
+          condition: =Global.searchCategory = "IT"
+          actions:
+            - kind: SearchAndSummarizeContent
+              id: searchIT
+              autoSend: false
+              variable: System.SearchResults
+              userInput: =System.SearchQuery
+              knowledgeSources:
+                kind: SearchSpecificKnowledgeSources
+                knowledgeSources:
+                  - "{{SCHEMA_NAME}}.knowledge.it-documentation"
+              applyModelKnowledgeSetting: false
+
+        - id: routeFinance
+          condition: =Global.searchCategory = "Finance"
+          actions:
+            - kind: SearchAndSummarizeContent
+              id: searchFinance
+              autoSend: false
+              variable: System.SearchResults
+              userInput: =System.SearchQuery
+              knowledgeSources:
+                kind: SearchSpecificKnowledgeSources
+                knowledgeSources:
+                  - "{{SCHEMA_NAME}}.knowledge.finance-docs"
+              applyModelKnowledgeSetting: false
+
+      elseActions:
+        # Fallback: search all knowledge sources for unrecognized categories
+        - kind: SearchAndSummarizeContent
+          id: searchAll
+          autoSend: false
+          variable: System.SearchResults
+          userInput: =System.SearchQuery
+
+# --- Variant: Country-Specific Knowledge Routing ---
+# Same pattern but routes by country instead of category.
+# Combine with JIT user context: Global.UserCountry as default,
+# orchestrator-generated variable overrides when user mentions a country.
+# See orchestrator-variable.yaml for the country classification input.
+#
+# - kind: ConditionGroup
+#   id: routeByCountry
+#   conditions:
+#     - id: routeFR
+#       condition: =Global.searchCountry = "FR"
+#       actions:
+#         - kind: SearchAndSummarizeContent
+#           id: searchFR
+#           autoSend: false
+#           variable: Topic.SearchResult
+#           userInput: =System.SearchQuery
+#           knowledgeSources:
+#             kind: SearchSpecificKnowledgeSources
+#             knowledgeSources:
+#               - {{SCHEMA_NAME}}.knowledge.policies-fr
+#           applyModelKnowledgeSetting: false
+#     - id: routeUK
+#       condition: =Global.searchCountry = "UK"
+#       ...
+#   elseActions:
+#     - kind: SearchAndSummarizeContent
+#       id: searchGlobal
+#       autoSend: false
+#       variable: Topic.SearchResult
+#       userInput: =System.SearchQuery
+#       knowledgeSources:
+#         kind: SearchSpecificKnowledgeSources
+#         knowledgeSources:
+#           - {{SCHEMA_NAME}}.knowledge.policies-global
+#       applyModelKnowledgeSetting: false
+
+# --- Variant: External Data Sources (SharePoint Lists, REST APIs) ---
+# OnKnowledgeRequested can bring in data the UniversalSearchTool can't reach natively.
+# Transform results into the required {snippet, title, url} schema:
+#
+# - kind: InvokeConnectorAction
+#   id: querySharePointList
+#   connectionReference: shared_sharepointonline
+#   connectionProperties:
+#     kind: ConnectionReferenceBySchema
+#     connectionReferenceSchemaName: {{CONNECTION_REF_SCHEMA}}
+#   operationId: GetItems
+#   input:
+#     parameters/dataset: https://contoso.sharepoint.com/sites/HR
+#     parameters/table: Events
+#   output:
+#     statusCode: Topic.StatusCode
+#     body: Topic.ListItems
+#
+# - kind: SetVariable
+#   id: transformResults
+#   variable: System.SearchResults
+#   value: "=ForAll(Topic.ListItems.value,
+#     {
+#       snippet: ThisRecord.Description & \" | Date: \" & Text(ThisRecord.Date, \"yyyy-mm-dd\"),
+#       title: ThisRecord.Title,
+#       url: \"https://contoso.sharepoint.com/sites/HR/Lists/Events/DispForm.aspx?ID=\" & Text(ThisRecord.ID)
+#     }
+#   )"
+
+# --- Design notes ---
+# 1. OnKnowledgeRequested hooks INTO the UniversalSearchTool — it doesn't replace it
+# 2. Results written to System.SearchResults merge with results from standard sources
+#    (unless all sources use triggerCondition: =false)
+# 3. System.SearchQuery is already context-aware (includes conversation history)
+# 4. Classification descriptions should use enum-style vocabularies (3-6 categories max)
+# 5. Always include a fallback/elseActions for unrecognized categories
+# 6. 25-source limit: if agent has >25 knowledge sources, orchestrator selects top 25
+#    by source name + description comment. This routing pattern gives explicit control.
+# 7. Query rewriting includes conversation history — System.SearchQuery handles
+#    "tell me more about that" correctly without CreateSearchQuery

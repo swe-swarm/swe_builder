@@ -1,0 +1,52 @@
+# Pattern: Citation Marker Removal
+# Trigger: OnGeneratedResponse — intercepts AI-generated responses before sending
+# Shows: Strip [1][2][3] citation markers from generative answers using nested
+#         Substitute() PowerFx. Useful when citation brackets are unwanted but
+#         knowledge grounding is still needed.
+# When to use: Agent uses knowledge sources but citations look messy in the channel
+#              (e.g., Teams cards, SMS, WhatsApp where [1][2] renders poorly).
+# Note: This removes ALL citation markers. If you want selective removal,
+#       adjust the Substitute chain.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnGeneratedResponse
+  id: main
+  actions:
+    # Step 1: Suppress the automatic response (we'll send a cleaned version)
+    - kind: SetVariable
+      id: suppressAutoResponse
+      variable: System.ContinueResponse
+      value: =false
+
+    # Step 2: Strip citation markers [1] through [10] using nested Substitute()
+    - kind: SetVariable
+      id: stripCitations
+      variable: init:Topic.CleanedResponse
+      value: =Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(Substitute(System.Response.FormattedText, "[10]", ""), "[9]", ""), "[8]", ""), "[7]", ""), "[6]", ""), "[5]", ""), "[4]", ""), "[3]", ""), "[2]", ""), "[1]", "")
+
+    # Step 3: Send the cleaned response
+    - kind: SendActivity
+      id: sendCleanResponse
+      activity:
+        text:
+          - "{Topic.CleanedResponse}"
+
+# --- Variant: Strip citations and add custom footer ---
+# - kind: SendActivity
+#   id: sendWithFooter
+#   activity:
+#     text:
+#       - "{Topic.CleanedResponse}\n\n---\n*Sources available on request.*"
+
+# --- Variant: Strip only specific citation formats ---
+# If citations use a different format (e.g., (1), (2)), adjust the Substitute calls:
+# value: =Substitute(Substitute(System.Response.FormattedText, "(1)", ""), "(2)", "")
+
+# --- Design notes ---
+# 1. OnGeneratedResponse fires AFTER the AI generates a response but BEFORE it's sent
+# 2. System.ContinueResponse = false prevents the original (with citations) from sending
+# 3. System.Response.FormattedText contains the full AI-generated text including citations
+# 4. Nested Substitute() is verbose but reliable — PowerFx has no regex support
+# 5. Strip from [10] down to [1] to avoid partial replacement issues
+#    (e.g., stripping [1] first would turn [10] into [0])

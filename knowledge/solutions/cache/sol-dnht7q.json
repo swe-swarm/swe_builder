@@ -1,0 +1,40 @@
+{
+  "id": "sol-dnht7q",
+  "folderName": "State Government Website Agent",
+  "folderId": "01Z2AOQ5XD3CHLSYKZIBEZPBQ52VZ3OZN7",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:44:54.427Z",
+  "lastAnalyzed": "2026-03-02T19:44:54.429Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "Agent",
+    "uniqueName": "Larry",
+    "version": "1.0.0.1",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "How to Build Larry - Step by Step Guide.docx",
+      "size": 50434,
+      "type": "document"
+    },
+    {
+      "name": "Larry Agent.pptx",
+      "size": 179691388,
+      "type": "presentation"
+    },
+    {
+      "name": "Larry_1_0_0_1.zip",
+      "size": 65545,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

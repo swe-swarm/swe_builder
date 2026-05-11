@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# Pre-push hook — auto-update om-cli binary from ObjectModel source.
+# Only runs if PowerShell and .NET 10 are available. Non-blocking:
+# if anything fails, the push proceeds with the existing binary.
+#
+# Installed automatically by start.js.
+
+# Skip if SKIP_OM_UPDATE is set
+if [ "$SKIP_OM_UPDATE" = "1" ]; then
+  exit 0
+fi
+
+# Check if powershell is available
+if ! command -v powershell >/dev/null 2>&1; then
+  exit 0
+fi
+
+# Check if .NET 10 is available
+if ! dotnet --list-sdks 2>/dev/null | grep -q "^10\."; then
+  exit 0
+fi
+
+echo "[pre-push] Checking om-cli for updates..."
+powershell -ExecutionPolicy Bypass -File tools/update-om-cli.ps1 2>&1
+
+# Check if there are staged om-cli changes that need committing
+STAGED=$(git diff --cached --name-only -- tools/om-cli/ 2>/dev/null)
+if [ -n "$STAGED" ]; then
+  echo "[pre-push] om-cli updated — creating auto-commit..."
+  git commit -m "Auto-update om-cli binary from ObjectModel source
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>" --no-verify 2>/dev/null
+  echo "[pre-push] om-cli auto-committed. Push includes the update."
+fi
+
+# Always allow the push (even if update failed)
+exit 0

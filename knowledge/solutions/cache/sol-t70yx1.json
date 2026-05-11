@@ -1,0 +1,35 @@
+{
+  "id": "sol-t70yx1",
+  "folderName": "Daily Stand-Up Agent",
+  "folderId": "01Z2AOQ5WNR6BQTC6ZUBHYZD2I4FGS52OP",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:58.028Z",
+  "lastAnalyzed": "2026-03-02T19:42:58.030Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "BCSolution",
+    "uniqueName": "DailyStandUpSolution",
+    "version": "1.0.0.0",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "DailyStandUp-Agent-Video.mp4",
+      "size": 8713271,
+      "type": "other"
+    },
+    {
+      "name": "DailyStandUpSolution_1_0_0_0.zip",
+      "size": 38104,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

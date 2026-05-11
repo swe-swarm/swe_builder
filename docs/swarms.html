@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWE-Swarms — SWE_BUILDER</title>
+  <meta name="description" content="Seven specialist SWE-Swarms that coordinate through the brief.json schema. Research, prompt, topic, QA, flow, repo health, and optimization swarms peer-review every change." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/swarms.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Swarms</div>
+          <ul class="sidebar-nav">
+            <li><a href="#research-analyst">Research Swarm</a></li>
+            <li><a href="#prompt-engineer">Prompt Swarm</a></li>
+            <li><a href="#topic-engineer">Topic Swarm</a></li>
+            <li><a href="#qa-challenger">QA Swarm</a></li>
+            <li><a href="#flow-designer">Flow Swarm</a></li>
+            <li><a href="#repo-checker">Repo Health Swarm</a></li>
+            <li><a href="#repo-optimizer">Optimization Swarm</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Coordination model</div>
+          <ul class="sidebar-nav">
+            <li><a href="#schema-coordinated">Schema-coordinated</a></li>
+            <li><a href="#tiers">Three-tier quality</a></li>
+            <li><a href="#bidirectional">Bidirectional review</a></li>
+            <li><a href="#topology">Swarm topology</a></li>
+            <li><a href="#execution-flow">Execution flow</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Identity</div>
+          <ul class="sidebar-nav">
+            <li><a href="schema.html#auth-token">Shared auth token</a></li>
+            <li><a href="schema.html#canvases">Canvas authentication</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>SWE-Swarms</h1>
+        <p class="lede">
+          You speak to one orchestrator. Behind the scenes, seven specialist swarms collaborate, debate,
+          and produce validated artifacts coordinated through a single shared schema. Every swarm reads
+          and writes the same <code>brief.json</code>. Every change is peer-reviewed before it reaches
+          Microsoft Copilot Studio.
+        </p>
+
+        <p>Enabled via <code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</code> in <code>.claude/settings.json</code>. Swarm definitions live in <code>.claude/agents/</code>.</p>
+
+        <div class="callout callout-info">
+          <strong>NOTE:</strong> SWE-Swarms is the new name for what was previously called Agent Teams. Same
+          architecture, sharper identity. Each swarm is a specialist; the lead orchestrator is a
+          conductor. The schema is the score they all read from.
+        </div>
+
+        <h2 id="rules">Operating rules</h2>
+        <ul>
+          <li>The lead orchestrator does <strong>not</strong> generate instructions, YAML, or cards directly. Always delegates to swarms.</li>
+          <li>The lead <strong>does</strong> handle all MCS execution (Playwright, PAC CLI, Dataverse API). MCP access from swarms is unreliable.</li>
+          <li>Every swarm reads and writes the canonical <code>brief.json</code>. The schema is the contract.</li>
+          <li>QA Swarm reviews <strong>every</strong> swarm output before the lead executes it.</li>
+          <li>Swarms challenge each other. Bidirectional review is the point, not a niceness.</li>
+          <li>All artifacts are persisted to files so the lead can read, validate, and execute them.</li>
+        </ul>
+
+        <h2 id="schema-coordinated">Schema-coordinated communication</h2>
+        <p>
+          Swarms do not chat ad hoc. They communicate through the canonical schema. Every swarm reads
+          <code>brief.json</code>, edits its assigned slice, and writes back. Conflicts surface during
+          merge, not at runtime. The orchestrator validates the merged schema before any swarm consumes
+          a downstream version.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Swarm</th><th>Reads from brief.json</th><th>Writes to brief.json</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Research</td><td>requirements, integrations targets</td><td>components catalog, cache hits</td></tr>
+            <tr><td>Prompt</td><td>persona, tools, topics, capabilities</td><td>instructions block</td></tr>
+            <tr><td>Topic</td><td>capabilities, instructions, tool refs</td><td>conversations.topics, evalSets entries</td></tr>
+            <tr><td>QA</td><td>everything</td><td>evalSets, lastResult per test, validation verdict</td></tr>
+            <tr><td>Flow</td><td>integrations, capabilities</td><td>flows specifications</td></tr>
+            <tr><td>Repo Health</td><td>schema cross-references</td><td>(report only, no writes)</td></tr>
+            <tr><td>Optimization</td><td>repo manifest</td><td>(report only, no writes)</td></tr>
+          </tbody>
+        </table>
+        <p>The shared schema is the only synchronization primitive. There is no message bus, no shared memory, no out-of-band coordination. <a href="schema.html">Read the schema page</a> for the full contract.</p>
+
+        <h2 id="swarms">The seven swarms</h2>
+
+        <article class="card teammate" id="research-analyst">
+          <span class="label">Research Swarm</span>
+          <h3>Research Analyst</h3>
+          <p><strong>Role</strong>: MCS capability researcher. Discovers what MCP servers, connectors, models, triggers, knowledge sources, and channels are available right now.</p>
+          <p><strong>Why it matters</strong>: Microsoft ships features continuously. Static lists go stale fast. The Research Swarm searches MS Learn, the public web, community sources, and snapshots the live MCS UI before any architecture decision.</p>
+          <p><strong>When invoked</strong>: <code>/mcs-research</code> Phase B (only if external systems need lookup), and on demand during <code>/mcs-build</code> when tool configuration hits issues.</p>
+          <p><strong>Schema slice</strong>: writes to <code>knowledge.cache</code>, <code>integrations.candidates</code>.</p>
+          <p><strong>Key strength</strong>: Prevents false limitation claims. If a feature exists in preview, the Research Swarm will find it.</p>
+        </article>
+
+        <article class="card teammate" id="prompt-engineer">
+          <span class="label">Prompt Swarm</span>
+          <h3>Prompt Engineer</h3>
+          <p><strong>Role</strong>: Instructions and prompt specialist. Primary role is writing MCS agent instructions. Secondary role is reviewing and sharpening skill files, agent definitions, and CLAUDE.md rules when they produce poor results.</p>
+          <p><strong>When invoked</strong>: <code>/mcs-research</code> Phase C (writes instructions, single pass), <code>/mcs-build</code> on-demand (fixes during eval iteration), <code>/mcs-fix</code> (instruction-gap and boundary-violation fixes).</p>
+          <p><strong>Schema slice</strong>: writes to <code>instructions</code>, <code>persona</code>.</p>
+          <p><strong>Key strength</strong>: Sharp, behavior-driven instructions with correct slash references to topics, tools, and child agents.</p>
+        </article>
+
+        <article class="card teammate" id="topic-engineer">
+          <span class="label">Topic Swarm</span>
+          <h3>Topic Engineer</h3>
+          <p><strong>Role</strong>: MCS topic YAML and adaptive card specialist. Generates topic YAML for the code editor, designs adaptive cards, creates trigger configurations, and builds conversation flows. Deeply understands MCS YAML schema (357 types), all node types, PowerFx in cards, and channel-specific rendering limits.</p>
+          <p><strong>When invoked</strong>: <code>/mcs-research</code> Phase D (validates topic feasibility), <code>/mcs-build</code> Step 4 (generates topic YAML), <code>/mcs-fix</code> (topic and trigger fixes).</p>
+          <p><strong>Schema slice</strong>: writes to <code>conversations.topics</code>, <code>conversations.cards</code>.</p>
+          <p><strong>Key strength</strong>: Syntax-correct YAML on the first try. Channel-safe adaptive cards. PowerFx that compiles.</p>
+        </article>
+
+        <article class="card teammate" id="qa-challenger">
+          <span class="label">QA Swarm</span>
+          <h3>QA Challenger</h3>
+          <p><strong>Role</strong>: Adversarial reviewer. The swarm that asks "are you sure?" and "prove it works." Challenges every claim, tests against scenarios, validates cross-references, and finds gaps.</p>
+          <p><strong>When invoked</strong>: After every swarm output (instructions, YAML, cards, architecture decisions). Also Phase D of research (generates eval sets) and Step 5.5 of build (build validation gate).</p>
+          <p><strong>Schema slice</strong>: writes to <code>evalSets[].tests[].lastResult</code>, <code>buildStatus.qaVerdict</code>.</p>
+          <p><strong>Key strength</strong>: Catches errors before they hit MCS. Classifies eval failures into root causes. Outputs verdict (PASS, PASS WITH CAVEATS, FAIL) that decides whether to ship or escalate.</p>
+        </article>
+
+        <article class="card teammate" id="flow-designer">
+          <span class="label">Flow Swarm</span>
+          <h3>Flow Designer</h3>
+          <p><strong>Role</strong>: Power Automate flow specification designer. Takes <code>brief.json</code> capabilities and designs complete flow specs with triggers, actions, connectors, data flow, and <code>flow-manager.js</code> commands. Writes specs only, never executes.</p>
+          <p><strong>When invoked</strong>: When the brief includes Power Automate flows for agent integrations.</p>
+          <p><strong>Schema slice</strong>: writes to <code>flows[]</code>.</p>
+          <p><strong>Key strength</strong>: Connector pattern fluency. Trigger and action composition. Flow JSON that imports cleanly via PAC CLI.</p>
+        </article>
+
+        <article class="card teammate" id="repo-checker">
+          <span class="label">Sync</span>
+          <h3>Repo Health Swarm</h3>
+          <p><strong>Role</strong>: Repository sync validator. Scans all cross-references between <code>app/</code>, <code>CLAUDE.md</code>, <code>README.md</code>, skills, knowledge, settings, and <code>package.json</code> to find broken paths, stale docs, missing files, and drift.</p>
+          <p><strong>When invoked</strong>: Tier 2 background after 3+ file changes or any code changes. Before any commit. After file reorgs, renames, or skill changes.</p>
+          <p><strong>Schema slice</strong>: read-only across the entire repo manifest.</p>
+          <p><strong>Key strength</strong>: Catches the cross-reference rot that compounds silently.</p>
+        </article>
+
+        <article class="card teammate" id="repo-optimizer">
+          <span class="label">Optimization Swarm</span>
+          <h3>Repo Optimizer</h3>
+          <p><strong>Role</strong>: Repository optimization auditor. Finds dead files, duplicated code, oversized artifacts, stale scripts, unused exports, undocumented files, and unused dependencies. Reports findings only, never auto-fixes.</p>
+          <p><strong>When invoked</strong>: On demand for cleanup passes. Before major releases.</p>
+          <p><strong>Schema slice</strong>: read-only across the entire repo manifest.</p>
+          <p><strong>Key strength</strong>: Conservative but thorough. Surfaces bloat without breaking anything.</p>
+        </article>
+
+        <h2 id="tiers">Three-tier proactive quality model</h2>
+        <p>Quality checks scale with risk. Not every response needs a full debate.</p>
+
+        <table>
+          <thead>
+            <tr><th>Tier</th><th>Trigger</th><th>Blocks work?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tier 1: Self-check</td><td>Any file edits</td><td>No, inline (10 seconds)</td></tr>
+            <tr><td>Tier 2: Repo Health Swarm (background)</td><td>3+ file changes or any code changes</td><td>No, runs async</td></tr>
+            <tr><td>Tier 3: QA Challenge</td><td>Schema change, workflow redesign, architecture decisions</td><td>Yes, worth the 2-3 minute wait</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="bidirectional">Bidirectional review in practice</h2>
+        <p>The lead spawns the swarms for a build. They communicate directly through the schema:</p>
+<pre><code class="language-text">QA Swarm to Prompt Swarm:
+  "Instructions reference /OrderStatus topic that is not in conversations.topics."
+
+QA Swarm to Topic Swarm:
+  "YAML node ID duplicated on line 14 of orderStatus.yaml."
+
+Topic Swarm to Prompt Swarm:
+  "Your instructions expect Topic.orderStatus variable but no topic initializes it."
+
+Research Swarm to Topic Swarm:
+  "MCP server ContosoOrders just shipped. Use this instead of REST connector."
+
+QA Swarm to Lead:
+  "Build verdict: PASS WITH CAVEATS. Capability 3 has 2 failing edge cases.
+   Safe to ship to dev. Block on prod until edge cases pass."
+</code></pre>
+        <p>The lead reads validated artifacts from files and executes them via the hybrid stack.</p>
+
+        <h2 id="topology">Swarm topology</h2>
+        <p>Swarms communicate through the schema, not directly. The orchestrator is the only writer to MCS.</p>
+        <div class="mermaid">
+flowchart TB
+  subgraph Identity[Identity layer]
+    AUTH[Single delegated token]
+  end
+  subgraph Schema[Canonical schema layer]
+    BRIEF[(brief.json)]
+  end
+  subgraph Swarms[SWE-Swarms specialist layer]
+    R[Research Swarm]
+    P[Prompt Swarm]
+    T[Topic Swarm]
+    Q[QA Swarm]
+    F[Flow Swarm]
+    H[Repo Health Swarm]
+    O[Optimization Swarm]
+  end
+  subgraph Lead[Lead orchestrator]
+    L[Claude Code]
+  end
+  subgraph Exec[Execution layer]
+    PAC[PAC CLI]
+    DV[Dataverse API]
+    DL[Direct Line]
+    PW[Playwright MCS UI]
+  end
+  AUTH --> BRIEF
+  AUTH --> Lead
+  AUTH --> Exec
+  R <--> BRIEF
+  P <--> BRIEF
+  T <--> BRIEF
+  Q <--> BRIEF
+  F <--> BRIEF
+  H -.read.-> BRIEF
+  O -.read.-> BRIEF
+  BRIEF --> L
+  L --> PAC
+  L --> DV
+  L --> DL
+  L --> PW
+        </div>
+
+        <h2 id="execution-flow">Execution flow</h2>
+        <div class="mermaid">
+sequenceDiagram
+  participant U as User
+  participant L as Lead
+  participant RA as Research Swarm
+  participant PE as Prompt Swarm
+  participant TE as Topic Swarm
+  participant QA as QA Swarm
+  participant B as brief.json
+  participant MCS as Copilot Studio
+
+  U-&gt;&gt;L: /mcs-build MyAgent
+  L-&gt;&gt;RA: research components
+  RA-&gt;&gt;B: write components catalog
+  RA--&gt;&gt;L: done
+  L-&gt;&gt;PE: write instructions
+  PE-&gt;&gt;B: write instructions block
+  PE--&gt;&gt;L: done
+  L-&gt;&gt;QA: review instructions
+  QA-&gt;&gt;B: read everything
+  QA-&gt;&gt;PE: cross-ref errors
+  PE-&gt;&gt;B: revise
+  QA-&gt;&gt;B: write verdict PASS
+  QA--&gt;&gt;L: PASS
+  L-&gt;&gt;TE: generate topics
+  TE-&gt;&gt;B: write conversations.topics
+  TE--&gt;&gt;L: done
+  L-&gt;&gt;QA: review topics
+  QA--&gt;&gt;L: PASS
+  L-&gt;&gt;MCS: apply via hybrid stack (PAC + Dataverse + Playwright)
+  L-&gt;&gt;B: write buildStatus.completedSteps
+        </div>
+
+        <h2 id="files">Where the swarms live</h2>
+<pre><code class="language-text">.claude/
+  agents/
+    research-analyst.md      # Research Swarm
+    prompt-engineer.md       # Prompt Swarm
+    topic-engineer.md        # Topic Swarm
+    qa-challenger.md         # QA Swarm
+    flow-designer.md         # Flow Swarm
+    repo-checker.md          # Repo Health Swarm
+    repo-optimizer.md        # Optimization Swarm
+  settings.json              # CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+</code></pre>
+
+        <p>
+          <a class="btn btn-primary" href="schema.html">Read the schema contract</a>
+          <a class="btn btn-secondary" href="architecture.html#swe-swarms">See swarms in the architecture</a>
+          <a class="btn btn-secondary" href="tools.html">Browse the validation tools</a>
+        </p>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

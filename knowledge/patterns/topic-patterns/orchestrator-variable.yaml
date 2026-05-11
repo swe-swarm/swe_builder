@@ -1,0 +1,101 @@
+# Pattern: Orchestrator-Generated Variable (Zero-Cost Classification)
+# Trigger: OnRecognizedIntent (orchestrator routes and fills the variable)
+# Shows: AutomaticTaskInput with shouldPromptUser: false has the orchestrator's LLM
+#         silently classify or extract structured data from the user's message during
+#         topic selection — at zero extra cost and zero extra latency.
+# When to use: You need to classify queries (HR/IT/Finance), extract entities
+#              (country, product), or set routing flags from user intent — without
+#              asking the user or using an AI Prompt action.
+# When NOT to use: Complex multi-step reasoning, structured output from long text,
+#                  transformations needing a full prompt — use AI Prompt instead.
+# Cost comparison:
+#   Orchestrator variable: Free (reuses orchestration LLM call), zero latency
+#   AI Prompt action: Consumes credits per call, extra round-trip
+#   Question node: Free, but requires user to respond explicitly
+
+# --- Example 1: Category Classification ---
+kind: AdaptiveDialog
+inputs:
+  - kind: AutomaticTaskInput
+    propertyName: searchCategory
+    description: |-
+      Recognize the user's input and assign a category from this list:
+      HR, IT, Finance, General.
+      Use HR for benefits, leave, policies.
+      Use IT for technical support, passwords, software.
+      Use Finance for expenses, budgets, invoices.
+      Use General for everything else.
+    shouldPromptUser: false
+
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    # Store classification in a global variable for use by OnKnowledgeRequested
+    - kind: SetVariable
+      id: setCategory_REPLACE1
+      variable: Global.searchCategory
+      value: =Topic.searchCategory
+
+inputType:
+  properties:
+    searchCategory:
+      displayName: searchCategory
+      description: |-
+        Recognize the user's input and assign a category from this list:
+        HR, IT, Finance, General.
+      type: String
+
+outputType: {}
+
+# --- Example 2: Country Extraction ---
+# Extracts target country from conversation, falls back to user profile country.
+# Combine with JIT user context (Global.UserCountry as default).
+#
+# kind: AdaptiveDialog
+# inputs:
+#   - kind: AutomaticTaskInput
+#     propertyName: searchCountry
+#     description: |-
+#       Identify the country this query is about. If the user explicitly mentions
+#       a country, use that. If not, use the value of Global.UserCountry as default.
+#       Return the ISO 2-letter country code in uppercase: FR, UK, DE, US, Other
+#     shouldPromptUser: false
+#
+# beginDialog:
+#   kind: OnRecognizedIntent
+#   id: main
+#   intent: {}
+#   actions:
+#     - kind: SetVariable
+#       id: setCountry_REPLACE2
+#       variable: Global.searchCountry
+#       value: =Topic.searchCountry
+#
+# inputType:
+#   properties:
+#     searchCountry:
+#       displayName: searchCountry
+#       description: |-
+#         Identify the country this query is about. Return ISO 2-letter code.
+#       type: String
+# outputType: {}
+
+# --- Authoring Guidelines ---
+# 1. Write the input description as a PRECISE extraction instruction — the orchestrator
+#    uses it as the prompt. Vague descriptions produce unreliable classifications.
+# 2. Use enum-style descriptions — list the exact allowed values so the orchestrator
+#    knows the vocabulary (e.g., "Classify as: HR, IT, Finance, Other").
+# 3. Always provide a fallback value (e.g., "General", "Other") and handle it downstream.
+# 4. Keep the classification space small — 3-6 categories work well. >10 degrades accuracy.
+# 5. shouldPromptUser: false is CRITICAL — suppresses any user-facing question.
+# 6. The input MUST be declared in BOTH inputs[] and inputType.properties — must match.
+# 7. The variable is populated once at topic invocation — cannot update mid-topic.
+# 8. The orchestrator uses current message + conversation history, not external data.
+
+# --- Wiring to Knowledge Routing ---
+# 1. This topic sets Global.searchCategory (or Global.searchCountry)
+# 2. An OnKnowledgeRequested topic reads the global variable
+# 3. ConditionGroup routes SearchAndSummarizeContent to the matching knowledge source
+# See knowledge-routing.yaml for the OnKnowledgeRequested topic pattern.

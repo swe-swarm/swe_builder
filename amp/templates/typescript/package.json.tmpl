@@ -1,0 +1,15 @@
+{
+  "name": "{{ packageName }}",
+  "version": "{{ version }}",
+  "description": "{{ description }}",
+  "license": "{{ license }}",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {{ dependenciesJson }},
+  "devDependencies": {{ devDependenciesJson }}
+}

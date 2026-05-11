@@ -1,0 +1,82 @@
+# Pattern: Form Collection with Adaptive Card Submit
+# Trigger: OnRecognizedIntent
+# Shows: Present adaptive card form → collect submission → process
+# Good for structured data entry (tickets, requests, orders)
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    - kind: Question
+      id: collectForm
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.formData
+      prompt:
+        text: "Please fill out the form below:"
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "TextBlock",
+                    text: "{{FORM_TITLE}}",
+                    weight: "Bolder",
+                    size: "Large"
+                  },
+                  {
+                    type: "Input.Text",
+                    id: "field1",
+                    label: "{{FIELD_1_LABEL}}",
+                    placeholder: "{{FIELD_1_PLACEHOLDER}}",
+                    isRequired: true,
+                    errorMessage: "{{FIELD_1_LABEL}} is required"
+                  },
+                  {
+                    type: "Input.Text",
+                    id: "field2",
+                    label: "{{FIELD_2_LABEL}}",
+                    placeholder: "{{FIELD_2_PLACEHOLDER}}",
+                    isMultiline: true
+                  },
+                  {
+                    type: "Input.ChoiceSet",
+                    id: "field3",
+                    label: "{{FIELD_3_LABEL}}",
+                    choices: [
+                      { title: "{{CHOICE_1}}", value: "choice1" },
+                      { title: "{{CHOICE_2}}", value: "choice2" },
+                      { title: "{{CHOICE_3}}", value: "choice3" }
+                    ],
+                    isRequired: true
+                  }
+                ],
+                actions: [
+                  {
+                    type: "Action.Submit",
+                    title: "Submit"
+                  }
+                ]
+              }
+      entity: StringPrebuiltEntity
+
+    - kind: SendMessage
+      id: confirmSubmission
+      message: |-
+        Your submission has been received. Here's what I captured:
+
+        - **{{FIELD_1_LABEL}}:** {Topic.formData.field1}
+        - **{{FIELD_2_LABEL}}:** {Topic.formData.field2}
+        - **{{FIELD_3_LABEL}}:** {Topic.formData.field3}
+
+        {{NEXT_STEPS_MESSAGE}}

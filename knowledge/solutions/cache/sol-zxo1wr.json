@@ -1,0 +1,29 @@
+{
+  "id": "sol-zxo1wr",
+  "folderName": "HR Claims Agent for Legal",
+  "folderId": "01Z2AOQ5SSA67NC3PSY5HLKHDBGQZ2CEZA",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:13.965Z",
+  "lastAnalyzed": "2026-03-02T19:43:13.967Z",
+  "analysisDepth": "deep",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "Cliffy Notes.zip",
+      "size": 39235,
+      "type": "solution"
+    },
+    {
+      "name": "HR Claims Assistant for Legal - Agent Instructions & Build Guide.txt",
+      "size": 11529,
+      "type": "other"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

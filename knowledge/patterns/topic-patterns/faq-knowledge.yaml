@@ -1,0 +1,18 @@
+# Pattern: Knowledge-Grounded Q&A (Generative Answers)
+# Trigger: OnUnknownIntent (catches queries not matched by other topics)
+# This is the primary pattern for knowledge-based agents
+# The SearchAndSummarizeContent node searches configured knowledge sources
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  actions:
+    - kind: SearchAndSummarizeContent
+      id: searchKnowledge
+      userInput: =System.Activity.Text
+      moderationLevel: Medium
+      additionalInstructions: |-
+        {{ADDITIONAL_INSTRUCTIONS}}
+        Always cite your sources when providing information.
+        If you cannot find relevant information, say so clearly.

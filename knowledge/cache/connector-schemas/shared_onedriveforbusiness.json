@@ -1,0 +1,245 @@
+{
+  "_meta": {
+    "connectorId": "shared_onedriveforbusiness",
+    "displayName": "OneDrive for Business",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "ConvertFile": {
+      "displayName": "Convert file",
+      "method": "POST",
+      "description": "This operation converts a file to another format. The list of supported conversions can be found at https://aka.ms/onedriveconversions",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ConvertFileByPath": {
+      "displayName": "Convert file using path",
+      "method": "POST",
+      "description": "This operation converts a file to another format using the path. The list of supported conversions can be found at https://aka.ms/onedriveconversions",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CopyDriveFile": {
+      "displayName": "Copy file",
+      "method": "POST",
+      "description": "This operation copies a file within OneDrive.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CopyDriveFileByPath": {
+      "displayName": "Copy file using path",
+      "method": "POST",
+      "description": "This operation copies a file within OneDrive by path.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CopyFile": {
+      "displayName": "Upload file from URL",
+      "method": "POST",
+      "description": "This operation uploads a file from a URL to OneDrive.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateFile": {
+      "displayName": "Create file",
+      "method": "POST",
+      "description": "This operation creates a file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateShareLinkByPathV2": {
+      "displayName": "Create share link by path",
+      "method": "POST",
+      "description": "This operation creates a share link for a file using the path.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateShareLinkV2": {
+      "displayName": "Create share link",
+      "method": "POST",
+      "description": "This operation creates a share link for a file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteFile": {
+      "displayName": "Delete file",
+      "method": "POST",
+      "description": "This operation deletes a file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ExtractFolderV2": {
+      "displayName": "Extract archive to folder",
+      "method": "POST",
+      "description": "This operation extracts an archive file into a folder (example: .zip). Maximum archive size is 50 MB and 100 files inside.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "FindFiles": {
+      "displayName": "Find files in folder",
+      "method": "POST",
+      "description": "This operation finds files within a folder using search or name pattern match.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "FindFilesByPath": {
+      "displayName": "Find files in folder by path",
+      "method": "POST",
+      "description": "This operation finds files within a folder by path using search or name pattern match.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileContent": {
+      "displayName": "Get file content",
+      "method": "POST",
+      "description": "This operation gets the content of a file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileContentByPath": {
+      "displayName": "Get file content using path",
+      "method": "POST",
+      "description": "This operation gets the content of a file using the path.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileMetadata": {
+      "displayName": "Get file metadata",
+      "method": "POST",
+      "description": "This operation gets the metadata for a file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileMetadataByPath": {
+      "displayName": "Get file metadata using path",
+      "method": "POST",
+      "description": "This operation gets the metadata of a file using the path.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFileThumbnail": {
+      "displayName": "Get file thumbnail",
+      "method": "POST",
+      "description": "This operation gets the thumbnail of a file. The thumbnail will only be valid for 6 hours.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListFolderV2": {
+      "displayName": "List files in folder",
+      "method": "POST",
+      "description": "This operation gets the list of files and subfolders in a folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListRootFolder": {
+      "displayName": "List files in root folder",
+      "method": "POST",
+      "description": "This operation gets the list of files and subfolders in the root folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "MoveFile": {
+      "displayName": "Move or rename a file",
+      "method": "POST",
+      "description": "This operation moves or renames a file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "MoveFileByPath": {
+      "displayName": "Move or rename a file using path",
+      "method": "POST",
+      "description": "This operation moves or renames a file using the path.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewFilesV2": {
+      "displayName": "When a file is created (properties only)",
+      "method": "POST",
+      "description": "This operation triggers a flow when a new file is created in a folder.  Files moved within OneDrive are not considered new files.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewFileV2": {
+      "displayName": "When a file is created",
+      "method": "POST",
+      "description": "This operation triggers a flow when a new file is created in a folder. Files larger than 50 MB will be skipped and not returned by this trigger. Files moved within OneDrive are not considered new files.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnUpdatedFilesV2": {
+      "displayName": "When a file is modified (properties only)",
+      "method": "POST",
+      "description": "This operation triggers a flow when a file is modified in a folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnUpdatedFileV2": {
+      "displayName": "When a file is modified",
+      "method": "POST",
+      "description": "This operation triggers a flow when a file is modified in a folder. Files larger than 50 MB will be skipped and not returned by this trigger.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateFile": {
+      "displayName": "Update file",
+      "method": "POST",
+      "description": "This operation updates a file.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

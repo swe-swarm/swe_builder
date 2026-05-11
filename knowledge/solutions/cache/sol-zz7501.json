@@ -1,0 +1,34 @@
+{
+  "id": "sol-zz7501",
+  "folderName": "Connecting External Agent Using Agent SDK Client",
+  "folderId": "01Z2AOQ5TYYNT3S6ZMYZCJ6J4FRIYM743S",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:40.800Z",
+  "lastAnalyzed": "2026-03-02T19:42:40.800Z",
+  "analysisDepth": "error",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "Connecting External Agents using Agent SDK.pptx",
+      "size": 755416,
+      "type": "presentation"
+    },
+    {
+      "name": "Connecting External Agents via Agent SDK Demo.mp4",
+      "size": 29713340,
+      "type": "other"
+    },
+    {
+      "name": "INTEGRATION_GUIDE.md",
+      "size": 7408,
+      "type": "markdown"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": "No solution .zip file found in folder"
+}

@@ -1,0 +1,6556 @@
+{
+  "definitions": {
+    "BotElement": {
+      "x-definition": {
+        "title": "BotElement",
+        "type": "object",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ClosedListOptionSet"
+        },
+        {
+          "$ref": "#/definitions/EmbeddedOptionSet"
+        },
+        {
+          "$ref": "#/definitions/SystemOptionSet"
+        },
+        {
+          "$ref": "#/definitions/DialogComponent"
+        },
+        {
+          "$ref": "#/definitions/ValueExpression"
+        },
+        {
+          "$ref": "#/definitions/StringExpression"
+        },
+        {
+          "$ref": "#/definitions/Message"
+        },
+        {
+          "$ref": "#/definitions/TemplateLine"
+        },
+        {
+          "$ref": "#/definitions/TextSegment"
+        },
+        {
+          "$ref": "#/definitions/ExpressionSegment"
+        },
+        {
+          "$ref": "#/definitions/MessageBack"
+        },
+        {
+          "$ref": "#/definitions/OpenUrl"
+        },
+        {
+          "$ref": "#/definitions/MakeCall"
+        },
+        {
+          "$ref": "#/definitions/SendHiddenMessageBack"
+        },
+        {
+          "$ref": "#/definitions/AdaptiveCardExpression"
+        },
+        {
+          "$ref": "#/definitions/FileExpression"
+        },
+        {
+          "$ref": "#/definitions/BoolExpression"
+        },
+        {
+          "$ref": "#/definitions/IntExpression"
+        },
+        {
+          "$ref": "#/definitions/Unspecified"
+        },
+        {
+          "$ref": "#/definitions/Blank"
+        },
+        {
+          "$ref": "#/definitions/Boolean"
+        },
+        {
+          "$ref": "#/definitions/Number"
+        },
+        {
+          "$ref": "#/definitions/Float"
+        },
+        {
+          "$ref": "#/definitions/String"
+        },
+        {
+          "$ref": "#/definitions/File"
+        },
+        {
+          "$ref": "#/definitions/Hyperlink"
+        },
+        {
+          "$ref": "#/definitions/Color"
+        },
+        {
+          "$ref": "#/definitions/Guid"
+        },
+        {
+          "$ref": "#/definitions/Time"
+        },
+        {
+          "$ref": "#/definitions/Date"
+        },
+        {
+          "$ref": "#/definitions/DateTime"
+        },
+        {
+          "$ref": "#/definitions/DateTimeNoTimeZone"
+        },
+        {
+          "$ref": "#/definitions/Any"
+        },
+        {
+          "$ref": "#/definitions/UnresolvedDynamicType"
+        },
+        {
+          "$ref": "#/definitions/PropertyInfo"
+        },
+        {
+          "$ref": "#/definitions/Table"
+        },
+        {
+          "$ref": "#/definitions/Record"
+        },
+        {
+          "$ref": "#/definitions/ConnectionProperties"
+        },
+        {
+          "$ref": "#/definitions/BotEntity"
+        },
+        {
+          "$ref": "#/definitions/NumberExpression"
+        },
+        {
+          "$ref": "#/definitions/MicrosoftCopilotModels"
+        },
+        {
+          "$ref": "#/definitions/AdaptiveDialog"
+        },
+        {
+          "$ref": "#/definitions/LatencyMessageSettings"
+        },
+        {
+          "$ref": "#/definitions/ActionInputBinding"
+        },
+        {
+          "$ref": "#/definitions/ActionOutputBinding"
+        },
+        {
+          "$ref": "#/definitions/InvokeFlowAction"
+        },
+        {
+          "$ref": "#/definitions/RaiseErrorBehavior"
+        },
+        {
+          "$ref": "#/definitions/ContinueOnErrorBehavior"
+        },
+        {
+          "$ref": "#/definitions/WaitForConnectorTrigger"
+        },
+        {
+          "$ref": "#/definitions/InvokeConnectorAction"
+        },
+        {
+          "$ref": "#/definitions/HttpRequestAction"
+        },
+        {
+          "$ref": "#/definitions/AdaptiveCardPrompt"
+        },
+        {
+          "$ref": "#/definitions/Question"
+        },
+        {
+          "$ref": "#/definitions/CSATQuestion"
+        },
+        {
+          "$ref": "#/definitions/ActionScope"
+        },
+        {
+          "$ref": "#/definitions/Foreach"
+        },
+        {
+          "$ref": "#/definitions/DialogExpression"
+        },
+        {
+          "$ref": "#/definitions/BeginDialog"
+        },
+        {
+          "$ref": "#/definitions/CancelAllDialogs"
+        },
+        {
+          "$ref": "#/definitions/ClearAllVariables"
+        },
+        {
+          "$ref": "#/definitions/BreakLoop"
+        },
+        {
+          "$ref": "#/definitions/ContinueLoop"
+        },
+        {
+          "$ref": "#/definitions/EditTableV2"
+        },
+        {
+          "$ref": "#/definitions/EndDialog"
+        },
+        {
+          "$ref": "#/definitions/GotoAction"
+        },
+        {
+          "$ref": "#/definitions/ConditionGroup"
+        },
+        {
+          "$ref": "#/definitions/ConditionItem"
+        },
+        {
+          "$ref": "#/definitions/EndConversation"
+        },
+        {
+          "$ref": "#/definitions/SendActivity"
+        },
+        {
+          "$ref": "#/definitions/SetVariable"
+        },
+        {
+          "$ref": "#/definitions/SetMultipleVariables"
+        },
+        {
+          "$ref": "#/definitions/VariableAssignment"
+        },
+        {
+          "$ref": "#/definitions/SetTextVariable"
+        },
+        {
+          "$ref": "#/definitions/ParseValue"
+        },
+        {
+          "$ref": "#/definitions/LogCustomTelemetryEvent"
+        },
+        {
+          "$ref": "#/definitions/GptComponentMetadata"
+        },
+        {
+          "$ref": "#/definitions/OnRedirect"
+        },
+        {
+          "$ref": "#/definitions/OnToolSelected"
+        },
+        {
+          "$ref": "#/definitions/OnRecognizedIntent"
+        },
+        {
+          "$ref": "#/definitions/OnEscalate"
+        },
+        {
+          "$ref": "#/definitions/OnError"
+        },
+        {
+          "$ref": "#/definitions/OnConversationStart"
+        },
+        {
+          "$ref": "#/definitions/Variable"
+        },
+        {
+          "$ref": "#/definitions/GptComponent"
+        },
+        {
+          "$ref": "#/definitions/BotDefinition"
+        },
+        {
+          "$ref": "#/definitions/InvokeConnectorTaskAction"
+        },
+        {
+          "$ref": "#/definitions/InvokeAIBuilderModelTaskAction"
+        },
+        {
+          "$ref": "#/definitions/AndConditionGroup"
+        },
+        {
+          "$ref": "#/definitions/OrConditionGroup"
+        },
+        {
+          "$ref": "#/definitions/BooleanCondition"
+        },
+        {
+          "$ref": "#/definitions/StructuredRecordExpression"
+        }
+      ]
+    },
+    "BotComponentBase": {
+      "x-definition": {
+        "title": "BotComponentBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/SolutionComponent",
+        "x-abstract": true,
+        "properties": {
+          "displayName": {
+            "title": "DisplayName",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "parentBotComponentId": {
+            "title": "ParentBotComponentId",
+            "type": "string"
+          },
+          "parentBotId": {
+            "title": "ParentBotId",
+            "type": "string"
+          },
+          "parentBotComponentCollectionId": {
+            "title": "ParentBotComponentCollectionId",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "shareContext": {
+            "title": "ShareContext",
+            "$ref": "#/definitions/ContentShareContext"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "state": {
+            "title": "State",
+            "default": "Active",
+            "$ref": "#/definitions/StateCode"
+          },
+          "status": {
+            "title": "Status",
+            "$ref": "#/definitions/BotComponentStatusReason"
+          },
+          "publisherUniqueName": {
+            "title": "PublisherUniqueName",
+            "type": "string"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/DialogComponent"
+        },
+        {
+          "$ref": "#/definitions/GptComponent"
+        }
+      ]
+    },
+    "DataValue": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "array"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "OptionSetDataType": {
+      "x-definition": {
+        "title": "OptionSetDataType",
+        "type": "object",
+        "x-base-ref": "#/definitions/DataType",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ClosedListOptionSet"
+        },
+        {
+          "$ref": "#/definitions/EmbeddedOptionSet"
+        },
+        {
+          "$ref": "#/definitions/SystemOptionSet"
+        }
+      ]
+    },
+    "DialogBase": {
+      "x-definition": {
+        "title": "DialogBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/LocalizableContentContainer",
+        "x-abstract": true,
+        "properties": {
+          "confirmation": {
+            "title": "Confirmation",
+            "description": "Provide a prompt that the user will see to confirm the dialog being executed.",
+            "$ref": "#/definitions/ResponseTemplate"
+          },
+          "response": {
+            "title": "Response",
+            "description": "Optional response template",
+            "$ref": "#/definitions/ResponseTemplate"
+          },
+          "inputs": {
+            "title": "Inputs",
+            "description": "Provide slot filling metadata for the dialog inputs.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/TaskInput"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AdaptiveDialog"
+        }
+      ]
+    },
+    "ActivityTemplateBase": {
+      "x-definition": {
+        "title": "ActivityTemplateBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/LanguageGenerationElement",
+        "x-abstract": true,
+        "properties": {
+          "channelData": {
+            "title": "Channel data",
+            "description": "Contains parameters specific to the channel to be handled by the client.",
+            "$role": "expression",
+            "$ref": "#/definitions/ValueExpression"
+          },
+          "value": {
+            "title": "Value",
+            "description": "Contains parameters specific to the activity to be handled by the client.",
+            "$role": "expression",
+            "$ref": "#/definitions/ValueExpression"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/MessageOptionalKind"
+        }
+      ]
+    },
+    "QuickReplyBase": {
+      "x-definition": {
+        "title": "QuickReplyBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "title": {
+            "title": "Title",
+            "description": "The text to display on the button. If not specified, a default value will be shown depending on the type of quick reply.",
+            "$role": "expression",
+            "$ref": "#/definitions/StringExpression"
+          },
+          "image": {
+            "title": "Image",
+            "description": "An image URL or base64-encoded image string to display next to the button text.",
+            "type": "string"
+          },
+          "imageAltText": {
+            "title": "Image alternative text",
+            "description": "The alternative text to display on the image.",
+            "type": "string"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/MessageBack"
+        },
+        {
+          "$ref": "#/definitions/OpenUrl"
+        },
+        {
+          "$ref": "#/definitions/MakeCall"
+        },
+        {
+          "$ref": "#/definitions/SendHiddenMessageBack"
+        }
+      ]
+    },
+    "TemplateSegment": {
+      "x-definition": {
+        "title": "TemplateSegment",
+        "type": "object",
+        "x-base-ref": "#/definitions/LanguageGenerationElement",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/TextSegment"
+        },
+        {
+          "$ref": "#/definitions/ExpressionSegment"
+        }
+      ]
+    },
+    "BooleanConditionGroup": {
+      "x-definition": {
+        "title": "BooleanConditionGroup",
+        "type": "object",
+        "x-base-ref": "#/definitions/BooleanConditionBase",
+        "x-abstract": true,
+        "properties": {
+          "conditions": {
+            "title": "Conditions",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/BooleanConditionBase"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AndConditionGroup"
+        },
+        {
+          "$ref": "#/definitions/OrConditionGroup"
+        }
+      ]
+    },
+    "DataType": {
+      "x-definition": {
+        "title": "DataType",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "sensitivityLevel": {
+            "title": "SensitivityLevel",
+            "$ref": "#/definitions/SensitivityLevel"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ClosedListOptionSet"
+        },
+        {
+          "$ref": "#/definitions/EmbeddedOptionSet"
+        },
+        {
+          "$ref": "#/definitions/SystemOptionSet"
+        },
+        {
+          "$ref": "#/definitions/Unspecified"
+        },
+        {
+          "$ref": "#/definitions/Blank"
+        },
+        {
+          "$ref": "#/definitions/Boolean"
+        },
+        {
+          "$ref": "#/definitions/Number"
+        },
+        {
+          "$ref": "#/definitions/Float"
+        },
+        {
+          "$ref": "#/definitions/String"
+        },
+        {
+          "$ref": "#/definitions/File"
+        },
+        {
+          "$ref": "#/definitions/Hyperlink"
+        },
+        {
+          "$ref": "#/definitions/Color"
+        },
+        {
+          "$ref": "#/definitions/Guid"
+        },
+        {
+          "$ref": "#/definitions/Time"
+        },
+        {
+          "$ref": "#/definitions/Date"
+        },
+        {
+          "$ref": "#/definitions/DateTime"
+        },
+        {
+          "$ref": "#/definitions/DateTimeNoTimeZone"
+        },
+        {
+          "$ref": "#/definitions/Any"
+        },
+        {
+          "$ref": "#/definitions/UnresolvedDynamicType"
+        },
+        {
+          "$ref": "#/definitions/Table"
+        },
+        {
+          "$ref": "#/definitions/Record"
+        }
+      ]
+    },
+    "TaskAction": {
+      "x-definition": {
+        "title": "TaskAction",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/InvokeConnectorTaskAction"
+        },
+        {
+          "$ref": "#/definitions/InvokeAIBuilderModelTaskAction"
+        }
+      ]
+    },
+    "Connection": {
+      "x-definition": {
+        "title": "Connection",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "usageDescription": {
+            "title": "Usage Description",
+            "description": "Describes the purpose of the connector action",
+            "type": "string"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ConnectionProperties"
+        }
+      ]
+    },
+    "AgentModelType": {
+      "x-definition": {
+        "title": "AgentModelType",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "modelNameHint": {
+            "title": "ModelNameHint",
+            "description": "Model name hint.",
+            "type": "string"
+          },
+          "summarization": {
+            "title": "Summarization",
+            "$ref": "#/definitions/SummarizationExternalModelConfiguration"
+          },
+          "options": {
+            "title": "Options",
+            "description": "Options for the model.",
+            "$ref": "#/definitions/ModelOptions"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/MicrosoftCopilotModels"
+        }
+      ]
+    },
+    "LocalizableContentContainer": {
+      "x-definition": {
+        "title": "LocalizableContentContainer",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AdaptiveDialog"
+        }
+      ]
+    },
+    "TriggerBase": {
+      "x-definition": {
+        "title": "TriggerBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "actions": {
+            "title": "Actions",
+            "description": "The list of actions that should be executed when triggered.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DialogAction"
+            }
+          },
+          "id": {
+            "title": "Id",
+            "description": "The unique identifier for the trigger within the scope of this topic.",
+            "type": "string"
+          },
+          "condition": {
+            "title": "Condition",
+            "description": "An optional condition that decides whether the topic should be triggered. Ignored when the topic is redirected to explicitly.",
+            "$role": "expression",
+            "$ref": "#/definitions/BoolExpression"
+          },
+          "priority": {
+            "title": "Priority",
+            "description": "Set priority for this trigger against other qualifying triggers with lower numbers indicating higher priority.",
+            "default": 0,
+            "type": "number"
+          },
+          "runOnce": {
+            "title": "Run once",
+            "description": "Run this trigger only once per turn.",
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/OnRedirect"
+        },
+        {
+          "$ref": "#/definitions/OnToolSelected"
+        },
+        {
+          "$ref": "#/definitions/OnRecognizedIntent"
+        },
+        {
+          "$ref": "#/definitions/OnEscalate"
+        },
+        {
+          "$ref": "#/definitions/OnError"
+        },
+        {
+          "$ref": "#/definitions/OnConversationStart"
+        }
+      ]
+    },
+    "DialogAction": {
+      "x-definition": {
+        "title": "DialogAction",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "id": {
+            "title": "Id",
+            "description": "Unique ID for the action. Must be unique within the trigger.",
+            "type": "string"
+          },
+          "disabled": {
+            "title": "Disabled",
+            "description": "When disabled, an action does not execute.",
+            "default": false,
+            "type": "boolean"
+          },
+          "conversationOutcome": {
+            "title": "Conversation outcome for analytics",
+            "description": "Sets the outcome of the current session for the purpose of analytics. The outcome is set before the action's execution.",
+            "$ref": "#/definitions/ConversationOutcome"
+          },
+          "displayName": {
+            "title": "DisplayName",
+            "description": "Display name for the action.",
+            "type": "string"
+          },
+          "note": {
+            "title": "Notes",
+            "description": "Sticky notes associated with the action.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/InvokeFlowAction"
+        },
+        {
+          "$ref": "#/definitions/WaitForConnectorTrigger"
+        },
+        {
+          "$ref": "#/definitions/InvokeConnectorAction"
+        },
+        {
+          "$ref": "#/definitions/HttpRequestAction"
+        },
+        {
+          "$ref": "#/definitions/AdaptiveCardPrompt"
+        },
+        {
+          "$ref": "#/definitions/Question"
+        },
+        {
+          "$ref": "#/definitions/CSATQuestion"
+        },
+        {
+          "$ref": "#/definitions/ActionScope"
+        },
+        {
+          "$ref": "#/definitions/Foreach"
+        },
+        {
+          "$ref": "#/definitions/BeginDialog"
+        },
+        {
+          "$ref": "#/definitions/CancelAllDialogs"
+        },
+        {
+          "$ref": "#/definitions/ClearAllVariables"
+        },
+        {
+          "$ref": "#/definitions/BreakLoop"
+        },
+        {
+          "$ref": "#/definitions/ContinueLoop"
+        },
+        {
+          "$ref": "#/definitions/EditTableV2"
+        },
+        {
+          "$ref": "#/definitions/EndDialog"
+        },
+        {
+          "$ref": "#/definitions/GotoAction"
+        },
+        {
+          "$ref": "#/definitions/ConditionGroup"
+        },
+        {
+          "$ref": "#/definitions/EndConversation"
+        },
+        {
+          "$ref": "#/definitions/SendActivity"
+        },
+        {
+          "$ref": "#/definitions/SetVariable"
+        },
+        {
+          "$ref": "#/definitions/SetMultipleVariables"
+        },
+        {
+          "$ref": "#/definitions/SetTextVariable"
+        },
+        {
+          "$ref": "#/definitions/ParseValue"
+        },
+        {
+          "$ref": "#/definitions/LogCustomTelemetryEvent"
+        }
+      ]
+    },
+    "ActionInputBindingBase": {
+      "x-definition": {
+        "title": "ActionInputBindingBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ActionInputBinding"
+        }
+      ]
+    },
+    "ActionOutputBindingBase": {
+      "x-definition": {
+        "title": "ActionOutputBindingBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "outputOverrides": {
+            "title": "OutputOverrides",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/PropertyOverride"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ActionOutputBinding"
+        }
+      ]
+    },
+    "HttpErrorHandlingBehavior": {
+      "x-definition": {
+        "title": "HttpErrorHandlingBehavior",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/RaiseErrorBehavior"
+        },
+        {
+          "$ref": "#/definitions/ContinueOnErrorBehavior"
+        }
+      ]
+    },
+    "AgentDefinition": {
+      "x-definition": {
+        "title": "AgentDefinition",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "name": {
+            "title": "Name",
+            "description": "Name of the agent configuration.",
+            "type": "string"
+          },
+          "displayName": {
+            "title": "Display Name",
+            "description": "Name of the agent configuration.",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "description": "Description of the agent's capabilities and purpose.",
+            "type": "string"
+          },
+          "metadata": {
+            "title": "Metadata",
+            "description": "Additional metadata including authors, tags, and other arbitrary properties",
+            "type": "object"
+          },
+          "inputType": {
+            "title": "Inputs",
+            "description": "Schema for the inputs to this dialog.",
+            "$ref": "#/definitions/Record"
+          },
+          "outputType": {
+            "title": "Outputs",
+            "description": "Schema for the results of this dialog.",
+            "$ref": "#/definitions/Record"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/GptComponentMetadata"
+        }
+      ]
+    },
+    "BooleanConditionBase": {
+      "x-definition": {
+        "title": "BooleanConditionBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AndConditionGroup"
+        },
+        {
+          "$ref": "#/definitions/OrConditionGroup"
+        },
+        {
+          "$ref": "#/definitions/BooleanCondition"
+        }
+      ]
+    },
+    "DefinitionBase": {
+      "x-definition": {
+        "title": "DefinitionBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "components": {
+            "title": "Components",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/BotComponentBase"
+            }
+          },
+          "environmentVariables": {
+            "title": "EnvironmentVariables",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/EnvironmentVariableDefinition"
+            }
+          },
+          "flows": {
+            "title": "Flows",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CloudFlowDefinition"
+            }
+          },
+          "dataverseTableSearchs": {
+            "title": "DataverseTableSearchs",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DataverseTableSearchBase"
+            }
+          },
+          "dataverseTableSearchGlossaryConfigurations": {
+            "title": "DataverseTableSearchGlossaryConfigurations",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DataverseTableSearchGlossaryConfiguration"
+            }
+          },
+          "dataverseTableSearchEntityConfigurations": {
+            "title": "DataverseTableSearchEntityConfigurations",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DataverseTableSearchEntityConfiguration"
+            }
+          },
+          "dataverseTableSearchEntityColumnSynonyms": {
+            "title": "DataverseTableSearchEntityColumnSynonyms",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DataverseTableSearchEntityColumnSynonym"
+            }
+          },
+          "connectionReferences": {
+            "title": "ConnectionReferences",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ConnectionReference"
+            }
+          },
+          "connectorDefinitions": {
+            "title": "ConnectorDefinitions",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ConnectorDefinition"
+            }
+          },
+          "aIModelDefinitions": {
+            "title": "AIModelDefinitions",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/AIModelDefinition"
+            }
+          },
+          "aIPluginOperations": {
+            "title": "AIPluginOperations",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/AIPluginOperation"
+            }
+          },
+          "connectedAgentDefinitions": {
+            "title": "ConnectedAgentDefinitions",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ConnectedAgentDefinition"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/BotDefinition"
+        }
+      ]
+    },
+    "SolutionComponent": {
+      "x-definition": {
+        "title": "SolutionComponent",
+        "type": "object",
+        "x-base-ref": "#/definitions/DataverseComponent",
+        "x-abstract": true,
+        "properties": {
+          "managedProperties": {
+            "title": "ManagedProperties",
+            "$ref": "#/definitions/ManagedProperties"
+          },
+          "auditInfo": {
+            "title": "AuditInfo",
+            "$ref": "#/definitions/AuditInfo"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/DialogComponent"
+        },
+        {
+          "$ref": "#/definitions/BotEntity"
+        },
+        {
+          "$ref": "#/definitions/GptComponent"
+        }
+      ]
+    },
+    "DataverseComponent": {
+      "x-definition": {
+        "title": "DataverseComponent",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "version": {
+            "title": "Version",
+            "type": "number"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/DialogComponent"
+        },
+        {
+          "$ref": "#/definitions/BotEntity"
+        },
+        {
+          "$ref": "#/definitions/GptComponent"
+        }
+      ]
+    },
+    "LanguageGenerationElement": {
+      "x-definition": {
+        "title": "LanguageGenerationElement",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Message"
+        },
+        {
+          "$ref": "#/definitions/TemplateLine"
+        },
+        {
+          "$ref": "#/definitions/TextSegment"
+        },
+        {
+          "$ref": "#/definitions/ExpressionSegment"
+        }
+      ]
+    },
+    "ExpressionBase": {
+      "x-definition": {
+        "title": "ExpressionBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/BotElement",
+        "x-abstract": true,
+        "properties": {
+          "expressionText": {
+            "title": "ExpressionText",
+            "type": "string"
+          },
+          "variableReference": {
+            "title": "VariableReference",
+            "type": "string"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ValueExpression"
+        },
+        {
+          "$ref": "#/definitions/StringExpression"
+        },
+        {
+          "$ref": "#/definitions/AdaptiveCardExpression"
+        },
+        {
+          "$ref": "#/definitions/FileExpression"
+        },
+        {
+          "$ref": "#/definitions/BoolExpression"
+        },
+        {
+          "$ref": "#/definitions/IntExpression"
+        },
+        {
+          "$ref": "#/definitions/NumberExpression"
+        },
+        {
+          "$ref": "#/definitions/DialogExpression"
+        }
+      ]
+    },
+    "AggregateDataType": {
+      "x-definition": {
+        "title": "AggregateDataType",
+        "type": "object",
+        "x-base-ref": "#/definitions/DataType",
+        "x-abstract": true,
+        "properties": {
+          "properties": {
+            "title": "Properties",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/definitions/PropertyInfo"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Table"
+        },
+        {
+          "$ref": "#/definitions/Record"
+        }
+      ]
+    },
+    "AsyncAction": {
+      "x-definition": {
+        "title": "AsyncAction",
+        "type": "object",
+        "x-base-ref": "#/definitions/DialogAction",
+        "x-abstract": true,
+        "properties": {
+          "latencyMessageSettings": {
+            "title": "Latency Message",
+            "description": "In text conversations this message will be sent once. In voice conversations, this message will loop until the operation is complete.",
+            "$ref": "#/definitions/LatencyMessageSettings"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/InvokeFlowAction"
+        },
+        {
+          "$ref": "#/definitions/WaitForConnectorTrigger"
+        },
+        {
+          "$ref": "#/definitions/InvokeConnectorAction"
+        },
+        {
+          "$ref": "#/definitions/HttpRequestAction"
+        }
+      ]
+    },
+    "ExternalAction": {
+      "x-definition": {
+        "title": "ExternalAction",
+        "type": "object",
+        "x-base-ref": "#/definitions/AsyncAction",
+        "x-abstract": true,
+        "properties": {
+          "input": {
+            "title": "Input",
+            "description": "Maps variables to the inputs of this action",
+            "$ref": "#/definitions/ActionInputBindingBase",
+            "x-defaultDefinition": "#/definitions/ActionInputBinding"
+          },
+          "output": {
+            "title": "Output",
+            "description": "Maps outputs of this action to variables.",
+            "$ref": "#/definitions/ActionOutputBindingBase",
+            "x-defaultDefinition": "#/definitions/ActionOutputBinding"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/InvokeFlowAction"
+        },
+        {
+          "$ref": "#/definitions/WaitForConnectorTrigger"
+        },
+        {
+          "$ref": "#/definitions/InvokeConnectorAction"
+        }
+      ]
+    },
+    "ConnectorOperationBase": {
+      "x-definition": {
+        "title": "ConnectorOperationBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/ExternalAction",
+        "x-abstract": true,
+        "properties": {
+          "connectionReference": {
+            "title": "Connection reference",
+            "type": "string"
+          },
+          "connectionProperties": {
+            "title": "ConnectionProperties",
+            "$ref": "#/definitions/ConnectionProperties"
+          },
+          "dynamicInputSchema": {
+            "title": "DynamicInputSchema",
+            "$ref": "#/definitions/Record"
+          },
+          "dynamicOutputSchema": {
+            "title": "DynamicOutputSchema",
+            "$ref": "#/definitions/DataType",
+            "x-defaultDefinition": "#/definitions/Record"
+          },
+          "errorHandling": {
+            "title": "Error handling",
+            "description": "Determine what happens when an error occurs.",
+            "$ref": "#/definitions/HttpErrorHandlingBehavior",
+            "x-defaultDefinition": "#/definitions/RaiseErrorBehavior"
+          },
+          "requestTimeoutInMilliseconds": {
+            "title": "Request timeout (milliseconds)",
+            "default": 30000,
+            "$role": "expression",
+            "$ref": "#/definitions/IntExpression"
+          }
+        },
+        "required": [
+          "connectionReference"
+        ]
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/WaitForConnectorTrigger"
+        },
+        {
+          "$ref": "#/definitions/InvokeConnectorAction"
+        }
+      ]
+    },
+    "InputDialog": {
+      "x-definition": {
+        "title": "InputDialog",
+        "type": "object",
+        "x-base-ref": "#/definitions/DialogAction",
+        "x-abstract": true,
+        "properties": {
+          "interruptionPolicy": {
+            "title": "Interruption policy",
+            "$ref": "#/definitions/InterruptionPolicy"
+          },
+          "unrecognizedPrompt": {
+            "title": "Retry prompt",
+            "description": "Send this message again when a valid response isn't identified.",
+            "$ref": "#/definitions/ActivityTemplateBase",
+            "x-defaultDefinition": "#/definitions/Message"
+          },
+          "repeatCount": {
+            "title": "How many reprompts",
+            "description": "The maximum number of times this message will be repeated when a valid response isn't identified.",
+            "default": 2,
+            "anyOf": [
+              {
+                "const": 0
+              },
+              {
+                "const": 1
+              },
+              {
+                "const": 2
+              },
+              {
+                "$role": "expression",
+                "$ref": "#/definitions/IntExpression"
+              }
+            ]
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AdaptiveCardPrompt"
+        },
+        {
+          "$ref": "#/definitions/Question"
+        }
+      ]
+    },
+    "ActionScopeBase": {
+      "x-definition": {
+        "title": "ActionScopeBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/DialogAction",
+        "x-abstract": true,
+        "properties": {
+          "actions": {
+            "title": "Actions",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DialogAction"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ActionScope"
+        },
+        {
+          "$ref": "#/definitions/Foreach"
+        }
+      ]
+    },
+    "BaseInvokeDialogOrSelf": {
+      "x-definition": {
+        "title": "BaseInvokeDialogOrSelf",
+        "type": "object",
+        "x-base-ref": "#/definitions/DialogAction",
+        "x-abstract": true,
+        "properties": {
+          "input": {
+            "title": "Input",
+            "$ref": "#/definitions/ActionInputBindingBase",
+            "x-defaultDefinition": "#/definitions/ActionInputBinding"
+          },
+          "activityProcessed": {
+            "title": "Activity processed",
+            "description": "When set to false, reprocesses the message after redirecting to the target dialog.",
+            "default": true,
+            "$role": "expression",
+            "$ref": "#/definitions/BoolExpression"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/BeginDialog"
+        }
+      ]
+    },
+    "BaseInvokeDialog": {
+      "x-definition": {
+        "title": "BaseInvokeDialog",
+        "type": "object",
+        "x-base-ref": "#/definitions/BaseInvokeDialogOrSelf",
+        "x-abstract": true,
+        "properties": {
+          "dialog": {
+            "title": "Dialog",
+            "$role": "expression",
+            "$ref": "#/definitions/DialogExpression"
+          }
+        },
+        "required": [
+          "dialog"
+        ]
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/BeginDialog"
+        }
+      ]
+    },
+    "CancelAllDialogsBase": {
+      "x-definition": {
+        "title": "CancelAllDialogsBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/DialogAction",
+        "x-abstract": true,
+        "properties": {
+          "activityProcessed": {
+            "title": "Activity processed",
+            "description": "When set to false, reprocesses the message after redirecting to the target dialog.",
+            "default": true,
+            "$role": "expression",
+            "$ref": "#/definitions/BoolExpression"
+          },
+          "eventName": {
+            "title": "Event name",
+            "$role": "expression",
+            "$ref": "#/definitions/StringExpression"
+          },
+          "eventValue": {
+            "title": "Event value",
+            "$role": "expression",
+            "$ref": "#/definitions/ValueExpression"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/CancelAllDialogs"
+        }
+      ]
+    },
+    "OnRecognizedIntentBase": {
+      "x-definition": {
+        "title": "OnRecognizedIntentBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/TriggerBase",
+        "x-abstract": true,
+        "properties": {
+          "intent": {
+            "title": "Intent",
+            "description": "Definition of the intent to be recognized.",
+            "$ref": "#/definitions/IntentBase",
+            "x-defaultDefinition": "#/definitions/Intent"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/OnRecognizedIntent"
+        },
+        {
+          "$ref": "#/definitions/OnEscalate"
+        }
+      ]
+    },
+    "OnSystemIntentBase": {
+      "x-definition": {
+        "title": "OnSystemIntentBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/OnRecognizedIntentBase",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/OnEscalate"
+        }
+      ]
+    },
+    "SystemTrigger": {
+      "x-definition": {
+        "title": "SystemTrigger",
+        "type": "object",
+        "x-base-ref": "#/definitions/TriggerBase",
+        "x-abstract": true
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/OnError"
+        },
+        {
+          "$ref": "#/definitions/OnConversationStart"
+        }
+      ]
+    },
+    "ConnectorTaskActionBase": {
+      "x-definition": {
+        "title": "ConnectorTaskActionBase",
+        "type": "object",
+        "x-base-ref": "#/definitions/TaskAction",
+        "x-abstract": true,
+        "properties": {
+          "connectionReference": {
+            "title": "ConnectionReference",
+            "type": "string"
+          },
+          "connectionProperties": {
+            "title": "ConnectionProperties",
+            "$ref": "#/definitions/ConnectionProperties"
+          }
+        },
+        "required": [
+          "connectionReference"
+        ]
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/InvokeConnectorTaskAction"
+        }
+      ]
+    },
+    "ClosedListOptionSet": {
+      "title": "ClosedListOptionSet",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/OptionSetDataType",
+      "properties": {
+        "kind": {
+          "const": "ClosedListOptionSet"
+        },
+        "schemaName": {
+          "title": "SchemaName",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "schemaName"
+      ]
+    },
+    "EmbeddedOptionSet": {
+      "title": "EmbeddedOptionSet",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/OptionSetDataType",
+      "properties": {
+        "kind": {
+          "const": "EmbeddedOptionSet"
+        },
+        "dialogSchemaName": {
+          "title": "DialogSchemaName",
+          "type": "string"
+        },
+        "triggerId": {
+          "title": "TriggerId",
+          "type": "string"
+        },
+        "actionId": {
+          "title": "ActionId",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "dialogSchemaName",
+        "triggerId",
+        "actionId"
+      ]
+    },
+    "SystemOptionSet": {
+      "title": "SystemOptionSet",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/OptionSetDataType",
+      "properties": {
+        "kind": {
+          "const": "SystemOptionSet"
+        },
+        "name": {
+          "title": "Name",
+          "$ref": "#/definitions/SystemOptionSetName"
+        }
+      },
+      "required": [
+        "kind",
+        "name"
+      ]
+    },
+    "DialogComponent": {
+      "title": "DialogComponent",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BotComponentBase",
+      "properties": {
+        "kind": {
+          "const": "DialogComponent"
+        },
+        "schemaName": {
+          "title": "SchemaName",
+          "type": "string"
+        },
+        "dialog": {
+          "title": "Dialog",
+          "$ref": "#/definitions/DialogBase",
+          "x-defaultDefinition": "#/definitions/AdaptiveDialog"
+        }
+      },
+      "required": [
+        "kind",
+        "schemaName",
+        "dialog"
+      ]
+    },
+    "MessageOptionalKind": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "title": "Message",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/ActivityTemplateBase",
+          "properties": {
+            "kind": {
+              "const": "Message"
+            },
+            "text": {
+              "title": "Text",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TemplateLine"
+              }
+            },
+            "speak": {
+              "title": "Speak",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TemplateLine"
+              }
+            },
+            "allowBargeIn": {
+              "title": "Allow barge-in",
+              "description": "Users can interrupt bot during audio play back.",
+              "default": true,
+              "type": "boolean"
+            },
+            "attachmentLayout": {
+              "title": "Attachment layout",
+              "$ref": "#/definitions/AttachmentLayout"
+            },
+            "summary": {
+              "title": "Attachment summary",
+              "type": "string"
+            },
+            "quickReplies": {
+              "title": "Quick replies",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/QuickReplyBase"
+              }
+            },
+            "expiration": {
+              "title": "Expiration",
+              "type": "string"
+            },
+            "importance": {
+              "title": "Importance",
+              "$ref": "#/definitions/ActivityImportance"
+            },
+            "citationEntities": {
+              "title": "CitationEntities",
+              "type": "string",
+              "pattern": "=.*",
+              "$role": "expression"
+            },
+            "randomizeVariantSelection": {
+              "title": "Randomize Variant Selection",
+              "description": "When enabled, reprompts are played in random order. When disabled, they are played sequentially.",
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "Message": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "title": "Message",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/ActivityTemplateBase",
+          "properties": {
+            "kind": {
+              "const": "Message"
+            },
+            "text": {
+              "title": "Text",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TemplateLine"
+              }
+            },
+            "speak": {
+              "title": "Speak",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TemplateLine"
+              }
+            },
+            "allowBargeIn": {
+              "title": "Allow barge-in",
+              "description": "Users can interrupt bot during audio play back.",
+              "default": true,
+              "type": "boolean"
+            },
+            "attachmentLayout": {
+              "title": "Attachment layout",
+              "$ref": "#/definitions/AttachmentLayout"
+            },
+            "summary": {
+              "title": "Attachment summary",
+              "type": "string"
+            },
+            "quickReplies": {
+              "title": "Quick replies",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/QuickReplyBase"
+              }
+            },
+            "expiration": {
+              "title": "Expiration",
+              "type": "string"
+            },
+            "importance": {
+              "title": "Importance",
+              "$ref": "#/definitions/ActivityImportance"
+            },
+            "citationEntities": {
+              "title": "CitationEntities",
+              "type": "string",
+              "pattern": "=.*",
+              "$role": "expression"
+            },
+            "randomizeVariantSelection": {
+              "title": "Randomize Variant Selection",
+              "description": "When enabled, reprompts are played in random order. When disabled, they are played sequentially.",
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "TemplateLine": {
+      "type": "string"
+    },
+    "TextSegment": {
+      "title": "TextSegment",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/TemplateSegment",
+      "properties": {
+        "kind": {
+          "const": "TextSegment"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "ExpressionSegment": {
+      "title": "ExpressionSegment",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/TemplateSegment",
+      "properties": {
+        "kind": {
+          "const": "ExpressionSegment"
+        },
+        "expression": {
+          "title": "Expression",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "MessageBack": {
+      "title": "Send a message",
+      "description": "Sends a plain text message",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/QuickReplyBase",
+      "properties": {
+        "kind": {
+          "const": "MessageBack"
+        },
+        "text": {
+          "title": "Text",
+          "description": "The text to send to the bot when clicked.",
+          "$role": "expression",
+          "$ref": "#/definitions/StringExpression"
+        },
+        "displayText": {
+          "title": "Displayed text",
+          "description": "The text to display as a sent message in the chat history after the user has clicked.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ]
+    },
+    "OpenUrl": {
+      "title": "Open URL",
+      "description": "Send a URL",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/QuickReplyBase",
+      "properties": {
+        "kind": {
+          "const": "OpenUrl"
+        },
+        "url": {
+          "title": "URL",
+          "description": "The full URL to open when clicked.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "url"
+      ]
+    },
+    "MakeCall": {
+      "title": "Make a call",
+      "description": "Sends a link that starts a call.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/QuickReplyBase",
+      "properties": {
+        "kind": {
+          "const": "MakeCall"
+        },
+        "phoneNumber": {
+          "title": "Phone number",
+          "description": "The phone number to call when clicked.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "phoneNumber"
+      ]
+    },
+    "SendHiddenMessageBack": {
+      "title": "Send a hidden message",
+      "description": "Sends a plain text message not shown in chat history.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/QuickReplyBase",
+      "properties": {
+        "kind": {
+          "const": "SendHiddenMessageBack"
+        },
+        "text": {
+          "title": "Text",
+          "description": "The text to send to the bot when clicked. This will not be shown in the chat history after sending.",
+          "$role": "expression",
+          "$ref": "#/definitions/StringExpression"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ]
+    },
+    "Unspecified": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Unspecified"
+        },
+        {
+          "title": "Unspecified",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Unspecified"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Blank": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Blank"
+        },
+        {
+          "title": "Blank",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Blank"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Boolean": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Boolean"
+        },
+        {
+          "title": "Boolean",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Boolean"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Number": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Number"
+        },
+        {
+          "title": "Number",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Number"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Float": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Float"
+        },
+        {
+          "title": "Float",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Float"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "String": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "String"
+        },
+        {
+          "title": "String",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "String"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "File": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "File"
+        },
+        {
+          "title": "File",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "File"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Hyperlink": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Hyperlink"
+        },
+        {
+          "title": "Hyperlink",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Hyperlink"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Color": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Color"
+        },
+        {
+          "title": "Color",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Color"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Guid": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Guid"
+        },
+        {
+          "title": "Guid",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Guid"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Time": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Time"
+        },
+        {
+          "title": "Time",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Time"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Date": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Date"
+        },
+        {
+          "title": "Date",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Date"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "DateTime": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "DateTime"
+        },
+        {
+          "title": "DateTime",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "DateTime"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "DateTimeNoTimeZone": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "DateTimeNoTimeZone"
+        },
+        {
+          "title": "DateTimeNoTimeZone",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "DateTimeNoTimeZone"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Any": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "Any"
+        },
+        {
+          "title": "Any",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "Any"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "UnresolvedDynamicType": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "UnresolvedDynamicType"
+        },
+        {
+          "title": "UnresolvedDynamicType",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/DataType",
+          "properties": {
+            "kind": {
+              "const": "UnresolvedDynamicType"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "PropertyInfo": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ClosedListOptionSet"
+        },
+        {
+          "$ref": "#/definitions/EmbeddedOptionSet"
+        },
+        {
+          "$ref": "#/definitions/SystemOptionSet"
+        },
+        {
+          "$ref": "#/definitions/Unspecified"
+        },
+        {
+          "$ref": "#/definitions/Blank"
+        },
+        {
+          "$ref": "#/definitions/Boolean"
+        },
+        {
+          "$ref": "#/definitions/Number"
+        },
+        {
+          "$ref": "#/definitions/Float"
+        },
+        {
+          "$ref": "#/definitions/String"
+        },
+        {
+          "$ref": "#/definitions/File"
+        },
+        {
+          "$ref": "#/definitions/Hyperlink"
+        },
+        {
+          "$ref": "#/definitions/Color"
+        },
+        {
+          "$ref": "#/definitions/Guid"
+        },
+        {
+          "$ref": "#/definitions/Time"
+        },
+        {
+          "$ref": "#/definitions/Date"
+        },
+        {
+          "$ref": "#/definitions/DateTime"
+        },
+        {
+          "$ref": "#/definitions/DateTimeNoTimeZone"
+        },
+        {
+          "$ref": "#/definitions/Any"
+        },
+        {
+          "$ref": "#/definitions/UnresolvedDynamicType"
+        },
+        {
+          "$ref": "#/definitions/Table"
+        },
+        {
+          "$ref": "#/definitions/Record"
+        },
+        {
+          "title": "PropertyInfo",
+          "type": "object",
+          "additionalProperties": false,
+          "x-base-ref": "#/definitions/BotElement",
+          "properties": {
+            "kind": {
+              "const": "PropertyInfo"
+            },
+            "displayName": {
+              "title": "DisplayName",
+              "type": "string"
+            },
+            "description": {
+              "title": "Description",
+              "type": "string"
+            },
+            "nameForModel": {
+              "title": "NameForModel",
+              "description": "LLM-friendly Name for the property.",
+              "type": "string"
+            },
+            "descriptionForModel": {
+              "title": "DescriptionForModel",
+              "description": "LLM-friendly Description for the property.",
+              "type": "string"
+            },
+            "isRequired": {
+              "title": "IsRequired",
+              "type": "boolean"
+            },
+            "visibility": {
+              "title": "Visibility",
+              "$ref": "#/definitions/PropertyVisibility"
+            },
+            "order": {
+              "title": "Order",
+              "type": "number"
+            },
+            "enumDisplayNames": {
+              "title": "EnumDisplayNames",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "enumValues": {
+              "title": "EnumValues",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DataValue"
+              }
+            },
+            "type": {
+              "title": "Type",
+              "$ref": "#/definitions/DataType"
+            },
+            "aiSensitivity": {
+              "title": "AiSensitivity",
+              "$ref": "#/definitions/AiSensitivityLevel"
+            },
+            "examples": {
+              "title": "Examples",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        }
+      ]
+    },
+    "Table": {
+      "title": "Table",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/AggregateDataType",
+      "properties": {
+        "kind": {
+          "const": "Table"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "Record": {
+      "title": "Record",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/AggregateDataType",
+      "properties": {
+        "kind": {
+          "const": "Record"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "ConnectionProperties": {
+      "title": "ConnectionProperties",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/Connection",
+      "properties": {
+        "kind": {
+          "const": "ConnectionProperties"
+        },
+        "name": {
+          "title": "Connection reference name",
+          "type": "string"
+        },
+        "mode": {
+          "title": "End user authentication",
+          "description": "Control which user authentication type will be used",
+          "default": "Maker",
+          "$ref": "#/definitions/ConnectionMode"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "BotEntity": {
+      "title": "BotEntity",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/SolutionComponent",
+      "properties": {
+        "kind": {
+          "const": "BotEntity"
+        },
+        "displayName": {
+          "title": "DisplayName",
+          "type": "string"
+        },
+        "schemaName": {
+          "title": "SchemaName",
+          "type": "string"
+        },
+        "componentIdUnique": {
+          "title": "ComponentIdUnique",
+          "type": "string"
+        },
+        "cdsBotId": {
+          "title": "CdsBotId",
+          "type": "string"
+        },
+        "accessControlPolicy": {
+          "title": "AccessControlPolicy",
+          "default": "Any",
+          "$ref": "#/definitions/BotAccessControlPolicy"
+        },
+        "authenticationMode": {
+          "title": "AuthenticationMode",
+          "default": "Unspecified",
+          "$ref": "#/definitions/BotAuthenticationMode"
+        },
+        "authenticationTrigger": {
+          "title": "AuthenticationTrigger",
+          "default": "AsNeeded",
+          "$ref": "#/definitions/BotAuthenticationTrigger"
+        },
+        "authorizedSecurityGroupIds": {
+          "title": "AuthorizedSecurityGroupIds",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publishedOn": {
+          "title": "PublishedOn",
+          "type": "string"
+        },
+        "template": {
+          "title": "Template",
+          "type": "string"
+        },
+        "iconBase64": {
+          "title": "IconBase64",
+          "type": "string"
+        },
+        "language": {
+          "title": "Language",
+          "$ref": "#/definitions/Language"
+        },
+        "runtimeProvider": {
+          "title": "RuntimeProvider",
+          "default": "PowerVirtualAgents",
+          "$ref": "#/definitions/RuntimeProvider"
+        },
+        "providerConnectionReferenceId": {
+          "title": "ProviderConnectionReferenceId",
+          "type": "string"
+        },
+        "supportedLanguages": {
+          "title": "SupportedLanguages",
+          "type": "array",
+          "items": {
+            "type": "Language"
+          }
+        },
+        "state": {
+          "title": "State",
+          "default": "Active",
+          "$ref": "#/definitions/StateCode"
+        },
+        "status": {
+          "title": "Status",
+          "$ref": "#/definitions/ProvisioningStatus"
+        },
+        "origin": {
+          "title": "Origin",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "schemaName",
+        "cdsBotId"
+      ]
+    },
+    "MicrosoftCopilotModels": {
+      "title": "MicrosoftCopilotModels",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/AgentModelType",
+      "properties": {
+        "kind": {
+          "const": "MicrosoftCopilotModels"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "AdaptiveDialog": {
+      "title": "Topic",
+      "description": "A topic has trigger phrases and conversation nodes. Trigger phrases are phrases, keywords, and questions that a user is likely to type that are related to a specific issue. Conversation nodes define how a bot should respond to a trigger phrase and what it should do.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogBase",
+      "properties": {
+        "kind": {
+          "const": "AdaptiveDialog"
+        },
+        "modelDisplayName": {
+          "title": "Model Display Name",
+          "description": "Overrides the display name of this component when used by AI models.",
+          "type": "string"
+        },
+        "modelDescription": {
+          "title": "Model Description",
+          "description": "Overrides the description of this component when used by AI models.",
+          "type": "string"
+        },
+        "triggers": {
+          "title": "Triggers",
+          "description": "A list of triggers that are evaluated when this topic is active or on the stack.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TriggerBase"
+          }
+        },
+        "endAutomatically": {
+          "title": "End automatically",
+          "description": "Defines whether the topic should automatically exit when the end of the dialog is reached. This is enabled by default and should only be disabled when additonal triggers have been defined on this topic.",
+          "default": true,
+          "$role": "expression",
+          "$ref": "#/definitions/BoolExpression"
+        },
+        "startBehavior": {
+          "title": "Start behavior",
+          "description": "Control how this topic starts",
+          "default": "Default",
+          "$ref": "#/definitions/TopicStartBehavior"
+        },
+        "beginDialog": {
+          "title": "BeginDialog",
+          "$ref": "#/definitions/TriggerBase"
+        },
+        "inputType": {
+          "title": "Inputs",
+          "description": "Schema for the inputs to this dialog.",
+          "$ref": "#/definitions/Record"
+        },
+        "outputType": {
+          "title": "Outputs",
+          "description": "Schema for the results of this dialog.",
+          "$ref": "#/definitions/Record"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "LatencyMessageSettings": {
+      "title": "LatencyMessageSettings",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BotElement",
+      "properties": {
+        "kind": {
+          "const": "LatencyMessageSettings"
+        },
+        "allowLatencyMessage": {
+          "title": "Send a message",
+          "description": "If true, action will be allowed to send a latency message to the user.",
+          "$role": "expression",
+          "$ref": "#/definitions/BoolExpression"
+        },
+        "latencyMessage": {
+          "title": "Message",
+          "description": "The activity to send to the user",
+          "$ref": "#/definitions/ActivityTemplateBase",
+          "x-defaultDefinition": "#/definitions/Message"
+        },
+        "latencyMessageDelayInMilliseconds": {
+          "title": "Delay",
+          "description": "This setting determines how long the bot will wait before delivering the latency message after a background operation request has started. Timing is set in milliseconds.",
+          "$role": "expression",
+          "$ref": "#/definitions/IntExpression"
+        },
+        "minimumPlaybackInMilliseconds": {
+          "title": "Minimum playback time",
+          "description": "The latency message will play for this amount of time, at least, even if the background operation completes while the message is playing. Timing is set in milliseconds.",
+          "$role": "expression",
+          "$ref": "#/definitions/IntExpression"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "ActionInputBinding": {
+      "title": "ActionInputBinding",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/ActionInputBindingBase",
+      "properties": {
+        "kind": {
+          "const": "ActionInputBinding"
+        },
+        "binding": {
+          "title": "Binding",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ValueExpression"
+          }
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "ActionOutputBinding": {
+      "title": "ActionOutputBinding",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/ActionOutputBindingBase",
+      "properties": {
+        "kind": {
+          "const": "ActionOutputBinding"
+        },
+        "binding": {
+          "title": "Binding",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "InitializablePropertyPath": {
+      "type": "string"
+    },
+    "InvokeFlowAction": {
+      "title": "Action",
+      "description": "Invokes a Power Automate flow, possibly with inputs and outputs.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/ExternalAction",
+      "properties": {
+        "kind": {
+          "const": "InvokeFlowAction"
+        },
+        "flowId": {
+          "title": "Flow Id",
+          "description": "The unique identifier of the Cloud Flow.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "flowId"
+      ]
+    },
+    "RaiseErrorBehavior": {
+      "title": "Raise an error",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/HttpErrorHandlingBehavior",
+      "properties": {
+        "kind": {
+          "const": "RaiseErrorBehavior"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "ContinueOnErrorBehavior": {
+      "title": "Continue on error",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/HttpErrorHandlingBehavior",
+      "properties": {
+        "kind": {
+          "const": "ContinueOnErrorBehavior"
+        },
+        "statusCode": {
+          "title": "Status code",
+          "type": "string"
+        },
+        "errorResponseBody": {
+          "title": "Error response body",
+          "description": "Variable of the error response body",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "WaitForConnectorTrigger": {
+      "title": "Wait for connector trigger",
+      "description": "wait for a connector's trigger to fire, possibly with inputs and outputs.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/ConnectorOperationBase",
+      "properties": {
+        "kind": {
+          "const": "WaitForConnectorTrigger"
+        },
+        "operationId": {
+          "title": "OperationId",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "connectionReference",
+        "operationId"
+      ]
+    },
+    "InvokeConnectorAction": {
+      "title": "Connector action",
+      "description": "Invokes a connector's operation, possibly with inputs and outputs.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/ConnectorOperationBase",
+      "properties": {
+        "kind": {
+          "const": "InvokeConnectorAction"
+        },
+        "operationId": {
+          "title": "OperationId",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "connectionReference",
+        "operationId"
+      ]
+    },
+    "HttpRequestAction": {
+      "title": "HTTP Request",
+      "description": "Choose a REST API to invoke/sends an HTTP request to an external endpoint.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/AsyncAction",
+      "properties": {
+        "kind": {
+          "const": "HttpRequestAction"
+        },
+        "method": {
+          "title": "Method",
+          "default": "Get",
+          "$role": "expression",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "=.*"
+            },
+            {
+              "$ref": "#/definitions/HttpMethodType"
+            }
+          ]
+        },
+        "url": {
+          "title": "URL",
+          "$role": "expression",
+          "$ref": "#/definitions/StringExpression"
+        },
+        "headers": {
+          "title": "Headers",
+          "description": "Give additional information with values.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/StringExpression"
+          }
+        },
+        "errorHandling": {
+          "title": "Error handling",
+          "description": "Determine what happens when an error occurs.",
+          "$ref": "#/definitions/HttpErrorHandlingBehavior",
+          "x-defaultDefinition": "#/definitions/RaiseErrorBehavior"
+        },
+        "requestTimeoutInMilliseconds": {
+          "title": "Request timeout (milliseconds)",
+          "default": 30000,
+          "$role": "expression",
+          "$ref": "#/definitions/IntExpression"
+        },
+        "networkIsolation": {
+          "title": "Network isolation",
+          "$role": "expression",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "=.*"
+            },
+            {
+              "$ref": "#/definitions/NetworkIsolationType"
+            }
+          ]
+        },
+        "response": {
+          "title": "Save response as",
+          "description": "The variable to store the result in.",
+          "type": "string"
+        },
+        "responseSchema": {
+          "title": "Response data type",
+          "description": "The schema of the HTTP response object.",
+          "$ref": "#/definitions/DataType"
+        },
+        "responseHeaders": {
+          "title": "Response headers",
+          "description": "Variable to store response headers in",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "url"
+      ]
+    },
+    "AdaptiveCardPrompt": {
+      "title": "Adaptive Card",
+      "description": "Send an adaptive card to the user and save the response in a variable. You can also use this node to validate user input and reprompt if the input doesn't meet certain criteria.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/InputDialog",
+      "properties": {
+        "kind": {
+          "const": "AdaptiveCardPrompt"
+        },
+        "card": {
+          "title": "Card",
+          "description": "The adaptive card to send to the user",
+          "$role": "expression",
+          "$ref": "#/definitions/AdaptiveCardExpression"
+        },
+        "output": {
+          "title": "Output",
+          "description": "Maps outputs of this card to variables.",
+          "$ref": "#/definitions/ActionOutputBinding"
+        },
+        "outputType": {
+          "title": "Output type",
+          "$ref": "#/definitions/Record"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "card",
+        "output",
+        "outputType"
+      ]
+    },
+    "Question": {
+      "title": "Question",
+      "description": "Ask a question and save the response in a variable. You can also use this node to validate user input and reprompt if the input doesn't meet certain criteria.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/InputDialog",
+      "properties": {
+        "kind": {
+          "const": "Question"
+        },
+        "alwaysPrompt": {
+          "title": "Skip question",
+          "description": "If true, the question will be skipped if the variable already has a value.",
+          "default": false,
+          "anyOf": [
+            {
+              "const": false
+            },
+            {
+              "const": true
+            },
+            {
+              "$role": "expression",
+              "$ref": "#/definitions/BoolExpression"
+            }
+          ]
+        },
+        "skipQuestionMode": {
+          "title": "Skip question",
+          "description": "Controls when to ask the question if the variable already has a value.",
+          "default": "SkipOnFirstExecutionIfVariableHasValue",
+          "$role": "expression",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "=.*"
+            },
+            {
+              "$ref": "#/definitions/SkipQuestionMode"
+            }
+          ]
+        },
+        "variable": {
+          "title": "Variable",
+          "description": "The variable into which the response will be saved",
+          "type": "string"
+        },
+        "prompt": {
+          "title": "Prompt",
+          "description": "The activity to send to the user",
+          "$ref": "#/definitions/ActivityTemplateBase",
+          "x-defaultDefinition": "#/definitions/Message"
+        },
+        "invalidPrompt": {
+          "title": "Condition not met prompt",
+          "description": "The prompt to send when the identified entity doesn't pass the validation rules.",
+          "$ref": "#/definitions/ActivityTemplateBase",
+          "x-defaultDefinition": "#/definitions/Message"
+        },
+        "defaultValueResponse": {
+          "title": "No entity found message",
+          "description": "The message to send when the maximum retry count has been reached and the default entity is used.",
+          "$ref": "#/definitions/ActivityTemplateBase",
+          "x-defaultDefinition": "#/definitions/Message"
+        },
+        "validation": {
+          "title": "Condition",
+          "description": "Additional criteria the entity must meet to be considered valid. Must be a formula that evaluates as true or false (e.g. 'Topic.Var1 &lt; 10'). ",
+          "$role": "expression",
+          "$ref": "#/definitions/BoolExpression"
+        },
+        "defaultValue": {
+          "title": "Action if no entity found",
+          "description": "The value to assign the result variable when the maximum retry count has been reached and no entity has been identified.",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "variable",
+        "prompt"
+      ]
+    },
+    "CSATQuestion": {
+      "title": "CSAT Question",
+      "description": "Asks the user for a rating between 1 and 5. CSAT stands for customer satisfaction score",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "CSATQuestion"
+        },
+        "variable": {
+          "title": "Save response as",
+          "description": "Store the response rating (1-5) in this variable.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "ActionScope": {
+      "title": "A sequence of actions to execute. Action scopes should not be added to a topic explicitly, it is used as part of conditions and loops.",
+      "description": "Action scope",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/ActionScopeBase",
+      "properties": {
+        "kind": {
+          "const": "ActionScope"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "Foreach": {
+      "title": "Loop through a list",
+      "description": "Executes a set of actions for each item in the provided list.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/ActionScopeBase",
+      "properties": {
+        "kind": {
+          "const": "Foreach"
+        },
+        "items": {
+          "title": "Items to loop over",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        },
+        "value": {
+          "title": "Loop value variable",
+          "description": "The variable to store the item of the loop in.",
+          "type": "string"
+        },
+        "index": {
+          "title": "Loop index variable",
+          "description": "The optional variable to store the zero-based index of the items in.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "items",
+        "value"
+      ]
+    },
+    "BeginDialog": {
+      "title": "Redirect",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BaseInvokeDialog",
+      "properties": {
+        "kind": {
+          "const": "BeginDialog"
+        },
+        "output": {
+          "title": "Output",
+          "$ref": "#/definitions/ActionOutputBindingBase",
+          "x-defaultDefinition": "#/definitions/ActionOutputBinding"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "dialog"
+      ]
+    },
+    "CancelAllDialogs": {
+      "title": "End all topics",
+      "description": "Ends all current topics.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/CancelAllDialogsBase",
+      "properties": {
+        "kind": {
+          "const": "CancelAllDialogs"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "ClearAllVariables": {
+      "title": "Clear variable values",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "ClearAllVariables"
+        },
+        "variables": {
+          "title": "Variables",
+          "default": "ConversationScopedVariables",
+          "$role": "expression",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "=.*"
+            },
+            {
+              "$ref": "#/definitions/VariablesToClear"
+            }
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "BreakLoop": {
+      "title": "End loop",
+      "description": "Used inside loops, such as for each item, to immediately exit the loop.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "BreakLoop"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "ContinueLoop": {
+      "title": "Skip to next item",
+      "description": "Used inside loops, such as for each item, to skip to the next item.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "ContinueLoop"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "EditTableV2": {
+      "title": "Modify items in a list",
+      "description": "Add, remove or take items from a list variable. Depending on the change type, this action can add an item to the end of the list, take an item from the beginning or the end of the list, remove an item from anywhere in the list, or clear all items from the list.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "EditTableV2"
+        },
+        "itemsVariable": {
+          "title": "List variable",
+          "description": "List variable to modify",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "itemsVariable"
+      ]
+    },
+    "EndDialog": {
+      "title": "End current topic",
+      "description": "Ends the current dialog topic and returns control to the caller.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "EndDialog"
+        },
+        "clearTopicQueue": {
+          "title": "Clear topic queue",
+          "description": "Clears upcoming topics that were queued for the current activity.",
+          "default": true,
+          "type": "boolean"
+        },
+        "value": {
+          "title": "Value",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "GotoAction": {
+      "title": "Go to action",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "GotoAction"
+        },
+        "actionId": {
+          "title": "Action Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "actionId"
+      ]
+    },
+    "ConditionGroup": {
+      "title": "Condition",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "ConditionGroup"
+        },
+        "conditions": {
+          "title": "Conditions",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConditionItem"
+          }
+        },
+        "elseActions": {
+          "title": "All other conditions",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DialogAction"
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "conditions"
+      ]
+    },
+    "ConditionItem": {
+      "title": "Condition",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BotElement",
+      "properties": {
+        "kind": {
+          "const": "ConditionItem"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "condition": {
+          "title": "Condition",
+          "$role": "expression",
+          "$ref": "#/definitions/BoolExpression"
+        },
+        "actions": {
+          "title": "Actions",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DialogAction"
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "condition"
+      ]
+    },
+    "EndConversation": {
+      "title": "End conversation",
+      "description": "End the conversation when the user is done interacting with the bot or when the bot can't help the user any further. Channel-specific behavior applies when conversations end. For telephony, the call will hang up.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "EndConversation"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "SendActivity": {
+      "title": "Send activity",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "SendActivity"
+        },
+        "activity": {
+          "title": "Activity",
+          "$ref": "#/definitions/ActivityTemplateBase",
+          "x-defaultDefinition": "#/definitions/Message"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "activity"
+      ]
+    },
+    "SetVariable": {
+      "title": "Set variable value",
+      "description": "Sets a variable to a provided value",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "SetVariable"
+        },
+        "variable": {
+          "title": "Variable",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "variable",
+        "value"
+      ]
+    },
+    "SetMultipleVariables": {
+      "title": "Set variables",
+      "description": "Sets variables to provided values",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "SetMultipleVariables"
+        },
+        "assignments": {
+          "title": "Assignments",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableAssignment"
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "assignments"
+      ]
+    },
+    "VariableAssignment": {
+      "title": "VariableAssignment",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BotElement",
+      "properties": {
+        "kind": {
+          "const": "VariableAssignment"
+        },
+        "variable": {
+          "title": "Variable",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        }
+      },
+      "required": [
+        "kind",
+        "variable",
+        "value"
+      ]
+    },
+    "SetTextVariable": {
+      "title": "Set text variable",
+      "description": "Sets a variable to a value that is translated when the bot's message content is translated.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "SetTextVariable"
+        },
+        "variable": {
+          "title": "Variable",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "description": "The text value to set the variable to.",
+          "$ref": "#/definitions/TemplateLine"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "variable",
+        "value"
+      ]
+    },
+    "ParseValue": {
+      "title": "Parse value",
+      "description": "Parses a string or untyped value to the provided data type. When the input is a string, it will be treated as JSON.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "ParseValue"
+        },
+        "variable": {
+          "title": "Variable",
+          "type": "string"
+        },
+        "valueType": {
+          "title": "Value type",
+          "$ref": "#/definitions/DataType"
+        },
+        "value": {
+          "title": "Value",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        },
+        "errorPolicy": {
+          "title": "Error policy",
+          "description": "Policy for handling properties in the data at execution time which were not defined in the original structure.",
+          "default": "DefaultBlank",
+          "$ref": "#/definitions/ParseValueErrorPolicy"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "variable",
+        "valueType",
+        "value"
+      ]
+    },
+    "LogCustomTelemetryEvent": {
+      "title": "Log custom telemetry event",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DialogAction",
+      "properties": {
+        "kind": {
+          "const": "LogCustomTelemetryEvent"
+        },
+        "eventName": {
+          "title": "Event name",
+          "$role": "expression",
+          "$ref": "#/definitions/StringExpression"
+        },
+        "properties": {
+          "title": "Properties",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "GptComponentMetadata": {
+      "title": "Configuration",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/AgentDefinition",
+      "properties": {
+        "kind": {
+          "const": "GptComponentMetadata"
+        },
+        "instructions": {
+          "title": "Custom instructions",
+          "description": "Explain how you want the orchestrator to fulfill a user's query using a set of tools",
+          "$ref": "#/definitions/TemplateLine"
+        },
+        "responseInstructions": {
+          "title": "Response instructions",
+          "description": "Explain how you want the agent to respond or what you want it to do when responding. For example, you can say \"talk in a professional manner.\"",
+          "$ref": "#/definitions/TemplateLine"
+        },
+        "tools": {
+          "title": "Tools",
+          "description": "Tools available to the agent for extended functionality.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaskAction"
+          }
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "OnRedirect": {
+      "title": "On Redirect",
+      "description": "Activates only when redirected to, this topic is not triggered automatically.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/TriggerBase",
+      "properties": {
+        "kind": {
+          "const": "OnRedirect"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "OnToolSelected": {
+      "title": "OnToolSelected",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/TriggerBase",
+      "properties": {
+        "kind": {
+          "const": "OnToolSelected"
+        },
+        "description": {
+          "title": "Description",
+          "description": "In a few words, say what it is and when it should be used, so your agent can use it effectively.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "description"
+      ]
+    },
+    "OnRecognizedIntent": {
+      "title": "On Recognized Intent",
+      "description": "Triggered when an intent is recognized.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/OnRecognizedIntentBase",
+      "properties": {
+        "kind": {
+          "const": "OnRecognizedIntent"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "OnEscalate": {
+      "title": "On Talk to Representative",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/OnSystemIntentBase",
+      "properties": {
+        "kind": {
+          "const": "OnEscalate"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "OnError": {
+      "title": "On Error",
+      "description": "Triggered when an error occurs. The ErrorCode and ErrorMessage variables are available to get more details about the error.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/SystemTrigger",
+      "properties": {
+        "kind": {
+          "const": "OnError"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "OnConversationStart": {
+      "title": "On Conversation Start",
+      "description": "Triggered when the conversation starts.",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/SystemTrigger",
+      "properties": {
+        "kind": {
+          "const": "OnConversationStart"
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "Variable": {
+      "title": "Variable",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BotElement",
+      "properties": {
+        "kind": {
+          "const": "Variable"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "scope": {
+          "title": "Scope",
+          "default": "Conversation",
+          "$ref": "#/definitions/VariableScope"
+        },
+        "defaultValue": {
+          "title": "DefaultValue",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        },
+        "isExternalInitializationAllowed": {
+          "title": "IsExternalInitializationAllowed",
+          "default": false,
+          "type": "boolean"
+        },
+        "isOutputToExternalCallers": {
+          "title": "IsOutputToExternalCallers",
+          "default": false,
+          "type": "boolean"
+        },
+        "initializationTimeoutInMilliseconds": {
+          "title": "InitializationTimeoutInMilliseconds",
+          "default": 0,
+          "type": "number"
+        },
+        "missingInitializationBehavior": {
+          "title": "MissingInitializationBehavior",
+          "default": "UseDefault",
+          "$ref": "#/definitions/InitializationBehavior"
+        },
+        "aIVisibility": {
+          "title": "AIVisibility",
+          "default": "Hidden",
+          "$ref": "#/definitions/VariableAIVisibility"
+        }
+      },
+      "required": [
+        "kind",
+        "name"
+      ]
+    },
+    "GptComponent": {
+      "title": "GptComponent",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BotComponentBase",
+      "properties": {
+        "kind": {
+          "const": "GptComponent"
+        },
+        "schemaName": {
+          "title": "SchemaName",
+          "type": "string"
+        },
+        "metadata": {
+          "title": "Metadata",
+          "$ref": "#/definitions/GptComponentMetadata"
+        }
+      },
+      "required": [
+        "kind",
+        "schemaName"
+      ]
+    },
+    "BotDefinition": {
+      "title": "BotDefinition",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/DefinitionBase",
+      "properties": {
+        "kind": {
+          "const": "BotDefinition"
+        },
+        "publishedVersion": {
+          "title": "PublishedVersion",
+          "type": "string"
+        },
+        "forceUseVersion": {
+          "title": "ForceUseVersion",
+          "type": "boolean"
+        },
+        "entity": {
+          "title": "Entity",
+          "$ref": "#/definitions/BotEntity"
+        },
+        "connectedBots": {
+          "title": "ConnectedBots",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BotEntity"
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "entity"
+      ]
+    },
+    "InvokeConnectorTaskAction": {
+      "title": "InvokeConnectorTaskAction",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/ConnectorTaskActionBase",
+      "properties": {
+        "kind": {
+          "const": "InvokeConnectorTaskAction"
+        },
+        "operationId": {
+          "title": "OperationId",
+          "type": "string"
+        },
+        "dynamicInputSchema": {
+          "title": "DynamicInputSchema",
+          "$ref": "#/definitions/Record"
+        },
+        "dynamicOutputSchema": {
+          "title": "DynamicOutputSchema",
+          "$ref": "#/definitions/DataType",
+          "x-defaultDefinition": "#/definitions/Record"
+        },
+        "aIPluginOperationExportKey": {
+          "title": "AIPluginOperationExportKey",
+          "type": "string"
+        },
+        "requestTimeoutInMilliseconds": {
+          "title": "Request timeout (milliseconds)",
+          "default": 30000,
+          "$role": "expression",
+          "$ref": "#/definitions/IntExpression"
+        }
+      },
+      "required": [
+        "kind",
+        "connectionReference",
+        "operationId"
+      ]
+    },
+    "InvokeAIBuilderModelTaskAction": {
+      "title": "InvokeAIBuilderModelTaskAction",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/TaskAction",
+      "properties": {
+        "kind": {
+          "const": "InvokeAIBuilderModelTaskAction"
+        },
+        "aIModelId": {
+          "title": "AI Model ID",
+          "description": "The unique identifier of the AI Model",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "aIModelId"
+      ]
+    },
+    "AndConditionGroup": {
+      "title": "AndConditionGroup",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BooleanConditionGroup",
+      "properties": {
+        "kind": {
+          "const": "AndConditionGroup"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "OrConditionGroup": {
+      "title": "OrConditionGroup",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BooleanConditionGroup",
+      "properties": {
+        "kind": {
+          "const": "OrConditionGroup"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "BooleanCondition": {
+      "title": "BooleanCondition",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BooleanConditionBase",
+      "properties": {
+        "kind": {
+          "const": "BooleanCondition"
+        },
+        "variable": {
+          "title": "Variable",
+          "type": "string"
+        },
+        "operator": {
+          "title": "Operator",
+          "$ref": "#/definitions/BooleanConditionOperator"
+        },
+        "value": {
+          "title": "Value",
+          "$role": "expression",
+          "$ref": "#/definitions/ValueExpression"
+        }
+      },
+      "required": [
+        "kind",
+        "variable",
+        "operator"
+      ]
+    },
+    "StructuredRecordExpression": {
+      "title": "StructuredRecordExpression",
+      "type": "object",
+      "additionalProperties": false,
+      "x-base-ref": "#/definitions/BotElement",
+      "properties": {
+        "kind": {
+          "const": "StructuredRecordExpression"
+        },
+        "properties": {
+          "title": "Properties",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ValueExpression"
+          }
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "StateCode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Active",
+          "const": "Active"
+        },
+        {
+          "title": "Inactive",
+          "const": "Inactive"
+        }
+      ]
+    },
+    "ProvisioningStatus": {
+      "type": "number",
+      "oneOf": [
+        {
+          "title": "Provisioned",
+          "const": 1
+        },
+        {
+          "title": "Deprovisioned",
+          "const": 2
+        },
+        {
+          "title": "Provisioning",
+          "const": 3
+        },
+        {
+          "title": "ProvisionFailed",
+          "const": 4
+        },
+        {
+          "title": "MissingLicense",
+          "const": 5
+        }
+      ]
+    },
+    "BotComponentStatusReason": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Active",
+          "const": "Active"
+        },
+        {
+          "title": "Inactive",
+          "const": "Inactive"
+        }
+      ]
+    },
+    "RuntimeProvider": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "PowerVirtualAgents",
+          "const": "PowerVirtualAgents"
+        },
+        {
+          "title": "NuanceMixShell",
+          "const": "NuanceMixShell"
+        }
+      ]
+    },
+    "EnvironmentVariableType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "String",
+          "const": "String"
+        },
+        {
+          "title": "Number",
+          "const": "Number"
+        },
+        {
+          "title": "Boolean",
+          "const": "Boolean"
+        },
+        {
+          "title": "Json",
+          "const": "Json"
+        },
+        {
+          "title": "DataSource",
+          "const": "DataSource"
+        },
+        {
+          "title": "Secret",
+          "const": "Secret"
+        }
+      ]
+    },
+    "CloudFlowTriggerType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Standard",
+          "const": "Standard"
+        },
+        {
+          "title": "Copilot",
+          "const": "Copilot"
+        }
+      ]
+    },
+    "CloudFlowConnectionType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "EmbeddedOnly",
+          "const": "EmbeddedOnly"
+        },
+        {
+          "title": "InvokerOnly",
+          "const": "InvokerOnly"
+        },
+        {
+          "title": "EmbeddedAndInvoker",
+          "const": "EmbeddedAndInvoker"
+        },
+        {
+          "title": "NoConnections",
+          "const": "NoConnections"
+        }
+      ]
+    },
+    "ConnectorDefinitionType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Solution",
+          "const": "Solution"
+        },
+        {
+          "title": "Environment",
+          "const": "Environment"
+        },
+        {
+          "title": "Public",
+          "const": "Public"
+        }
+      ]
+    },
+    "GraphConnectorItemType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Item",
+          "const": "Item"
+        },
+        {
+          "title": "Container",
+          "const": "Container"
+        }
+      ]
+    },
+    "FileIndexingStatus": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "NotStarted",
+          "const": "NotStarted"
+        },
+        {
+          "title": "InProgress",
+          "const": "InProgress"
+        },
+        {
+          "title": "Completed",
+          "const": "Completed"
+        }
+      ]
+    },
+    "SensitivityLabelStatusCode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "LabelFound",
+          "const": "LabelFound"
+        },
+        {
+          "title": "LabelNotFound",
+          "const": "LabelNotFound"
+        },
+        {
+          "title": "UnsupportedMediaType",
+          "const": "UnsupportedMediaType"
+        },
+        {
+          "title": "NotSupportedDueToEncryption",
+          "const": "NotSupportedDueToEncryption"
+        },
+        {
+          "title": "NotSupportedOther",
+          "const": "NotSupportedOther"
+        },
+        {
+          "title": "NotAuthorized",
+          "const": "NotAuthorized"
+        }
+      ]
+    },
+    "SharepointSourceType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Site",
+          "const": "Site"
+        },
+        {
+          "title": "Folder",
+          "const": "Folder"
+        },
+        {
+          "title": "File",
+          "const": "File"
+        },
+        {
+          "title": "List",
+          "const": "List"
+        }
+      ]
+    },
+    "PartType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "OneNotePart",
+          "const": "OneNotePart"
+        }
+      ]
+    },
+    "RecurrenceFrequency": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Minute",
+          "const": "Minute"
+        },
+        {
+          "title": "Day",
+          "const": "Day"
+        },
+        {
+          "title": "Hour",
+          "const": "Hour"
+        },
+        {
+          "title": "Month",
+          "const": "Month"
+        },
+        {
+          "title": "Week",
+          "const": "Week"
+        },
+        {
+          "title": "Year",
+          "const": "Year"
+        }
+      ]
+    },
+    "InitializationBehavior": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "UseDefault",
+          "const": "UseDefault"
+        },
+        {
+          "title": "ThrowError",
+          "const": "ThrowError"
+        },
+        {
+          "title": "Escalate",
+          "const": "Escalate"
+        }
+      ]
+    },
+    "VariableScope": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Dialog",
+          "const": "Dialog"
+        },
+        {
+          "title": "Conversation",
+          "const": "Conversation"
+        },
+        {
+          "title": "User",
+          "const": "User"
+        },
+        {
+          "title": "Environment",
+          "const": "Environment"
+        }
+      ]
+    },
+    "TopicStartBehavior": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Default behavior",
+          "description": "No special action taken when the topic starts.",
+          "const": "Default"
+        },
+        {
+          "title": "Cancel other topics",
+          "description": "Cancel all other topics before starting this topic.",
+          "const": "CancelOtherTopics"
+        },
+        {
+          "title": "Use latest published content and cancel other topics.",
+          "description": "Cancel all other topics before starting this topic. Look for the lastest published version, and apply it to this conversation.",
+          "const": "UseLatestPublishedContentAndCancelOtherTopics"
+        }
+      ]
+    },
+    "OnSelectIntentTriggerBehavior": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Default",
+          "description": "Does not trigger when a question is interrupted.",
+          "const": "Default"
+        },
+        {
+          "title": "Trigger on topics and questions",
+          "description": "Trigger either when multiple topics are matched, or when multiple potential topics are found when a question is interrupted.",
+          "const": "Always"
+        }
+      ]
+    },
+    "ConversationOutcome": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Resolved (confirmed)",
+          "description": "If the dialog action is reached then the current session is considered resolved for the purpose of analytics. The session ends immediately for the purpose of analytics.",
+          "const": "ResolvedConfirmed"
+        },
+        {
+          "title": "Resolved (implied)",
+          "description": "If the dialog action is reached and user didn't reply then we consider that the current session is in assumed resolved for the purpose of analytics.",
+          "const": "ResolvedImplied"
+        },
+        {
+          "title": "Escalated",
+          "description": "If the dialog action is reached then the current session is considered escalated for the purpose of analytics.",
+          "const": "Escalated"
+        }
+      ]
+    },
+    "ConnectionMode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Maker-provided credentials",
+          "const": "Maker"
+        },
+        {
+          "title": "End user credentials",
+          "const": "Invoker"
+        }
+      ]
+    },
+    "SkipQuestionMode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Ask question every time",
+          "const": "AlwaysAsk"
+        },
+        {
+          "title": "Skip on first turn only",
+          "const": "SkipOnFirstExecutionIfVariableHasValue"
+        },
+        {
+          "title": "Always skip",
+          "const": "AlwaysSkipIfVariableHasValue"
+        }
+      ]
+    },
+    "VariablesToClear": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Global variables for the current session",
+          "const": "ConversationScopedVariables"
+        },
+        {
+          "title": "Conversation history for the current session",
+          "const": "ConversationHistory"
+        },
+        {
+          "title": "Global variables carried between sessions",
+          "const": "UserScopedVariables"
+        },
+        {
+          "title": "All Global Variables",
+          "const": "AllGlobalVariables"
+        }
+      ]
+    },
+    "SignInReason": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Mandatory sign in triggered",
+          "const": "SignInRequired"
+        },
+        {
+          "title": "Security related variable used",
+          "const": "Initializer"
+        }
+      ]
+    },
+    "MultipleTopicsMatchedReason": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Interruption ",
+          "const": "Interruption"
+        },
+        {
+          "title": "Recognition",
+          "const": "Recognition"
+        }
+      ]
+    },
+    "TableChangeType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Add item",
+          "const": "Add"
+        },
+        {
+          "title": "Take last item",
+          "const": "TakeLast"
+        },
+        {
+          "title": "Take first item",
+          "const": "TakeFirst"
+        },
+        {
+          "title": "Remove item",
+          "const": "Remove"
+        },
+        {
+          "title": "Clear all items",
+          "const": "Clear"
+        }
+      ]
+    },
+    "EventType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Activity if unhandled",
+          "const": "ActivityIfUnhandled"
+        },
+        {
+          "title": "Activity",
+          "const": "Activity"
+        },
+        {
+          "title": "Dialog event",
+          "const": "DialogEvent"
+        }
+      ]
+    },
+    "HttpMethodType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Get",
+          "const": "Get"
+        },
+        {
+          "title": "Post",
+          "const": "Post"
+        },
+        {
+          "title": "Patch",
+          "const": "Patch"
+        },
+        {
+          "title": "Put",
+          "const": "Put"
+        },
+        {
+          "title": "Delete",
+          "const": "Delete"
+        }
+      ]
+    },
+    "AutomaticTransferVariables": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Topic",
+          "description": "Variables from the current topic",
+          "const": "Topic"
+        },
+        {
+          "title": "Global",
+          "description": "Global variables",
+          "const": "Global"
+        },
+        {
+          "title": "All",
+          "description": "All variables",
+          "const": "All"
+        }
+      ]
+    },
+    "ModelApiType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Chat",
+          "const": "Chat"
+        },
+        {
+          "title": "Responses",
+          "const": "Responses"
+        }
+      ]
+    },
+    "ModelProvider": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "OpenAI",
+          "const": "OpenAI"
+        },
+        {
+          "title": "Azure OpenAI",
+          "const": "AzureOpenAI"
+        },
+        {
+          "title": "Anthropic",
+          "const": "Anthropic"
+        },
+        {
+          "title": "Google Vertex AI",
+          "const": "GoogleVertexAI"
+        }
+      ]
+    },
+    "NetworkIsolationType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Public Network",
+          "description": "Use public addresses and internet for network communication.",
+          "const": "PublicNetwork"
+        },
+        {
+          "title": "Virtual Network",
+          "description": "Use virtual network subnet delegated to the Power Platform.",
+          "const": "VirtualNetwork"
+        }
+      ]
+    },
+    "PublishResult": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Succeeded",
+          "const": "Succeeded"
+        },
+        {
+          "title": "Failed",
+          "const": "Failed"
+        }
+      ]
+    },
+    "ProvisioningState": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Provisioning",
+          "description": "The bot is currently provisioning",
+          "const": "Provisioning"
+        },
+        {
+          "title": "Provisioned",
+          "description": "The bot is fully provisioned including BCR resources.",
+          "const": "Provisioned"
+        },
+        {
+          "title": "ProvisionedWithoutRegistration",
+          "description": "The bot is provisioned but it doesn't have app and bot registration in azure.",
+          "const": "ProvisionedWithoutRegistration"
+        },
+        {
+          "title": "ContentReady",
+          "description": "The bot is content is ready for use. The bot is still provisioning.",
+          "const": "ContentReady"
+        },
+        {
+          "title": "ProvisionFailed",
+          "description": "The bot failed to provision",
+          "const": "ProvisionFailed"
+        }
+      ]
+    },
+    "SynchronizingState": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Synchronized",
+          "const": "Synchronized"
+        },
+        {
+          "title": "Synchronizing",
+          "const": "Synchronizing"
+        }
+      ]
+    },
+    "ContentModerationLevel": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Lowest",
+          "description": "Lowest moderation, allowing the bot to generate many responses, though they may include inaccuracies",
+          "const": "Minimum"
+        },
+        {
+          "title": "Low",
+          "description": "Bot generates most responses, but responses can have inaccuracies",
+          "const": "Low"
+        },
+        {
+          "title": "Medium",
+          "description": "Bot generates more responses, but responses may be less relevant",
+          "const": "Medium"
+        },
+        {
+          "title": "High",
+          "description": "Bot generates fewer responses, but responses are relevant",
+          "const": "High"
+        },
+        {
+          "title": "Highest",
+          "description": "Highest moderation, limiting the bot's responses to ensure only the most accurate and relevant content",
+          "const": "Maximum"
+        }
+      ]
+    },
+    "ToneType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Friendly",
+          "description": "Warm, approachable, friendly, and open",
+          "const": "Friendly"
+        },
+        {
+          "title": "Confident",
+          "description": "Efficient, competent, secure, and reliable",
+          "const": "Confident"
+        },
+        {
+          "title": "Empathetic",
+          "description": "Understanding, compassionate, and sensitive",
+          "const": "Empathetic"
+        },
+        {
+          "title": "Conversational",
+          "description": "Clear, casual, easy to understand, and familiar",
+          "const": "Conversational"
+        },
+        {
+          "title": "Professional",
+          "description": "Respectful, knowledgable, neutral, and formal",
+          "const": "Professional"
+        },
+        {
+          "title": "Motivational",
+          "description": "Enthusiastic, cheerful, and positive",
+          "const": "Motivational"
+        }
+      ]
+    },
+    "SharePointIndexBehavior": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Disabled",
+          "description": "Do not use any advanced indexing for SharePoint queries.",
+          "const": "Disabled"
+        },
+        {
+          "title": "EnabledWithFallback",
+          "description": "Use advanced indexing for SharePoint queries. If a user does not have access, fallback to a non-indexed query.",
+          "const": "EnabledWithFallback"
+        },
+        {
+          "title": "EnabledWithoutFallback",
+          "description": "Use advanced indexing for SharePoint queries. If a user does not have access, return no results.",
+          "const": "EnabledWithoutFallback"
+        }
+      ]
+    },
+    "TaskActionOutputMode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "All",
+          "description": "All outputs from the action definition will be included",
+          "const": "All"
+        },
+        {
+          "title": "Specific",
+          "description": "User will specify which outputs should be included",
+          "const": "Specific"
+        }
+      ]
+    },
+    "TemplateResponseMode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Strict",
+          "const": "Strict"
+        },
+        {
+          "title": "Generated",
+          "const": "Generated"
+        }
+      ]
+    },
+    "AgentMessageRole": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "User",
+          "const": "User"
+        },
+        {
+          "title": "Agent",
+          "const": "Agent"
+        }
+      ]
+    },
+    "AgentMessageContentType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Text",
+          "const": "Text"
+        },
+        {
+          "title": "ImageFile",
+          "const": "ImageFile"
+        },
+        {
+          "title": "ImageUrl",
+          "const": "ImageUrl"
+        }
+      ]
+    },
+    "AgentMessageSortOrder": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "NewestFirst",
+          "const": "NewestFirst"
+        },
+        {
+          "title": "OldestFirst",
+          "const": "OldestFirst"
+        }
+      ]
+    },
+    "SensitivityLevel": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "None",
+          "const": "None"
+        },
+        {
+          "title": "Sensitive",
+          "const": "Sensitive"
+        }
+      ]
+    },
+    "ConnectorDynamicValuesCapability": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "List",
+          "const": "List"
+        },
+        {
+          "title": "FilePicker",
+          "const": "FilePicker"
+        }
+      ]
+    },
+    "PropertyVisibility": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Important",
+          "const": "Important"
+        },
+        {
+          "title": "Advanced",
+          "const": "Advanced"
+        },
+        {
+          "title": "Internal",
+          "const": "Internal"
+        }
+      ]
+    },
+    "AiSensitivityLevel": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "None",
+          "const": "None"
+        },
+        {
+          "title": "Low",
+          "const": "Low"
+        },
+        {
+          "title": "High",
+          "const": "High"
+        }
+      ]
+    },
+    "BotAccessControlPolicy": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Any",
+          "const": "Any"
+        },
+        {
+          "title": "ChatbotReaders",
+          "const": "ChatbotReaders"
+        },
+        {
+          "title": "GroupMembership",
+          "const": "GroupMembership"
+        },
+        {
+          "title": "AnyMultiTenant",
+          "const": "AnyMultiTenant"
+        }
+      ]
+    },
+    "BotAuthenticationMode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Unspecified",
+          "const": "Unspecified"
+        },
+        {
+          "title": "None",
+          "const": "None"
+        },
+        {
+          "title": "Integrated",
+          "const": "Integrated"
+        },
+        {
+          "title": "CustomAzureActiveDirectory",
+          "const": "CustomAzureActiveDirectory"
+        },
+        {
+          "title": "GenericOAuth2",
+          "const": "GenericOAuth2"
+        }
+      ]
+    },
+    "BotAuthenticationTrigger": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "AsNeeded",
+          "const": "AsNeeded"
+        },
+        {
+          "title": "Always",
+          "const": "Always"
+        }
+      ]
+    },
+    "BotComponentReusePolicy": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "None",
+          "const": "None"
+        },
+        {
+          "title": "Private",
+          "const": "Private"
+        },
+        {
+          "title": "Public",
+          "const": "Public"
+        }
+      ]
+    },
+    "Language": {
+      "type": "number",
+      "oneOf": [
+        {
+          "title": "Arabic",
+          "const": 1025
+        },
+        {
+          "title": "Chinese_Simplified",
+          "const": 2052
+        },
+        {
+          "title": "Chinese_Traditional",
+          "const": 1028
+        },
+        {
+          "title": "Czech",
+          "const": 1029
+        },
+        {
+          "title": "Danish",
+          "const": 1030
+        },
+        {
+          "title": "Dutch",
+          "const": 1043
+        },
+        {
+          "title": "English",
+          "const": 1033
+        },
+        {
+          "title": "Finnish",
+          "const": 1035
+        },
+        {
+          "title": "French",
+          "const": 1036
+        },
+        {
+          "title": "German",
+          "const": 1031
+        },
+        {
+          "title": "Greek",
+          "const": 1032
+        },
+        {
+          "title": "Hindi",
+          "const": 1081
+        },
+        {
+          "title": "Indonesian",
+          "const": 1057
+        },
+        {
+          "title": "Italian",
+          "const": 1040
+        },
+        {
+          "title": "Japanese",
+          "const": 1041
+        },
+        {
+          "title": "Korean",
+          "const": 1042
+        },
+        {
+          "title": "Norwegian",
+          "const": 1044
+        },
+        {
+          "title": "Polish",
+          "const": 1045
+        },
+        {
+          "title": "Portuguese_Brazilian",
+          "const": 1046
+        },
+        {
+          "title": "Russian",
+          "const": 1049
+        },
+        {
+          "title": "Spanish",
+          "const": 1034
+        },
+        {
+          "title": "Thai",
+          "const": 1054
+        },
+        {
+          "title": "Swedish",
+          "const": 1053
+        },
+        {
+          "title": "Turkish",
+          "const": 1055
+        },
+        {
+          "title": "English_UK",
+          "const": 2057
+        },
+        {
+          "title": "French_Canada",
+          "const": 3084
+        },
+        {
+          "title": "Spanish_US",
+          "const": 21514
+        },
+        {
+          "title": "English_AU",
+          "const": 3081
+        },
+        {
+          "title": "Ukrainian",
+          "const": 1058
+        },
+        {
+          "title": "Hebrew",
+          "const": 1037
+        },
+        {
+          "title": "Portuguese_Portugal",
+          "const": 2070
+        }
+      ]
+    },
+    "ActivityImportance": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Low",
+          "const": "Low"
+        },
+        {
+          "title": "Normal",
+          "const": "Normal"
+        },
+        {
+          "title": "High",
+          "const": "High"
+        }
+      ]
+    },
+    "AttachmentLayout": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "List",
+          "const": "List"
+        },
+        {
+          "title": "Carousel",
+          "const": "Carousel"
+        }
+      ]
+    },
+    "InputHint": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "AcceptingInput",
+          "const": "AcceptingInput"
+        },
+        {
+          "title": "IgnoringInput",
+          "const": "IgnoringInput"
+        },
+        {
+          "title": "ExpectingInput",
+          "const": "ExpectingInput"
+        }
+      ]
+    },
+    "DtmfTerminationKey": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "#",
+          "const": "PoundKey"
+        },
+        {
+          "title": "*",
+          "const": "StarKey"
+        }
+      ]
+    },
+    "InterruptionEagernessLevel": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Low",
+          "const": "Low"
+        },
+        {
+          "title": "Medium",
+          "const": "Medium"
+        },
+        {
+          "title": "High",
+          "const": "High"
+        }
+      ]
+    },
+    "TurnDetectionType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Based on sound (silence)",
+          "description": "Detect user has stopped speaking based on sound.",
+          "const": "SilenceBasedVoiceActivityDetection"
+        },
+        {
+          "title": "Based on sentence context",
+          "description": "Detect user has stopped speaking based on meaning.",
+          "const": "SemanticVoiceActivityDetection"
+        }
+      ]
+    },
+    "TableSearchType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "DataverseSearch",
+          "const": "DataverseSearch"
+        },
+        {
+          "title": "FederatedSearch",
+          "const": "FederatedSearch"
+        }
+      ]
+    },
+    "DefaultValueMissingAction": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Hang Up",
+          "const": "HangUp"
+        },
+        {
+          "title": "Escalate",
+          "const": "Escalate"
+        },
+        {
+          "title": "Set variable to value",
+          "const": "SetValue"
+        },
+        {
+          "title": "Set variable to empty (no value)",
+          "const": "SetEmpty"
+        }
+      ]
+    },
+    "DtmfMappingKey": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "0",
+          "const": "Num0"
+        },
+        {
+          "title": "1",
+          "const": "Num1"
+        },
+        {
+          "title": "2",
+          "const": "Num2"
+        },
+        {
+          "title": "3",
+          "const": "Num3"
+        },
+        {
+          "title": "4",
+          "const": "Num4"
+        },
+        {
+          "title": "5",
+          "const": "Num5"
+        },
+        {
+          "title": "6",
+          "const": "Num6"
+        },
+        {
+          "title": "7",
+          "const": "Num7"
+        },
+        {
+          "title": "8",
+          "const": "Num8"
+        },
+        {
+          "title": "9",
+          "const": "Num9"
+        },
+        {
+          "title": "#",
+          "const": "PoundKey"
+        },
+        {
+          "title": "*",
+          "const": "StarKey"
+        }
+      ]
+    },
+    "DlpComponentType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Flow",
+          "const": "Flow"
+        },
+        {
+          "title": "Skill",
+          "const": "Skill"
+        },
+        {
+          "title": "HttpRequest",
+          "const": "HttpRequest"
+        },
+        {
+          "title": "AnonymousAccess",
+          "const": "AnonymousAccess"
+        },
+        {
+          "title": "Channel",
+          "const": "Channel"
+        },
+        {
+          "title": "Connector",
+          "const": "Connector"
+        },
+        {
+          "title": "GenerativeAnswers",
+          "const": "GenerativeAnswers"
+        },
+        {
+          "title": "GenerativeActions",
+          "const": "GenerativeActions"
+        },
+        {
+          "title": "GenerativeBuilder",
+          "const": "GenerativeBuilder"
+        },
+        {
+          "title": "ApplicationInsights",
+          "const": "ApplicationInsights"
+        },
+        {
+          "title": "Knowledge",
+          "const": "Knowledge"
+        }
+      ]
+    },
+    "DataPolicyEvaluationViolationType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "NotSpecified",
+          "const": "NotSpecified"
+        },
+        {
+          "title": "BlockedConnector",
+          "const": "BlockedConnector"
+        },
+        {
+          "title": "BusinessAndNonBusinessConnector",
+          "const": "BusinessAndNonBusinessConnector"
+        },
+        {
+          "title": "BlockedEndpoint",
+          "const": "BlockedEndpoint"
+        },
+        {
+          "title": "BlockedAction",
+          "const": "BlockedAction"
+        }
+      ]
+    },
+    "SpeechRecognitionFormatType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Format with numerals and words",
+          "const": "Default"
+        },
+        {
+          "title": "Format with only numerals",
+          "const": "NumberAsDigits"
+        }
+      ]
+    },
+    "AmbiguousDateTimeResolutionBehavior": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Prompt for disambiguation",
+          "description": "When the recognized date/time is ambiguous, prompt the user to clarify (default behavior).",
+          "const": "PromptForDisambiguation"
+        },
+        {
+          "title": "Automatically select next occurrence",
+          "description": "When the recognized date/time is ambiguous, automatically pick the next matching occurrence relative to now.",
+          "const": "PreferFuture"
+        },
+        {
+          "title": "Automatically select previous occurrence",
+          "description": "When the recognized date/time is ambiguous, automatically pick the previous matching occurrence relative to now.",
+          "const": "PreferPast"
+        }
+      ]
+    },
+    "ParseValueErrorPolicy": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Throw error",
+          "description": "Runtime data that can't be parsed into the appropiate type will raise a Runtime Error",
+          "const": "ThrowError"
+        },
+        {
+          "title": "Default Blank",
+          "description": "Runtime data that can't be parsed into the appropiate type will be ignored and properties without values will be filled with null",
+          "const": "DefaultBlank"
+        }
+      ]
+    },
+    "ActivityType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Contact relation update",
+          "const": "ContactRelationUpdate"
+        },
+        {
+          "title": "Conversation update",
+          "const": "ConversationUpdate"
+        },
+        {
+          "title": "End of conversation",
+          "const": "EndOfConversation"
+        },
+        {
+          "title": "Event",
+          "const": "Event"
+        },
+        {
+          "title": "Delay",
+          "const": "Delay"
+        },
+        {
+          "title": "Delete user data",
+          "const": "DeleteUserData"
+        },
+        {
+          "title": "Handoff",
+          "const": "Handoff"
+        },
+        {
+          "title": "Installation update",
+          "const": "InstallationUpdate"
+        },
+        {
+          "title": "Invoke",
+          "const": "Invoke"
+        },
+        {
+          "title": "Invoke response",
+          "const": "InvokeResponse"
+        },
+        {
+          "title": "Message",
+          "const": "Message"
+        },
+        {
+          "title": "Message delete",
+          "const": "MessageDelete"
+        },
+        {
+          "title": "Message reaction",
+          "const": "MessageReaction"
+        },
+        {
+          "title": "Message update",
+          "const": "MessageUpdate"
+        },
+        {
+          "title": "Suggestion",
+          "const": "Suggestion"
+        },
+        {
+          "title": "Trace",
+          "const": "Trace"
+        },
+        {
+          "title": "Typing",
+          "const": "Typing"
+        },
+        {
+          "title": "Command",
+          "const": "Command"
+        },
+        {
+          "title": "Command result",
+          "const": "CommandResult"
+        }
+      ]
+    },
+    "ChannelId": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Directline",
+          "const": "Directline"
+        },
+        {
+          "title": "Facebook",
+          "const": "Facebook"
+        },
+        {
+          "title": "MsTeams",
+          "const": "MsTeams"
+        },
+        {
+          "title": "Telephony",
+          "const": "Telephony"
+        },
+        {
+          "title": "Omnichannel",
+          "const": "Omnichannel"
+        },
+        {
+          "title": "Microsoft365Copilot",
+          "const": "Microsoft365Copilot"
+        },
+        {
+          "title": "Agent365",
+          "const": "Agent365"
+        },
+        {
+          "title": "MsTeamsPhone",
+          "const": "MsTeamsPhone"
+        }
+      ]
+    },
+    "PlanStepType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Action",
+          "const": "Action"
+        },
+        {
+          "title": "Topic",
+          "const": "Topic"
+        },
+        {
+          "title": "Agent",
+          "const": "Agent"
+        },
+        {
+          "title": "KnowledgeSource",
+          "const": "KnowledgeSource"
+        },
+        {
+          "title": "BuiltIn",
+          "const": "BuiltIn"
+        }
+      ]
+    },
+    "InvocationSource": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "User",
+          "const": "User"
+        },
+        {
+          "title": "Agent",
+          "const": "Agent"
+        }
+      ]
+    },
+    "UserInputType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Text",
+          "const": "Text"
+        },
+        {
+          "title": "Speech",
+          "const": "Speech"
+        },
+        {
+          "title": "DTMF",
+          "const": "DTMF"
+        }
+      ]
+    },
+    "GenerativeResponseOutputType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Text only",
+          "description": "Store the textual output in the target variable.",
+          "const": "TextOnly"
+        },
+        {
+          "title": "Complete (recommended)",
+          "description": "Store the text output, the speech output and the citations in the response variable.",
+          "const": "FullResponse"
+        }
+      ]
+    },
+    "GenerativeModality": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Automatic",
+          "const": "Automatic"
+        },
+        {
+          "title": "Text",
+          "const": "Text"
+        },
+        {
+          "title": "Speech",
+          "const": "Speech"
+        },
+        {
+          "title": "TextAndSpeech",
+          "const": "TextAndSpeech"
+        }
+      ]
+    },
+    "BooleanConditionOperator": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "is equal to",
+          "const": "Equal"
+        },
+        {
+          "title": "is not equal to",
+          "const": "NotEqual"
+        },
+        {
+          "title": "is greater than",
+          "const": "Greater"
+        },
+        {
+          "title": "is greater than or equal to",
+          "const": "GreaterEqual"
+        },
+        {
+          "title": "is less than",
+          "const": "Less"
+        },
+        {
+          "title": "is less than or equal to",
+          "const": "LessEqual"
+        },
+        {
+          "title": "in",
+          "const": "In"
+        },
+        {
+          "title": "in (case sensitive)",
+          "const": "ExactIn"
+        },
+        {
+          "title": "is Blank",
+          "const": "IsBlank"
+        },
+        {
+          "title": "is not Blank",
+          "const": "IsNotBlank"
+        },
+        {
+          "title": "has no value (empty)",
+          "const": "IsEmpty"
+        },
+        {
+          "title": "has value",
+          "const": "IsNotEmpty"
+        }
+      ]
+    },
+    "SearchSummarizationConfigurationState": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "NotConfigured",
+          "const": "NotConfigured"
+        },
+        {
+          "title": "Configured",
+          "const": "Configured"
+        },
+        {
+          "title": "ConfiguredWithLegacyInfo",
+          "const": "ConfiguredWithLegacyInfo"
+        },
+        {
+          "title": "Customized",
+          "const": "Customized"
+        }
+      ]
+    },
+    "VariableAIVisibility": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "The variable can not be used in AI processing",
+          "const": "Hidden"
+        },
+        {
+          "title": "The variable can be used in AI processing",
+          "const": "UseInAIContext"
+        }
+      ]
+    },
+    "ToolDialogVariableContext": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Inputs",
+          "const": "Inputs"
+        },
+        {
+          "title": "Confirmation",
+          "const": "Confirmation"
+        },
+        {
+          "title": "Outputs",
+          "const": "Outputs"
+        }
+      ]
+    },
+    "TestActivitySourceType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Manual",
+          "const": "Manual"
+        },
+        {
+          "title": "Generated",
+          "const": "Generated"
+        },
+        {
+          "title": "Edited",
+          "const": "Edited"
+        },
+        {
+          "title": "Imported",
+          "const": "Imported"
+        },
+        {
+          "title": "AnalyticsTheme",
+          "const": "AnalyticsTheme"
+        }
+      ]
+    },
+    "GraderOutcome": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Pass",
+          "const": "Pass"
+        },
+        {
+          "title": "Fail",
+          "const": "Fail"
+        }
+      ]
+    },
+    "ReferenceType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Skill",
+          "const": "Skill"
+        },
+        {
+          "title": "CloudFlow",
+          "const": "CloudFlow"
+        },
+        {
+          "title": "AIModel",
+          "const": "AIModel"
+        },
+        {
+          "title": "Dialog",
+          "const": "Dialog"
+        },
+        {
+          "title": "Trigger",
+          "const": "Trigger"
+        },
+        {
+          "title": "Action",
+          "const": "Action"
+        },
+        {
+          "title": "EnvironmentVariable",
+          "const": "EnvironmentVariable"
+        },
+        {
+          "title": "Entity",
+          "const": "Entity"
+        },
+        {
+          "title": "ConnectionReference",
+          "const": "ConnectionReference"
+        },
+        {
+          "title": "Gpt",
+          "const": "Gpt"
+        },
+        {
+          "title": "File",
+          "const": "File"
+        },
+        {
+          "title": "Knowledge",
+          "const": "Knowledge"
+        }
+      ]
+    },
+    "InvalidReferenceErrorCode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "NotFound",
+          "const": "NotFound"
+        },
+        {
+          "title": "Disabled",
+          "const": "Disabled"
+        },
+        {
+          "title": "InvalidKind",
+          "const": "InvalidKind"
+        }
+      ]
+    },
+    "ExpressionErrorCode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "UnexpectedCharacter",
+          "const": "UnexpectedCharacter"
+        },
+        {
+          "title": "IdentifierNotRecognized",
+          "const": "IdentifierNotRecognized"
+        },
+        {
+          "title": "IncompatibleTypes",
+          "const": "IncompatibleTypes"
+        },
+        {
+          "title": "PowerFxError",
+          "const": "PowerFxError"
+        }
+      ]
+    },
+    "ValidationErrorCode": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "MissingRequiredProperty",
+          "const": "MissingRequiredProperty"
+        },
+        {
+          "title": "PropertyNotSupported",
+          "const": "PropertyNotSupported"
+        },
+        {
+          "title": "ElementNotSupported",
+          "const": "ElementNotSupported"
+        },
+        {
+          "title": "EmptyCollection",
+          "const": "EmptyCollection"
+        },
+        {
+          "title": "EmptyActions",
+          "const": "EmptyActions"
+        },
+        {
+          "title": "SynonymsNotUnique",
+          "const": "SynonymsNotUnique"
+        },
+        {
+          "title": "UnknownEnumValue",
+          "const": "UnknownEnumValue"
+        },
+        {
+          "title": "InvalidPropertyPath",
+          "const": "InvalidPropertyPath"
+        },
+        {
+          "title": "DisplayNameMustBeScalar",
+          "const": "DisplayNameMustBeScalar"
+        },
+        {
+          "title": "MissingDisplayName",
+          "const": "MissingDisplayName"
+        },
+        {
+          "title": "SynonymsMustBeArrayOfScalars",
+          "const": "SynonymsMustBeArrayOfScalars"
+        },
+        {
+          "title": "AuthenticationInputNotEnabled",
+          "const": "AuthenticationInputNotEnabled"
+        },
+        {
+          "title": "ManualAuthenticationInputNotEnabled",
+          "const": "ManualAuthenticationInputNotEnabled"
+        },
+        {
+          "title": "DuplicateItem",
+          "const": "DuplicateItem"
+        },
+        {
+          "title": "DuplicateVariableAssignment",
+          "const": "DuplicateVariableAssignment"
+        },
+        {
+          "title": "DuplicateActionId",
+          "const": "DuplicateActionId"
+        },
+        {
+          "title": "DuplicateConditionId",
+          "const": "DuplicateConditionId"
+        },
+        {
+          "title": "OverlappingTaskDialogInputPropertyPath",
+          "const": "OverlappingTaskDialogInputPropertyPath"
+        },
+        {
+          "title": "DuplicateTaskDialogInputPropertyPath",
+          "const": "DuplicateTaskDialogInputPropertyPath"
+        },
+        {
+          "title": "DuplicateDtmfKey",
+          "const": "DuplicateDtmfKey"
+        },
+        {
+          "title": "ValueCannotBeNegative",
+          "const": "ValueCannotBeNegative"
+        },
+        {
+          "title": "ConnectorDynamicTypeError",
+          "const": "ConnectorDynamicTypeError"
+        },
+        {
+          "title": "ConnectorNotSupported",
+          "const": "ConnectorNotSupported"
+        },
+        {
+          "title": "ConnectorActionNotSupported",
+          "const": "ConnectorActionNotSupported"
+        },
+        {
+          "title": "ConnectionNotSet",
+          "const": "ConnectionNotSet"
+        },
+        {
+          "title": "ConnectionDoesNotExist",
+          "const": "ConnectionDoesNotExist"
+        },
+        {
+          "title": "ConnectionNotShared",
+          "const": "ConnectionNotShared"
+        },
+        {
+          "title": "ReservedOptionSetName",
+          "const": "ReservedOptionSetName"
+        },
+        {
+          "title": "DuplicateOptionSetName",
+          "const": "DuplicateOptionSetName"
+        },
+        {
+          "title": "DuplicateMultiEntitySelection",
+          "const": "DuplicateMultiEntitySelection"
+        },
+        {
+          "title": "DuplicateMultiEntityPropertyName",
+          "const": "DuplicateMultiEntityPropertyName"
+        },
+        {
+          "title": "OneOfMultiEntityMinimumSelectedEntities",
+          "const": "OneOfMultiEntityMinimumSelectedEntities"
+        },
+        {
+          "title": "SameDTMFKeyAcrossSelectedMultiEntities",
+          "const": "SameDTMFKeyAcrossSelectedMultiEntities"
+        },
+        {
+          "title": "OptionSetNameHidesBuiltInName",
+          "const": "OptionSetNameHidesBuiltInName"
+        },
+        {
+          "title": "AdaptiveCardJsonParsingError",
+          "const": "AdaptiveCardJsonParsingError"
+        },
+        {
+          "title": "AdaptiveCardMissingActionSubmit",
+          "const": "AdaptiveCardMissingActionSubmit"
+        },
+        {
+          "title": "AdaptiveCardUseOfReservedKeyword",
+          "const": "AdaptiveCardUseOfReservedKeyword"
+        },
+        {
+          "title": "AdaptiveCardActionSubmitIdTypeMismatch",
+          "const": "AdaptiveCardActionSubmitIdTypeMismatch"
+        },
+        {
+          "title": "AdaptiveCardInputIsRequiredMissingErrorMessage",
+          "const": "AdaptiveCardInputIsRequiredMissingErrorMessage"
+        },
+        {
+          "title": "AdaptiveCardInputIsRequiredMissingLabel",
+          "const": "AdaptiveCardInputIsRequiredMissingLabel"
+        },
+        {
+          "title": "AdaptiveCardVersionNotSupported",
+          "const": "AdaptiveCardVersionNotSupported"
+        },
+        {
+          "title": "AdaptiveCardToggleInputMissingTitle",
+          "const": "AdaptiveCardToggleInputMissingTitle"
+        },
+        {
+          "title": "OpenAIDialogActionInvalidOutput",
+          "const": "OpenAIDialogActionInvalidOutput"
+        },
+        {
+          "title": "BingCustomSearchDataSourceInvalidCustomConfigurationId",
+          "const": "BingCustomSearchDataSourceInvalidCustomConfigurationId"
+        },
+        {
+          "title": "PublicSiteSearchDataSourceTooManySites",
+          "const": "PublicSiteSearchDataSourceTooManySites"
+        },
+        {
+          "title": "PublicSiteSearchDataSourceNotSupported",
+          "const": "PublicSiteSearchDataSourceNotSupported"
+        },
+        {
+          "title": "SharePointSearchDataSourceTooManySites",
+          "const": "SharePointSearchDataSourceTooManySites"
+        },
+        {
+          "title": "TooManyAzureOpenAIOnYourDataKnowledgeSources",
+          "const": "TooManyAzureOpenAIOnYourDataKnowledgeSources"
+        },
+        {
+          "title": "TooManyPublicSiteSearchSources",
+          "const": "TooManyPublicSiteSearchSources"
+        },
+        {
+          "title": "TooManyBingCustomSearchSources",
+          "const": "TooManyBingCustomSearchSources"
+        },
+        {
+          "title": "TooManyDataverseStructuredSearchSources",
+          "const": "TooManyDataverseStructuredSearchSources"
+        },
+        {
+          "title": "TooManyFederatedStructuredSearchSources",
+          "const": "TooManyFederatedStructuredSearchSources"
+        },
+        {
+          "title": "TooManyFederatedIngestionBasedSearchSources",
+          "const": "TooManyFederatedIngestionBasedSearchSources"
+        },
+        {
+          "title": "TooManyAzureAISearchSources",
+          "const": "TooManyAzureAISearchSources"
+        },
+        {
+          "title": "FederatedStructuredSearchSourceNotConfigured",
+          "const": "FederatedStructuredSearchSourceNotConfigured"
+        },
+        {
+          "title": "ExternalAgentTaskActionDoesNotAllowRedirect",
+          "const": "ExternalAgentTaskActionDoesNotAllowRedirect"
+        },
+        {
+          "title": "InvalidMakerConnectionReference",
+          "const": "InvalidMakerConnectionReference"
+        },
+        {
+          "title": "TooManyFabricAISkillsSearchSources",
+          "const": "TooManyFabricAISkillsSearchSources"
+        },
+        {
+          "title": "EnvironmentVariableMissingValue",
+          "const": "EnvironmentVariableMissingValue"
+        },
+        {
+          "title": "TemplateNotFound",
+          "const": "TemplateNotFound"
+        },
+        {
+          "title": "TemplateLanguageNotSupported",
+          "const": "TemplateLanguageNotSupported"
+        },
+        {
+          "title": "SynchronizationSystemError",
+          "const": "SynchronizationSystemError"
+        },
+        {
+          "title": "InvalidSipHeader",
+          "const": "InvalidSipHeader"
+        },
+        {
+          "title": "InvalidTransferPhoneNumber",
+          "const": "InvalidTransferPhoneNumber"
+        },
+        {
+          "title": "InvalidDtmfSequence",
+          "const": "InvalidDtmfSequence"
+        },
+        {
+          "title": "DtmfSequenceLengthExceeded",
+          "const": "DtmfSequenceLengthExceeded"
+        },
+        {
+          "title": "GptBlocked",
+          "const": "GptBlocked"
+        },
+        {
+          "title": "BingSearchBlocked",
+          "const": "BingSearchBlocked"
+        },
+        {
+          "title": "AdditionalInstructionsLengthGreaterThanMaxLengthAllowed",
+          "const": "AdditionalInstructionsLengthGreaterThanMaxLengthAllowed"
+        },
+        {
+          "title": "UserConnectionUnsupportedAuthentication",
+          "const": "UserConnectionUnsupportedAuthentication"
+        },
+        {
+          "title": "UserConnectionRequiresAuthentication",
+          "const": "UserConnectionRequiresAuthentication"
+        },
+        {
+          "title": "MustPromptUserWhenRequired",
+          "const": "MustPromptUserWhenRequired"
+        },
+        {
+          "title": "MaxCountExceeded",
+          "const": "MaxCountExceeded"
+        },
+        {
+          "title": "MinCountNotMet",
+          "const": "MinCountNotMet"
+        },
+        {
+          "title": "MaxLengthExceeded",
+          "const": "MaxLengthExceeded"
+        },
+        {
+          "title": "GraphConnectorSearchSourceTooManyConnections",
+          "const": "GraphConnectorSearchSourceTooManyConnections"
+        },
+        {
+          "title": "GraphConnectionNotSet",
+          "const": "GraphConnectionNotSet"
+        },
+        {
+          "title": "GptValidationMissingName",
+          "const": "GptValidationMissingName"
+        },
+        {
+          "title": "GptValidationMissingDescription",
+          "const": "GptValidationMissingDescription"
+        },
+        {
+          "title": "GptValidationMissingInstructions",
+          "const": "GptValidationMissingInstructions"
+        },
+        {
+          "title": "GptValidationOffensiveContent",
+          "const": "GptValidationOffensiveContent"
+        },
+        {
+          "title": "GptValidationJailbreakAttempted",
+          "const": "GptValidationJailbreakAttempted"
+        },
+        {
+          "title": "GptValidationRAIViolation",
+          "const": "GptValidationRAIViolation"
+        },
+        {
+          "title": "GptValidationUnknownFailure",
+          "const": "GptValidationUnknownFailure"
+        },
+        {
+          "title": "InvalidGuid",
+          "const": "InvalidGuid"
+        },
+        {
+          "title": "MakerConnectionIsUsed",
+          "const": "MakerConnectionIsUsed"
+        },
+        {
+          "title": "PublishWithAIFeaturesDisabled",
+          "const": "PublishWithAIFeaturesDisabled"
+        },
+        {
+          "title": "TemperatureShouldBeNonNegative",
+          "const": "TemperatureShouldBeNonNegative"
+        },
+        {
+          "title": "TopPMustBeBetweenZeroAndOne",
+          "const": "TopPMustBeBetweenZeroAndOne"
+        },
+        {
+          "title": "MaxTokensShouldBePositive",
+          "const": "MaxTokensShouldBePositive"
+        },
+        {
+          "title": "ChatMlSyntaxErrorEmptyMessageContent",
+          "const": "ChatMlSyntaxErrorEmptyMessageContent"
+        },
+        {
+          "title": "ChatMlSyntaxErrorExpectedEndTag",
+          "const": "ChatMlSyntaxErrorExpectedEndTag"
+        },
+        {
+          "title": "ChatMlSyntaxErrorInvalidMessageRole",
+          "const": "ChatMlSyntaxErrorInvalidMessageRole"
+        },
+        {
+          "title": "ChatMlSyntaxErrorExpectedStartTag",
+          "const": "ChatMlSyntaxErrorExpectedStartTag"
+        },
+        {
+          "title": "CustomModelMissingInstructions",
+          "const": "CustomModelMissingInstructions"
+        },
+        {
+          "title": "CustomModelMissingDataSourcesVariableUsage",
+          "const": "CustomModelMissingDataSourcesVariableUsage"
+        },
+        {
+          "title": "CustomModelMissingUserQueryVariableUsage",
+          "const": "CustomModelMissingUserQueryVariableUsage"
+        },
+        {
+          "title": "ExternalChatCompletionModelConfigurationInvalidInput",
+          "const": "ExternalChatCompletionModelConfigurationInvalidInput"
+        },
+        {
+          "title": "AnnotationMissingForEntitySample",
+          "const": "AnnotationMissingForEntitySample"
+        },
+        {
+          "title": "InvalidAnnotationForEntitySample",
+          "const": "InvalidAnnotationForEntitySample"
+        },
+        {
+          "title": "MultipleAnnotationsNotAllowedForEntitySample",
+          "const": "MultipleAnnotationsNotAllowedForEntitySample"
+        },
+        {
+          "title": "InvalidAnnotationForTopicSample",
+          "const": "InvalidAnnotationForTopicSample"
+        },
+        {
+          "title": "TriggerRecurrenceTooSmall",
+          "const": "TriggerRecurrenceTooSmall"
+        },
+        {
+          "title": "TriggerRecurrenceInvalidInput",
+          "const": "TriggerRecurrenceInvalidInput"
+        },
+        {
+          "title": "TriggerRecurrenceInMakerModeOnlySupportManualTaskInput",
+          "const": "TriggerRecurrenceInMakerModeOnlySupportManualTaskInput"
+        },
+        {
+          "title": "InvalidBindingSensitivityLevel",
+          "const": "InvalidBindingSensitivityLevel"
+        },
+        {
+          "title": "InvalidBindingOutput",
+          "const": "InvalidBindingOutput"
+        },
+        {
+          "title": "InvalidBindingInput",
+          "const": "InvalidBindingInput"
+        },
+        {
+          "title": "InvalidBindingInvokeAction",
+          "const": "InvalidBindingInvokeAction"
+        },
+        {
+          "title": "InvalidBinding",
+          "const": "InvalidBinding"
+        },
+        {
+          "title": "IncorrectTypeAssignment",
+          "const": "IncorrectTypeAssignment"
+        },
+        {
+          "title": "IncompatibleTypeComparison",
+          "const": "IncompatibleTypeComparison"
+        },
+        {
+          "title": "AgentDialogContainsActionsWithinTrigger",
+          "const": "AgentDialogContainsActionsWithinTrigger"
+        },
+        {
+          "title": "MakerAuthenticationIsBlocked",
+          "const": "MakerAuthenticationIsBlocked"
+        },
+        {
+          "title": "InvalidUrl",
+          "const": "InvalidUrl"
+        },
+        {
+          "title": "InvalidGraphConnectorPath",
+          "const": "InvalidGraphConnectorPath"
+        },
+        {
+          "title": "InvalidEmailAddress",
+          "const": "InvalidEmailAddress"
+        },
+        {
+          "title": "InvalidSipXHeaderName",
+          "const": "InvalidSipXHeaderName"
+        },
+        {
+          "title": "InvalidSipXHeaderValue",
+          "const": "InvalidSipXHeaderValue"
+        },
+        {
+          "title": "InvalidAppId",
+          "const": "InvalidAppId"
+        },
+        {
+          "title": "InvalidScopeUrl",
+          "const": "InvalidScopeUrl"
+        },
+        {
+          "title": "MissingAgentIdentity",
+          "const": "MissingAgentIdentity"
+        }
+      ]
+    },
+    "EnvironmentVariableSecretReadStatus": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Power virtual agents can read the secret successfully",
+          "const": "Success"
+        },
+        {
+          "title": "The bot was not allowlisted to read the secret",
+          "const": "BotForbidden"
+        },
+        {
+          "title": "'Power Virtual Agents Service' application doesn't have access to the Key Vault",
+          "const": "ServiceForbidden"
+        },
+        {
+          "title": "KeyVault or secret was not found",
+          "const": "NotFound"
+        },
+        {
+          "title": "Uknown service error",
+          "const": "InternalError"
+        }
+      ]
+    },
+    "DiagnosticType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "BotElementError",
+          "const": "BotElementError"
+        },
+        {
+          "title": "BotElementWarning",
+          "const": "BotElementWarning"
+        },
+        {
+          "title": "All",
+          "const": "All"
+        }
+      ]
+    },
+    "SampleDataType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Json",
+          "const": "Json"
+        },
+        {
+          "title": "Yaml",
+          "const": "Yaml"
+        }
+      ]
+    },
+    "WasmBrowserTelemetryLogLevel": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "Critical",
+          "const": "Critical"
+        },
+        {
+          "title": "Error",
+          "const": "Error"
+        },
+        {
+          "title": "Warning",
+          "const": "Warning"
+        },
+        {
+          "title": "Information",
+          "const": "Information"
+        },
+        {
+          "title": "Trace",
+          "const": "Trace"
+        },
+        {
+          "title": "Debug",
+          "const": "Debug"
+        }
+      ]
+    },
+    "WasmInvalidStateMessage": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "ContentIsNull",
+          "description": "Content is null",
+          "const": "ContentIsNull"
+        },
+        {
+          "title": "FormatIsNull",
+          "description": "Format is null",
+          "const": "FormatIsNull"
+        },
+        {
+          "title": "DialogActionIsNull",
+          "description": "Dialog action is null",
+          "const": "DialogActionIsNull"
+        },
+        {
+          "title": "SchemaIsNull",
+          "description": "SchemaName of the component to validate is null",
+          "const": "SchemaIsNull"
+        },
+        {
+          "title": "InvalidLanguageCode",
+          "description": "Invalid language code",
+          "const": "InvalidLanguageCode"
+        },
+        {
+          "title": "InvalidFormat",
+          "description": "Invalid format",
+          "const": "InvalidFormat"
+        },
+        {
+          "title": "ComponentNotFound",
+          "description": "Component for validation cannot be found",
+          "const": "ComponentNotFound"
+        },
+        {
+          "title": "DialogNotFound",
+          "description": "Dialog component not found",
+          "const": "DialogNotFound"
+        },
+        {
+          "title": "SkillNotFound",
+          "description": "Skill component not found",
+          "const": "SkillNotFound"
+        },
+        {
+          "title": "ActionNotFound",
+          "description": "ActionId not found",
+          "const": "ActionNotFound"
+        },
+        {
+          "title": "FlowNotFound",
+          "description": "Flow not found",
+          "const": "FlowNotFound"
+        },
+        {
+          "title": "InvokeSkillActionNotFound",
+          "description": "Invoke skill action not found",
+          "const": "InvokeSkillActionNotFound"
+        },
+        {
+          "title": "BotNotLoaded",
+          "description": "Bot was not loaded",
+          "const": "BotNotLoaded"
+        },
+        {
+          "title": "FeatureNotLoaded",
+          "description": "Features were not loaded",
+          "const": "FeatureNotLoaded"
+        },
+        {
+          "title": "ErrorGettingDynamicPlanToolDefinition",
+          "description": "Error getting dynamic plan tool definition",
+          "const": "ErrorGettingDynamicPlanToolDefinition"
+        },
+        {
+          "title": "TranslationsAppliedWithCurrentLanguage",
+          "description": "Translations have been applied by assigning CurrentLanguage. Changes to the content are not supported",
+          "const": "TranslationsAppliedWithCurrentLanguage"
+        }
+      ]
+    },
+    "SystemOptionSetName": {
+      "type": "string",
+      "oneOf": [
+        {
+          "title": "RecurrenceFrequency",
+          "const": "RecurrenceFrequency"
+        },
+        {
+          "title": "SkipQuestionMode",
+          "const": "SkipQuestionMode"
+        },
+        {
+          "title": "VariablesToClear",
+          "const": "VariablesToClear"
+        },
+        {
+          "title": "SignInReason",
+          "const": "SignInReason"
+        },
+        {
+          "title": "MultipleTopicsMatchedReason",
+          "const": "MultipleTopicsMatchedReason"
+        },
+        {
+          "title": "HttpMethod",
+          "const": "HttpMethod"
+        },
+        {
+          "title": "NetworkIsolationType",
+          "const": "NetworkIsolationType"
+        },
+        {
+          "title": "ContentModerationLevel",
+          "const": "ContentModerationLevel"
+        },
+        {
+          "title": "ToneType",
+          "const": "ToneType"
+        },
+        {
+          "title": "TemplateResponseMode",
+          "const": "TemplateResponseMode"
+        },
+        {
+          "title": "AgentMessageRole",
+          "const": "AgentMessageRole"
+        },
+        {
+          "title": "AgentMessageContentType",
+          "const": "AgentMessageContentType"
+        },
+        {
+          "title": "AgentMessageSortOrder",
+          "const": "AgentMessageSortOrder"
+        },
+        {
+          "title": "Locale",
+          "const": "Locale"
+        },
+        {
+          "title": "DTMFTerminationKey",
+          "const": "DTMFTerminationKey"
+        },
+        {
+          "title": "InterruptionEagernessLevel",
+          "const": "InterruptionEagernessLevel"
+        },
+        {
+          "title": "TurnDetectionType",
+          "const": "TurnDetectionType"
+        },
+        {
+          "title": "DefaultValueMissingAction",
+          "const": "DefaultValueMissingAction"
+        },
+        {
+          "title": "ActivityType",
+          "const": "ActivityType"
+        },
+        {
+          "title": "ChannelId",
+          "const": "ChannelId"
+        },
+        {
+          "title": "PlanStepType",
+          "const": "PlanStepType"
+        },
+        {
+          "title": "InvocationSource",
+          "const": "InvocationSource"
+        },
+        {
+          "title": "UserInputType",
+          "const": "UserInputType"
+        }
+      ]
+    },
+    "ValueExpression": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "array"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "StringExpression": {
+      "title": "LiteralValue",
+      "type": "string"
+    },
+    "AdaptiveCardExpression": {
+      "title": "LiteralValue",
+      "type": "string"
+    },
+    "FileExpression": {
+      "type": "string",
+      "pattern": "=.*"
+    },
+    "BoolExpression": {
+      "oneOf": [
+        {
+          "title": "LiteralValue",
+          "type": "boolean"
+        },
+        {
+          "type": "string",
+          "pattern": "=.*"
+        }
+      ]
+    },
+    "IntExpression": {
+      "oneOf": [
+        {
+          "title": "LiteralValue",
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "pattern": "=.*"
+        }
+      ]
+    },
+    "NumberExpression": {
+      "oneOf": [
+        {
+          "title": "LiteralValue",
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "pattern": "=.*"
+        }
+      ]
+    },
+    "DialogExpression": {
+      "oneOf": [
+        {
+          "title": "LiteralValue",
+          "type": "string"
+        },
+        {
+          "type": "string",
+          "pattern": "=.*"
+        }
+      ]
+    }
+  }
+}

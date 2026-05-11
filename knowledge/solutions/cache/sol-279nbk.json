@@ -1,0 +1,35 @@
+{
+  "id": "sol-279nbk",
+  "folderName": "Quality Assurance Agent",
+  "folderId": "01Z2AOQ5X7GFXLHUNGGRA3OEYTI7FQF5CQ",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:44:32.686Z",
+  "lastAnalyzed": "2026-03-02T19:44:32.688Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 1,
+    "publisherName": "Crf93c6",
+    "uniqueName": "ProductionPerformanceAgent",
+    "version": "1.0.0.6",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "ProductionPerformanceAgent_1_0_0_6_managed.zip",
+      "size": 153738,
+      "type": "solution"
+    },
+    {
+      "name": "QualityAssuranceAgent_1_0_0_6_managed.zip",
+      "size": 166873,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

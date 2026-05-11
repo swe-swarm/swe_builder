@@ -1,0 +1,58 @@
+# Pattern: Error Handler with Telemetry
+# Trigger: OnError (fires when an unhandled error occurs in any topic)
+# Shows: Catch errors gracefully, log telemetry, provide different responses
+#         for test mode vs production.
+# When to use: Every agent should have an error handler — without one, the user
+#              sees a generic "Something went wrong" message.
+# System variables:
+#   System.Error.Message — the error message
+#   System.Error.Code — error code
+#   System.Conversation.InTestMode — true when testing in Copilot Studio test panel
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnError
+  id: main
+  actions:
+    # Step 1: Log custom telemetry for monitoring
+    - kind: LogCustomTelemetryEvent
+      id: logError_REPLACE1
+      eventName: AgentError
+      eventData: '="Error: " & System.Error.Message & " | Code: " & System.Error.Code'
+
+    # Step 2: Show detailed error in test mode, friendly message in production
+    - kind: ConditionGroup
+      id: checkTestMode_REPLACE2
+      conditions:
+        - id: isTestMode_REPLACE3
+          condition: =System.Conversation.InTestMode
+          actions:
+            - kind: SendActivity
+              id: sendDebugError_REPLACE4
+              activity: |-
+                **Error occurred:**
+                - Message: {System.Error.Message}
+                - Code: {System.Error.Code}
+      elseActions:
+        - kind: SendActivity
+          id: sendFriendlyError_REPLACE5
+          activity: "I ran into an issue processing your request. Please try again, or contact {{SUPPORT_CONTACT}} for help."
+
+# --- Key properties ---
+# OnError: catches ALL unhandled errors from any topic
+# LogCustomTelemetryEvent: sends event to Application Insights (if configured)
+# System.Conversation.InTestMode: true in Copilot Studio test panel
+# System.Error.Message/Code: error details
+
+# --- Telemetry setup ---
+# To receive LogCustomTelemetryEvent data:
+# 1. Configure Application Insights in Copilot Studio Settings > Analytics
+# 2. Custom events appear under customEvents in Application Insights
+# 3. Use KQL queries to analyze error patterns
+
+# --- Design notes ---
+# 1. Test mode shows full error details for debugging
+# 2. Production shows a friendly message — never expose error details to end users
+# 3. The telemetry event fires in both modes for monitoring
+# 4. Without this topic, errors produce the default "Something went wrong" message
+#    with no telemetry and no distinction between test/production

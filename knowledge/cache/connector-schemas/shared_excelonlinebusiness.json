@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "connectorId": "shared_excelonlinebusiness",
+    "displayName": "Excel Online (Business)",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "AddRowV2": {
+      "displayName": "Add a row into a table",
+      "method": "POST",
+      "description": "Add a new row into the Excel table.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateIdColumn": {
+      "displayName": "Add a key column to a table",
+      "method": "POST",
+      "description": "Add a key column to an Excel table. The new column will be appended to the right.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateTable": {
+      "displayName": "Create table",
+      "method": "POST",
+      "description": "Create a new table in the Excel workbook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateWorksheet": {
+      "displayName": "Create worksheet",
+      "method": "POST",
+      "description": "Create a new worksheet in the Excel workbook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteItem": {
+      "displayName": "Delete a row",
+      "method": "POST",
+      "description": "Delete a row using a key column.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetAllWorksheets": {
+      "displayName": "Get worksheets",
+      "method": "POST",
+      "description": "Get a list of worksheets in the Excel workbook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetComment": {
+      "displayName": "Get a comment present in a workbook",
+      "method": "POST",
+      "description": "Get a comment present in a workbook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetComments": {
+      "displayName": "List all comments present in a workbook",
+      "method": "POST",
+      "description": "List all comments present in a workbook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetItem": {
+      "displayName": "Get a row",
+      "method": "POST",
+      "description": "Get a row using a key column.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetItems": {
+      "displayName": "List rows present in a table",
+      "method": "POST",
+      "description": "List rows present in a table.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetTables": {
+      "displayName": "Get tables",
+      "method": "POST",
+      "description": "Get a list of tables in the Excel workbook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "PatchItem": {
+      "displayName": "Update a row",
+      "method": "POST",
+      "description": "Update a row using a key column. The input value will overwrite the specified cells and columns left blank will not be updated. In order to append (instead of overwrite) a value, use the \"Get a row\" action to retrieve the content first.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ReplyComment": {
+      "displayName": "Reply to a comment present in a workbook",
+      "method": "POST",
+      "description": "Reply to a comment present in a workbook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "RunScriptProd": {
+      "displayName": "Run script",
+      "method": "POST",
+      "description": "Runs an Office Script against an Excel workbook. Use this action when the script is saved in the default location.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "RunScriptProdV2": {
+      "displayName": "Run script from SharePoint library",
+      "method": "POST",
+      "description": "Runs an Office Script against an Excel workbook. Use this action when the script is saved outside of the default location.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

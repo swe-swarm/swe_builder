@@ -1,0 +1,24 @@
+{
+  "id": "sol-tzi8r7",
+  "folderName": "Darbot Browser MCP",
+  "folderId": "01Z2AOQ5QOXHU42VTFHFDJOGMYVAIFUG3W",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:58.986Z",
+  "lastAnalyzed": "2026-03-02T19:42:58.986Z",
+  "analysisDepth": "error",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "Darbot Browser MCP Video.mp4",
+      "size": 76954542,
+      "type": "other"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": "No solution .zip file found in folder"
+}

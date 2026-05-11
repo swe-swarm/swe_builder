@@ -1,0 +1,62 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Skill(*)",
+      "NotebookEdit",
+      "mcp__playwright__*",
+      "mcp__microsoft-learn__*",
+      "mcp__workiq__*",
+      "mcp__pac-cli__*"
+    ]
+  },
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--browser",
+        "msedge",
+        "--user-data-dir",
+        "%USERPROFILE%\\.playwright-mcp-edge"
+      ]
+    },
+    "microsoft-learn": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp"
+    },
+    "workiq": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@microsoft/workiq",
+        "mcp"
+      ]
+    },
+    "pac-cli": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "tools/pac-mcp-wrapper.js"
+      ]
+    }
+  }
+}

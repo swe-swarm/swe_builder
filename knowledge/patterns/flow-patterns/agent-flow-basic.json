@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "name": "Basic Agent Flow",
+    "description": "Full agent flow: Skills trigger with input parameter, connector action, and Response back to agent. Reference implementation for any flow called from an MCS agent topic.",
+    "category": "complete",
+    "placeholders": {
+      "{{CONNECTOR}}": "Connector API name (e.g. shared_office365)",
+      "{{OPERATION_ID}}": "Connector operation ID",
+      "{{ACTION_NAME}}": "Display name for the action step",
+      "{{INPUT_PARAM}}": "Name of the input parameter from the agent",
+      "{{OUTPUT_PROPERTY}}": "Name of the output property returned to agent",
+      "{{CONN_REF_LOGICAL}}": "Connection reference logical name from Dataverse"
+    },
+    "requires": ["{{CONNECTOR}}"]
+  },
+  "fragment": {
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Skills",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "{{INPUT_PARAM}}": {
+                "type": "string",
+                "description": "Input from the agent"
+              }
+            },
+            "required": ["{{INPUT_PARAM}}"]
+          }
+        }
+      }
+    },
+    "actions": {
+      "{{ACTION_NAME}}": {
+        "runAfter": {},
+        "type": "OpenApiConnection",
+        "inputs": {
+          "host": {
+            "connectionName": "{{CONNECTOR}}",
+            "operationId": "{{OPERATION_ID}}",
+            "apiId": "/providers/Microsoft.PowerApps/apis/{{CONNECTOR}}"
+          },
+          "parameters": {},
+          "authentication": "@parameters('$authentication')"
+        }
+      },
+      "Respond_to_agent": {
+        "runAfter": {
+          "{{ACTION_NAME}}": ["Succeeded"]
+        },
+        "type": "Response",
+        "kind": "Skills",
+        "inputs": {
+          "statusCode": 200,
+          "body": {
+            "{{OUTPUT_PROPERTY}}": "@body('{{ACTION_NAME}}')"
+          },
+          "schema": {
+            "type": "object",
+            "properties": {
+              "{{OUTPUT_PROPERTY}}": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "connectionReferences": {
+      "{{CONNECTOR}}": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "{{CONN_REF_LOGICAL}}"
+        },
+        "api": {
+          "name": "{{CONNECTOR}}"
+        }
+      }
+    }
+  }
+}

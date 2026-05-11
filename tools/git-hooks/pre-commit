@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# Pre-commit hook — protects core MCS Agent Builder files.
+# Users should only modify Build-Guides/ (gitignored) and personal configs.
+# Changes to core engine files should go through GitHub issues/PRs.
+#
+# Bypass: MCS_CORE_DEV=1 git commit ...
+
+if [ "$MCS_CORE_DEV" = "1" ]; then
+  exit 0
+fi
+
+REPO_URL="https://github.com/swe-swarm/swe_builder/issues"
+
+# Protected path prefixes and exact files
+PROTECTED_DIRS="app/ knowledge/ tools/ .claude/ .github/ templates/"
+PROTECTED_FILES="start.js package.json package-lock.json CLAUDE.md README.md"
+
+blocked=""
+
+for file in $(git diff --cached --name-only --diff-filter=ACMR); do
+  # Check directory prefixes
+  for dir in $PROTECTED_DIRS; do
+    case "$file" in
+      "$dir"*) blocked="$blocked  $file\n"; break ;;
+    esac
+  done
+
+  # Check exact file matches
+  for pf in $PROTECTED_FILES; do
+    if [ "$file" = "$pf" ]; then
+      blocked="$blocked  $file\n"
+      break
+    fi
+  done
+done
+
+if [ -n "$blocked" ]; then
+  echo ""
+  echo "BLOCKED: The following core files are protected:"
+  printf "$blocked"
+  echo ""
+  echo "To request changes, file a GitHub issue:"
+  echo "  ${REPO_URL}"
+  echo ""
+  echo "Authorized developers: set MCS_CORE_DEV=1 to bypass."
+  echo ""
+  exit 1
+fi
+
+exit 0

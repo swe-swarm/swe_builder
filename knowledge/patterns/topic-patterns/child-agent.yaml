@@ -1,0 +1,73 @@
+# Pattern: Child Agent (AgentDialog)
+# Kind: AgentDialog (not AdaptiveDialog — this is a child agent definition, not a topic)
+# Shows: Define a child agent that the orchestrator can invoke as a tool.
+# When to use: Multi-agent architecture where a parent orchestrator delegates to
+#              specialized child agents for specific domains.
+# CRITICAL: Child agents must NOT have beginDialog.actions — all behavior is driven
+#           by settings.instructions. The orchestrator manages the child's execution.
+# To prevent child agents from messaging users directly, add explicit instructions
+#           forbidding SendMessageTool usage (the completion setting does NOT prevent this).
+
+# --- Child Agent Definition ---
+kind: AgentDialog
+description: "{{CHILD_AGENT_DESCRIPTION}}"
+settings:
+  instructions: |-
+    You are a {{CHILD_ROLE}} specialist.
+
+    {{CHILD_INSTRUCTIONS}}
+
+    CRITICAL - DO NOT MESSAGE USERS
+    - DO NOT respond directly to the user
+    - DO NOT call SendMessageTool or send any messages
+    - ONLY populate the output variables with your response
+    - Let the parent orchestrator deliver the response to the user
+
+beginDialog:
+  kind: OnToolSelected
+  id: main
+
+inputType:
+  properties:
+    UserQuestion:
+      displayName: UserQuestion
+      description: "{{INPUT_DESCRIPTION}}"
+      type: String
+
+outputType:
+  properties:
+    AgentResponse:
+      displayName: AgentResponse
+      description: "{{OUTPUT_DESCRIPTION}}"
+      type: String
+
+# --- How it works ---
+# 1. Parent orchestrator decides to invoke this child agent (based on description)
+# 2. OnToolSelected trigger fires — the child agent receives the input
+# 3. The child's orchestrator processes using its own instructions + knowledge
+# 4. Result is placed in output variables (AgentResponse)
+# 5. Parent reads the output and presents to user
+
+# --- Prevent Direct Responses ---
+# Common misconception: the "completion setting" on a child agent does NOT prevent
+# it from messaging users. It only determines what the parent does AFTER the child
+# finishes (continue, end, return). To stop direct messages:
+# 1. Add the "DO NOT call SendMessageTool" block to child instructions
+# 2. Define output variables for all data the child produces
+# 3. Parent reads outputs and controls all user-facing communication
+
+# --- Two-Phase Creation ---
+# 1. Create the child agent as a plain agent first (Dataverse POST / pac copilot create)
+# 2. Push to environment (LSP push or pac copilot publish)
+# 3. THEN add knowledge sources, tools, and connected agent references
+# Knowledge sources cannot be added during creation — they require the agent to exist first.
+
+# --- Connected Agent Alternative ---
+# For cross-environment or cross-tenant agent calling, use InvokeConnectedAgentTaskAction:
+# - kind: InvokeConnectedAgentTaskAction
+#   id: callConnectedAgent_REPLACE1
+#   agentId: {{CONNECTED_AGENT_ID}}
+#   historyType:
+#     kind: ConversationHistory
+# Connected agents need an OnRedirect topic on the called side with global variables
+# having "external source" permissions.

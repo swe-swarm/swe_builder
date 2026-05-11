@@ -1,0 +1,29 @@
+{
+  "id": "sol-853np6",
+  "folderName": "Coffee Refund Agent",
+  "folderId": "01Z2AOQ5QUOAVGQISGSNHZ2QX4RKWPLBKI",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:40.361Z",
+  "lastAnalyzed": "2026-03-02T19:42:40.361Z",
+  "analysisDepth": "error",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "IWG - Coffee Refund Agent Demo.mp4",
+      "size": 50810310,
+      "type": "other"
+    },
+    {
+      "name": "IWG – Coffee Refund Agent.pptx",
+      "size": 51806787,
+      "type": "presentation"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": "No solution .zip file found in folder"
+}

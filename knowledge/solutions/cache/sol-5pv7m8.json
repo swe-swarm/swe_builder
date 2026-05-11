@@ -1,0 +1,29 @@
+{
+  "id": "sol-5pv7m8",
+  "folderName": "M365 Email Search",
+  "folderId": "01Z2AOQ5UR324AA4IVRZHZ2NMLGSJ4MFF4",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:49.440Z",
+  "lastAnalyzed": "2026-03-02T19:43:49.442Z",
+  "analysisDepth": "deep",
+  "solution": null,
+  "agents": [],
+  "files": [
+    {
+      "name": "Search Outlook Emails Agent (Feature 535).zip",
+      "size": 24125209,
+      "type": "solution"
+    },
+    {
+      "name": "SearchOutlookEmailsAgent_1_0_0_4_SolutionZip.zip",
+      "size": 32887,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

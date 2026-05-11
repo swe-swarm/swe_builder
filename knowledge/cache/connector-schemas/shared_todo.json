@@ -1,0 +1,119 @@
+{
+  "_meta": {
+    "connectorId": "shared_todo",
+    "displayName": "Microsoft To-Do (Business)",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "CreateToDoListV2": {
+      "displayName": "Create a to-do list (V2)",
+      "method": "POST",
+      "description": "This operation is used to create a new to-do list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateToDoV3": {
+      "displayName": "Add a to-do (V3)",
+      "method": "POST",
+      "description": "This operation is used to create a to-do in the specified to-do list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteToDoList": {
+      "displayName": "Delete a to-do list",
+      "method": "POST",
+      "description": "This operation is used to delete a specific to-do list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteToDoV2": {
+      "displayName": "Delete to-do (V2)",
+      "method": "POST",
+      "description": "This operation is used to delete a task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetAllTodoListsV2": {
+      "displayName": "List all to-do lists (V2)",
+      "method": "POST",
+      "description": "Returns a list of all the to-do lists.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetToDoListV2": {
+      "displayName": "Get a to-do list (V2)",
+      "method": "POST",
+      "description": "This operation is used to get a specific to-do list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetToDoV3": {
+      "displayName": "Get a to-do (V3)",
+      "method": "POST",
+      "description": "This operation is used to get the to-do with the given Id.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListToDosByFolderV2": {
+      "displayName": "List to-do's by folder (V2)",
+      "method": "POST",
+      "description": "This operation is used to retrieve all to-do's from a specific list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewToDoInFolderV2": {
+      "displayName": "When a new to-do in a specific folder is created (V2)",
+      "method": "POST",
+      "description": "Triggers when a new to-do in a specific folder is created.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnUpdateToDoInFolderV2": {
+      "displayName": "When a to-do in a specific folder is updated (V2)",
+      "method": "POST",
+      "description": "Triggers when a to-do in a specific folder is updated.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateToDoList": {
+      "displayName": "Update a to-do list",
+      "method": "POST",
+      "description": "This operation is used to update a specific to-do list.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateToDoV2": {
+      "displayName": "Update to-do (V2)",
+      "method": "POST",
+      "description": "This operation is used to update a specific to-do.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

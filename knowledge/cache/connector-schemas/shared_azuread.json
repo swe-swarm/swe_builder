@@ -1,0 +1,137 @@
+{
+  "_meta": {
+    "connectorId": "shared_azuread",
+    "displayName": "Microsoft Entra ID",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "AddUserToGroup": {
+      "displayName": "Add user to group",
+      "method": "POST",
+      "description": "Add a user to a group in this Microsoft Entra ID tenant.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "AssignManager": {
+      "displayName": "Assign manager",
+      "method": "POST",
+      "description": "Assign a manager for a user.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CheckMemberGroupsV2": {
+      "displayName": "Check group membership (V2)",
+      "method": "POST",
+      "description": "If the user is a member of the given group, the result will contain the given id. Otherwise the result will be empty.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateGroup": {
+      "displayName": "Create group",
+      "method": "POST",
+      "description": "Create a group in your Microsoft Entra ID tenant.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateOffice365Group": {
+      "displayName": "Create Office 365 group",
+      "method": "POST",
+      "description": "Create an Office 365 group in your Microsoft Entra ID tenant.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateSecurityGroup": {
+      "displayName": "Create security group",
+      "method": "POST",
+      "description": "Create a security group in your Microsoft Entra ID tenant.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateUser": {
+      "displayName": "Create user",
+      "method": "POST",
+      "description": "Create a new user in your Microsoft Entra ID tenant.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetGroup": {
+      "displayName": "Get group",
+      "method": "POST",
+      "description": "Get details for a group.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetGroupMembers": {
+      "displayName": "Get group members",
+      "method": "POST",
+      "description": "Get the users who are members of a group. You can query up to 1000 items using the Top parameter. If you need to retrieve more than 1000 values, please turn on the Settings->Pagination feature and provide a Threshold limit.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetMemberGroupsV2": {
+      "displayName": "Get groups of a user (V2)",
+      "method": "POST",
+      "description": "Get the groups a user is a member of.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetUser": {
+      "displayName": "Get user",
+      "method": "POST",
+      "description": "Get details for a user.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "RefreshTokens": {
+      "displayName": "Refresh tokens",
+      "method": "POST",
+      "description": "Invalidate all refresh tokens for a user",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "RemoveMemberFromGroup": {
+      "displayName": "Remove Member From Group",
+      "method": "POST",
+      "description": "Remove Member From Group",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateUser": {
+      "displayName": "Update user",
+      "method": "POST",
+      "description": "Update the info for a user.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

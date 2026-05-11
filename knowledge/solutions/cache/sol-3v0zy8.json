@@ -1,0 +1,40 @@
+{
+  "id": "sol-3v0zy8",
+  "folderName": "Claims Processing Agent",
+  "folderId": "01Z2AOQ5RNHLPHO743UBDID3BQ6YXHEPTQ",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:39.042Z",
+  "lastAnalyzed": "2026-03-02T19:42:39.044Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 1,
+    "publisherName": "BCSolution",
+    "uniqueName": "MedicalClaimsProcessingSolution",
+    "version": "1.0.0.19",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "Claims Processing Agent - HealthCare.pptx",
+      "size": 51727036,
+      "type": "presentation"
+    },
+    {
+      "name": "MedicalClaimsProcessingSolution_1_0_0_19_managed.zip",
+      "size": 169991,
+      "type": "solution"
+    },
+    {
+      "name": "sample_medical_claim 1 (1).pdf",
+      "size": 80709,
+      "type": "pdf"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

@@ -1,0 +1,61 @@
+# Pattern: Conditional Branching Logic
+# Trigger: OnRecognizedIntent with trigger phrases
+# Shows: Question node → ConditionGroup → different actions per branch
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+      - "{{TRIGGER_3}}"
+  actions:
+    - kind: Question
+      id: askCategory
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.selectedCategory
+      prompt: "{{QUESTION_TEXT}}"
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: option1
+              displayName: "{{OPTION_1}}"
+            - id: option2
+              displayName: "{{OPTION_2}}"
+            - id: option3
+              displayName: "{{OPTION_3}}"
+
+    - kind: ConditionGroup
+      id: routeByCategory
+      conditions:
+        - id: handleOption1
+          condition: =Topic.selectedCategory = "{{OPTION_1}}"
+          actions:
+            - kind: SendMessage
+              id: msgOption1
+              message: "{{RESPONSE_FOR_OPTION_1}}"
+
+        - id: handleOption2
+          condition: =Topic.selectedCategory = "{{OPTION_2}}"
+          actions:
+            - kind: SendMessage
+              id: msgOption2
+              message: "{{RESPONSE_FOR_OPTION_2}}"
+
+        - id: handleOption3
+          condition: =Topic.selectedCategory = "{{OPTION_3}}"
+          actions:
+            - kind: SendMessage
+              id: msgOption3
+              message: "{{RESPONSE_FOR_OPTION_3}}"
+
+      elseActions:
+        - kind: SendMessage
+          id: msgFallback
+          message: I didn't understand that selection. Let me try to help differently.

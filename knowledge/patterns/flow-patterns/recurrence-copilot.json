@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "name": "Recurrence + ExecuteCopilot",
+    "description": "Scheduled recurrence trigger that calls an MCS agent with a payload message. The standard pattern for autonomous agent event triggers.",
+    "category": "complete",
+    "placeholders": {
+      "{{FREQUENCY}}": "Recurrence frequency: Minute, Hour, Day, Week, Month",
+      "{{INTERVAL}}": "Recurrence interval (number)",
+      "{{TIMEZONE}}": "IANA timezone (e.g. Pacific Standard Time, UTC)",
+      "{{COPILOT_PARAM}}": "Copilot parameter value (e.g. copilots_header_8b375)",
+      "{{MESSAGE}}": "Payload message text sent to the agent",
+      "{{CONN_REF_LOGICAL}}": "Connection reference logical name for MCS connector"
+    },
+    "requires": ["shared_microsoftcopilotstudio"]
+  },
+  "fragment": {
+    "triggers": {
+      "Recurrence": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "{{FREQUENCY}}",
+          "interval": "{{INTERVAL}}",
+          "timeZone": "{{TIMEZONE}}"
+        }
+      }
+    },
+    "actions": {
+      "Send_prompt_to_copilot": {
+        "runAfter": {},
+        "type": "OpenApiConnection",
+        "inputs": {
+          "host": {
+            "connectionName": "shared_microsoftcopilotstudio",
+            "operationId": "ExecuteCopilot",
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio"
+          },
+          "parameters": {
+            "Copilot": "{{COPILOT_PARAM}}",
+            "body/message": "{{MESSAGE}}"
+          },
+          "authentication": "@parameters('$authentication')"
+        }
+      }
+    },
+    "connectionReferences": {
+      "shared_microsoftcopilotstudio": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "{{CONN_REF_LOGICAL}}"
+        },
+        "api": {
+          "name": "shared_microsoftcopilotstudio"
+        }
+      }
+    }
+  }
+}

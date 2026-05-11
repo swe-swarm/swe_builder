@@ -1,0 +1,83 @@
+# Pattern: Combined Conversation Initialization
+# Trigger: OnActivity (type: Message) — fires on ALL channels including M365 Copilot
+# Shows: Single OnActivity topic that merges JIT Glossary + JIT User Context loading.
+#         Use this instead of separate jit-glossary.yaml + jit-user-context.yaml
+#         to avoid multiple OnActivity topics competing for priority.
+# Why combined: Only one OnActivity topic should handle initialization. Multiple
+#               OnActivity topics create priority conflicts and race conditions.
+# Prerequisites:
+#   - M365 Users connector with connection reference
+#   - SharePoint knowledge source with triggerCondition: false (glossary CSV)
+#   - User authentication enabled
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  type: Message
+  condition: =IsBlank(Global.UserCountry)
+  actions:
+    # --- Section 1: User Context ---
+
+    # Step 1a: Get M365 profile
+    - kind: InvokeConnectorAction
+      id: getProfile_REPLACE1
+      connectionReference: "{{CONNECTION_REF_OFFICE365USERS}}"
+      connectionProperties:
+        mode: Invoker
+      operationId: MyProfile_V2
+      output:
+        kind: SingleVariableOutputBinding
+        variable: init:Topic.M365Profile
+
+    # Step 1b: Extract country
+    - kind: SetVariable
+      id: setCountry_REPLACE2
+      variable: Global.UserCountry
+      value: =If(IsBlank(Topic.M365Profile.country), "Unknown", Topic.M365Profile.country)
+
+    # Step 1c: Extract department
+    - kind: SetVariable
+      id: setDepartment
+      variable: Global.UserDepartment
+      value: =If(IsBlank(Topic.M365Profile.department), "Unknown", Topic.M365Profile.department)
+
+    # Step 1d: Extract display name
+    - kind: SetVariable
+      id: setDisplayName
+      variable: Global.UserDisplayName
+      value: =If(IsBlank(Topic.M365Profile.displayName), "User", Topic.M365Profile.displayName)
+
+    # --- Section 2: Glossary ---
+
+    # Step 2a: Search glossary knowledge source (triggerCondition: =false means
+    # it is never auto-searched — only queried explicitly here)
+    - kind: SearchAndSummarizeContent
+      id: loadGlossary_REPLACE3
+      autoSend: false
+      variable: Topic.GlossaryResult
+      userInput: ='*'
+      responseCaptureType: FullResponse
+      applyModelKnowledgeSetting: false
+      knowledgeSources:
+        kind: SearchSpecificKnowledgeSources
+        knowledgeSources:
+          - "{{AGENT_SCHEMA_NAME}}.knowledge.glossary"
+
+    # Step 2b: Store in Global variable
+    - kind: SetVariable
+      id: setGlobalGlossary_REPLACE4
+      variable: Global.Glossary
+      value: =Topic.GlossaryResult
+
+# --- Design decisions ---
+# 1. Single IsBlank(Global.UserCountry) guard covers both sections.
+#    If user context loaded, glossary is also loaded (same topic run).
+# 2. User context runs first because it's faster (connector call vs knowledge search).
+# 3. If only one pattern is needed, use jit-user-context.yaml or jit-glossary.yaml instead.
+# 4. For agents without glossary needs, delete Section 2 and use jit-user-context.yaml.
+
+# --- Customization ---
+# Add more profile fields: copy SetVariable pattern from jit-user-context.yaml
+# Add more knowledge loads: copy SearchAndSummarizeContent pattern from jit-glossary.yaml
+# Add conditional logic: wrap sections in ConditionGroup if some users don't need glossary

@@ -1,0 +1,497 @@
+{
+  "_meta": {
+    "connectorId": "shared_office365",
+    "displayName": "Office 365 Outlook",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "AssignCategory": {
+      "displayName": "Assigns an Outlook category",
+      "method": "POST",
+      "description": "This operation assigns an Outlook category to an email.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "AssignCategoryBulk": {
+      "displayName": "Assign a category to multiple emails",
+      "method": "POST",
+      "description": "This operation assigns an Outlook category to multiple emails.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CalendarDeleteItem_V2": {
+      "displayName": "Delete event (V2)",
+      "method": "POST",
+      "description": "This operation deletes an event in a calendar.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CalendarGetOnNewItemsV3": {
+      "displayName": "When a new event is created (V3)",
+      "method": "POST",
+      "description": "This operation triggers a flow when a new event is created in a calendar. (V3)",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CalendarGetOnUpdatedItemsV3": {
+      "displayName": "When an event is modified (V3)",
+      "method": "POST",
+      "description": "This operation triggers a flow when an event is modified in a calendar. (V3)",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CalendarGetTables_V2": {
+      "displayName": "Get calendars (V2)",
+      "method": "POST",
+      "description": "This operation lists available calendars.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ContactDeleteItem_V2": {
+      "displayName": "Delete contact (V2)",
+      "method": "POST",
+      "description": "This operation deletes a contact from a contacts folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ContactGetItem_V2": {
+      "displayName": "Get contact (V2)",
+      "method": "POST",
+      "description": "This operation gets a specific contact from a contacts folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ContactGetItems_V2": {
+      "displayName": "Get contacts (V2)",
+      "method": "POST",
+      "description": "This operation gets contacts from a contacts folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ContactGetTablesV2": {
+      "displayName": "Get contact folders (V2)",
+      "method": "POST",
+      "description": "This operation lists available contacts folders using Graph API",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ContactPatchItem_V2": {
+      "displayName": "Update contact (V2)",
+      "method": "POST",
+      "description": "This operation updates a contact in a contacts folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ContactPostItem_V2": {
+      "displayName": "Create contact (V2)",
+      "method": "POST",
+      "description": "This operation creates a new contact in a contacts folder.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteEmail_V2": {
+      "displayName": "Delete email (V2)",
+      "method": "POST",
+      "description": "This operation deletes an email by id.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DraftEmail": {
+      "displayName": "Draft an email message",
+      "method": "POST",
+      "description": "This operation drafts an email message.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ExportEmail_V2": {
+      "displayName": "Export email (V2)",
+      "method": "POST",
+      "description": "Export the content of the email in the EML file format.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "FindMeetingTimes_V2": {
+      "displayName": "Find meeting times (V2)",
+      "method": "POST",
+      "description": "Find meeting time suggestions based on organizer, attendee availability, and time or location constraints",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "Flag_V2": {
+      "displayName": "Flag email (V2)",
+      "method": "POST",
+      "description": "This operation updates an email flag.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ForwardEmail_V2": {
+      "displayName": "Forward an email (V2)",
+      "method": "POST",
+      "description": "Forward an email.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetAttachment_V2": {
+      "displayName": "Get Attachment (V2)",
+      "method": "POST",
+      "description": "This operation gets an email attachment by id.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetEmailsV3": {
+      "displayName": "Get emails (V3)",
+      "method": "POST",
+      "description": "This operation gets emails from a folder via graph apis. Please note that filtering related to these fields: To, Cc, To Or Cc, From, Importance, Fetch Only With Attachments, Subject Filter, is performed using first 250 items in a given mail folder. To avoid that limitation you can use 'Search Query' field.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetEmailV2": {
+      "displayName": "Get email (V2)",
+      "method": "POST",
+      "description": "This operation gets an email by id.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetEventsCalendarViewV3": {
+      "displayName": "Get calendar view of events (V3)",
+      "method": "POST",
+      "description": "This operation gets all events (including instances of recurrences) in a calendar using Graph API. Recurrence property is null in this case.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetMailTips_V2": {
+      "displayName": "Get mail tips for a mailbox (V2)",
+      "method": "POST",
+      "description": "Get mail tips for a mailbox such as automatic replies / OOF message or if the mailbox is full. This is not available in GccHigh and Mooncake.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetOutlookCategoryNames": {
+      "displayName": "Get Outlook category names",
+      "method": "POST",
+      "description": "This operation gets Outlook category display names.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetRoomLists_V2": {
+      "displayName": "Get room lists (V2)",
+      "method": "POST",
+      "description": "Get all the room lists defined in the user's tenant",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetRooms_V2": {
+      "displayName": "Get rooms (V2)",
+      "method": "POST",
+      "description": "Get all the meeting rooms defined in the user's tenant",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetRoomsInRoomList_V2": {
+      "displayName": "Get rooms in room list (V2)",
+      "method": "POST",
+      "description": "Get the meeting rooms in a specific room list",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "HttpRequest": {
+      "displayName": "Send an HTTP request",
+      "method": "POST",
+      "description": "Construct a Microsoft Graph REST API request to invoke. These segments are supported: 1st segement: /me, /users/<userId> 2nd segment: messages, mailFolders, events, calendar, calendars, outlook, inferenceClassification. Learn more: https://docs.microsoft.com/en-us/graph/use-the-api.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "MarkAsRead_V3": {
+      "displayName": "Mark as read or unread (V3)",
+      "method": "POST",
+      "description": "This operation marks an email as read/unread.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "mcp_ContactsManagement": {
+      "displayName": "Contact Management MCP Server",
+      "method": "POST",
+      "description": "This MCP server manages contacts",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "mcp_EmailsManagement": {
+      "displayName": "Email Management MCP Server",
+      "method": "POST",
+      "description": "This MCP server manages email messages from your Office 365 account",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "mcp_MeetingManagement": {
+      "displayName": "Meeting Management MCP Server",
+      "method": "POST",
+      "description": "This MCP server manages events, calendars and meetings",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "MoveV2": {
+      "displayName": "Move email (V2)",
+      "method": "POST",
+      "description": "This operation moves an email to the specified folder within the same mailbox.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnUpcomingEventsV3": {
+      "displayName": "When an upcoming event is starting soon (V3)",
+      "method": "POST",
+      "description": "This operation triggers a flow when an upcoming calendar event is starting.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ReplyToV3": {
+      "displayName": "Reply to email (V3)",
+      "method": "POST",
+      "description": "This operation replies to an email.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "RespondToEvent_V2": {
+      "displayName": "Respond to an event invite (V2)",
+      "method": "POST",
+      "description": "Respond to an event invite.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "SendDraftEmail": {
+      "displayName": "Send a Draft message",
+      "method": "POST",
+      "description": "This operation sends a Draft message.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "SendEmailV2": {
+      "displayName": "Send an email (V2)",
+      "method": "POST",
+      "description": "This operation sends an email message.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "SetAutomaticRepliesSetting_V2": {
+      "displayName": "Set up automatic replies (V2)",
+      "method": "POST",
+      "description": "Set the automatic replies setting for your mailbox.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "SharedMailboxOnNewEmailV2": {
+      "displayName": "When a new email arrives in a shared mailbox (V2)",
+      "method": "POST",
+      "description": "This operation triggers a flow when a new email arrives in a shared mailbox. Your account should have permission to access the mailbox for this operation to succeed. It will skip any email that has a total message size greater than the limit put by your Exchange Admin or 50 MB, whichever is less. It may also skip protected emails and emails with invalid body or attachments.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "SharedMailboxSendEmailV2": {
+      "displayName": "Send an email from a shared mailbox (V2)",
+      "method": "POST",
+      "description": "This operation sends an email from a shared mailbox. Your account should have permission to access the mailbox for this operation to succeed.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateDraftEmail": {
+      "displayName": "Updates an email Draft message",
+      "method": "POST",
+      "description": "This operation updates an an email Draft message.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateMyContactPhoto": {
+      "displayName": "Update my contact's photo",
+      "method": "POST",
+      "description": "Updates the photo of the specified contact of the current user. The size of the photo must be less than 4 MB.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "V3CalendarGetItem": {
+      "displayName": "Get event (V3)",
+      "method": "POST",
+      "description": "This operation gets a specific event from a calendar using Graph API. (V3)",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "V4CalendarGetItems": {
+      "displayName": "Get events (V4)",
+      "method": "POST",
+      "description": "This operation gets events from a calendar using Graph API. (V4)",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "V4CalendarPatchItem": {
+      "displayName": "Update event (V4)",
+      "method": "POST",
+      "description": "This operation updates an event in a calendar using Graph API.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "V4CalendarPostItem": {
+      "displayName": "Create event (V4)",
+      "method": "POST",
+      "description": "This operation creates a new event in a calendar.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CalendarGetOnChangedItemsV3": {
+      "displayName": "When an event is added, updated or deleted (V3)",
+      "method": "POST",
+      "description": "This operation triggers a flow when an event is added, updated or deleted in a calendar. (V3) This is not available in Mooncake.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "OnFlaggedEmailV3": {
+      "displayName": "When an email is flagged (V3)",
+      "method": "POST",
+      "description": "This operation triggers a flow when an email is flagged.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "OnFlaggedEmailV4": {
+      "displayName": "When an email is flagged (V4)",
+      "method": "POST",
+      "description": "This operation triggers a flow when an email is flagged.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewEmailV3": {
+      "displayName": "When a new email arrives (V3)",
+      "method": "POST",
+      "description": "This operation triggers a flow when a new email arrives. It will skip any email that has a total message size greater than the limit put by your Exchange Admin or 50 MB, whichever is less. It may also skip protected emails and emails with invalid body or attachments.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewMentionMeEmailV3": {
+      "displayName": "When a new email mentioning me arrives (V3)",
+      "method": "POST",
+      "description": "This operation triggers a flow when a new email mentioning me arrives. It will skip any email that has a total message size greater than the limit put by your Exchange Admin or 50 MB, whichever is less. It may also skip protected emails and emails with invalid body or attachments.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "SendApprovalMail": {
+      "displayName": "Send approval email",
+      "method": "POST",
+      "description": "This operation sends an approval email and waits for a response from the recipient. Please refer to the following link regarding the support of actionable messages in different mail clients: https://docs.microsoft.com/outlook/actionable-messages/#outlook-version-requirements-for-actionable-messages.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    },
+    "SendMailWithOptions": {
+      "displayName": "Send email with options",
+      "method": "POST",
+      "description": "This operation sends an email with multiple options and waits for the recipient to respond back with one of the options. Please refer to the following link regarding the support of actionable messages in different mail clients: https://docs.microsoft.com/outlook/actionable-messages/#outlook-version-requirements-for-actionable-messages.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

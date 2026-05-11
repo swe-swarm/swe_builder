@@ -1,0 +1,35 @@
+{
+  "id": "sol-rmygvo",
+  "folderName": "Store Performance Agent",
+  "folderId": "01Z2AOQ5SQZO7BCQW6XZEYVKK4C5F5X2ND",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:45:03.548Z",
+  "lastAnalyzed": "2026-03-02T19:45:03.551Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 1,
+    "publisherName": "Crf93c6",
+    "uniqueName": "StorePerformanceAgent",
+    "version": "1.0.0.7",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "Store Performance Agent - Retail (1).pptx",
+      "size": 39494722,
+      "type": "presentation"
+    },
+    {
+      "name": "StorePerformanceAgent_1_0_0_7_managed.zip",
+      "size": 128191,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

@@ -1,0 +1,7 @@
+ampVersion: "1.0"
+agent:
+  name: bad-language-agent
+  language: ruby
+runtime:
+  copilotSdk:
+    transport: stdio

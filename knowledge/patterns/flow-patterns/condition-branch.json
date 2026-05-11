@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "name": "Condition Branch (If/Else)",
+    "description": "If/Else condition with expression examples: equals, greater, contains, and/or combinators. Use inside any flow to branch logic based on data.",
+    "category": "control",
+    "placeholders": {
+      "{{CONDITION_NAME}}": "Display name for the condition step",
+      "{{LEFT_OPERAND}}": "Left side of comparison (expression or value)",
+      "{{RIGHT_OPERAND}}": "Right side of comparison (expression or value)"
+    },
+    "requires": []
+  },
+  "fragment": {
+    "{{CONDITION_NAME}}": {
+      "runAfter": {},
+      "type": "If",
+      "expression": {
+        "and": [
+          {
+            "equals": [
+              "{{LEFT_OPERAND}}",
+              "{{RIGHT_OPERAND}}"
+            ]
+          }
+        ]
+      },
+      "actions": {},
+      "else": {
+        "actions": {}
+      }
+    }
+  },
+  "_examples": {
+    "equals": { "equals": ["@triggerBody()?['status']", "approved"] },
+    "greater": { "greater": ["@triggerBody()?['amount']", 1000] },
+    "contains": { "contains": ["@triggerBody()?['subject']", "urgent"] },
+    "not_equals": { "not": { "equals": ["@triggerBody()?['category']", "spam"] } },
+    "and_combo": {
+      "and": [
+        { "equals": ["@triggerBody()?['status']", "active"] },
+        { "greater": ["@triggerBody()?['priority']", 3] }
+      ]
+    },
+    "or_combo": {
+      "or": [
+        { "equals": ["@triggerBody()?['type']", "critical"] },
+        { "equals": ["@triggerBody()?['type']", "blocker"] }
+      ]
+    }
+  }
+}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workflow — SWE_BUILDER</title>
+  <meta name="description" content="The end-to-end agent build workflow: init, context, research, build, evaluate, fix, deploy, and report. Six phases driven by brief.json and eval sets." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/workflow.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Phases</div>
+          <ul class="sidebar-nav">
+            <li><a href="#init">Init</a></li>
+            <li><a href="#context">Context</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#build">Build</a></li>
+            <li><a href="#evaluate">Evaluate</a></li>
+            <li><a href="#fix">Fix</a></li>
+            <li><a href="#deploy">Deploy</a></li>
+            <li><a href="#report">Report</a></li>
+            <li><a href="#retro">Retro</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>Workflow</h1>
+        <p class="lede">
+          Six phases drive every project from raw requirements to a published agent backed by an
+          eval suite. The <code>brief.json</code> file is the single source of truth that flows
+          through every phase.
+        </p>
+
+        <div class="mermaid">
+flowchart LR
+  A[Init] --&gt; B[Context]
+  B --&gt; C[Research]
+  C --&gt; D[Build]
+  D --&gt; E[Evaluate]
+  E --&gt; F{Pass?}
+  F --&gt;|Yes| G[Deploy]
+  F --&gt;|No| H[Fix]
+  H --&gt; E
+  G --&gt; I[Report]
+  I --&gt; J[Retro]
+  J --&gt; C
+        </div>
+
+        <h2 id="init">Init</h2>
+        <p>Creates the project folder structure and a starter <code>brief.json</code>.</p>
+<pre><code class="language-bash">/mcs-init MyAgent
+</code></pre>
+        <p>Output: <code>Build-Guides/MyAgent/</code> with <code>docs/</code>, <code>agents/</code>, and a placeholder brief. If SDR documents already exist in the folder, the skill detects them and converts <code>.docx</code> to <code>.md</code> via pandoc.</p>
+
+        <h2 id="context">Context (optional)</h2>
+        <p>Pulls all M365 history about a customer via WorkIQ MCP. Searches emails, meetings, documents, Teams, and people. Pre-fills 60 to 80 percent of research.</p>
+<pre><code class="language-bash">/mcs-context Contoso
+</code></pre>
+        <p>Output: <code>customer-context.md</code> (narrative summary) and <code>customer-interactions.csv</code> (timeline).</p>
+
+        <h2 id="research">Research</h2>
+        <p>The most important phase. Reads docs, identifies agents, researches MCS components, and produces a fully enriched brief with eval sets.</p>
+<pre><code class="language-bash">/mcs-research MyAgent
+/mcs-research MyAgent agent-name   # agent-level rerun</code></pre>
+
+        <p>Four phases:</p>
+        <ol class="steps">
+          <li>
+            <h3>Document comprehension and agent identification</h3>
+            <p>Lead reads all docs, cross-references with customer context, identifies agents (single or multi), extracts data entities, generates open questions for the customer.</p>
+          </li>
+          <li>
+            <h3>Component research (targeted)</h3>
+            <p>Lead resolves stable categories (channels, triggers, knowledge) from cache. Research Analyst is spawned only for external systems needing live MCP or connector lookup.</p>
+          </li>
+          <li>
+            <h3>Architecture and instructions</h3>
+            <p>Lead scores architecture (single vs. multi-agent) on six factors. Prompt Engineer writes instructions. QA Challenger reviews once.</p>
+          </li>
+          <li>
+            <h3>Eval sets and topic classification</h3>
+            <p>QA Challenger populates the five eval sets (critical, functional, integration, conversational, regression). Topic Engineer validates feasibility.</p>
+          </li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-title">Smart at both levels</div>
+          Phase 0 detects new or changed documents, brief edits, and manually created agents in
+          MCS. Routes to full, incremental, re-enrich, or full-agent processing automatically.
+        </div>
+
+        <h2 id="build">Build</h2>
+        <p>Constructs the agent in Copilot Studio using the hybrid stack with eval-driven iteration.</p>
+<pre><code class="language-bash">/mcs-build MyAgent agent-name
+</code></pre>
+
+        <p>Build flow:</p>
+        <ol class="steps">
+          <li><h3>Account and environment gate</h3><p>Verifies persisted account/environment match. Prompts only on first build or mismatch.</p></li>
+          <li><h3>Find or create</h3><p>Reuses existing agent ID if set. Otherwise checks <code>pac copilot list</code> for matching display name before creating new.</p></li>
+          <li><h3>Apply config</h3><p>Instructions via Dataverse API. Tools and connectors via Playwright. Knowledge upload via Dataverse. Model selection via Playwright.</p></li>
+          <li><h3>Topics</h3><p>Topic Engineer generates YAML, validates through four layers, lead pastes into Code Editor.</p></li>
+          <li><h3>Eval-driven loop</h3>
+            <p>Critical gate must pass 100 percent. Per-capability iteration runs each capability test set (max 3 iterations). Regression suite runs end-to-end (max 2 rounds). PE and TE auto-fix failures.</p>
+          </li>
+          <li><h3>Publish</h3><p>PAC CLI publishes the agent.</p></li>
+          <li><h3>QA validation gate</h3><p>QA Challenger validates brief vs. actual, every cross-reference, and deviation impact. Verdict (PASS, PASS WITH CAVEATS, FAIL) decides whether to generate the build report or escalate.</p></li>
+        </ol>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">MVP filtering</div>
+          Build only includes items tagged <code>phase: "mvp"</code>. Items tagged
+          <code>phase: "future"</code> are listed in the build report as deferred scope.
+        </div>
+
+        <h2 id="evaluate">Evaluate</h2>
+        <p>Runs eval sets and writes per-test results back to the brief.</p>
+<pre><code class="language-bash">/mcs-eval MyAgent agent-name
+/mcs-eval MyAgent agent-name --set critical,functional</code></pre>
+
+        <p>Three-tier execution:</p>
+        <table>
+          <thead><tr><th>Tier</th><th>Method</th><th>When used</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Direct Line API</td><td>Default. Fast. Token auto-refresh, retry with backoff.</td></tr>
+            <tr><td>2</td><td>Playwright Test Chat</td><td>Fallback. Drives the Test Chat pane in MCS UI.</td></tr>
+            <tr><td>3</td><td>Native MCS Eval</td><td>Async. Uploads CSV to Evaluation tab. Use <code>--native</code>.</td></tr>
+          </tbody>
+        </table>
+
+        <p>Eval methods include semantic similarity, exact match, regex, contains, must-not-contain, latency threshold, intent classification, and entity extraction.</p>
+
+        <h2 id="fix">Fix</h2>
+        <p>Post-deployment fix loop. For initial build iteration, the loop inside <code>/mcs-build</code> handles fixes automatically. <code>/mcs-fix</code> is for production edge cases and regressions.</p>
+<pre><code class="language-bash">/mcs-fix MyAgent agent-name
+</code></pre>
+        <p>Five root cause categories:</p>
+        <ul>
+          <li><strong>Instruction gap</strong> — fixed by Prompt Engineer</li>
+          <li><strong>Boundary violation</strong> — fixed by Prompt Engineer (stronger guardrails)</li>
+          <li><strong>Routing failure</strong> — fixed by Topic Engineer (trigger phrases)</li>
+          <li><strong>Knowledge gap</strong> — manual; surfaces missing knowledge sources</li>
+          <li><strong>Scoring issue</strong> — eval method tuning, not an agent bug</li>
+        </ul>
+
+        <h2 id="deploy">Deploy</h2>
+        <p>Promotes the agent from dev to a target environment.</p>
+<pre><code class="language-bash">/mcs-deploy MyAgent agent-name
+</code></pre>
+        <p>Two modes:</p>
+        <ul>
+          <li><strong>Agent mode</strong> — fast clone via <code>tools/replicate-agent.js</code>. Good for dev to test.</li>
+          <li><strong>Solution mode</strong> — full ALM via <code>pac solution export</code> and <code>pac solution import</code>. Good for test to prod.</li>
+        </ul>
+        <p>Includes pre-deploy validation, connection mapping, and a post-deploy smoke test.</p>
+
+        <h2 id="report">Report</h2>
+        <p>Generates customer-shareable summaries.</p>
+<pre><code class="language-bash">/mcs-report MyAgent agent-name --type customer
+</code></pre>
+        <p>Four report types:</p>
+        <table>
+          <thead><tr><th>Type</th><th>Audience</th><th>Contents</th></tr></thead>
+          <tbody>
+            <tr><td>brief</td><td>Internal</td><td>Full design state, every brief field</td></tr>
+            <tr><td>build</td><td>Internal</td><td>Build status, deviations from brief, QA verdict</td></tr>
+            <tr><td>customer</td><td>External</td><td>Plain language, no jargon, what we built and why</td></tr>
+            <tr><td>deployment</td><td>Ops</td><td>Checklists, environment mapping, rollback plan</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="retro">Retro</h2>
+        <p>Closes the loop. Captures learnings, updates the knowledge index, and syncs upstream changes.</p>
+<pre><code class="language-bash">/mcs-retro MyAgent agent-name
+</code></pre>
+        <p>Two-tier capture model:</p>
+        <ul>
+          <li><strong>Tier 1 (auto)</strong>: routine confirmations bump confirmed counts silently.</li>
+          <li><strong>Tier 2 (user confirms)</strong>: new discoveries, contradictions, architecture insights presented for approval.</li>
+        </ul>
+
+        <p><a class="btn btn-primary" href="skills.html">Browse all skills</a></p>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

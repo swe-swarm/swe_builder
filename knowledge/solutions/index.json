@@ -1,0 +1,912 @@
+{
+  "version": 2,
+  "lastScanned": "2026-03-02T19:46:51.177Z",
+  "lastRefreshed": "2026-03-02T19:45:03.918Z",
+  "solutions": [
+    {
+      "id": "sol-ec9kxx",
+      "folderName": "Accounts Payable Agent",
+      "folderId": "01Z2AOQ5RMYSIGZFQNGJE27EC4ANNUITOO",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:21.243Z",
+      "lastAnalyzed": "2026-03-02T19:42:21.247Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "Crf93c6",
+        "uniqueName": "AccountPayablesAgent",
+        "version": "1.0.0.6",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "AccountPayablesAgent_1_0_0_6.zip",
+          "size": 106223,
+          "type": "solution"
+        },
+        {
+          "name": "AP Invoice Reconcilation  Agent - Retail.pptx",
+          "size": 40164477,
+          "type": "presentation"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-swuj8s",
+      "folderName": "Calendar Event Scheduler",
+      "folderId": "01Z2AOQ5UQZDZEXTB26FD2JRZRSBIPAVOQ",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:27.687Z",
+      "lastAnalyzed": "2026-03-02T19:42:27.689Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "Event",
+        "uniqueName": "EventsScheduler",
+        "version": "1.0.0.5",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "EventsScheduler_1_0_0_5.zip",
+          "size": 103551,
+          "type": "solution"
+        },
+        {
+          "name": "ExecEventProject  v4.mp4",
+          "size": 33197015,
+          "type": "other"
+        },
+        {
+          "name": "Novartis - Envisioning - Event Assistant Agent.pptx",
+          "size": 81902080,
+          "type": "presentation"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-fr9hjy",
+      "folderName": "Case Records Information Triage Agent",
+      "folderId": "01Z2AOQ5TTLXMWGQZHRJBZKIQE367UDDCD",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:28.603Z",
+      "lastAnalyzed": "2026-03-02T19:42:28.603Z",
+      "analysisDepth": "error",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "RASU Agent Slide_v2.pptx",
+          "size": 58535592,
+          "type": "presentation"
+        },
+        {
+          "name": "RASU Project.mp4",
+          "size": 33442011,
+          "type": "other"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-3v0zy8",
+      "folderName": "Claims Processing Agent",
+      "folderId": "01Z2AOQ5RNHLPHO743UBDID3BQ6YXHEPTQ",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:39.042Z",
+      "lastAnalyzed": "2026-03-02T19:42:39.044Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 1,
+        "publisherName": "BCSolution",
+        "uniqueName": "MedicalClaimsProcessingSolution",
+        "version": "1.0.0.19",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "Claims Processing Agent - HealthCare.pptx",
+          "size": 51727036,
+          "type": "presentation"
+        },
+        {
+          "name": "MedicalClaimsProcessingSolution_1_0_0_19_managed.zip",
+          "size": 169991,
+          "type": "solution"
+        },
+        {
+          "name": "sample_medical_claim 1 (1).pdf",
+          "size": 80709,
+          "type": "pdf"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-853np6",
+      "folderName": "Coffee Refund Agent",
+      "folderId": "01Z2AOQ5QUOAVGQISGSNHZ2QX4RKWPLBKI",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:40.361Z",
+      "lastAnalyzed": "2026-03-02T19:42:40.361Z",
+      "analysisDepth": "error",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "IWG - Coffee Refund Agent Demo.mp4",
+          "size": 50810310,
+          "type": "other"
+        },
+        {
+          "name": "IWG – Coffee Refund Agent.pptx",
+          "size": 51806787,
+          "type": "presentation"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-zz7501",
+      "folderName": "Connecting External Agent Using Agent SDK Client",
+      "folderId": "01Z2AOQ5TYYNT3S6ZMYZCJ6J4FRIYM743S",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:40.800Z",
+      "lastAnalyzed": "2026-03-02T19:42:40.800Z",
+      "analysisDepth": "error",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "Connecting External Agents using Agent SDK.pptx",
+          "size": 755416,
+          "type": "presentation"
+        },
+        {
+          "name": "Connecting External Agents via Agent SDK Demo.mp4",
+          "size": 29713340,
+          "type": "other"
+        },
+        {
+          "name": "INTEGRATION_GUIDE.md",
+          "size": 7408,
+          "type": "markdown"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-uv9gsd",
+      "folderName": "Contract Extractor Agent",
+      "folderId": "01Z2AOQ5TW4X67ZNNYVNEIQXOGR7WX7EBK",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:46.780Z",
+      "lastAnalyzed": "2026-03-02T19:42:46.781Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "RimaReyes",
+        "uniqueName": "LegalCBADemo",
+        "version": "1.0.0.0",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "LegalCBADemo_1_0_0_0.zip",
+          "size": 56133,
+          "type": "solution"
+        },
+        {
+          "name": "Legal-CBAs-Agent-Build-How-To-Guide.docx",
+          "size": 96818,
+          "type": "document"
+        },
+        {
+          "name": "PPCC25 - Scan, Extract, Automate Large Files Meet Low-Code AI.pptx",
+          "size": 206396668,
+          "type": "presentation"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-359l04",
+      "folderName": "Custom Report Generation",
+      "folderId": "01Z2AOQ5SYH3UQNYX5VZBJ7DZIW2T2UV4R",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:52.317Z",
+      "lastAnalyzed": "2026-03-02T19:42:52.318Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "Cr1f713",
+        "uniqueName": "ResearchAgent",
+        "version": "1.0.0.1",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "Custom Report Generation via Agent Topics.pptx",
+          "size": 367666,
+          "type": "presentation"
+        },
+        {
+          "name": "report-generation-topic.mp4",
+          "size": 299406794,
+          "type": "other"
+        },
+        {
+          "name": "ResearchAgent_1_0_0_1.zip",
+          "size": 41854,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-t70yx1",
+      "folderName": "Daily Stand-Up Agent",
+      "folderId": "01Z2AOQ5WNR6BQTC6ZUBHYZD2I4FGS52OP",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:58.028Z",
+      "lastAnalyzed": "2026-03-02T19:42:58.030Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "BCSolution",
+        "uniqueName": "DailyStandUpSolution",
+        "version": "1.0.0.0",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "DailyStandUp-Agent-Video.mp4",
+          "size": 8713271,
+          "type": "other"
+        },
+        {
+          "name": "DailyStandUpSolution_1_0_0_0.zip",
+          "size": 38104,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-tzi8r7",
+      "folderName": "Darbot Browser MCP",
+      "folderId": "01Z2AOQ5QOXHU42VTFHFDJOGMYVAIFUG3W",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:42:58.986Z",
+      "lastAnalyzed": "2026-03-02T19:42:58.986Z",
+      "analysisDepth": "error",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "Darbot Browser MCP Video.mp4",
+          "size": 76954542,
+          "type": "other"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-wu88hj",
+      "folderName": "Data Redaction",
+      "folderId": "01Z2AOQ5UZFYD3N7GTDNAJACIW2Q2WOZCZ",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:03.235Z",
+      "lastAnalyzed": "2026-03-02T19:43:03.236Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "troytaylor",
+        "uniqueName": "PIIRedactor",
+        "version": "1.0.0.0",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "PIIRedactor_1_0_0_0.zip",
+          "size": 15617,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-rotna1",
+      "folderName": "Databricks Genie MCP Agent",
+      "folderId": "01Z2AOQ5URVETIFQ2WBFGJGHALV72T2I5U",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:09.786Z",
+      "lastAnalyzed": "2026-03-02T19:43:09.787Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "RimaReyes",
+        "uniqueName": "DatabricksGenieMCPAgent",
+        "version": "1.0.0.1",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "DatabricksGenieMCPAgent_1_0_0_1.zip",
+          "size": 37100,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-my50i3",
+      "folderName": "Excel Data Extraction Scripts",
+      "folderId": "01Z2AOQ5SWBKXHN4F7SRBK4JJM2NTDV243",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:10.784Z",
+      "lastAnalyzed": "2026-03-02T19:43:10.784Z",
+      "analysisDepth": "error",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "HOW TO.docx",
+          "size": 30681,
+          "type": "document"
+        },
+        {
+          "name": "Office Scripts for Excel Data Extraction Demo.mp4",
+          "size": 83317242,
+          "type": "other"
+        },
+        {
+          "name": "Retail_Inventory_Forecasting_Copilot_Agent_Solution_Document - Copy.docx",
+          "size": 47120,
+          "type": "document"
+        },
+        {
+          "name": "workbook_to_json.osts",
+          "size": 2460,
+          "type": "other"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-zxo1wr",
+      "folderName": "HR Claims Agent for Legal",
+      "folderId": "01Z2AOQ5SSA67NC3PSY5HLKHDBGQZ2CEZA",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:13.965Z",
+      "lastAnalyzed": "2026-03-02T19:43:13.967Z",
+      "analysisDepth": "deep",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "Cliffy Notes.zip",
+          "size": 39235,
+          "type": "solution"
+        },
+        {
+          "name": "HR Claims Assistant for Legal - Agent Instructions & Build Guide.txt",
+          "size": 11529,
+          "type": "other"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-8gr8qw",
+      "folderName": "Inventory Forecasting Agent",
+      "folderId": "01Z2AOQ5T3FFIBDSMBYJAKLA7HZKVVAIE6",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:23.274Z",
+      "lastAnalyzed": "2026-03-02T19:43:23.276Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "Crf93c6",
+        "uniqueName": "InventoryForecastingAgent",
+        "version": "1.0.0.8",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "Inventory Forecasting  Agent - Retail (1).pptx",
+          "size": 35198996,
+          "type": "presentation"
+        },
+        {
+          "name": "InventoryForecastingAgent_1_0_0_8.zip",
+          "size": 137161,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-aojbsm",
+      "folderName": "Legal Contract Analysis for Retail Companies",
+      "folderId": "01Z2AOQ5VTZ7IQHCDOXRF2PGRINT4PX7DI",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:30.495Z",
+      "lastAnalyzed": "2026-03-02T19:43:30.497Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "RimaReyes",
+        "uniqueName": "Legal4Retail",
+        "version": "1.0.0.1",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "Legal4Retail_1_0_0_1.zip",
+          "size": 49520,
+          "type": "solution"
+        },
+        {
+          "name": "Legal4Retail_Build_Guide.docx",
+          "size": 68250,
+          "type": "document"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-7w1mnq",
+      "folderName": "Life Insurance Product Agent",
+      "folderId": "01Z2AOQ5XWRBYIVWJRKZALVZELVKOO5DV6",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:35.912Z",
+      "lastAnalyzed": "2026-03-02T19:43:35.914Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "CAT",
+        "uniqueName": "ProductLifeInsuranceSolution",
+        "version": "1.0.0.0",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "LifeInsuranceProductAgent-Overview.pdf",
+          "size": 900145,
+          "type": "pdf"
+        },
+        {
+          "name": "LifeInsuranceProductAgent-SampleRecords.xlsx",
+          "size": 30051,
+          "type": "other"
+        },
+        {
+          "name": "LifeInsuranceProductAgent-Video.mp4",
+          "size": 23408117,
+          "type": "other"
+        },
+        {
+          "name": "ProductLifeInsuranceSolution_1_0_0_0.zip",
+          "size": 70483,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-ewuyd3",
+      "folderName": "M365 Copilot Meeting Insights (Feature 514)",
+      "folderId": "01Z2AOQ5QNFNR2LYGZ4JHLDYCAAJ7MAYDS",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:39.901Z",
+      "lastAnalyzed": "2026-03-02T19:43:39.903Z",
+      "analysisDepth": "deep",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "M365 Copilot Meeting Insights Agent (Feature 514).zip",
+          "size": 20334152,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-5pv7m8",
+      "folderName": "M365 Email Search",
+      "folderId": "01Z2AOQ5UR324AA4IVRZHZ2NMLGSJ4MFF4",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:49.440Z",
+      "lastAnalyzed": "2026-03-02T19:43:49.442Z",
+      "analysisDepth": "deep",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "Search Outlook Emails Agent (Feature 535).zip",
+          "size": 24125209,
+          "type": "solution"
+        },
+        {
+          "name": "SearchOutlookEmailsAgent_1_0_0_4_SolutionZip.zip",
+          "size": 32887,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-oizio6",
+      "folderName": "MCP Frontier Agent",
+      "folderId": "01Z2AOQ5RMDEYIYLEVLBD23TM63NFQQORU",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:50.333Z",
+      "lastAnalyzed": "2026-03-02T19:43:50.333Z",
+      "analysisDepth": "error",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "MCP Frontier Agent Demo Video.mp4",
+          "size": 117738873,
+          "type": "other"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-o9egwq",
+      "folderName": "Merchant Insights Agent",
+      "folderId": "01Z2AOQ5QK6GE4I6QOXNCKN5RQO6VTN3C4",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:43:55.140Z",
+      "lastAnalyzed": "2026-03-02T19:43:55.143Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "DefaultPublisherexecutivetrackdev",
+        "uniqueName": "MerchantInsightsAgent",
+        "version": "1.0.0.1",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "Merchant Insights Assistant Demo.mp4",
+          "size": 24300305,
+          "type": "other"
+        },
+        {
+          "name": "MerchantInsightsAgent_1_0_0_1.zip",
+          "size": 37933,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-zr4o8c",
+      "folderName": "News Aggregator Agent",
+      "folderId": "01Z2AOQ5TBPJJXL63YLFG3BEL454O3VG55",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:44:02.026Z",
+      "lastAnalyzed": "2026-03-02T19:44:02.028Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 1,
+        "publisherName": "KristinaMarko",
+        "uniqueName": "LeaseExtractor",
+        "version": "1.0.0.1",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "LeaseExtractor_1_0_0_1_managed.zip",
+          "size": 44075,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-a3385k",
+      "folderName": "Populate Word Template",
+      "folderId": "01Z2AOQ5QA5R5W6L62F5FYBW3IE3JBDUWA",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:44:07.781Z",
+      "lastAnalyzed": "2026-03-02T19:44:07.784Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "Julie_Chudakova",
+        "uniqueName": "SearchandPopulateWordTemplate",
+        "version": "1.0.0.2",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "SearchandPopulateWordTemplate_1_0_0_2.zip",
+          "size": 41318,
+          "type": "solution"
+        },
+        {
+          "name": "Word Template.docx",
+          "size": 48813,
+          "type": "document"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-1ql9ms",
+      "folderName": "Production Performance Agent",
+      "folderId": "01Z2AOQ5WMLTNVYWPZZ5D2TQZJL4LRYVOY",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:44:16.514Z",
+      "lastAnalyzed": "2026-03-02T19:44:16.516Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 1,
+        "publisherName": "Crf93c6",
+        "uniqueName": "ProductionPerformanceAgent",
+        "version": "1.0.0.6",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "Production Performance Agent - Manfacturing (1).pptx",
+          "size": 35120034,
+          "type": "presentation"
+        },
+        {
+          "name": "ProductionPerformanceAgent_1_0_0_6_managed.zip",
+          "size": 153738,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-279nbk",
+      "folderName": "Quality Assurance Agent",
+      "folderId": "01Z2AOQ5X7GFXLHUNGGRA3OEYTI7FQF5CQ",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:44:32.686Z",
+      "lastAnalyzed": "2026-03-02T19:44:32.688Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 1,
+        "publisherName": "Crf93c6",
+        "uniqueName": "ProductionPerformanceAgent",
+        "version": "1.0.0.6",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "ProductionPerformanceAgent_1_0_0_6_managed.zip",
+          "size": 153738,
+          "type": "solution"
+        },
+        {
+          "name": "QualityAssuranceAgent_1_0_0_6_managed.zip",
+          "size": 166873,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-r1vihs",
+      "folderName": "Quotation SPO Knowledge Agent",
+      "folderId": "01Z2AOQ5SJ43PAIXAVCZCZ5JJVQKK4JUMY",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:44:33.640Z",
+      "lastAnalyzed": "2026-03-02T19:44:33.640Z",
+      "analysisDepth": "error",
+      "solution": null,
+      "agents": [],
+      "files": [
+        {
+          "name": "KAvsDA_voiceover.mp4",
+          "size": 116033950,
+          "type": "other"
+        },
+        {
+          "name": "Quotation Agent Demo.mp4",
+          "size": 116285220,
+          "type": "other"
+        },
+        {
+          "name": "Quotation Agent.pptx",
+          "size": 70034114,
+          "type": "presentation"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-p0de74",
+      "folderName": "Rover Agent",
+      "folderId": "01Z2AOQ5WIKCRW53KACJCITB77MAOPH4R3",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:44:41.507Z",
+      "lastAnalyzed": "2026-03-02T19:44:41.509Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "BCSolution",
+        "uniqueName": "RoverSolution",
+        "version": "1.0.0.0",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "Rover-Agent-Architecture.pdf",
+          "size": 144060,
+          "type": "pdf"
+        },
+        {
+          "name": "RoverSolution_1_0_0_0.zip",
+          "size": 129506,
+          "type": "solution"
+        },
+        {
+          "name": "Video-CAD-Rover-A2A-MultiAgent.mp4",
+          "size": 18999267,
+          "type": "other"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-81h0l5",
+      "folderName": "ServiceNow Service Catalog",
+      "folderId": "01Z2AOQ5XLQFMSBFJIPNCY6GKGDPGCO2EV",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:44:47.514Z",
+      "lastAnalyzed": "2026-03-02T19:44:47.516Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "Crd4b26",
+        "uniqueName": "ServiceNowConnector",
+        "version": "1.0.0.00",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "ServiceNowConnector_1_0_0_00.zip",
+          "size": 154333,
+          "type": "solution"
+        },
+        {
+          "name": "ServiceNow-ServiceCatalog-MCS-Solution-Guides.docx",
+          "size": 1106778,
+          "type": "document"
+        },
+        {
+          "name": "ServiceNow-ServiceCatalog-MCS-Solution-Video.mp4",
+          "size": 5674840,
+          "type": "other"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-dnht7q",
+      "folderName": "State Government Website Agent",
+      "folderId": "01Z2AOQ5XD3CHLSYKZIBEZPBQ52VZ3OZN7",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:44:54.427Z",
+      "lastAnalyzed": "2026-03-02T19:44:54.429Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 0,
+        "publisherName": "Agent",
+        "uniqueName": "Larry",
+        "version": "1.0.0.1",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "How to Build Larry - Step by Step Guide.docx",
+          "size": 50434,
+          "type": "document"
+        },
+        {
+          "name": "Larry Agent.pptx",
+          "size": 179691388,
+          "type": "presentation"
+        },
+        {
+          "name": "Larry_1_0_0_1.zip",
+          "size": 65545,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    },
+    {
+      "id": "sol-rmygvo",
+      "folderName": "Store Performance Agent",
+      "folderId": "01Z2AOQ5SQZO7BCQW6XZEYVKK4C5F5X2ND",
+      "folderUrl": null,
+      "lastModified": "2026-03-02T19:45:03.548Z",
+      "lastAnalyzed": "2026-03-02T19:45:03.551Z",
+      "analysisDepth": "deep",
+      "solution": {
+        "managed": 1,
+        "publisherName": "Crf93c6",
+        "uniqueName": "StorePerformanceAgent",
+        "version": "1.0.0.7",
+        "displayName": null
+      },
+      "agents": [],
+      "files": [
+        {
+          "name": "Store Performance Agent - Retail (1).pptx",
+          "size": 39494722,
+          "type": "presentation"
+        },
+        {
+          "name": "StorePerformanceAgent_1_0_0_7_managed.zip",
+          "size": 128191,
+          "type": "solution"
+        }
+      ],
+      "tags": {},
+      "instructionPatterns": []
+    }
+  ]
+}

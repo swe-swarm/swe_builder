@@ -1,0 +1,68 @@
+# Pattern: HTTP Request to External API
+# Trigger: OnRecognizedIntent
+# Shows: Collect input → HTTP call → Parse response → Display result
+# Use for REST API integrations when no connector exists
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    - kind: Question
+      id: askInput
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.userInput
+      prompt: "{{INPUT_PROMPT}}"
+      entity: StringPrebuiltEntity
+
+    - kind: HttpRequest
+      id: callApi
+      method: GET
+      url: ="{{API_BASE_URL}}" & Topic.userInput
+      headers:
+        Content-Type: application/json
+      responseType: json
+      resultVariable: Topic.apiResponse
+      errorVariable: Topic.apiError
+
+    - kind: ConditionGroup
+      id: checkApiResult
+      conditions:
+        - id: apiSuccess
+          condition: =!IsBlank(Topic.apiResponse)
+          actions:
+            - kind: SendMessage
+              id: showResult
+              message: |-
+                Here's what I found:
+
+                {{FORMAT_RESPONSE_HERE}}
+
+        - id: apiError
+          condition: =!IsBlank(Topic.apiError)
+          actions:
+            - kind: SendMessage
+              id: showError
+              message: I wasn't able to retrieve that information right now. Please try again later.
+
+# --- POST example ---
+# - kind: HttpRequest
+#   id: postData
+#   method: POST
+#   url: "https://api.example.com/endpoint"
+#   headers:
+#     Content-Type: application/json
+#     Authorization: ="Bearer " & System.AccessToken
+#   body: |-
+#     ={
+#       "query": Topic.userInput,
+#       "userId": System.User.Id
+#     }
+#   responseType: json
+#   resultVariable: Topic.postResponse

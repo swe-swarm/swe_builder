@@ -1,0 +1,30 @@
+{
+  "id": "sol-zr4o8c",
+  "folderName": "News Aggregator Agent",
+  "folderId": "01Z2AOQ5TBPJJXL63YLFG3BEL454O3VG55",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:44:02.026Z",
+  "lastAnalyzed": "2026-03-02T19:44:02.028Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 1,
+    "publisherName": "KristinaMarko",
+    "uniqueName": "LeaseExtractor",
+    "version": "1.0.0.1",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "LeaseExtractor_1_0_0_1_managed.zip",
+      "size": 44075,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

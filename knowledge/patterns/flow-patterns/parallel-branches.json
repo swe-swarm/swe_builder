@@ -1,0 +1,49 @@
+{
+  "_meta": {
+    "name": "Parallel Branches",
+    "description": "Two or more actions sharing the same runAfter parent, executing in parallel. A join point action runs after all branches complete.",
+    "category": "control",
+    "placeholders": {
+      "{{PARENT_ACTION}}": "Name of the action that precedes the parallel split",
+      "{{BRANCH_A_NAME}}": "Name of first parallel branch action",
+      "{{BRANCH_B_NAME}}": "Name of second parallel branch action",
+      "{{JOIN_ACTION}}": "Name of the join point action (runs after both branches)"
+    },
+    "requires": []
+  },
+  "fragment": {
+    "{{PARENT_ACTION}}": {
+      "runAfter": {},
+      "type": "Compose",
+      "inputs": "Shared input data"
+    },
+    "{{BRANCH_A_NAME}}": {
+      "runAfter": {
+        "{{PARENT_ACTION}}": ["Succeeded"]
+      },
+      "type": "Compose",
+      "inputs": "Branch A logic"
+    },
+    "{{BRANCH_B_NAME}}": {
+      "runAfter": {
+        "{{PARENT_ACTION}}": ["Succeeded"]
+      },
+      "type": "Compose",
+      "inputs": "Branch B logic"
+    },
+    "{{JOIN_ACTION}}": {
+      "runAfter": {
+        "{{BRANCH_A_NAME}}": ["Succeeded"],
+        "{{BRANCH_B_NAME}}": ["Succeeded"]
+      },
+      "type": "Compose",
+      "inputs": "Merge results from both branches"
+    }
+  },
+  "_notes": {
+    "max_branches": "Up to 20 parallel branches per split point.",
+    "join_pattern": "The join action lists ALL branch names in its runAfter. It waits for all to complete.",
+    "partial_failure": "If one branch fails, set join's runAfter to include [\"Succeeded\", \"Failed\"] to continue regardless.",
+    "no_shared_state": "Parallel branches cannot share variables. Use Compose outputs and reference them in the join action."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "sol-ec9kxx",
+  "folderName": "Accounts Payable Agent",
+  "folderId": "01Z2AOQ5RMYSIGZFQNGJE27EC4ANNUITOO",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:21.243Z",
+  "lastAnalyzed": "2026-03-02T19:42:21.247Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "Crf93c6",
+    "uniqueName": "AccountPayablesAgent",
+    "version": "1.0.0.6",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "AccountPayablesAgent_1_0_0_6.zip",
+      "size": 106223,
+      "type": "solution"
+    },
+    {
+      "name": "AP Invoice Reconcilation  Agent - Retail.pptx",
+      "size": 40164477,
+      "type": "presentation"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

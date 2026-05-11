@@ -1,0 +1,182 @@
+{
+  "_meta": {
+    "connectorId": "shared_planner",
+    "displayName": "Planner",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "AssignUsers": {
+      "displayName": "Add assignees to a task",
+      "method": "POST",
+      "description": "Add assignees to an existing Planner task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateBucket_V2": {
+      "displayName": "Create a bucket",
+      "method": "POST",
+      "description": "Create a bucket in Planner for the specified plan and group.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateTask_V3": {
+      "displayName": "Create a task",
+      "method": "POST",
+      "description": "Create a new task in Planner.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateTask_V4": {
+      "displayName": "Create a task",
+      "method": "POST",
+      "description": "Create a new task in Planner.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeleteTask": {
+      "displayName": "Delete a task",
+      "method": "POST",
+      "description": "Deletes an existing Planner task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetPlanDetails": {
+      "displayName": "Get plan details",
+      "method": "POST",
+      "description": "Get plan details where the task belongs to",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetTask_V2": {
+      "displayName": "Get a task",
+      "method": "POST",
+      "description": "Get an existing Planner task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetTaskDetails_V2": {
+      "displayName": "Get task details",
+      "method": "POST",
+      "description": "Get the task details for an existing task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListBuckets_V3": {
+      "displayName": "List buckets",
+      "method": "POST",
+      "description": "List the buckets in a plan.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListGroupPlans": {
+      "displayName": "List plans for a group",
+      "method": "POST",
+      "description": "List plans owned by the group specified.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListMyTasks_V2": {
+      "displayName": "List my tasks",
+      "method": "POST",
+      "description": "List the tasks assigned to me.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListTasks_V3": {
+      "displayName": "List tasks",
+      "method": "POST",
+      "description": "List the tasks in a plan.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnCompleteTask_V3": {
+      "displayName": "When a task is completed",
+      "method": "POST",
+      "description": "This operation triggers when a task is completed.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewTask_V3": {
+      "displayName": "When a new task is created",
+      "method": "POST",
+      "description": "This operation triggers when a new task is created.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnTaskAssignedToMe_V2": {
+      "displayName": "When a task is assigned to me",
+      "method": "POST",
+      "description": "This operation triggers when a task is assigned to me.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UnassignUsers": {
+      "displayName": "Remove assignees from a task",
+      "method": "POST",
+      "description": "Remove assignees from an existing Planner task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateTask_V2": {
+      "displayName": "Update a task",
+      "method": "POST",
+      "description": "Update an existing Planner task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateTask_V3": {
+      "displayName": "Update a task (V2)",
+      "method": "POST",
+      "description": "Update an existing Planner task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateTaskDetails_V2": {
+      "displayName": "Update task details",
+      "method": "POST",
+      "description": "Update the task details for an existing task.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

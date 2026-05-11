@@ -1,0 +1,393 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://swe-builder.dev/schemas/amp-1.0.json",
+  "title": "Adaptive Manifest Protocol (AMP) for SWE-AMP Agents",
+  "description": "Declarative manifest that swe_builder consumes to generate copilot-sdk compliant terminal agents in TypeScript, Python, or Go. Every field maps to an extensibility surface in copilot-sdk.",
+  "type": "object",
+  "required": ["ampVersion", "agent", "runtime"],
+  "additionalProperties": false,
+  "properties": {
+    "ampVersion": {
+      "type": "string",
+      "description": "AMP schema version. Must be 1.0.",
+      "enum": ["1.0"]
+    },
+    "agent": {
+      "type": "object",
+      "required": ["name", "language"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Agent slug (kebab- or snake-case). Used as project name and binary name.",
+          "pattern": "^[a-z][a-z0-9_-]*[a-z0-9]$",
+          "minLength": 2,
+          "maxLength": 60
+        },
+        "displayName": { "type": "string", "description": "Human-readable name shown in UIs." },
+        "version": { "type": "string", "default": "0.1.0", "pattern": "^\\d+\\.\\d+\\.\\d+(-[A-Za-z0-9.-]+)?$" },
+        "description": { "type": "string" },
+        "author": { "type": "string" },
+        "license": { "type": "string", "default": "MIT" },
+        "language": {
+          "type": "string",
+          "description": "Target language for the generated agent.",
+          "enum": ["typescript", "python", "go"]
+        },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "required": ["copilotSdk"],
+      "additionalProperties": false,
+      "properties": {
+        "copilotSdk": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "transport": {
+              "type": "string",
+              "enum": ["stdio", "tcp", "external"],
+              "default": "stdio"
+            },
+            "cliUrl": { "type": "string", "format": "uri", "description": "External CLI server URL when transport=external." },
+            "cliPath": { "type": "string", "description": "Override path to copilot CLI binary." },
+            "useLoggedInUser": { "type": "boolean" },
+            "gitHubTokenEnv": { "type": "string", "description": "Env var that holds the GitHub token at runtime." },
+            "logLevel": { "type": "string", "enum": ["error", "warning", "info", "debug", "all", "none"], "default": "warning" },
+            "sessionIdleTimeoutSec": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "model": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string", "default": "claude-sonnet-4.5" },
+            "reasoningEffort": { "type": "string", "enum": ["minimal", "low", "medium", "high"] },
+            "capabilitiesOverride": { "type": "object" }
+          }
+        },
+        "provider": {
+          "type": "object",
+          "description": "BYOK provider config (passed straight to copilot-sdk SessionConfig.provider).",
+          "additionalProperties": true,
+          "properties": {
+            "type": { "type": "string", "enum": ["azure", "anthropic", "openai", "ollama", "gemini"] }
+          }
+        },
+        "workingDirectory": { "type": "string", "default": "." },
+        "streaming": { "type": "boolean", "default": true },
+        "includeSubAgentStreamingEvents": { "type": "boolean", "default": false },
+        "infiniteSessions": { "type": "boolean", "default": false },
+        "ui": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "elicitation": { "type": "boolean", "default": false }
+          }
+        }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tools": {
+          "type": "array",
+          "description": "Custom tools registered via DefineTool / define_tool / DefineTool.",
+          "items": { "$ref": "#/definitions/Tool" }
+        },
+        "availableTools": {
+          "type": "array",
+          "description": "Allowlist of built-in tool names. Empty array disables all built-ins.",
+          "items": { "type": "string" }
+        },
+        "excludedTools": {
+          "type": "array",
+          "description": "Built-in tool names to remove (denylist).",
+          "items": { "type": "string" }
+        },
+        "mcpServers": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/McpServer" }
+        },
+        "customAgents": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/CustomAgent" }
+        },
+        "defaultAgent": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string" },
+            "tools": { "type": "array", "items": { "type": "string" } },
+            "excludedTools": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "agent": { "type": "string", "description": "Pre-select a custom agent by name." },
+        "hooks": { "$ref": "#/definitions/Hooks" },
+        "permissions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": ["custom", "approveAll", "denyAll", "allowList"],
+              "default": "custom",
+              "description": "approveAll uses copilot-sdk's approve-all helper. allowList auto-approves listed tools and prompts for the rest."
+            },
+            "handler": { "type": "string", "description": "Source path of the handler module (custom mode)." },
+            "autoApprove": {
+              "type": "array",
+              "description": "Tool patterns auto-approved when mode=allowList.",
+              "items": {
+                "type": "object",
+                "required": ["tool"],
+                "properties": {
+                  "tool": { "type": "string" },
+                  "argsContains": { "type": "string", "description": "Substring required in serialized args." }
+                }
+              }
+            }
+          }
+        },
+        "skills": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "directories": { "type": "array", "items": { "type": "string" } },
+            "disabled": { "type": "array", "items": { "type": "string" } },
+            "inline": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/Skill" }
+            }
+          }
+        },
+        "systemMessage": { "$ref": "#/definitions/SystemMessage" },
+        "sessionFs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "provider": {
+              "type": "string",
+              "enum": ["memory", "real", "custom"],
+              "default": "real",
+              "description": "memory generates an in-process map-backed provider, custom expects a user file."
+            },
+            "handler": { "type": "string", "description": "Source path of the provider module when provider=custom." }
+          }
+        },
+        "lifecycle": {
+          "type": "object",
+          "description": "Client-level lifecycle event handlers (session.created, session.resumed, etc.).",
+          "additionalProperties": false,
+          "properties": {
+            "handler": { "type": "string", "description": "Source path of the lifecycle handler module." }
+          }
+        },
+        "userInput": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "handler": { "type": "string", "description": "Source path of the user-input request handler module." }
+          }
+        },
+        "commands": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Command" }
+        }
+      }
+    },
+    "communication": {
+      "type": "object",
+      "description": "Agent Communication Standards: how this agent talks to peers/orchestrators (DAYOURBOT swarm, ADO, broadcast).",
+      "additionalProperties": false,
+      "properties": {
+        "standard": {
+          "type": "string",
+          "enum": ["amp-acs-1.0"],
+          "default": "amp-acs-1.0",
+          "description": "Versioned spec name. See knowledge/amp/agent-communication-standards.md."
+        },
+        "id": { "type": "string", "description": "Stable agent identifier (used in fleet messages)." },
+        "broadcast": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "channels": { "type": "array", "items": { "type": "string" } },
+            "transport": { "type": "string", "enum": ["stdout-jsonl", "websocket", "file", "none"], "default": "stdout-jsonl" }
+          }
+        },
+        "inbox": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean", "default": false },
+            "path": { "type": "string", "description": "Filesystem path where inbox messages are dropped (JSONL, one record per line)." }
+          }
+        },
+        "handoff": {
+          "type": "array",
+          "description": "Named peers this agent can hand off to. Generated as helper functions.",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "transport": { "type": "string", "enum": ["stdio", "http", "inbox"] },
+              "endpoint": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "outputDir": { "type": "string", "default": "./dist" },
+        "entrypoint": { "type": "string" },
+        "bundler": { "type": "string", "enum": ["none", "esbuild", "tsc", "tsx"], "default": "none" },
+        "packageManager": { "type": "string", "enum": ["npm", "pnpm", "yarn", "uv", "pip", "go"], "description": "Used in generated README quickstart." }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target": { "type": "string", "enum": ["standalone", "container", "wasm", "serverless"], "default": "standalone" },
+        "scripts": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "env": {
+          "type": "object",
+          "description": "Environment variable defaults. Names only; values in the generated .env.example.",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Tool": {
+      "type": "object",
+      "required": ["name", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_-]{0,63}$" },
+        "description": { "type": "string" },
+        "paramsSchema": {
+          "oneOf": [
+            { "type": "string", "description": "Path to JSON schema file." },
+            { "type": "object", "description": "Inline JSON schema." }
+          ]
+        },
+        "handler": { "type": "string", "description": "Source path of handler module relative to manifest." },
+        "skipPermission": { "type": "boolean", "default": false },
+        "overridesBuiltIn": { "type": "boolean", "default": false },
+        "stub": {
+          "type": "object",
+          "description": "When set, the generator emits a working stub instead of expecting a user file.",
+          "additionalProperties": false,
+          "properties": {
+            "kind": { "type": "string", "enum": ["echo", "static", "memoryRead", "memoryWrite", "memoryList"] },
+            "value": {}
+          }
+        }
+      }
+    },
+    "McpServer": {
+      "type": "object",
+      "required": ["name", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["stdio", "http", "sse"] },
+        "enabled": { "type": "boolean", "default": true },
+        "command": { "type": "string" },
+        "args": { "type": "array", "items": { "type": "string" } },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "url": { "type": "string", "format": "uri" },
+        "headers": { "type": "object", "additionalProperties": { "type": "string" } },
+        "tools": { "type": "array", "items": { "type": "string" }, "description": "Optional tool allowlist." }
+      }
+    },
+    "CustomAgent": {
+      "type": "object",
+      "required": ["name", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*[a-z0-9]$" },
+        "description": { "type": "string" },
+        "systemPrompt": { "type": "string", "description": "Inline prompt OR file path (resolved relative to manifest)." },
+        "model": { "type": "string" },
+        "reasoningEffort": { "type": "string", "enum": ["minimal", "low", "medium", "high"] },
+        "tools": { "type": "array", "items": { "type": "string" } },
+        "excludedTools": { "type": "array", "items": { "type": "string" } },
+        "mcpServers": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "Skill": {
+      "type": "object",
+      "required": ["name", "description", "instructions"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "instructions": { "type": "string", "description": "Inline instructions OR file path." }
+      }
+    },
+    "Hooks": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Source paths to handler modules for each lifecycle hook supported by copilot-sdk.",
+      "properties": {
+        "preToolUse": { "type": "string" },
+        "postToolUse": { "type": "string" },
+        "userPromptSubmitted": { "type": "string" },
+        "sessionStart": { "type": "string" },
+        "sessionEnd": { "type": "string" },
+        "errorOccurred": { "type": "string" }
+      }
+    },
+    "SystemMessage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "type": "string", "enum": ["customize", "append", "replace"], "default": "customize" },
+        "content": { "type": "string", "description": "Inline content OR file path (used for append/replace)." },
+        "sections": {
+          "type": "object",
+          "description": "Section overrides for customize mode. Each value can be {append, prepend, replace} OR a file path treated as full replace.",
+          "additionalProperties": {
+            "oneOf": [
+              { "type": "string" },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "append": { "type": "string" },
+                  "prepend": { "type": "string" },
+                  "replace": { "type": "string" }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "Command": {
+      "type": "object",
+      "required": ["name", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*[a-z0-9]$" },
+        "description": { "type": "string" },
+        "argsHint": { "type": "string" },
+        "handler": { "type": "string" }
+      }
+    }
+  }
+}

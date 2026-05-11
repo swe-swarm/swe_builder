@@ -1,0 +1,86 @@
+ampVersion: "1.0"
+agent:
+  name: reviewer-agent
+  displayName: Reviewer Agent
+  version: "0.1.0"
+  description: Code review AMP agent with review tools, hooks, and custom agents.
+  language: typescript
+runtime:
+  copilotSdk:
+    transport: stdio
+    logLevel: warning
+  model:
+    name: claude-sonnet-4.5
+  streaming: true
+extensions:
+  tools:
+    - name: fetch_pr_diff
+      description: Fetch a pull request diff for review.
+      paramsSchema:
+        type: object
+        required: [prNumber]
+        properties:
+          prNumber:
+            type: integer
+      stub:
+        kind: static
+        value: |
+          diff --git a/src/app.ts b/src/app.ts
+          --- a/src/app.ts
+          +++ b/src/app.ts
+          @@ -1,3 +1,3 @@
+          -console.log("old behavior");
+          +console.log("new behavior");
+    - name: lint_check
+      description: Run lint checks for a path.
+      paramsSchema:
+        type: object
+        required: [path]
+        properties:
+          path:
+            type: string
+      stub:
+        kind: static
+        value: "no issues"
+    - name: post_review_comment
+      description: Post a review comment back to the pull request.
+      paramsSchema:
+        type: object
+        required: [prNumber, body]
+        properties:
+          prNumber:
+            type: integer
+          body:
+            type: string
+      stub:
+        kind: echo
+  customAgents:
+    - name: code-reviewer
+      description: Senior engineer persona for pull request review.
+      systemPrompt: "You are a senior software engineer reviewing PRs. Focus on correctness, tests, security, and maintainability. Cite file and line references."
+      tools: [fetch_pr_diff, lint_check, post_review_comment]
+    - name: test-author
+      description: Test engineer persona for writing focused tests.
+      systemPrompt: "You write small, targeted tests for the changed behavior. Prefer clear assertions and minimal fixtures."
+      tools: [fetch_pr_diff, lint_check]
+  defaultAgent:
+    name: code-reviewer
+  hooks:
+    preToolUse: ./src/hooks/preToolUse.ts
+    sessionStart: ./src/hooks/sessionStart.ts
+  permissions:
+    mode: allowList
+    autoApprove:
+      - tool: lint_*
+      - tool: fetch_*
+  systemMessage:
+    mode: customize
+    sections:
+      persona: "Be terse, surgical, and cite line numbers."
+communication:
+  standard: amp-acs-1.0
+  broadcast:
+    transport: stdout-jsonl
+    channels: [reviews]
+  inbox:
+    enabled: false

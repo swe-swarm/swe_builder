@@ -1,0 +1,128 @@
+{
+  "_meta": {
+    "connectorId": "shared_office365users",
+    "displayName": "Office 365 Users",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "DirectReports_V2": {
+      "displayName": "Get direct reports (V2)",
+      "method": "POST",
+      "description": "Retrieves the user profiles of the specified user's direct reports. Learn more about available fields to select: https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/user#properties",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "HttpRequest": {
+      "displayName": "Send an HTTP request",
+      "method": "POST",
+      "description": "Construct a Microsoft Graph REST API request to invoke. These segments are supported: 1st segement: /me, /users/<userId> 2nd segment: messages, mailFolders, events, calendar, calendars, outlook, inferenceClassification. Learn more: https://docs.microsoft.com/en-us/graph/use-the-api.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "Manager_V2": {
+      "displayName": "Get manager (V2)",
+      "method": "POST",
+      "description": "Retrieves the profile of the specified user's manager. Learn more about available fields to select: https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/user#properties",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "MyProfile_V2": {
+      "displayName": "Get my profile (V2)",
+      "method": "POST",
+      "description": "Retrieves the profile of the current user. Learn more about available fields to select: https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/user#properties",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "MyTrendingDocuments": {
+      "displayName": "Get my trending documents",
+      "method": "POST",
+      "description": "Retrieves the trending documents for the signed in user",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "RelevantPeople": {
+      "displayName": "Get relevant people",
+      "method": "POST",
+      "description": "Get relevant people.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "SearchUserV2": {
+      "displayName": "Search for users (V2)",
+      "method": "POST",
+      "description": "Retrieves the user profiles that match the search term (V2).",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "TrendingDocuments": {
+      "displayName": "Get trending documents",
+      "method": "POST",
+      "description": "Retrieves the trending documents for a user",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateMyPhoto": {
+      "displayName": "Update my profile photo",
+      "method": "POST",
+      "description": "Updates the profile photo of the current user. The size of the photo must be less than 4 MB.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateMyProfile": {
+      "displayName": "Update my profile",
+      "method": "POST",
+      "description": "Updates the profile of the current user",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UserPhoto_V2": {
+      "displayName": "Get user photo (V2)",
+      "method": "POST",
+      "description": "Retrieves the photo of the specified user if they have one",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UserPhotoMetadata": {
+      "displayName": "Get user photo metadata",
+      "method": "POST",
+      "description": "Get user photo metadata.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UserProfile_V2": {
+      "displayName": "Get user profile (V2)",
+      "method": "POST",
+      "description": "Retrieves the profile of a specific user. Learn more about available fields to select: https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/user#properties",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

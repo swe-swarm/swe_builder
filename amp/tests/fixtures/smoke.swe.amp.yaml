@@ -1,0 +1,31 @@
+ampVersion: "1.0"
+agent:
+  name: smoke-agent
+  description: Pipeline smoke fixture
+  language: typescript
+runtime:
+  copilotSdk:
+    transport: stdio
+    logLevel: warning
+  model:
+    name: claude-sonnet-4.5
+  streaming: true
+extensions:
+  tools:
+    - name: lookup_issue
+      description: Fetch issue details
+      paramsSchema:
+        type: object
+        required: [id]
+        properties:
+          id: { type: string }
+      stub:
+        kind: static
+        value: "issue-OK"
+  permissions:
+    mode: approveAll
+communication:
+  standard: amp-acs-1.0
+  broadcast:
+    transport: stdout-jsonl
+    channels: [smoke]

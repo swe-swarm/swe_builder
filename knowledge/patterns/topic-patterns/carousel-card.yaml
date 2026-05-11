@@ -1,0 +1,174 @@
+# Pattern: Carousel (Multiple Cards in One Message)
+# Trigger: OnRecognizedIntent (or mid-topic after data fetch)
+# Shows: Multiple adaptive cards side-by-side as a scrollable carousel
+# Common in: product catalog, recommendations, search results, team profiles
+#
+# Schema: 1.5 (cross-channel safe)
+# Actions: Action.Submit per card, Action.OpenUrl for details
+# Channels: Teams (horizontal scroll), Web Chat (horizontal scroll)
+# Omnichannel: Cards stack vertically
+# WhatsApp: Not supported
+#
+# How it works: Multiple AdaptiveCardTemplate attachments in a single SendMessage.
+# MCS renders them as a carousel automatically.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    # Static carousel: hardcoded cards (e.g., menu options, service tiers)
+    - kind: SendMessage
+      id: sendCarousel
+      message:
+        text: "Here are your options:"
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "Image",
+                    url: "{{CARD_1_IMAGE_URL}}",
+                    size: "Large",
+                    horizontalAlignment: "Center"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{CARD_1_TITLE}}",
+                    weight: "Bolder",
+                    size: "Medium",
+                    horizontalAlignment: "Center"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{CARD_1_DESCRIPTION}}",
+                    wrap: true,
+                    horizontalAlignment: "Center",
+                    isSubtle: true
+                  }
+                ],
+                actions: [
+                  {
+                    type: "Action.Submit",
+                    title: "Select",
+                    data: { selection: "{{CARD_1_VALUE}}" }
+                  }
+                ]
+              }
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "Image",
+                    url: "{{CARD_2_IMAGE_URL}}",
+                    size: "Large",
+                    horizontalAlignment: "Center"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{CARD_2_TITLE}}",
+                    weight: "Bolder",
+                    size: "Medium",
+                    horizontalAlignment: "Center"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{CARD_2_DESCRIPTION}}",
+                    wrap: true,
+                    horizontalAlignment: "Center",
+                    isSubtle: true
+                  }
+                ],
+                actions: [
+                  {
+                    type: "Action.Submit",
+                    title: "Select",
+                    data: { selection: "{{CARD_2_VALUE}}" }
+                  }
+                ]
+              }
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "Image",
+                    url: "{{CARD_3_IMAGE_URL}}",
+                    size: "Large",
+                    horizontalAlignment: "Center"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{CARD_3_TITLE}}",
+                    weight: "Bolder",
+                    size: "Medium",
+                    horizontalAlignment: "Center"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{CARD_3_DESCRIPTION}}",
+                    wrap: true,
+                    horizontalAlignment: "Center",
+                    isSubtle: true
+                  }
+                ],
+                actions: [
+                  {
+                    type: "Action.Submit",
+                    title: "Select",
+                    data: { selection: "{{CARD_3_VALUE}}" }
+                  }
+                ]
+              }
+
+# --- Dynamic carousel from array (PowerFx) ---
+# This is the advanced pattern — generate cards from Topic.items array.
+# IMPORTANT: MCS does NOT support dynamic attachment count via ForAll in
+# the attachments array. You must use a fixed number of attachment slots.
+#
+# Workaround: Use a single card with Container-per-item layout instead:
+#
+#   attachments:
+#     - kind: AdaptiveCardTemplate
+#       cardContent: |-
+#         ={
+#           type: "AdaptiveCard",
+#           version: "1.5",
+#           body: ForAll(
+#             FirstN(Topic.items, 5),
+#             {
+#               type: "Container",
+#               separator: true,
+#               selectAction: {
+#                 type: "Action.Submit",
+#                 data: { selectedId: ThisRecord.Id }
+#               },
+#               items: [
+#                 { type: "TextBlock", text: ThisRecord.Name, weight: "Bolder" },
+#                 { type: "TextBlock", text: ThisRecord.Description, wrap: true, isSubtle: true }
+#               ]
+#             }
+#           )
+#         }
+
+# --- Carousel limits ---
+# Teams: Max 10 cards in carousel, but 3-5 is ideal UX
+# Web Chat: No hard limit, but scrolling degrades after 6-8
+# Each card should be consistent in structure (same fields)
+# Total message size: ~28 KB across all cards combined

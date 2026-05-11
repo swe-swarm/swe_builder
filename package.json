@@ -1,0 +1,64 @@
+{
+  "name": "swe_builder",
+  "version": "1.0.0",
+  "description": "Microsoft Copilot Studio agent build automation with Claude Code",
+  "author": "Microsoft CAPE Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swe-swarm/swe_builder.git"
+  },
+  "bin": {
+    "swe_builder": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "app/server.py",
+    "app/terminal-server.js",
+    "app/lib/",
+    "app/dist/",
+    "app/frontend/",
+    "amp/",
+    "knowledge/",
+    "tools/",
+    "templates/",
+    "reference/",
+    ".claude/",
+    ".mcp.json",
+    "start.js",
+    "start.cmd",
+    "setup.ps1",
+    "requirements.txt",
+    "CLAUDE.md",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "start": "node start.js",
+    "postinstall": "node bin/postinstall.js",
+    "prepublishOnly": "npm --prefix app/frontend install && npm --prefix app/frontend run build",
+    "app": "python app/server.py",
+    "terminal": "node app/terminal-server.js",
+    "test": "node tools/direct-line-test.js",
+    "test:amp": "node --test amp/tests/*.test.js",
+    "amp": "node bin/cli.js amp",
+    "frontend:dev": "npm --prefix app/frontend run dev",
+    "frontend:build": "npm --prefix app/frontend run build",
+    "upstream-check": "node tools/upstream-check.js",
+    "review": "node tools/multi-model-review.js"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^2.0.0",
+    "@microsoft/agents-activity": "^1.0.0",
+    "@microsoft/agents-copilotstudio-client": "^1.0.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "js-yaml": "^4.1.1",
+    "node-pty": "^1.1.0",
+    "open": "^10.0.0",
+    "ws": "^8.19.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

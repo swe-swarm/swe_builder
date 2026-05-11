@@ -1,0 +1,100 @@
+# Pattern: Multi-Turn Conversation with Variable Collection
+# Trigger: OnRecognizedIntent
+# Shows: Ask multiple questions → collect into variables → use all together
+# Good for workflows that need several pieces of information
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+      - "{{TRIGGER_3}}"
+  actions:
+    # Step 1: Collect first input
+    - kind: Question
+      id: askStep1
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.step1Value
+      prompt: "{{STEP_1_PROMPT}}"
+      entity: StringPrebuiltEntity
+
+    # Step 2: Collect second input
+    - kind: Question
+      id: askStep2
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.step2Value
+      prompt: "{{STEP_2_PROMPT}}"
+      entity: StringPrebuiltEntity
+
+    # Step 3: Collect third input (optional — remove if not needed)
+    - kind: Question
+      id: askStep3
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.step3Value
+      prompt: "{{STEP_3_PROMPT}}"
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: choice1
+              displayName: "{{CHOICE_1}}"
+            - id: choice2
+              displayName: "{{CHOICE_2}}"
+
+    # Step 4: Confirm collected info
+    - kind: Question
+      id: confirmInputs
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.confirmed
+      prompt: |-
+        Let me confirm the details:
+
+        - **{{LABEL_1}}:** {Topic.step1Value}
+        - **{{LABEL_2}}:** {Topic.step2Value}
+        - **{{LABEL_3}}:** {Topic.step3Value}
+
+        Is this correct?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: yes
+              displayName: "Yes"
+            - id: no
+              displayName: "No, let me change something"
+
+    # Step 5: Branch on confirmation
+    - kind: ConditionGroup
+      id: checkConfirmation
+      conditions:
+        - id: confirmed
+          condition: =Topic.confirmed = "Yes"
+          actions:
+            - kind: SendMessage
+              id: processRequest
+              message: |-
+                I'm processing your request now. Here's a summary:
+
+                - **{{LABEL_1}}:** {Topic.step1Value}
+                - **{{LABEL_2}}:** {Topic.step2Value}
+                - **{{LABEL_3}}:** {Topic.step3Value}
+
+                {{COMPLETION_MESSAGE}}
+
+      elseActions:
+        - kind: SendMessage
+          id: restartFlow
+          message: No problem. Let's start over.
+        - kind: BeginDialog
+          id: redirectToSelf
+          dialog: "{{THIS_TOPIC_SCHEMA_NAME}}"

@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "connectorId": "shared_microsoftforms",
+    "displayName": "Microsoft Forms",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "GetFormDetailsById": {
+      "displayName": "Get form details",
+      "method": "POST",
+      "description": "This action retrieves the details of a form",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetFormResponseById": {
+      "displayName": "Get response details",
+      "method": "POST",
+      "description": "This action retrieves a form response",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateFormWebhook": {
+      "displayName": "When a new response is submitted",
+      "method": "POST",
+      "description": "This operation triggers a flow when a new response is submitted.",
+      "deprecated": false,
+      "isTrigger": true,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

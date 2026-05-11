@@ -1,0 +1,137 @@
+{
+  "ampVersion": "1.0",
+  "frameworkVersion": "1.0.0",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "language": "python",
+  "sdkProtocolVersion": 3,
+  "sourceManifest": {
+    "agent": {
+      "description": "Python AMP agent with memory notes, memory session filesystem, and MCP wiring.",
+      "displayName": "Virtual FS Agent",
+      "language": "python",
+      "license": "MIT",
+      "name": "virtual-fs-agent",
+      "version": "0.1.0"
+    },
+    "ampVersion": "1.0",
+    "build": {
+      "bundler": "none",
+      "outputDir": "./dist",
+      "packageManager": "uv"
+    },
+    "communication": null,
+    "deployment": {
+      "env": {},
+      "scripts": {},
+      "target": "standalone"
+    },
+    "extensions": {
+      "commands": [],
+      "customAgents": [],
+      "lifecycle": null,
+      "mcpServers": [
+        {
+          "args": [
+            "-y",
+            "@modelcontextprotocol/server-filesystem",
+            "/tmp"
+          ],
+          "command": "npx",
+          "enabled": true,
+          "name": "filesystem",
+          "type": "stdio"
+        }
+      ],
+      "permissions": {
+        "autoApprove": [],
+        "mode": "approveAll"
+      },
+      "sessionFs": {
+        "provider": "memory"
+      },
+      "skills": {
+        "directories": [],
+        "disabled": [],
+        "inline": []
+      },
+      "systemMessage": null,
+      "tools": [
+        {
+          "description": "Write a note to the in-memory store.",
+          "name": "note_write",
+          "overridesBuiltIn": false,
+          "paramsSchema": {
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "type": "object"
+          },
+          "skipPermission": false,
+          "stub": {
+            "kind": "memoryWrite"
+          }
+        },
+        {
+          "description": "Read a note from the in-memory store.",
+          "name": "note_read",
+          "overridesBuiltIn": false,
+          "paramsSchema": {
+            "properties": {
+              "key": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "key"
+            ],
+            "type": "object"
+          },
+          "skipPermission": false,
+          "stub": {
+            "kind": "memoryRead"
+          }
+        },
+        {
+          "description": "List all notes in the in-memory store.",
+          "name": "note_list",
+          "overridesBuiltIn": false,
+          "paramsSchema": {
+            "properties": {},
+            "type": "object"
+          },
+          "skipPermission": false,
+          "stub": {
+            "kind": "memoryList"
+          }
+        }
+      ],
+      "userInput": null
+    },
+    "runtime": {
+      "copilotSdk": {
+        "logLevel": "warning",
+        "transport": "stdio",
+        "useLoggedInUser": true
+      },
+      "includeSubAgentStreamingEvents": false,
+      "infiniteSessions": false,
+      "model": {
+        "name": "claude-sonnet-4.5"
+      },
+      "streaming": true,
+      "ui": {
+        "elicitation": false
+      },
+      "workingDirectory": "."
+    }
+  }
+}

@@ -1,0 +1,88 @@
+# Pattern: Knowledge Source Configuration
+# Kind: KnowledgeSourceConfiguration (not AdaptiveDialog — separate file type)
+# Shows: Three knowledge source types: PublicSite, SharePoint, GraphConnector.
+# File naming: <source-name>.knowledge.mcs.yml
+# CRITICAL: Line 1 (# Name:) and Line 2 (description comment) drive orchestrator
+#           source selection when agent has >25 knowledge sources.
+
+# --- Type 1: Public Website ---
+# Uses Bing search to find relevant snippets from the scoped URL.
+# NOT a web crawler — it finds relevant info, not full page content.
+# Max URL depth: 2 levels beyond domain (e.g., docs.example.com/en-us/azure = OK,
+# microsoft.com/en-us/microsoft-365/business = TOO DEEP at 3 levels)
+
+# # Name: Product Documentation
+# # Product documentation and FAQs for the Contoso product line.
+# kind: KnowledgeSourceConfiguration
+# source:
+#   kind: PublicSiteSearchSource
+#   site: https://docs.contoso.com/products
+
+# --- Type 2: SharePoint ---
+# Searches SharePoint document library (NOT lists — use OnKnowledgeRequested for lists).
+# Use the deepest folder path that covers needed documents.
+# Encode spaces as %20.
+# LIMITATION: Returns relevant chunks via semantic search, NOT full file content.
+# For full file retrieval (JIT glossary, configs), use Dataverse or Agent Flows.
+
+# # Name: HR Policies
+# # Employee handbooks, leave policies, and benefits documentation.
+# kind: KnowledgeSourceConfiguration
+# source:
+#   kind: SharePointSearchSource
+#   site: https://contoso.sharepoint.com/sites/HR/Shared%20Documents/Policies
+
+# --- Type 3: Graph Connector ---
+# Searches enterprise systems indexed via Microsoft Graph connectors
+# (ServiceNow, Salesforce, Jira, custom connectors).
+# Prerequisites: connector registered in M365 admin center, connectionId stored
+# as Power Platform environment variable.
+
+# # Name: ServiceNow Knowledge Base
+# # ServiceNow tickets and knowledge articles indexed via Microsoft Graph connector.
+# kind: KnowledgeSourceConfiguration
+# source:
+#   kind: GraphConnectorSearchSource
+#   connectionId:
+#     schemaName: cr123_GraphConnectorId_ServiceNow
+#   connectionName: servicenow-connection
+#   contentSourceDisplayName: ServiceNow
+#   publisherName: ServiceNow
+
+# --- triggerCondition ---
+# Controls whether the source is included in automatic UniversalSearchTool searches.
+# =false: source is NEVER auto-searched — only via explicit SearchAndSummarizeContent
+# =true (default): source is always included in auto-search
+# =<PowerFx expression>: conditional — e.g., =Global.UserCounty = "Armstrong"
+# Note: triggerCondition supports full Power Fx in YAML, but UI shows only on/off toggle.
+
+# # Name: Armstrong County Policies
+# # UPMC employee information specific to Armstrong county.
+# kind: KnowledgeSourceConfiguration
+# source:
+#   kind: SharePointSearchSource
+#   triggerCondition: =Global.UserCounty = "Armstrong"
+#   site: https://pplatform.sharepoint.com/sites/KB/Shared%20Documents/Armstrong
+
+# --- Dynamic URL (Power Fx) ---
+# Knowledge source URLs can use Power Fx expressions for dynamic routing:
+# source:
+#   kind: SharePointSearchSource
+#   site: =$"{Global.UserKBURL}"
+
+# --- 25 Knowledge Source Limit ---
+# UniversalSearchTool supports up to 25 sources.
+# ≤25: all sources searched on every call
+# >25: orchestrator selects best 25 by source name + description comment
+# Implication: write clear, specific descriptions for every knowledge source.
+# "HR leave policies and employee entitlements" > "HR docs"
+
+# --- Content Quality Best Practices ---
+# - Clear headings and titles improve chunking and citation quality
+# - Avoid tables/images/charts without surrounding text — poor answers
+# - Scanned PDFs without OCR are not searchable
+# - Short docs (<1 page) may lack context — combine related short docs
+# - No duplicate content across sources — degrades relevance ranking
+# - One source per distinct content domain (HR, IT, Finance)
+# - Keep sources ≤10 per agent for best relevance
+# - Review sources quarterly — remove stale content

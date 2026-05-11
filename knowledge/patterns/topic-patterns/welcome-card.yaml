@@ -1,0 +1,114 @@
+# Pattern: Adaptive Card Welcome (Conversation Start)
+# Trigger: OnConversationStart
+# Purpose: Rich welcome card with agent overview + capability action buttons
+# Standard: Recommended for ALL agents unless purely generative with no distinct capabilities
+#
+# Benefits over plain text greeting:
+#   - Users immediately see what the agent can do (no guessing)
+#   - Action buttons route to topics (faster than typing)
+#   - Professional, branded experience
+#   - Works on Teams, Web Chat, and mobile
+#
+# Customize: Replace {{PLACEHOLDERS}} with your values
+# Channel limits: Teams supports up to 6 Action.Submit buttons
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendWelcomeCard
+      activity:
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "TextBlock",
+                    text: "{{AGENT_NAME}}",
+                    weight: "Bolder",
+                    size: "Large"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{WELCOME_MESSAGE}}",
+                    wrap: true,
+                    spacing: "Small"
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "What would you like to do?",
+                    weight: "Bolder",
+                    spacing: "Medium"
+                  },
+                  {
+                    type: "ActionSet",
+                    actions: [
+                      {
+                        type: "Action.Submit",
+                        title: "{{BUTTON_1_LABEL}}",
+                        data: { msteams: { type: "imBack", value: "{{BUTTON_1_TEXT}}" } }
+                      },
+                      {
+                        type: "Action.Submit",
+                        title: "{{BUTTON_2_LABEL}}",
+                        data: { msteams: { type: "imBack", value: "{{BUTTON_2_TEXT}}" } }
+                      },
+                      {
+                        type: "Action.Submit",
+                        title: "{{BUTTON_3_LABEL}}",
+                        data: { msteams: { type: "imBack", value: "{{BUTTON_3_TEXT}}" } }
+                      }
+                    ]
+                  }
+                ]
+              }
+
+# --- Variant: With quick stats row (e.g., "3 meetings today, 5 unread emails") ---
+# Add a ColumnSet before the ActionSet:
+#
+#   {
+#     type: "ColumnSet",
+#     columns: [
+#       {
+#         type: "Column",
+#         width: "auto",
+#         items: [{
+#           type: "TextBlock",
+#           text: "📅 {{STAT_1_VALUE}}",
+#           weight: "Bolder"
+#         }, {
+#           type: "TextBlock",
+#           text: "{{STAT_1_LABEL}}",
+#           size: "Small",
+#           isSubtle: true
+#         }]
+#       },
+#       {
+#         type: "Column",
+#         width: "auto",
+#         items: [{
+#           type: "TextBlock",
+#           text: "📧 {{STAT_2_VALUE}}",
+#           weight: "Bolder"
+#         }, {
+#           type: "TextBlock",
+#           text: "{{STAT_2_LABEL}}",
+#           size: "Small",
+#           isSubtle: true
+#         }]
+#       }
+#     ]
+#   }
+
+# --- Channel compatibility ---
+# Teams: Full support. Action.Submit with msteams.imBack sends text as if user typed it.
+# Web Chat: Action.Submit works. No msteams wrapper needed (agent receives data object).
+# M365 Copilot: Adaptive cards rendered. Action buttons work.
+# Mobile Teams: Full support, buttons stack vertically on small screens.
+# WhatsApp: Very limited — falls back to text. Use suggestedActions instead.

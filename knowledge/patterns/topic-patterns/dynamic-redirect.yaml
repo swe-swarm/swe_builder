@@ -1,0 +1,75 @@
+# Pattern: Dynamic Topic Redirect with Switch Expression
+# Trigger: OnRecognizedIntent
+# Shows: Use a Switch() Power Fx expression inside a BeginDialog node to dynamically
+#         redirect to different topics based on a variable value. Replaces complex
+#         nested ConditionGroup if/then/else chains with a single maintainable node.
+# When to use:
+#   - Route to one of several topics based on a variable (menu selection, category, role)
+#   - Replace deeply nested ConditionGroup chains for cleaner YAML
+#   - Map a single variable to multiple target topics
+# Note: The dialog property of BeginDialog accepts Power Fx expressions, not just
+#       static topic names. Use |- block scalar for multi-line expressions.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+  actions:
+    # Step 1: Set the routing variable (from user input, previous action, etc.)
+    - kind: SetVariable
+      id: setVariable_REPLACE1
+      variable: init:Topic.RouteKey
+      value: "={{ROUTE_EXPRESSION}}"
+
+    # Step 2: Dynamic redirect using Switch expression
+    - kind: BeginDialog
+      id: beginDialog_REPLACE2
+      dialog: |-
+        =Switch(
+            Topic.RouteKey,
+            "option1", "{{SCHEMA_NAME}}.topic.{{TOPIC_1}}",
+            "option2", "{{SCHEMA_NAME}}.topic.{{TOPIC_2}}",
+            "option3", "{{SCHEMA_NAME}}.topic.{{TOPIC_3}}",
+            "{{SCHEMA_NAME}}.topic.{{FALLBACK_TOPIC}}"
+        )
+
+# --- How Switch() works in BeginDialog ---
+# Switch(expression, match1, result1, match2, result2, ..., defaultResult)
+# - Each result must be a fully qualified topic schema name
+# - The last argument (without a match) is the default/fallback
+# - Use |- (literal block scalar) for multi-line formatting
+# - Read settings.mcs.yml to get the agent's schema name prefix
+
+# --- Compared to nested ConditionGroups ---
+# BEFORE (verbose, hard to maintain):
+#   ConditionGroup (Topic.RouteKey = "option1")
+#     -> BeginDialog: Topic1
+#   ConditionGroup (Topic.RouteKey = "option2")
+#     -> BeginDialog: Topic2
+#   ConditionGroup (Topic.RouteKey = "option3")
+#     -> BeginDialog: Topic3
+#   Else
+#     -> BeginDialog: Fallback
+#
+# AFTER (single node, clean):
+#   BeginDialog with dialog: =Switch(...)
+
+# --- Example: Random lesson selection ---
+# - kind: SetVariable
+#   id: setRandom
+#   variable: init:Topic.LessonNum
+#   value: =RandBetween(1, 4)
+# - kind: BeginDialog
+#   id: routeLesson
+#   dialog: |-
+#     =Switch(
+#         Topic.LessonNum,
+#         1, "cr123_myAgent.topic.Lesson1",
+#         2, "cr123_myAgent.topic.Lesson2",
+#         3, "cr123_myAgent.topic.Lesson3",
+#         "cr123_myAgent.topic.LessonDefault"
+#     )

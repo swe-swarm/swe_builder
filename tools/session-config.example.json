@@ -1,0 +1,24 @@
+{
+  "accounts": [
+    {
+      "id": "your-account-id",
+      "label": "you@yourtenant.onmicrosoft.com",
+      "tenant": "YourTenantName",
+      "pacProfileIndex": null,
+      "environments": [
+        {
+          "name": "Your Environment (default)",
+          "environmentId": "Default-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "dataverseUrl": "https://orgxxxxxxxx.crm.dynamics.com",
+          "agents": []
+        }
+      ]
+    }
+  ],
+  "sessionDefaults": {
+    "note": "Written by /mcs-build after account/env selection. Cross-project fallback for new projects.",
+    "lastAccount": null,
+    "lastEnvironment": null,
+    "lastUpdated": null
+  }
+}

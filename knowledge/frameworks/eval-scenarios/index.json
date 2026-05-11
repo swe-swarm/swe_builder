@@ -1,0 +1,234 @@
+{
+  "version": "1.0",
+  "source": "https://github.com/serenaxxiee/copilot-studio-eval-scenario-library",
+  "description": "Copilot Studio Eval Scenario Library — 74 scenarios across 13 categories",
+  "coverageTargets": {
+    "core-business": { "min": 30, "max": 40, "description": "Core business use case tests" },
+    "variations": { "min": 20, "max": 30, "description": "Input variations and edge cases" },
+    "architecture": { "min": 20, "max": 30, "description": "Architecture and infrastructure tests" },
+    "edge-cases": { "min": 10, "max": 20, "description": "Edge cases and adversarial tests" }
+  },
+  "suggestedThresholds": {
+    "overall": 85,
+    "core": 90,
+    "boundaries": 95,
+    "edge": 70
+  },
+  "agentTypeRouting": {
+    "knowledge-answering": ["BP-IR", "CAP-KG", "CAP-CV"],
+    "task-execution": ["BP-RS", "CAP-TI", "CAP-SB"],
+    "diagnostic-guidance": ["BP-TS", "CAP-KG", "CAP-GF"],
+    "multi-step-process": ["BP-PN", "CAP-TR", "CAP-TQ"],
+    "multi-topic-routing": ["BP-TR", "CAP-TR", "CAP-GF"],
+    "external-customer-service": ["CAP-TQ", "CAP-SB", "CAP-CV"],
+    "sensitive-data": ["CAP-SB", "CAP-CV"],
+    "pre-release-regression": ["CAP-RT"]
+  },
+  "categories": [
+    {
+      "id": "BP-IR",
+      "name": "Information Retrieval & Policy Q&A",
+      "type": "business-problem",
+      "qualityCategory": "Business Scenario Quality",
+      "file": "business-problem/information-retrieval.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent answers questions from knowledge sources (SharePoint, files, websites)"
+    },
+    {
+      "id": "BP-TS",
+      "name": "Troubleshooting & Guided Diagnosis",
+      "type": "business-problem",
+      "qualityCategory": "Business Scenario Quality",
+      "file": "business-problem/troubleshooting.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent walks users through diagnostic steps or resolution paths"
+    },
+    {
+      "id": "BP-RS",
+      "name": "Request Submission & Task Execution",
+      "type": "business-problem",
+      "qualityCategory": "Business Scenario Quality",
+      "file": "business-problem/request-submission.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent collects data and submits requests via tools/connectors"
+    },
+    {
+      "id": "BP-PN",
+      "name": "Process Navigation & Multi-Step Guidance",
+      "type": "business-problem",
+      "qualityCategory": "Business Scenario Quality",
+      "file": "business-problem/process-navigation.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent guides users through multi-step business processes"
+    },
+    {
+      "id": "BP-TR",
+      "name": "Triage & Routing",
+      "type": "business-problem",
+      "qualityCategory": "Business Scenario Quality",
+      "file": "business-problem/triage-routing.md",
+      "scenarioCount": 5,
+      "applicableWhen": "Agent classifies requests and routes to appropriate teams or child agents"
+    },
+    {
+      "id": "CAP-KG",
+      "name": "Knowledge Grounding & Accuracy",
+      "type": "capability",
+      "qualityCategory": "Architecture",
+      "file": "capability/knowledge-grounding.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent uses knowledge sources (SharePoint, files, Dataverse)"
+    },
+    {
+      "id": "CAP-TI",
+      "name": "Tool & Connector Invocations",
+      "type": "capability",
+      "qualityCategory": "Architecture",
+      "file": "capability/tool-invocations.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent calls external tools, connectors, or Power Automate flows"
+    },
+    {
+      "id": "CAP-TR",
+      "name": "Trigger Routing",
+      "type": "capability",
+      "qualityCategory": "Architecture",
+      "file": "capability/trigger-routing.md",
+      "scenarioCount": 5,
+      "applicableWhen": "Agent routes to different topics based on user intent"
+    },
+    {
+      "id": "CAP-CV",
+      "name": "Compliance & Verbatim Content",
+      "type": "capability",
+      "qualityCategory": "Compliance & Safety",
+      "file": "capability/compliance.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent must provide exact regulatory text, disclaimers, or policy content"
+    },
+    {
+      "id": "CAP-SB",
+      "name": "Safety & Boundary Enforcement",
+      "type": "capability",
+      "qualityCategory": "Compliance & Safety",
+      "file": "capability/safety-boundary.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent has defined handle/decline/refuse boundaries"
+    },
+    {
+      "id": "CAP-TQ",
+      "name": "Tone, Helpfulness & Response Quality",
+      "type": "capability",
+      "qualityCategory": "Subjective Preferences",
+      "file": "capability/tone-quality.md",
+      "scenarioCount": 6,
+      "applicableWhen": "Agent has defined persona, tone, or response format requirements"
+    },
+    {
+      "id": "CAP-GF",
+      "name": "Graceful Failure & Escalation",
+      "type": "capability",
+      "qualityCategory": "Architecture + Edge Cases",
+      "file": "capability/graceful-failure.md",
+      "scenarioCount": 5,
+      "applicableWhen": "Agent needs to handle errors, unknowns, and escalation paths"
+    },
+    {
+      "id": "CAP-RT",
+      "name": "Regression Testing",
+      "type": "capability",
+      "qualityCategory": "Cross-Cutting",
+      "file": "capability/regression.md",
+      "scenarioCount": 5,
+      "applicableWhen": "Agent is being updated and needs cross-capability regression checks"
+    }
+  ],
+  "scenarios": [
+    {"id": "BP-IR-01", "name": "Verifying Policy Answer Accuracy", "category": "BP-IR", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-IR-02", "name": "Testing Answer Personalization by User Context", "category": "BP-IR", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-IR-03", "name": "Validating Source Attribution", "category": "BP-IR", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-IR-04", "name": "Testing Answer Currency", "category": "BP-IR", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-IR-05", "name": "Handling Ambiguous or Broad Queries", "category": "BP-IR", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-IR-06", "name": "Negative Test: Incorrect Source Retrieval", "category": "BP-IR", "qualityCategory": "Business Scenario Quality", "coverageTag": "edge-cases"},
+
+    {"id": "BP-TS-01", "name": "Verifying Diagnostic Step Accuracy", "category": "BP-TS", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-TS-02", "name": "Testing Platform-Aware Troubleshooting", "category": "BP-TS", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-TS-03", "name": "Validating Escalation Judgment", "category": "BP-TS", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-TS-04", "name": "Testing Multi-Step Diagnosis Completeness", "category": "BP-TS", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-TS-05", "name": "Handling Intermittent or Unreproducible Issues", "category": "BP-TS", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-TS-06", "name": "Negative Test: Incorrect Diagnosis Path", "category": "BP-TS", "qualityCategory": "Business Scenario Quality", "coverageTag": "edge-cases"},
+
+    {"id": "BP-RS-01", "name": "Verifying Request Execution Accuracy", "category": "BP-RS", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-RS-02", "name": "Testing Confirmation and Acknowledgment", "category": "BP-RS", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-RS-03", "name": "Validating Error Handling During Submission", "category": "BP-RS", "qualityCategory": "Business Scenario Quality", "coverageTag": "architecture"},
+    {"id": "BP-RS-04", "name": "Testing Partial Completion Scenarios", "category": "BP-RS", "qualityCategory": "Business Scenario Quality", "coverageTag": "architecture"},
+    {"id": "BP-RS-05", "name": "Verifying Authorization and Permission Checks", "category": "BP-RS", "qualityCategory": "Business Scenario Quality", "coverageTag": "architecture"},
+    {"id": "BP-RS-06", "name": "Negative Test: Unauthorized Action Prevention", "category": "BP-RS", "qualityCategory": "Business Scenario Quality", "coverageTag": "edge-cases"},
+
+    {"id": "BP-PN-01", "name": "Verifying Step Sequence Accuracy", "category": "BP-PN", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-PN-02", "name": "Testing Role-Aware Guidance", "category": "BP-PN", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-PN-03", "name": "Validating Completeness of Guidance", "category": "BP-PN", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-PN-04", "name": "Testing Branching Paths", "category": "BP-PN", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-PN-05", "name": "Handling Mid-Process Questions", "category": "BP-PN", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-PN-06", "name": "Negative Test: Incorrect Step Order", "category": "BP-PN", "qualityCategory": "Business Scenario Quality", "coverageTag": "edge-cases"},
+
+    {"id": "BP-TR-01", "name": "Verifying Classification Accuracy", "category": "BP-TR", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-TR-02", "name": "Testing Context Preservation During Handoff", "category": "BP-TR", "qualityCategory": "Business Scenario Quality", "coverageTag": "architecture"},
+    {"id": "BP-TR-03", "name": "Validating Priority Assignment", "category": "BP-TR", "qualityCategory": "Business Scenario Quality", "coverageTag": "core-business"},
+    {"id": "BP-TR-04", "name": "Handling Ambiguous Triage Scenarios", "category": "BP-TR", "qualityCategory": "Business Scenario Quality", "coverageTag": "variations"},
+    {"id": "BP-TR-05", "name": "Negative Test: Misrouted Request", "category": "BP-TR", "qualityCategory": "Business Scenario Quality", "coverageTag": "edge-cases"},
+
+    {"id": "CAP-KG-01", "name": "Verifying Retrieval from Correct Sources", "category": "CAP-KG", "qualityCategory": "Architecture", "coverageTag": "core-business"},
+    {"id": "CAP-KG-02", "name": "Testing Handling of Missing Sources", "category": "CAP-KG", "qualityCategory": "Architecture", "coverageTag": "architecture"},
+    {"id": "CAP-KG-03", "name": "Validating Behavior with Conflicting Sources", "category": "CAP-KG", "qualityCategory": "Architecture", "coverageTag": "architecture"},
+    {"id": "CAP-KG-04", "name": "Testing Hallucination Prevention", "category": "CAP-KG", "qualityCategory": "Architecture", "coverageTag": "core-business"},
+    {"id": "CAP-KG-05", "name": "Verifying Multi-Source Synthesis", "category": "CAP-KG", "qualityCategory": "Architecture", "coverageTag": "variations"},
+    {"id": "CAP-KG-06", "name": "Negative Test: Ungrounded Claims", "category": "CAP-KG", "qualityCategory": "Architecture", "coverageTag": "edge-cases"},
+
+    {"id": "CAP-TI-01", "name": "Verifying Tool Invocation", "category": "CAP-TI", "qualityCategory": "Architecture", "coverageTag": "core-business"},
+    {"id": "CAP-TI-02", "name": "Negative Test: Tool Should NOT Be Called", "category": "CAP-TI", "qualityCategory": "Architecture", "coverageTag": "edge-cases"},
+    {"id": "CAP-TI-03", "name": "Verifying Input Collection", "category": "CAP-TI", "qualityCategory": "Architecture", "coverageTag": "core-business"},
+    {"id": "CAP-TI-04", "name": "Verifying Tool Output in Response", "category": "CAP-TI", "qualityCategory": "Architecture", "coverageTag": "core-business"},
+    {"id": "CAP-TI-05", "name": "Testing Error Handling on Tool Failure", "category": "CAP-TI", "qualityCategory": "Architecture", "coverageTag": "architecture"},
+    {"id": "CAP-TI-06", "name": "Verifying Multi-Tool Orchestration", "category": "CAP-TI", "qualityCategory": "Architecture", "coverageTag": "architecture"},
+
+    {"id": "CAP-TR-01", "name": "Verifying Direct Topic Match", "category": "CAP-TR", "qualityCategory": "Architecture", "coverageTag": "core-business"},
+    {"id": "CAP-TR-02", "name": "Testing Disambiguation Between Similar Topics", "category": "CAP-TR", "qualityCategory": "Architecture", "coverageTag": "variations"},
+    {"id": "CAP-TR-03", "name": "Validating Fallback/Default Routing", "category": "CAP-TR", "qualityCategory": "Architecture", "coverageTag": "architecture"},
+    {"id": "CAP-TR-04", "name": "Testing Topic Handoff", "category": "CAP-TR", "qualityCategory": "Architecture", "coverageTag": "variations"},
+    {"id": "CAP-TR-05", "name": "Negative Test: Incorrect Topic Triggered", "category": "CAP-TR", "qualityCategory": "Architecture", "coverageTag": "edge-cases"},
+
+    {"id": "CAP-CV-01", "name": "Verifying Required Disclaimer Inclusion", "category": "CAP-CV", "qualityCategory": "Compliance & Safety", "coverageTag": "core-business"},
+    {"id": "CAP-CV-02", "name": "Testing Verbatim Policy Language", "category": "CAP-CV", "qualityCategory": "Compliance & Safety", "coverageTag": "core-business"},
+    {"id": "CAP-CV-03", "name": "Validating Mandatory Warning Presence", "category": "CAP-CV", "qualityCategory": "Compliance & Safety", "coverageTag": "core-business"},
+    {"id": "CAP-CV-04", "name": "Testing Regulatory Compliance Language", "category": "CAP-CV", "qualityCategory": "Compliance & Safety", "coverageTag": "architecture"},
+    {"id": "CAP-CV-05", "name": "Verifying Conditional Compliance", "category": "CAP-CV", "qualityCategory": "Compliance & Safety", "coverageTag": "variations"},
+    {"id": "CAP-CV-06", "name": "Negative Test: Prohibited Content", "category": "CAP-CV", "qualityCategory": "Compliance & Safety", "coverageTag": "edge-cases"},
+
+    {"id": "CAP-SB-01", "name": "Testing PII Protection", "category": "CAP-SB", "qualityCategory": "Compliance & Safety", "coverageTag": "core-business"},
+    {"id": "CAP-SB-02", "name": "Verifying Adversarial Input Resistance", "category": "CAP-SB", "qualityCategory": "Compliance & Safety", "coverageTag": "architecture"},
+    {"id": "CAP-SB-03", "name": "Testing Scope Boundary Enforcement", "category": "CAP-SB", "qualityCategory": "Compliance & Safety", "coverageTag": "core-business"},
+    {"id": "CAP-SB-04", "name": "Validating Data Leakage Prevention", "category": "CAP-SB", "qualityCategory": "Compliance & Safety", "coverageTag": "architecture"},
+    {"id": "CAP-SB-05", "name": "Testing Prompt Injection Resistance", "category": "CAP-SB", "qualityCategory": "Compliance & Safety", "coverageTag": "architecture"},
+    {"id": "CAP-SB-06", "name": "Negative Test: Out-of-Scope Response", "category": "CAP-SB", "qualityCategory": "Compliance & Safety", "coverageTag": "edge-cases"},
+
+    {"id": "CAP-TQ-01", "name": "Evaluating Response Clarity and Structure", "category": "CAP-TQ", "qualityCategory": "Subjective Preferences", "coverageTag": "core-business"},
+    {"id": "CAP-TQ-02", "name": "Testing Empathy in Sensitive Contexts", "category": "CAP-TQ", "qualityCategory": "Subjective Preferences", "coverageTag": "core-business"},
+    {"id": "CAP-TQ-03", "name": "Validating Appropriate Formality Level", "category": "CAP-TQ", "qualityCategory": "Subjective Preferences", "coverageTag": "variations"},
+    {"id": "CAP-TQ-04", "name": "Testing Completeness of Responses", "category": "CAP-TQ", "qualityCategory": "Subjective Preferences", "coverageTag": "core-business"},
+    {"id": "CAP-TQ-05", "name": "Evaluating Conciseness vs. Thoroughness Balance", "category": "CAP-TQ", "qualityCategory": "Subjective Preferences", "coverageTag": "variations"},
+    {"id": "CAP-TQ-06", "name": "Testing Consistency Across Conversation Turns", "category": "CAP-TQ", "qualityCategory": "Subjective Preferences", "coverageTag": "variations"},
+
+    {"id": "CAP-GF-01", "name": "Testing Appropriate Acknowledgment of Limitations", "category": "CAP-GF", "qualityCategory": "Architecture + Edge Cases", "coverageTag": "core-business"},
+    {"id": "CAP-GF-02", "name": "Verifying Human Handoff Triggers", "category": "CAP-GF", "qualityCategory": "Architecture + Edge Cases", "coverageTag": "architecture"},
+    {"id": "CAP-GF-03", "name": "Validating Escalation Context Preservation", "category": "CAP-GF", "qualityCategory": "Architecture + Edge Cases", "coverageTag": "architecture"},
+    {"id": "CAP-GF-04", "name": "Testing Graceful Degradation Under Uncertainty", "category": "CAP-GF", "qualityCategory": "Architecture + Edge Cases", "coverageTag": "variations"},
+    {"id": "CAP-GF-05", "name": "Negative Test: Agent Should Not Escalate", "category": "CAP-GF", "qualityCategory": "Architecture + Edge Cases", "coverageTag": "edge-cases"},
+
+    {"id": "CAP-RT-01", "name": "Baseline Comparison After Knowledge Source Updates", "category": "CAP-RT", "qualityCategory": "Cross-Cutting", "coverageTag": "architecture"},
+    {"id": "CAP-RT-02", "name": "Regression Check After Topic or Flow Changes", "category": "CAP-RT", "qualityCategory": "Cross-Cutting", "coverageTag": "architecture"},
+    {"id": "CAP-RT-03", "name": "Regression Check After Tool Configuration Changes", "category": "CAP-RT", "qualityCategory": "Cross-Cutting", "coverageTag": "architecture"},
+    {"id": "CAP-RT-04", "name": "Full-Suite Regression Before Publishing", "category": "CAP-RT", "qualityCategory": "Cross-Cutting", "coverageTag": "core-business"},
+    {"id": "CAP-RT-05", "name": "Targeted Regression for Specific Capability", "category": "CAP-RT", "qualityCategory": "Cross-Cutting", "coverageTag": "variations"}
+  ]
+}

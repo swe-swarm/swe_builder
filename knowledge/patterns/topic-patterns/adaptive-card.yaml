@@ -1,0 +1,82 @@
+# Pattern: Display Data in Adaptive Card
+# Trigger: OnRecognizedIntent
+# Shows: Collect input → SetVariable → SendMessage with AdaptiveCardTemplate
+# The cardContent uses PowerFx (= prefix) so variables can be embedded
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    - kind: SendMessage
+      id: sendDataCard
+      message:
+        text: "Here's what I found:"
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "TextBlock",
+                    text: "{{CARD_TITLE}}",
+                    weight: "Bolder",
+                    size: "Large"
+                  },
+                  {
+                    type: "FactSet",
+                    facts: [
+                      { title: "{{FACT_1_LABEL}}", value: "{{FACT_1_VALUE}}" },
+                      { title: "{{FACT_2_LABEL}}", value: "{{FACT_2_VALUE}}" },
+                      { title: "{{FACT_3_LABEL}}", value: "{{FACT_3_VALUE}}" }
+                    ]
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "{{CARD_FOOTER}}",
+                    size: "Small",
+                    isSubtle: true,
+                    wrap: true
+                  }
+                ]
+              }
+
+# --- Example with dynamic variables ---
+# To use topic variables in the card, reference them with PowerFx:
+#
+#   cardContent: |-
+#     ={
+#       type: "AdaptiveCard",
+#       version: "1.5",
+#       body: [
+#         {
+#           type: "TextBlock",
+#           text: "Order #" & Topic.orderNumber,
+#           weight: "Bolder"
+#         },
+#         {
+#           type: "FactSet",
+#           facts: [
+#             { title: "Status", value: Topic.orderStatus },
+#             { title: "ETA", value: Text(Topic.estimatedDate, "MMM dd, yyyy") }
+#           ]
+#         }
+#       ]
+#     }
+
+# --- Example with Action.Submit for user input ---
+# Note: Action.Execute is NOT supported in Web Chat
+#
+#   {
+#     type: "Action.Submit",
+#     title: "Confirm",
+#     data: { action: "confirm", orderId: Topic.orderNumber }
+#   }

@@ -1,0 +1,86 @@
+# Pattern: Knowledge Search — Orchestrator Pattern (Inputs/Outputs)
+# Trigger: OnRecognizedIntent (orchestrator routes by modelDescription)
+# Shows: Topic takes a question input, searches knowledge, returns result as output.
+#         The orchestrator formulates the final user-facing message — no SendActivity needed.
+# When to use: Agent has GenerativeActionsEnabled: true and you want the orchestrator
+#              to incorporate the search result into its response naturally.
+# CRITICAL: Always use CreateSearchQuery before SearchAndSummarizeContent.
+# See also: faq-knowledge.yaml (fallback), search-direct-response.yaml (manual send),
+#           search-precision.yaml (raw results)
+
+kind: AdaptiveDialog
+modelDescription: "{{MODEL_DESCRIPTION}}"
+inputs:
+  - kind: AutomaticTaskInput
+    propertyName: QuestionToBeAnswered
+    description: "{{INPUT_DESCRIPTION}}"
+    shouldPromptUser: true
+
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    # Step 1: Generate an optimized search query preserving conversational context
+    - kind: CreateSearchQuery
+      id: createSearchQuery_REPLACE1
+      userInput: =Topic.QuestionToBeAnswered
+      result: Topic.SearchQuery
+
+    # Step 2: Search specific knowledge sources with the optimized query
+    - kind: SearchAndSummarizeContent
+      id: searchContent_REPLACE2
+      autoSend: false
+      variable: Topic.SearchResult
+      userInput: =Topic.SearchQuery.SearchQuery
+      fileSearchDataSource:
+        searchFilesMode:
+          kind: DoNotSearchFiles
+      knowledgeSources:
+        kind: SearchSpecificKnowledgeSources
+        knowledgeSources:
+          - "{{SCHEMA_NAME}}.knowledge.{{KNOWLEDGE_SOURCE_NAME}}"
+      applyModelKnowledgeSetting: false
+      responseCaptureType: FullResponse
+
+    # Step 3: Extract content into output variable
+    - kind: SetVariable
+      id: setVariable_REPLACE3
+      variable: Topic.Response
+      value: =Topic.SearchResult.Text.Content
+
+inputType:
+  properties:
+    QuestionToBeAnswered:
+      displayName: QuestionToBeAnswered
+      description: "{{INPUT_DESCRIPTION}}"
+      type: String
+
+outputType:
+  properties:
+    Response:
+      displayName: Response
+      description: "{{OUTPUT_DESCRIPTION}}"
+      type: String
+
+# --- How it works ---
+# 1. Orchestrator collects QuestionToBeAnswered from the user (prompted conversationally)
+# 2. CreateSearchQuery rewrites it into an optimized search query with conversation context
+# 3. SearchAndSummarizeContent searches the specified knowledge source
+# 4. Content is extracted into Topic.Response output variable
+# 5. Orchestrator reads the output and formulates the final user-facing message
+# 6. No SendActivity needed — orchestrator handles presentation
+
+# --- Topic-Action Chaining Warning ---
+# The output MUST be the data itself (Topic.SearchResult.Text.Content), NOT a status
+# message like "Here is the answer: ...". If you output a status message, the
+# orchestrator assumes the task is done and won't chain to downstream actions.
+# See automatic-task-input.yaml for full chaining rules.
+
+# --- modelDescription is critical ---
+# With GenerativeActionsEnabled: true, modelDescription is the PRIMARY routing
+# mechanism — more important than trigger phrases. Write it to be clear, specific,
+# and action-oriented. Example:
+#   "This topic provides information about HR leave policies and entitlements"
+# NOT:
+#   "HR topic" (too vague — orchestrator won't route correctly)

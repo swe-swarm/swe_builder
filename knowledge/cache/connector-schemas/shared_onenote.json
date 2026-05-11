@@ -1,0 +1,119 @@
+{
+  "_meta": {
+    "connectorId": "shared_onenote",
+    "displayName": "OneNote (Business)",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "CreatePageInQuickNotes": {
+      "displayName": "Create a page in Quick Notes",
+      "method": "POST",
+      "description": "Create a new page in the Quick Notes section.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreatePageInSection": {
+      "displayName": "Create page in a section",
+      "method": "POST",
+      "description": "Create new page in a specified section.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateSectionInNotebook": {
+      "displayName": "Create section in a notebook",
+      "method": "POST",
+      "description": "Create section in a notebook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "DeletePage": {
+      "displayName": "Delete a page",
+      "method": "POST",
+      "description": "Delete a page.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetNotebooks": {
+      "displayName": "Get recent notebooks",
+      "method": "POST",
+      "description": "Get recent notebooks.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetPageContent": {
+      "displayName": "Get page content",
+      "method": "POST",
+      "description": "Get HTML page content.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetPagesInSection": {
+      "displayName": "Get pages for a specific section",
+      "method": "POST",
+      "description": "Get pages for a specific section.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "GetSectionsInNotebook": {
+      "displayName": "Get sections in notebook",
+      "method": "POST",
+      "description": "Get sections in a specific notebook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewPageInSection": {
+      "displayName": "When a new page is created in a section",
+      "method": "POST",
+      "description": "Triggers a flow when a new page is added to a section.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewSectionGroupInNotebook": {
+      "displayName": "When a new section group is created",
+      "method": "POST",
+      "description": "Triggers a flow when a new section group is added to a notebook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewSectionInNotebook": {
+      "displayName": "When a new section is created",
+      "method": "POST",
+      "description": "Triggers a flow when a new section is added to a notebook.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdatePageContent": {
+      "displayName": "Update page content",
+      "method": "POST",
+      "description": "Update HTML page content.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

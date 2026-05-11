@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "name": "Email Event Trigger (Outlook)",
+    "description": "Outlook OnNewEmailV3 trigger with folder, subject, and importance filters. Use for flows that react to incoming emails.",
+    "category": "trigger",
+    "placeholders": {
+      "{{FOLDER_ID}}": "Outlook folder ID (default: Inbox)",
+      "{{SUBJECT_FILTER}}": "Subject line contains filter (optional)",
+      "{{IMPORTANCE}}": "Email importance filter: Any, High, Normal, Low (optional)",
+      "{{INCLUDE_ATTACHMENTS}}": "Include attachments: true/false (default: false)",
+      "{{CONN_REF_LOGICAL}}": "Connection reference logical name for Office 365 connector"
+    },
+    "requires": ["shared_office365"]
+  },
+  "fragment": {
+    "triggers": {
+      "When_a_new_email_arrives": {
+        "type": "OpenApiConnectionNotification",
+        "inputs": {
+          "host": {
+            "connectionName": "shared_office365",
+            "operationId": "OnNewEmailV3",
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+          },
+          "parameters": {
+            "folderPath": "{{FOLDER_ID}}",
+            "importance": "{{IMPORTANCE}}",
+            "fetchOnlyWithAttachment": "{{INCLUDE_ATTACHMENTS}}",
+            "subjectFilter": "{{SUBJECT_FILTER}}"
+          },
+          "authentication": "@parameters('$authentication')"
+        }
+      }
+    },
+    "connectionReferences": {
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "{{CONN_REF_LOGICAL}}"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    }
+  },
+  "_notes": {
+    "folder_id": "Use 'Inbox' for the default inbox, or a folder path like 'Inbox/Subfolder'.",
+    "polling": "Email triggers poll at intervals: Free plan = 15 min, Office 365 = 5 min.",
+    "body_access": "Access email body via @triggerOutputs()?['body/body'], subject via @triggerOutputs()?['body/subject'].",
+    "attachments": "When fetchOnlyWithAttachment is true, only emails with attachments trigger the flow."
+  }
+}

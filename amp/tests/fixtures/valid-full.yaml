@@ -1,0 +1,127 @@
+ampVersion: "1.0"
+agent:
+  name: full-agent
+  displayName: Full Agent
+  version: 1.2.3
+  description: Full manifest for AMP tests
+  author: Test Author
+  license: MIT
+  language: typescript
+  tags: [full, amp]
+runtime:
+  copilotSdk:
+    transport: stdio
+    cliPath: copilot
+    useLoggedInUser: true
+    logLevel: info
+    sessionIdleTimeoutSec: 30
+  model:
+    name: claude-sonnet-4.5
+    reasoningEffort: medium
+    capabilitiesOverride:
+      toolCalling: true
+  provider:
+    type: openai
+    model: test-model
+  workingDirectory: .
+  streaming: true
+  includeSubAgentStreamingEvents: true
+  infiniteSessions: true
+  ui:
+    elicitation: true
+extensions:
+  tools:
+    - name: full_tool
+      description: Full test tool
+      paramsSchema:
+        type: object
+        required: [id]
+        properties:
+          id: { type: string }
+          ok: { type: boolean }
+      skipPermission: true
+      overridesBuiltIn: false
+      stub:
+        kind: echo
+  availableTools: [view, grep, bash]
+  excludedTools: [shell]
+  mcpServers:
+    - name: local-mcp
+      type: stdio
+      command: node
+      args: [server.js]
+      env:
+        TEST_ENV: "1"
+      tools: [full_tool]
+  customAgents:
+    - name: helper-agent
+      description: Helps with tests
+      systemPrompt: Handle helper work.
+      model: claude-sonnet-4.5
+      reasoningEffort: low
+      tools: [full_tool, view]
+      excludedTools: [shell]
+      mcpServers: [local-mcp]
+  defaultAgent:
+    name: default
+    tools: [full_tool, view]
+    excludedTools: [shell]
+  agent: helper-agent
+  hooks:
+    preToolUse: handler-files/pre-tool-use.ts
+    sessionStart: handler-files/session-start.ts
+  permissions:
+    mode: allowList
+    autoApprove:
+      - tool: full_tool
+        argsContains: ok
+  skills:
+    directories: [skills]
+    disabled: [legacy-skill]
+    inline:
+      - name: inline-skill
+        description: Inline skill
+        instructions: Follow the inline instruction.
+  systemMessage:
+    mode: customize
+    content: Base system message.
+    sections:
+      behavior:
+        append: Stay focused.
+      identity: You are full-agent.
+  sessionFs:
+    provider: memory
+  lifecycle:
+    handler: handler-files/session-start.ts
+  userInput:
+    handler: handler-files/session-start.ts
+  commands:
+    - name: status
+      description: Print status
+      argsHint: "[target]"
+      handler: handler-files/session-start.ts
+communication:
+  standard: amp-acs-1.0
+  id: full-agent
+  broadcast:
+    transport: stdout-jsonl
+    channels: [full]
+  inbox:
+    enabled: true
+    path: full-agent.inbox.jsonl
+  handoff:
+    - name: peer-agent
+      description: Peer handoff target
+      transport: inbox
+      endpoint: peer.inbox.jsonl
+build:
+  outputDir: ./dist
+  entrypoint: src/index.ts
+  bundler: tsc
+  packageManager: npm
+deployment:
+  target: standalone
+  scripts:
+    start: npm start
+  env:
+    TEST_ENV: value

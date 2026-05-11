@@ -1,0 +1,26 @@
+{
+  "name": "@swe_builder/amp",
+  "version": "1.0.0",
+  "description": "Adaptive Manifest Protocol (AMP) framework for swe_builder. Generates copilot-sdk compliant agents from declarative manifests.",
+  "private": true,
+  "main": "src/index.js",
+  "bin": {
+    "swe-amp": "cli/amp.js"
+  },
+  "files": [
+    "src/",
+    "schemas/",
+    "templates/",
+    "cli/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test tests/",
+    "test:watch": "node --test --watch tests/"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "js-yaml": "^4.1.0"
+  }
+}

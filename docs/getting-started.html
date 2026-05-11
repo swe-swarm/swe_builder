@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started — SWE_BUILDER</title>
+  <meta name="description" content="Install and run SWE_BUILDER. Two paths: start.cmd for Windows zero-prerequisite install, or npm for cross-platform setup." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/getting-started.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">On this page</div>
+          <ul class="sidebar-nav">
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#path-a">Option A: start.cmd</a></li>
+            <li><a href="#path-b">Option B: npm</a></li>
+            <li><a href="#first-run">First-run flow</a></li>
+            <li><a href="#auth">Authentication</a></li>
+            <li><a href="#first-project">Your first project</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>Get Started</h1>
+        <p class="lede">
+          Install SWE_BUILDER, authenticate to your Copilot Studio environment, and ship your first
+          agent. Two install paths cover Windows-only and cross-platform setups.
+        </p>
+
+        <h2 id="prerequisites">Prerequisites</h2>
+        <p>The <code>start.cmd</code> path needs nothing beyond a Windows 11 machine with internet access. Everything else is auto-installed via winget. The <code>npm</code> path requires:</p>
+        <ul>
+          <li><strong>Node.js</strong> 18.x or newer</li>
+          <li><strong>Python</strong> 3.10 or newer</li>
+          <li><strong>Git</strong> 2.30 or newer</li>
+          <li>A Microsoft Entra account with access to a Copilot Studio environment</li>
+          <li><strong>Power Platform CLI</strong> (auto-installed during first run if missing)</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Recommended: Claude Code or GitHub Copilot CLI</div>
+          SWE_BUILDER orchestrates Claude Code or GitHub Copilot CLI as the engineering brain. The
+          embedded terminal will prompt you to install one if neither is present.
+        </div>
+
+        <h2 id="path-a">Option A: <code>start.cmd</code> (Windows, recommended)</h2>
+        <p>Zero-prerequisite install for Windows 11. Uses winget. No admin rights required.</p>
+
+        <ol class="steps">
+          <li>
+            <h3>Clone the repository</h3>
+<pre><code class="language-powershell">git clone https://github.com/swe-swarm/swe_builder.git
+cd swe_builder
+</code></pre>
+            <p>If git is not installed, download a zip from GitHub and extract it.</p>
+          </li>
+          <li>
+            <h3>Run the launcher</h3>
+<pre><code class="language-powershell">.\start.cmd
+</code></pre>
+            <p>
+              On first run, the launcher detects missing dependencies and installs them via winget.
+              Expect a few minutes for Node, Python, Git, and Claude Code. Subsequent runs skip
+              install and start in roughly one second.
+            </p>
+          </li>
+          <li>
+            <h3>Wait for the dashboard</h3>
+            <p>
+              The launcher starts the FastAPI backend, the React dashboard, and the embedded
+              terminal server. A browser window opens automatically at <code>http://localhost:8000</code>.
+              If port 8000 is in use, the launcher falls back to the next available port and updates
+              CORS automatically.
+            </p>
+          </li>
+        </ol>
+
+        <h2 id="path-b">Option B: <code>npm install</code> (cross-platform)</h2>
+        <p>Works on macOS, Linux, and Windows. Requires Node and Python pre-installed.</p>
+
+        <ol class="steps">
+          <li>
+            <h3>Install globally</h3>
+<pre><code class="language-bash">npm install -g swe_builder
+</code></pre>
+            <p>The post-install hook builds the frontend with Vite, runs <code>pip install</code> for backend dependencies, and seeds environment variables.</p>
+          </li>
+          <li>
+            <h3>Start the app</h3>
+<pre><code class="language-bash">swe_builder start
+</code></pre>
+          </li>
+          <li>
+            <h3>Open the dashboard</h3>
+            <p>Navigate to <code>http://localhost:8000</code> if the browser does not open automatically.</p>
+          </li>
+        </ol>
+
+        <h2 id="first-run">First-run flow</h2>
+        <p>The dashboard launches the embedded Claude terminal automatically. Claude greets you and asks for context.</p>
+        <ol class="steps">
+          <li>
+            <h3>Pick an account</h3>
+            <p>If you have multiple GitHub or Microsoft accounts, the terminal asks which one to use. Picks are persisted to <code>tools/session-config.json</code>.</p>
+          </li>
+          <li>
+            <h3>Pick a Copilot Studio environment</h3>
+            <p>Claude calls <code>pac auth list</code> and presents your environments. The default environment is persisted at the session level so you only answer this once.</p>
+          </li>
+          <li>
+            <h3>Confirm and proceed</h3>
+            <p>You are ready to invoke any of the 13 workflow skills. Use the dashboard buttons or type slash commands directly.</p>
+          </li>
+        </ol>
+
+        <h2 id="auth">Authentication</h2>
+        <p>SWE_BUILDER uses three credential paths:</p>
+        <table>
+          <thead><tr><th>Layer</th><th>Authentication</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>PAC CLI</td><td><code>pac auth create</code></td><td>Interactive Entra login, session persists</td></tr>
+            <tr><td>Dataverse API</td><td>Reuses PAC token via <code>pac auth list</code></td><td>No separate login</td></tr>
+            <tr><td>Direct Line</td><td>Auto-fetched via Token Endpoint</td><td>Refreshed per eval run</td></tr>
+            <tr><td>WorkIQ MCP (optional)</td><td>One-time browser login</td><td>For <code>/mcs-context</code> only</td></tr>
+            <tr><td>GitHub (optional)</td><td><code>gh auth login</code></td><td>For multi-model GPT review</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="first-project">Your first project</h2>
+        <p>Run these in the embedded terminal, in order. Each one moves the project forward through one phase of the workflow.</p>
+
+        <ol class="steps">
+          <li>
+            <h3>Create the project</h3>
+<pre><code class="language-bash">/mcs-init MyFirstAgent
+</code></pre>
+            <p>Creates <code>Build-Guides/MyFirstAgent/</code> with a <code>docs/</code> folder for SDR documents and a starter <code>brief.json</code>.</p>
+          </li>
+          <li>
+            <h3>Drop in your requirements</h3>
+            <p>Place SDR documents (Word, Markdown, or PDF) into <code>Build-Guides/MyFirstAgent/docs/</code>, or paste requirements directly into chat.</p>
+          </li>
+          <li>
+            <h3>Research</h3>
+<pre><code class="language-bash">/mcs-research MyFirstAgent
+</code></pre>
+            <p>Reads documents, identifies agents, designs architecture (single vs. multi), enriches <code>brief.json</code>, and generates eval sets.</p>
+          </li>
+          <li>
+            <h3>Review the brief in the dashboard</h3>
+            <p>The brief editor shows every section. Answer open questions, edit instructions, add or remove tools, then save.</p>
+          </li>
+          <li>
+            <h3>Build</h3>
+<pre><code class="language-bash">/mcs-build MyFirstAgent agent-name
+</code></pre>
+            <p>Constructs the agent in MCS via the hybrid stack. Eval-driven loop validates as it goes. Publishes when all gates pass.</p>
+          </li>
+          <li>
+            <h3>Generate the report</h3>
+<pre><code class="language-bash">/mcs-report MyFirstAgent agent-name --type customer
+</code></pre>
+            <p>Produces a customer-shareable Markdown report.</p>
+          </li>
+        </ol>
+
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Port 8000 in use</h3>
+            <p>The launcher auto-detects the conflict and falls back to the next free port. CORS origins update dynamically. Look for the actual port in the terminal output.</p>
+          </div>
+          <div class="card">
+            <h3>winget command not found</h3>
+            <p>Install App Installer from the Microsoft Store, then re-run <code>start.cmd</code>. winget ships with Windows 11 by default; older Windows 10 builds need the manual install.</p>
+          </div>
+          <div class="card">
+            <h3>PAC CLI auth fails</h3>
+            <p>Run <code>pac auth clear</code> then <code>pac auth create</code>. If MFA blocks the device flow, use <code>--deviceCode</code>.</p>
+          </div>
+          <div class="card">
+            <h3>Build hangs at browser step</h3>
+            <p>Ensure no other Edge instance is bound to remote debugging port 9222. Kill stale instances or run <code>tools\start-edge-debug.cmd</code> manually.</p>
+          </div>
+          <div class="card">
+            <h3>YAML validation errors</h3>
+            <p>Run <code>tools\om-cli\om-cli.exe validate Build-Guides\Project\agents\name\topics\topic.yaml</code> to see field-level errors with line numbers.</p>
+          </div>
+          <div class="card">
+            <h3>Eval scores below threshold</h3>
+            <p>Use <code>/mcs-fix Project agent-name</code>. QA Challenger classifies failures and Prompt or Topic Engineer applies fixes automatically.</p>
+          </div>
+        </div>
+
+        <h2 id="next">What next</h2>
+        <p>Now that you have the basics, dig deeper:</p>
+        <div class="grid grid-3">
+          <a class="card card-link" href="workflow.html">
+            <h3>Workflow walkthrough</h3>
+            <p>Phase-by-phase tour of init through deploy.</p>
+          </a>
+          <a class="card card-link" href="architecture.html">
+            <h3>Architecture</h3>
+            <p>How the hybrid stack and SWE-Swarms fit together.</p>
+          </a>
+          <a class="card card-link" href="cli.html">
+            <h3>CLI reference</h3>
+            <p>Every slash command, every flag.</p>
+          </a>
+        </div>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

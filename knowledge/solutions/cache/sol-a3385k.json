@@ -1,0 +1,35 @@
+{
+  "id": "sol-a3385k",
+  "folderName": "Populate Word Template",
+  "folderId": "01Z2AOQ5QA5R5W6L62F5FYBW3IE3JBDUWA",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:44:07.781Z",
+  "lastAnalyzed": "2026-03-02T19:44:07.784Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "Julie_Chudakova",
+    "uniqueName": "SearchandPopulateWordTemplate",
+    "version": "1.0.0.2",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "SearchandPopulateWordTemplate_1_0_0_2.zip",
+      "size": 41318,
+      "type": "solution"
+    },
+    {
+      "name": "Word Template.docx",
+      "size": 48813,
+      "type": "document"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

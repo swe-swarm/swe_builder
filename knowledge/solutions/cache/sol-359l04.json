@@ -1,0 +1,40 @@
+{
+  "id": "sol-359l04",
+  "folderName": "Custom Report Generation",
+  "folderId": "01Z2AOQ5SYH3UQNYX5VZBJ7DZIW2T2UV4R",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:42:52.317Z",
+  "lastAnalyzed": "2026-03-02T19:42:52.318Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "Cr1f713",
+    "uniqueName": "ResearchAgent",
+    "version": "1.0.0.1",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "Custom Report Generation via Agent Topics.pptx",
+      "size": 367666,
+      "type": "presentation"
+    },
+    {
+      "name": "report-generation-topic.mp4",
+      "size": 299406794,
+      "type": "other"
+    },
+    {
+      "name": "ResearchAgent_1_0_0_1.zip",
+      "size": 41854,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

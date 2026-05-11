@@ -1,0 +1,72 @@
+# Pattern: Knowledge Search — Direct Response (Controlled Display)
+# Trigger: OnRecognizedIntent or any trigger where you control the output
+# Shows: Search specific knowledge sources and manually send the response.
+#         Use when you need to control formatting, build adaptive cards,
+#         or process the result before showing it to the user.
+# CRITICAL: Always use CreateSearchQuery before SearchAndSummarizeContent to
+#           preserve conversational context (resolves "tell me more about that").
+# See also: faq-knowledge.yaml (fallback search), search-orchestrator.yaml (orchestrator),
+#           search-precision.yaml (verbatim/raw results)
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    # Step 1: Generate an optimized search query preserving conversational context
+    - kind: CreateSearchQuery
+      id: createSearchQuery_REPLACE1
+      userInput: =System.Activity.Text
+      result: Topic.SearchQuery
+
+    # Step 2: Search specific knowledge sources with the optimized query
+    - kind: SearchAndSummarizeContent
+      id: searchContent_REPLACE2
+      autoSend: false
+      variable: Topic.Answer
+      userInput: =Topic.SearchQuery.SearchQuery
+      fileSearchDataSource:
+        searchFilesMode:
+          kind: DoNotSearchFiles
+      knowledgeSources:
+        kind: SearchSpecificKnowledgeSources
+        knowledgeSources:
+          - "{{SCHEMA_NAME}}.knowledge.{{KNOWLEDGE_SOURCE_NAME}}"
+      applyModelKnowledgeSetting: false
+      responseCaptureType: FullResponse
+
+    # Step 3: Check if answer found, then send manually
+    - kind: ConditionGroup
+      id: conditionGroup_REPLACE3
+      conditions:
+        - id: conditionItem_REPLACE4
+          condition: =!IsBlank(Topic.Answer)
+          actions:
+            - kind: SendActivity
+              id: sendActivity_REPLACE5
+              activity: "{Topic.Answer.Text.MarkdownContent}"
+      elseActions:
+        - kind: SendActivity
+          id: sendNoAnswer_REPLACE6
+          activity: "I couldn't find information about that. {{FALLBACK_MESSAGE}}"
+
+# --- Key properties ---
+# autoSend: false — response saved to variable instead of auto-sent
+# responseCaptureType: FullResponse — captures content, markdown, and citations
+#   Access via: Topic.Answer.Text.Content (plain), Topic.Answer.Text.MarkdownContent (markdown),
+#               Topic.Answer.Text.CitationSources (citations)
+# knowledgeSources: SearchSpecificKnowledgeSources — restricts to named sources
+#   Reference format: filename without .knowledge.mcs.yml suffix
+# applyModelKnowledgeSetting: false — only searches configured sources, not general knowledge
+# fileSearchDataSource.DoNotSearchFiles — disables file search
+
+# --- When to use this vs other patterns ---
+# Direct Response (this): You need to control the display (formatting, cards, processing)
+# Fallback Search (faq-knowledge.yaml): Default catch-all knowledge search
+# Orchestrator (search-orchestrator.yaml): Topic returns data, orchestrator presents it
+# Precision (search-precision.yaml): Need verbatim/exact content without AI summarization

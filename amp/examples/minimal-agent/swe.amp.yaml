@@ -1,0 +1,23 @@
+ampVersion: "1.0"
+agent:
+  name: minimal-agent
+  displayName: Minimal Agent
+  version: "0.1.0"
+  description: Hello world AMP agent.
+  language: typescript
+runtime:
+  copilotSdk:
+    transport: stdio
+extensions:
+  tools:
+    - name: echo_message
+      description: Echo the provided message.
+      paramsSchema:
+        type: object
+        properties:
+          message:
+            type: string
+      stub:
+        kind: echo
+  permissions:
+    mode: approveAll

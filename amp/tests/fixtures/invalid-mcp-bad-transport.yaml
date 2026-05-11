@@ -1,0 +1,12 @@
+ampVersion: "1.0"
+agent:
+  name: invalid-mcp-agent
+  language: typescript
+runtime:
+  copilotSdk:
+    transport: stdio
+extensions:
+  mcpServers:
+    - name: bad-mcp
+      type: websocket
+      url: https://example.test/mcp

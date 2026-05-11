@@ -1,0 +1,155 @@
+{
+  "_meta": {
+    "connectorId": "shared_office365groups",
+    "displayName": "Office 365 Groups",
+    "source": "arm-api",
+    "fetchedAt": "2026-03-09",
+    "hasParameterSchemas": false
+  },
+  "operations": {
+    "AddMemberToGroup": {
+      "displayName": "Add member to group",
+      "method": "POST",
+      "description": "This operation is used to add a member to an O365 group, using a UPN.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CalendarDeleteItem_V2": {
+      "displayName": "Delete event (V2)",
+      "method": "POST",
+      "description": "This operation deletes an event in a calendar.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "CreateCalendarEventV2": {
+      "displayName": "Create a group event (V2)",
+      "method": "POST",
+      "description": "This operation is used to create a new event in a group calendar.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "HttpRequestV2": {
+      "displayName": "Send an HTTP request V2",
+      "method": "POST",
+      "description": "Construct a Microsoft Graph REST API request to invoke. There is one segment that is supported: /groups. Learn more: https://docs.microsoft.com/en-us/graph/use-the-api.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListDeletedGroups": {
+      "displayName": "List deleted groups",
+      "method": "POST",
+      "description": "Lists deleted groups that can be restored.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListDeletedGroupsByOwner": {
+      "displayName": "List deleted groups by owner",
+      "method": "POST",
+      "description": "List deleted groups that can be restored by owner",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListGroupMembers": {
+      "displayName": "List group members",
+      "method": "POST",
+      "description": "This operation returns a list of all members in the given group and their details such as name, title, email, etc. You can query up to 1000 items using Top parameter. In case you need to retrieve more than 1000 values please turn on Settings->Pagination feature and provide Threshold limit.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListGroups": {
+      "displayName": "List groups",
+      "method": "POST",
+      "description": "This operation returns a list of all groups in the organization.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListOwnedGroups": {
+      "displayName": "List my owned groups",
+      "method": "POST",
+      "description": "This operation returns a list of all groups that you own.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListOwnedGroups_V2": {
+      "displayName": "List my owned groups (V2)",
+      "method": "POST",
+      "description": "This operation returns a list of all groups that you own.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "ListOwnedGroups_V3": {
+      "displayName": "List groups that I own and belong to",
+      "method": "POST",
+      "description": "This operation returns a list of all groups that you own and belong to.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnGroupMembershipChange": {
+      "displayName": "When a group member is added or removed",
+      "method": "POST",
+      "description": "This operation triggers when a member is added to or removed from the given group.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "OnNewEvent": {
+      "displayName": "When there is a new event",
+      "method": "POST",
+      "description": "This operation triggers when a new event is added to a group calendar.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "RemoveMemberFromGroup": {
+      "displayName": "Remove member from group",
+      "method": "POST",
+      "description": "This operation is used to remove a member from an O365 group, using a UPN.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "RestoreDeletedGroup": {
+      "displayName": "Restore a deleted group",
+      "method": "POST",
+      "description": "Restore a recently deleted group",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    },
+    "UpdateCalendarEvent": {
+      "displayName": "Update a group event",
+      "method": "POST",
+      "description": "This operation is used to update a new event in a group calendar.",
+      "deprecated": false,
+      "isTrigger": false,
+      "parameters": {},
+      "response": null
+    }
+  }
+}

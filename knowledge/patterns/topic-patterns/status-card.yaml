@@ -1,0 +1,200 @@
+# Pattern: Status / Progress Display Card
+# Trigger: OnRecognizedIntent (or mid-topic after status lookup)
+# Shows: Current status with visual indicators, steps, and actions
+# Common in: order tracking, ticket status, onboarding progress, case status
+#
+# Schema: 1.5 (cross-channel safe)
+# Actions: Action.Submit for next action, Action.OpenUrl for details
+# Channels: Teams, Web Chat, M365 Copilot, Omnichannel
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+      - "{{TRIGGER_2}}"
+  actions:
+    # Assumes Topic.status, Topic.statusColor, Topic.steps populated by prior step
+
+    - kind: SendMessage
+      id: sendStatusCard
+      message:
+        text: "Here's the current status:"
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "ColumnSet",
+                    columns: [
+                      {
+                        type: "Column",
+                        width: "stretch",
+                        items: [
+                          {
+                            type: "TextBlock",
+                            text: "{{ITEM_TYPE}} #" & Topic.itemId,
+                            weight: "Bolder",
+                            size: "Large"
+                          },
+                          {
+                            type: "TextBlock",
+                            text: Topic.itemTitle,
+                            wrap: true,
+                            spacing: "None"
+                          }
+                        ]
+                      },
+                      {
+                        type: "Column",
+                        width: "auto",
+                        verticalContentAlignment: "Center",
+                        items: [{
+                          type: "TextBlock",
+                          text: Topic.status,
+                          weight: "Bolder",
+                          color: If(
+                            Topic.status = "Complete", "Good",
+                            Topic.status = "In Progress", "Accent",
+                            Topic.status = "Blocked", "Attention",
+                            "Default"
+                          )
+                        }]
+                      }
+                    ]
+                  },
+                  {
+                    type: "FactSet",
+                    separator: true,
+                    facts: [
+                      { title: "Created", value: Text(Topic.createdDate, "MMM dd, yyyy") },
+                      { title: "Last Updated", value: Text(Topic.updatedDate, "MMM dd, yyyy") },
+                      { title: "Assigned To", value: Topic.assignee },
+                      { title: "Priority", value: Topic.priority }
+                    ]
+                  },
+                  {
+                    type: "TextBlock",
+                    text: "Progress",
+                    weight: "Bolder",
+                    separator: true,
+                    spacing: "Medium"
+                  },
+                  {
+                    type: "ColumnSet",
+                    columns: [
+                      {
+                        type: "Column",
+                        width: "stretch",
+                        items: [{
+                          type: "TextBlock",
+                          text: "{{STEP_1_NAME}}",
+                          size: "Small",
+                          color: "Good"
+                        }]
+                      },
+                      {
+                        type: "Column",
+                        width: "stretch",
+                        items: [{
+                          type: "TextBlock",
+                          text: "{{STEP_2_NAME}}",
+                          size: "Small",
+                          color: "Good"
+                        }]
+                      },
+                      {
+                        type: "Column",
+                        width: "stretch",
+                        items: [{
+                          type: "TextBlock",
+                          text: "{{STEP_3_NAME}}",
+                          size: "Small",
+                          color: "Accent",
+                          weight: "Bolder"
+                        }]
+                      },
+                      {
+                        type: "Column",
+                        width: "stretch",
+                        items: [{
+                          type: "TextBlock",
+                          text: "{{STEP_4_NAME}}",
+                          size: "Small",
+                          isSubtle: true
+                        }]
+                      }
+                    ]
+                  }
+                ],
+                actions: [
+                  {
+                    type: "Action.Submit",
+                    title: "Refresh Status",
+                    data: { action: "refresh", itemId: Topic.itemId }
+                  },
+                  {
+                    type: "Action.OpenUrl",
+                    title: "View Full Details",
+                    url: "{{DETAIL_URL_PREFIX}}" & Topic.itemId
+                  }
+                ]
+              }
+
+# --- Variant: Simple status badge (no steps) ---
+# For quick status checks where full progress isn't needed:
+#
+#   body: [
+#     {
+#       type: "Container",
+#       style: If(Topic.status = "Active", "good", If(Topic.status = "Blocked", "attention", "default")),
+#       items: [
+#         { type: "TextBlock", text: Topic.status, weight: "Bolder", horizontalAlignment: "Center" }
+#       ]
+#     },
+#     {
+#       type: "FactSet",
+#       facts: [
+#         { title: "ID", value: Topic.itemId },
+#         { title: "Last Update", value: Topic.lastUpdate }
+#       ]
+#     }
+#   ]
+
+# --- Dynamic progress from array ---
+# When steps come from an API (Topic.steps array with name + completed):
+#
+#   ForAll(
+#     Topic.steps,
+#     {
+#       type: "ColumnSet",
+#       columns: [
+#         {
+#           type: "Column",
+#           width: "auto",
+#           items: [{
+#             type: "TextBlock",
+#             text: If(ThisRecord.completed, "✅", If(ThisRecord.current, "🔵", "⬜")),
+#             size: "Medium"
+#           }]
+#         },
+#         {
+#           type: "Column",
+#           width: "stretch",
+#           items: [{
+#             type: "TextBlock",
+#             text: ThisRecord.name,
+#             weight: If(ThisRecord.current, "Bolder", "Default"),
+#             isSubtle: !ThisRecord.completed && !ThisRecord.current
+#           }]
+#         }
+#       ]
+#     }
+#   )

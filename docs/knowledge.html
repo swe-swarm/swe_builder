@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knowledge — SWE_BUILDER</title>
+  <meta name="description" content="The four knowledge layers that make every build smarter than the last. Cache, learnings, patterns, and frameworks." />
+  <link rel="canonical" href="https://swe-swarm.github.io/swe_builder/knowledge.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/github-dark.min.css" id="hljs-theme" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/powershell.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/yaml.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/languages/json.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">SB</span>
+        <span>SWE_BUILDER</span>
+        <span class="brand-tag">Docs</span>
+      </a>
+      <nav class="nav-primary" data-nav aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html">Get Started</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="schema.html">Schema</a>
+        <a href="skills.html">Skills</a>
+        <a href="swarms.html">SWE-Swarms</a>
+        <a href="tools.html">Tools</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="cli.html">CLI</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle color theme">
+          <svg class="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="icon-btn" href="https://github.com/swe-swarm/swe_builder" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-.99-.02-1.95-3.2.69-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.79.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn menu-btn" data-menu-toggle type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+    <a href="index.html">Overview</a>
+    <a href="getting-started.html">Get Started</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="schema.html">Schema</a>
+    <a href="skills.html">Skills</a>
+    <a href="swarms.html">SWE-Swarms</a>
+    <a href="tools.html">Tools</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a href="cli.html">CLI</a>
+    <a href="https://github.com/swe-swarm/swe_builder">GitHub Repository</a>
+  </nav>
+
+  <main id="main">
+    <div class="layout layout-with-sidebar">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Layers</div>
+          <ul class="sidebar-nav">
+            <li><a href="#cache">Cache (18 cheat sheets)</a></li>
+            <li><a href="#learnings">Learnings (8 topics)</a></li>
+            <li><a href="#patterns">Patterns</a></li>
+            <li><a href="#frameworks">Frameworks</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Lifecycle</div>
+          <ul class="sidebar-nav">
+            <li><a href="#freshness">Freshness rules</a></li>
+            <li><a href="#tiered-refresh">Tiered refresh</a></li>
+            <li><a href="#consultation">Consultation matrix</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <h1>Knowledge System</h1>
+        <p class="lede">
+          Four layers feed every architectural decision. Each layer answers a different question.
+          Together they make every build smarter than the last.
+        </p>
+
+        <h2>Layer overview</h2>
+        <table>
+          <thead>
+            <tr><th>Layer</th><th>Location</th><th>Answers</th><th>Refresh</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cache</td><td><code>knowledge/cache/</code></td><td>What can MCS do today?</td><td>Auto, every 7 days</td></tr>
+            <tr><td>Learnings</td><td><code>knowledge/learnings/</code></td><td>What worked last time?</td><td>After every build</td></tr>
+            <tr><td>Patterns</td><td><code>knowledge/patterns/</code></td><td>How do I write this?</td><td>Manual, rare</td></tr>
+            <tr><td>Frameworks</td><td><code>knowledge/frameworks/</code></td><td>How do I decide?</td><td>Manual, rare</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="cache">Cache: 18 quick-reference cheat sheets</h2>
+        <p>Cached inventories of MCS capabilities. Each file has freshness metadata. Tiered by criticality.</p>
+
+        <h3>Tier 1 (build-critical)</h3>
+        <p>Auto-refreshed at session start if older than 7 days. Refresh failures block the build.</p>
+        <ul>
+          <li><code>triggers.md</code> — every trigger type with config and gotchas</li>
+          <li><code>models.md</code> — every available model with default and cost</li>
+          <li><code>mcp-servers.md</code> — every MCP server (preview, GA) with capabilities</li>
+          <li><code>connectors.md</code> — connector catalog with auth requirements</li>
+          <li><code>knowledge-sources.md</code> — supported knowledge types and their limits</li>
+          <li><code>channels.md</code> — every channel with feature support matrix</li>
+        </ul>
+
+        <h3>Tier 2 (build-phase)</h3>
+        <p>Refreshed before <code>/mcs-build</code> if stale. Warns but does not block.</p>
+        <ul>
+          <li><code>api-capabilities.md</code> — what each layer of the hybrid stack can do</li>
+          <li><code>instructions-authoring.md</code> — instruction patterns and antipatterns</li>
+          <li><code>generative-orchestration.md</code> — how the orchestrator routes</li>
+          <li><code>adaptive-cards.md</code> — card features by channel</li>
+          <li><code>ai-tools-computer-use.md</code> — preview AI tool capabilities</li>
+          <li><code>power-automate-integration.md</code> — flow patterns and limits</li>
+        </ul>
+
+        <h3>Tier 3 (reference)</h3>
+        <p>Refreshed on demand via <code>/mcs-refresh</code>. Stable enough that monthly is fine.</p>
+        <ul>
+          <li><code>eval-methods.md</code> — every test method with examples</li>
+          <li><code>security-auth.md</code> — auth patterns and managed identity</li>
+          <li><code>agent-lifecycle.md</code> — create, publish, deploy, retire</li>
+          <li><code>limits-licensing.md</code> — quotas and license requirements</li>
+          <li><code>powerfx-variables.md</code> — variable types and PowerFx functions</li>
+          <li><code>conversation-design.md</code> — turn structure and disambiguation</li>
+        </ul>
+
+        <h2 id="learnings">Learnings: experience-based insights</h2>
+        <p>
+          Eight topic files plus a machine-readable <code>index.json</code> that enables deduplication,
+          confirmed-count tracking, and staleness detection. Higher confirmed counts get more weight,
+          but the user always decides.
+        </p>
+
+        <table>
+          <thead>
+            <tr><th>File</th><th>Consulted during</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>connectors.md</code></td><td>/mcs-research Phase B (component research)</td></tr>
+            <tr><td><code>integrations.md</code></td><td>/mcs-research Phase B (integration choices)</td></tr>
+            <tr><td><code>architecture.md</code></td><td>/mcs-research Phase C (architecture scoring)</td></tr>
+            <tr><td><code>instructions.md</code></td><td>/mcs-research Phase C (Prompt Engineer)</td></tr>
+            <tr><td><code>topics-triggers.md</code></td><td>/mcs-research Phase D + /mcs-build Step 4</td></tr>
+            <tr><td><code>eval-testing.md</code></td><td>/mcs-research Phase D + /mcs-eval</td></tr>
+            <tr><td><code>build-methods.md</code></td><td>/mcs-build (tool selection per step)</td></tr>
+            <tr><td><code>customer-patterns.md</code></td><td>/mcs-research Phase B (component research)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Two-tier capture model</h3>
+        <table>
+          <thead>
+            <tr><th>Tier</th><th>When</th><th>Confirmation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tier 1 (auto)</td><td>Routine confirmations, cache corrections</td><td>None, silent bump</td></tr>
+            <tr><td>Tier 2 (user confirms)</td><td>New discoveries, contradictions, architecture insights</td><td>Required</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Confidence levels</h3>
+        <table>
+          <thead>
+            <tr><th>Confirmed in</th><th>Weight</th><th>Presentation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1 build</td><td>Low</td><td>"In one past build, we observed..."</td></tr>
+            <tr><td>2-3 builds</td><td>Medium</td><td>"Based on multiple builds, we recommend considering..."</td></tr>
+            <tr><td>4+ builds</td><td>High</td><td>"Consistently confirmed: ..."</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="patterns">Patterns: stable HOW-TO references</h2>
+        <ul>
+          <li><code>yaml-reference.md</code> — action types, entity catalog, binding rules, compile errors</li>
+          <li><code>playwright-patterns.md</code> — selectors and flows for MCS UI automation</li>
+          <li><code>dataverse-patterns.md</code> — typed Web API helpers</li>
+          <li><code>topic-patterns/</code> — 10 reusable YAML templates including the AI Builder model template</li>
+        </ul>
+
+        <h2 id="frameworks">Frameworks: decision support</h2>
+        <ul>
+          <li><code>component-selection.md</code> — pick the right MCS component for a requirement</li>
+          <li><code>architecture-scoring.md</code> — single vs multi-agent decision (6-factor score, 3+ = multi)</li>
+          <li><code>tool-priority.md</code> — when to use PAC, Dataverse, YAML, Direct Line, Playwright</li>
+          <li><code>eval-scenarios/</code> — 15 templates for different agent types</li>
+        </ul>
+
+        <h2 id="freshness">Freshness rules</h2>
+        <table>
+          <thead>
+            <tr><th>Age</th><th>Behavior</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Less than 7 days</td><td>Use as-is</td></tr>
+            <tr><td>7 to 30 days</td><td>Tier 1: auto-refresh. Tier 2-3: flag, refresh on demand</td></tr>
+            <tr><td>More than 30 days</td><td>Refresh immediately regardless of tier</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="tiered-refresh">Tiered refresh</h2>
+        <div class="mermaid">
+flowchart TD
+  S[Session start] --&gt; C{Cache age?}
+  C --&gt;|Less than 7d| OK[Use as-is]
+  C --&gt;|7-30d, Tier 1| R1[Auto-refresh Tier 1]
+  C --&gt;|7-30d, Tier 2-3| F[Flag, refresh on demand]
+  C --&gt;|More than 30d| RA[Refresh all immediately]
+  R1 --&gt; OK
+  RA --&gt; OK
+        </div>
+
+        <h2 id="consultation">Consultation matrix</h2>
+        <p>Knowledge is consulted at specific points across all workflow skills, not just research.</p>
+        <table>
+          <thead>
+            <tr><th>Skill</th><th>Phase or step</th><th>Layers read</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>/mcs-research</td><td>Phase B</td><td>cache, learnings (connectors, integrations, customer-patterns)</td></tr>
+            <tr><td>/mcs-research</td><td>Phase C</td><td>cache, learnings (architecture, instructions), frameworks (architecture-scoring)</td></tr>
+            <tr><td>/mcs-research</td><td>Phase D</td><td>cache, learnings (topics-triggers, eval-testing), frameworks (eval-scenarios)</td></tr>
+            <tr><td>/mcs-build</td><td>Before Step 1</td><td>learnings (build-methods)</td></tr>
+            <tr><td>/mcs-build</td><td>Before Step 3</td><td>cache, learnings (connectors, integrations)</td></tr>
+            <tr><td>/mcs-build</td><td>Before Step 4</td><td>patterns (yaml-reference, topic-patterns), learnings (topics-triggers)</td></tr>
+            <tr><td>/mcs-eval</td><td>Before Step 2</td><td>cache (eval-methods), learnings (eval-testing)</td></tr>
+            <tr><td>/mcs-fix</td><td>Step 2</td><td>learnings (eval-testing, instructions, topics-triggers)</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="staleness">Staleness rules</h2>
+        <table>
+          <thead>
+            <tr><th>Condition</th><th>Status</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Not confirmed in more than 6 months</td><td>stale</td><td>Flag during session startup</td></tr>
+            <tr><td>Contradicted by 2+ builds</td><td>deprecated</td><td>Recommend removal</td></tr>
+            <tr><td>References removed component</td><td>superseded</td><td>Recommend update</td></tr>
+          </tbody>
+        </table>
+
+        <p>Reported during session startup alongside cache freshness:</p>
+<pre><code class="language-text">Learnings: 47 active, 3 stale, 1 deprecated
+</code></pre>
+
+        <p><a class="btn btn-primary" href="cli.html">Refresh commands and CLI</a> <a class="btn btn-secondary" href="swarms.html">How SWE-Swarms use knowledge</a></p>
+      </main>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>SWE_BUILDER. MIT licensed. Built by the Microsoft CAPE team.</div>
+      <div class="footer-links">
+        <a href="https://github.com/swe-swarm/swe_builder">GitHub</a>
+        <a href="https://github.com/swe-swarm/swe_builder/issues">Issues</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/swe-swarm/swe_builder/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

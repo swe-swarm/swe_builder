@@ -1,0 +1,207 @@
+# Pattern: AI Response Feedback Card (Thumbs Up/Down + Detailed)
+# Trigger: Mid-topic (after AI-generated response) or OnGeneratedResponse
+# Shows: Compact thumbs up/down → optional detailed feedback collection
+# Common in: knowledge agents, FAQ agents, any agent with AI-generated answers
+#
+# Based on: microsoft/CopilotStudioSamples/authoring/snippets/adaptive-cards/
+#   - thumbs-feedback-card.json (compact inline)
+#   - ai-feedback-adaptive-card.fx (detailed feedback form)
+#
+# Schema: 1.5 (cross-channel safe)
+# Actions: Action.Submit only + Column selectAction
+# Channels: Teams, Web Chat, M365 Copilot, Omnichannel
+# WhatsApp: Not supported — use suggestedActions ("Helpful" / "Not helpful")
+
+# --- Option A: Compact thumbs up/down (inline with disclaimer) ---
+# Use as a SendMessage after an AI-generated response.
+# Uses selectAction on columns — tapping the icon submits.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: "{{TOPIC_NAME}}"
+    triggerQueries:
+      - "{{TRIGGER_1}}"
+  actions:
+    # After sending AI response, show feedback card
+    - kind: Question
+      id: collectFeedback
+      interruptionPolicy:
+        allowInterruption: true
+      variable: init:Topic.feedbackResponse
+      prompt:
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              ={
+                type: "AdaptiveCard",
+                '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                version: "1.5",
+                body: [
+                  {
+                    type: "ColumnSet",
+                    columns: [
+                      {
+                        type: "Column",
+                        width: "stretch",
+                        items: [{
+                          type: "TextBlock",
+                          text: "AI-generated content may be incorrect",
+                          size: "Small",
+                          isSubtle: true,
+                          wrap: true
+                        }]
+                      },
+                      {
+                        type: "Column",
+                        width: "auto",
+                        selectAction: {
+                          type: "Action.Submit",
+                          data: { feedback: "positive" }
+                        },
+                        items: [{
+                          type: "TextBlock",
+                          text: "👍"
+                        }]
+                      },
+                      {
+                        type: "Column",
+                        width: "auto",
+                        selectAction: {
+                          type: "Action.Submit",
+                          data: { feedback: "negative" }
+                        },
+                        items: [{
+                          type: "TextBlock",
+                          text: "👎"
+                        }]
+                      }
+                    ]
+                  }
+                ]
+              }
+      entity: StringPrebuiltEntity
+
+    # Route based on feedback
+    - kind: ConditionGroup
+      id: routeFeedback
+      conditions:
+        - id: positiveFeedback
+          condition: =Topic.feedbackResponse.feedback = "positive"
+          actions:
+            - kind: SendMessage
+              id: thankPositive
+              message: "Glad that helped!"
+
+        - id: negativeFeedback
+          condition: =Topic.feedbackResponse.feedback = "negative"
+          actions:
+            # Show detailed feedback form
+            - kind: Question
+              id: collectDetailedFeedback
+              variable: init:Topic.detailedFeedback
+              prompt:
+                text: "Sorry to hear that. Could you share more details?"
+                attachments:
+                  - kind: AdaptiveCardTemplate
+                    cardContent: |-
+                      ={
+                        type: "AdaptiveCard",
+                        '$schema': "http://adaptivecards.io/schemas/adaptive-card.json",
+                        version: "1.5",
+                        body: [
+                          {
+                            type: "TextBlock",
+                            text: "What went wrong?",
+                            weight: "Bolder",
+                            size: "Medium",
+                            color: "Attention"
+                          },
+                          {
+                            type: "Input.ChoiceSet",
+                            id: "reason",
+                            label: "Issue type",
+                            choices: [
+                              { title: "Answer was incorrect", value: "incorrect" },
+                              { title: "Answer was incomplete", value: "incomplete" },
+                              { title: "Answer was not relevant", value: "irrelevant" },
+                              { title: "Other", value: "other" }
+                            ],
+                            isRequired: true,
+                            errorMessage: "Please select a reason"
+                          },
+                          {
+                            type: "Input.Text",
+                            id: "details",
+                            label: "Additional details (optional)",
+                            placeholder: "Tell us more about what you expected...",
+                            isMultiline: true
+                          }
+                        ],
+                        actions: [
+                          { type: "Action.Submit", title: "Submit Feedback" }
+                        ]
+                      }
+              entity: StringPrebuiltEntity
+
+            - kind: SendMessage
+              id: thankDetailed
+              message: "Thank you for your feedback. We'll use it to improve."
+
+# --- Option B: Feedback with AI answer context (PowerFx) ---
+# References Global.UserQuery and Global.Answer from generative orchestration.
+# Use in OnGeneratedResponse or after SearchAndSummarize.
+#
+# - kind: SendMessage
+#   id: sendFeedbackWithContext
+#   message:
+#     attachments:
+#       - kind: AdaptiveCardTemplate
+#         cardContent: |-
+#           ={
+#             type: "AdaptiveCard",
+#             version: "1.5",
+#             body: [
+#               {
+#                 type: "Container",
+#                 style: "accent",
+#                 items: [
+#                   { type: "TextBlock", text: "Your question:", weight: "Bolder", size: "Medium", isSubtle: true },
+#                   { type: "TextBlock", text: Global.UserQuery, wrap: true, size: "Small" }
+#                 ]
+#               },
+#               {
+#                 type: "Container",
+#                 style: "accent",
+#                 items: [
+#                   { type: "TextBlock", text: "AI-generated answer:", weight: "Bolder", size: "Medium", isSubtle: true },
+#                   { type: "TextBlock", text: Global.Answer.Text.MarkdownContent, wrap: true, size: "Small" }
+#                 ]
+#               },
+#               {
+#                 type: "Container",
+#                 style: "warning",
+#                 items: [
+#                   { type: "TextBlock", text: "What is wrong with the answer?", weight: "Bolder", color: "Attention" },
+#                   {
+#                     type: "Input.Text",
+#                     id: "Feedback",
+#                     placeholder: "Please share your feedback and submit",
+#                     isMultiline: true
+#                   }
+#                 ]
+#               },
+#               {
+#                 type: "ActionSet",
+#                 actions: [{ type: "Action.Submit", title: "Submit" }]
+#               }
+#             ]
+#           }
+
+# --- Integration notes ---
+# To log feedback: send Topic.feedbackResponse + Topic.detailedFeedback to a
+# Power Automate flow that writes to Dataverse, SharePoint, or Application Insights.
+# The feedback data includes: reason (category), details (free text), and the
+# original query context if using Option B.

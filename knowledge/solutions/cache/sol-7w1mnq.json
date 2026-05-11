@@ -1,0 +1,45 @@
+{
+  "id": "sol-7w1mnq",
+  "folderName": "Life Insurance Product Agent",
+  "folderId": "01Z2AOQ5XWRBYIVWJRKZALVZELVKOO5DV6",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:43:35.912Z",
+  "lastAnalyzed": "2026-03-02T19:43:35.914Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "CAT",
+    "uniqueName": "ProductLifeInsuranceSolution",
+    "version": "1.0.0.0",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "LifeInsuranceProductAgent-Overview.pdf",
+      "size": 900145,
+      "type": "pdf"
+    },
+    {
+      "name": "LifeInsuranceProductAgent-SampleRecords.xlsx",
+      "size": 30051,
+      "type": "other"
+    },
+    {
+      "name": "LifeInsuranceProductAgent-Video.mp4",
+      "size": 23408117,
+      "type": "other"
+    },
+    {
+      "name": "ProductLifeInsuranceSolution_1_0_0_0.zip",
+      "size": 70483,
+      "type": "solution"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

@@ -1,0 +1,13 @@
+.claude/memory/
+.github/acl/
+.github/compliance/
+.github/policies/
+.github/ISSUE_TEMPLATE/JitAccess.yml
+es-metadata.yml
+tools/om-cli/*.dll
+tools/om-cli/*.exe
+tools/om-cli/*.xml
+tools/om-cli/*.pdb
+tools/om-cli/*.deps.json
+tools/om-cli/*.runtimeconfig.json
+tools/om-cli/*/*.dll

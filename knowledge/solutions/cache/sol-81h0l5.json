@@ -1,0 +1,40 @@
+{
+  "id": "sol-81h0l5",
+  "folderName": "ServiceNow Service Catalog",
+  "folderId": "01Z2AOQ5XLQFMSBFJIPNCY6GKGDPGCO2EV",
+  "folderUrl": null,
+  "lastModified": "2026-03-02T19:44:47.514Z",
+  "lastAnalyzed": "2026-03-02T19:44:47.516Z",
+  "analysisDepth": "deep",
+  "solution": {
+    "managed": 0,
+    "publisherName": "Crd4b26",
+    "uniqueName": "ServiceNowConnector",
+    "version": "1.0.0.00",
+    "displayName": null
+  },
+  "agents": [],
+  "files": [
+    {
+      "name": "ServiceNowConnector_1_0_0_00.zip",
+      "size": 154333,
+      "type": "solution"
+    },
+    {
+      "name": "ServiceNow-ServiceCatalog-MCS-Solution-Guides.docx",
+      "size": 1106778,
+      "type": "document"
+    },
+    {
+      "name": "ServiceNow-ServiceCatalog-MCS-Solution-Video.mp4",
+      "size": 5674840,
+      "type": "other"
+    }
+  ],
+  "tags": {},
+  "instructionPatterns": [],
+  "componentCounts": {},
+  "connectionReferences": [],
+  "environmentVariables": [],
+  "error": null
+}

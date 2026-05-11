@@ -1,0 +1,13 @@
+ampVersion: "1.0"
+agent:
+  name: duplicate-agent-test
+  language: typescript
+runtime:
+  copilotSdk:
+    transport: stdio
+extensions:
+  customAgents:
+    - name: helper-agent
+      description: First helper
+    - name: helper-agent
+      description: Duplicate helper
