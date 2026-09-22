@@ -25,7 +25,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 from fastapi import FastAPI, HTTPException, Request, UploadFile, File
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -58,6 +58,23 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Studio extends the existing server; the MCS project/agent APIs remain unchanged.
+from lib.studio_api import create_studio_router
+from lib.studio_core import StudioError
+
+studio_router, studio_service = create_studio_router(BASE_DIR)
+app.include_router(studio_router)
+
+
+@app.exception_handler(StudioError)
+async def studio_error_handler(request: Request, error: StudioError):
+    return JSONResponse({"detail": str(error)}, status_code=error.status)
+
+
+@app.on_event("shutdown")
+async def studio_shutdown():
+    await studio_service.close()
 
 # ---------------------------------------------------------------------------
 # Helpers — folder structure: docs/ + agents/{name}/
