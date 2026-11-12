@@ -46,6 +46,9 @@ const Layout = ({ children, breadcrumbs }: LayoutProps) => {
           )}
 
           <div className="ml-auto flex items-center gap-1">
+            <Link to="/studio" className="mr-3 rounded border border-border px-3 py-1.5 text-xs text-foreground hover:bg-muted">
+              SWE Studio
+            </Link>
             <Button
               variant="ghost"
               size="sm"

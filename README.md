@@ -4,6 +4,10 @@ Automate end-to-end agent builds — from data intake through architecture, buil
 
 amp=agent_manifest_protocol combining the simplicity of adaptive cards with mcp, full agents, solutions, etc. can follow known schemas and indexes so that reasoning is spent on solutioning instead of architecture. Adaptive by design
 
+## SWE Studio
+
+The new `/studio` workspace adds local code editing, Git diffs, agent tasks, and persistent run receipts. See the [SWE Studio setup and scope](knowledge/studio/README.md) to run it locally.
+
 ## Quick Start
 
 ### Option A: `start.cmd` (Windows — installs everything)

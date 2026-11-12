@@ -1,0 +1,2 @@
+# The application dependencies are in the repository's requirements.txt.
+httpx>=0.27,<1

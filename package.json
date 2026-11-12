@@ -41,11 +41,13 @@
     "terminal": "node app/terminal-server.js",
     "test": "node tools/direct-line-test.js",
     "test:amp": "node --test amp/tests/*.test.js",
+    "test:studio": "python -m unittest discover -s app/tests -p 'test_studio*.py' -v",
     "amp": "node bin/cli.js amp",
     "frontend:dev": "npm --prefix app/frontend run dev",
     "frontend:build": "npm --prefix app/frontend run build",
     "upstream-check": "node tools/upstream-check.js",
-    "review": "node tools/multi-model-review.js"
+    "review": "node tools/multi-model-review.js",
+    "studio": "python -m uvicorn server:app --app-dir app --host 127.0.0.1 --port 8000"
   },
   "dependencies": {
     "@azure/msal-node": "^2.0.0",

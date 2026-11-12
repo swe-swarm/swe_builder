@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.app.json",
+  "include": [
+    "src/pages/Studio.tsx",
+    "src/pages/Studio.test.tsx",
+    "src/lib/studioApi.ts",
+    "src/test/setup.ts"
+  ]
+}
